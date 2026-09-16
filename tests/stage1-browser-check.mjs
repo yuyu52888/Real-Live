@@ -1,0 +1,267 @@
+import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { createServer } from "node:net";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { createStaticServer } from "../tools/dev-server.mjs";
+
+const browserPath = [
+  process.env.CHROME_PATH,
+  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "/usr/bin/google-chrome",
+  "/usr/bin/chromium",
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+].filter(Boolean).find(existsSync);
+
+if (!browserPath) {
+  throw new Error("找不到 Chrome、Chromium 或 Edge；可用 CHROME_PATH 指定瀏覽器。");
+}
+
+const server = createStaticServer();
+await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+const appPort = server.address().port;
+const debugPort = await reservePort();
+const profile = await mkdtemp(join(tmpdir(), "rlq-stage1-"));
+const browser = spawn(browserPath, [
+  "--headless=new",
+  "--disable-gpu",
+  "--no-first-run",
+  "--no-default-browser-check",
+  `--remote-debugging-port=${debugPort}`,
+  `--user-data-dir=${profile}`,
+  "about:blank",
+], { stdio: ["ignore", "ignore", "pipe"] });
+
+try {
+  await waitForDevTools(browser);
+  const targetResponse = await fetch(`http://127.0.0.1:${debugPort}/json/new?about%3Ablank`, { method: "PUT" });
+  const target = await targetResponse.json();
+  const client = await createClient(target.webSocketDebuggerUrl);
+  const pageErrors = [];
+
+  client.onEvent((message) => {
+    if (message.method === "Runtime.exceptionThrown") {
+      pageErrors.push(message.params.exceptionDetails.text);
+    }
+    if (message.method === "Runtime.consoleAPICalled" && message.params.type === "error") {
+      pageErrors.push("console.error was called");
+    }
+    if (message.method === "Log.entryAdded" && message.params.entry.level === "error") {
+      pageErrors.push(message.params.entry.text);
+    }
+  });
+
+  await Promise.all([client.send("Page.enable"), client.send("Runtime.enable"), client.send("Log.enable")]);
+  await client.send("Emulation.setDeviceMetricsOverride", {
+    width: 768,
+    height: 1024,
+    deviceScaleFactor: 1,
+    mobile: true,
+  });
+  await client.send("Page.navigate", { url: `http://127.0.0.1:${appPort}` });
+  await waitFor(() => client.evaluate("document.readyState === 'complete' && Boolean(document.querySelector('[data-start]'))"));
+
+  await client.evaluate(`document.querySelector('[data-start]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-avatar="girl"]'))`));
+  await client.evaluate(`document.querySelector('[data-avatar="girl"]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelector('[data-avatar="girl"]').getAttribute('aria-checked') === 'true' && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`document.querySelector('[data-avatar="girl"]')?.getAttribute('aria-checked') === 'true'`));
+  await client.evaluate(`document.querySelector('form').requestSubmit()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#nickname'))`));
+  await client.evaluate(`document.querySelector('#nickname').value = '小晴'; document.querySelector('form').requestSubmit()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#parent-pin'))`));
+  await client.evaluate(`document.querySelector('#parent-pin').value = '0123'; document.querySelector('form').requestSubmit()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#daily-goal'))`));
+  await client.evaluate(`document.querySelector('#daily-goal').value = '3'; document.querySelector('form').requestSubmit()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  const homeResult = await client.evaluate(`(() => {
+    const selectedGirl = 'true';
+    const homeName = document.querySelector('#home-title')?.textContent;
+    const navCount = document.querySelectorAll('.bottom-nav__item').length;
+    const homeAvatar = document.querySelector('.adventure-party__hero')?.getAttribute('src');
+    return {
+      selectedGirl,
+      homeName,
+      navCount,
+      homeAvatar,
+      goal: document.querySelector('.progress-card h2').textContent,
+    };
+  })()`);
+
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="quests"]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelectorAll('.quest-card').length === 180`));
+  const questResult = await client.evaluate(`(() => {
+    document.querySelector('[data-quest-filter="exercise"]').click();
+    return {
+      filterCount: document.querySelectorAll('.quest-filter').length,
+      questActiveRoute: document.querySelector('.bottom-nav__item.is-active')?.dataset.route,
+    };
+  })()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-select-quest="EX001"]'))`));
+  await client.evaluate(`document.querySelector('[data-select-quest="EX001"]').click()`);
+  const exerciseResult = await client.evaluate(`({
+    tipCount: document.querySelectorAll('.quest-tips li').length,
+    hasSafety: Boolean(document.querySelector('.safety-notice')),
+    artSource: document.querySelector('.quest-detail__art img')?.getAttribute('src'),
+  })`);
+  await client.evaluate(`document.querySelector('.quest-detail [data-start-quest="EX001"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.quest-detail [data-complete-quest="EX001"]')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="quests"]').click(); document.querySelector('[data-quest-filter="exercise"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-select-quest="EX001"]'))`));
+  await client.evaluate(`document.querySelector('[data-select-quest="EX001"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.quest-detail [data-complete-quest="EX001"]'))`));
+  await client.evaluate(`document.querySelector('.quest-detail [data-complete-quest="EX001"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.pending-message')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="parent"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#parent-unlock-pin'))`));
+  await client.evaluate(`document.querySelector('#parent-unlock-pin').value='0123'; document.querySelector('[data-parent-unlock]').requestSubmit()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-approve-completion]'))`));
+  await client.evaluate(`document.querySelector('[data-approve-completion]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.parent-empty')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+
+  if (process.env.STAGE1_SCREENSHOT) {
+    const screenshot = await client.send("Page.captureScreenshot", { format: "png" });
+    await writeFile(process.env.STAGE1_SCREENSHOT, Buffer.from(screenshot.data, "base64"));
+  }
+
+  const heroResult = await client.evaluate(`(() => {
+    document.querySelector('.bottom-nav__item[data-route="hero"]').click();
+    return {
+      heroName: document.querySelector('#page-title')?.textContent,
+      activeRoute: document.querySelector('.bottom-nav__item.is-active')?.dataset.route,
+    };
+  })()`);
+  const result = { ...homeResult, ...heroResult, ...questResult, ...exerciseResult };
+
+  const failures = [
+    result.selectedGirl !== "true" && "女主角未被標記為選取",
+    result.homeName !== "小晴" && "暱稱未到達首頁",
+    result.navCount !== 5 && "底部導覽不是 5 項",
+    !result.homeAvatar?.includes("girl_happy.png") && "首頁未使用所選女主角資產",
+    result.heroName !== "小晴" && "角色頁未保留暱稱",
+    result.activeRoute !== "hero" && "角色導覽未成功",
+    result.goal !== "0 / 3" && "Settings did not survive reload",
+    result.filterCount !== 7 && "Quest filters are incomplete",
+    result.questActiveRoute !== "quests" && "Quest navigation did not activate",
+    result.tipCount !== 3 && "Exercise detail does not expose 3 tips",
+    !result.hasSafety && "Exercise detail safety is missing",
+    !result.artSource?.includes("girl_exercise.png") && "A5 exercise fallback was not used",
+    ...pageErrors,
+  ].filter(Boolean);
+
+  if (failures.length) {
+    throw new Error(`Stage 1 browser self-test failed:\n${failures.join("\n")}`);
+  }
+  const persistence = await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getSettings } = await import('/js/repositories/settings.js');
+    const db = await openDatabase();
+    const settings = await getSettings(db);
+    db.close();
+    if (!settings.pinCredential?.hash || JSON.stringify(settings).includes('0123')) throw new Error('PIN was not protected');
+    const { testPersistence } = await import('/tests/persistence-browser.js');
+    return testPersistence();
+  })()`);
+  const stage3Persistence = await client.evaluate(`(async () => {
+    const { testStage3Persistence } = await import('/tests/stage3-persistence-browser.js');
+    return testStage3Persistence();
+  })()`);
+  const a7Stage3Persistence = await client.evaluate(`(async () => {
+    const { testA7Stage3Persistence } = await import('/tests/a7-stage3-persistence-browser.js');
+    return testA7Stage3Persistence();
+  })()`);
+  console.log("Browser PASS: tablet portrait onboarding, quest list/detail, reload, pending approval, PIN approval, A5 fallback, navigation.");
+  console.log(persistence);
+  console.log(stage3Persistence);
+  console.log(a7Stage3Persistence);
+  if (pageErrors.length) throw new Error(pageErrors.join("\n"));
+  client.close();
+} finally {
+  const browserExited = browser.exitCode === null
+    ? new Promise((resolve) => browser.once("exit", resolve))
+    : Promise.resolve();
+  browser.kill();
+  await browserExited;
+  await new Promise((resolve) => server.close(resolve));
+  await rm(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+}
+
+async function reservePort() {
+  const socket = createServer();
+  await new Promise((resolve) => socket.listen(0, "127.0.0.1", resolve));
+  const port = socket.address().port;
+  await new Promise((resolve) => socket.close(resolve));
+  return port;
+}
+
+async function waitForDevTools(process) {
+  let output = "";
+  await Promise.race([
+    new Promise((resolve, reject) => {
+      process.stderr.on("data", (chunk) => {
+        output += chunk;
+        if (output.includes("DevTools listening on")) resolve();
+      });
+      process.once("exit", (code) => reject(new Error(`瀏覽器過早結束：${code}`)));
+    }),
+    delay(10_000).then(() => { throw new Error("瀏覽器啟動逾時"); }),
+  ]);
+}
+
+async function createClient(url) {
+  const socket = new WebSocket(url);
+  const pending = new Map();
+  const listeners = new Set();
+  let id = 0;
+
+  socket.addEventListener("message", (event) => {
+    const message = JSON.parse(event.data);
+    if (message.id && pending.has(message.id)) {
+      const request = pending.get(message.id);
+      pending.delete(message.id);
+      message.error ? request.reject(new Error(message.error.message)) : request.resolve(message.result);
+      return;
+    }
+    for (const listener of listeners) listener(message);
+  });
+  await new Promise((resolve, reject) => {
+    socket.addEventListener("open", resolve, { once: true });
+    socket.addEventListener("error", reject, { once: true });
+  });
+
+  return {
+    send(method, params = {}) {
+      return new Promise((resolve, reject) => {
+        const requestId = ++id;
+        pending.set(requestId, { resolve, reject });
+        socket.send(JSON.stringify({ id: requestId, method, params }));
+      });
+    },
+    async evaluate(expression) {
+      const response = await this.send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true });
+      if (response.exceptionDetails) throw new Error(response.exceptionDetails.text);
+      return response.result.value;
+    },
+    onEvent(listener) { listeners.add(listener); },
+    close() { socket.close(); },
+  };
+}
+
+async function waitFor(check) {
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    if (await check()) return;
+    await delay(100);
+  }
+  throw new Error("頁面載入逾時");
+}
+
+function delay(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
