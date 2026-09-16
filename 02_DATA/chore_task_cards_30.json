@@ -1,0 +1,812 @@
+[
+  {
+    "id": "CH001",
+    "category": "chores_home",
+    "name": "整理書桌",
+    "description": "把書桌上的物品整理整齊。",
+    "completionCriteria": "書桌恢復整齊",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先把垃圾丟掉",
+      "文具放回固定位置",
+      "桌面留下正在使用的東西"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理書桌的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理書桌的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH002",
+    "category": "chores_home",
+    "name": "收玩具",
+    "description": "把玩具分類收好。",
+    "completionCriteria": "完成分類收納",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先分成幾類",
+      "每類放回固定盒子",
+      "確認地板沒有遺漏"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "收玩具的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：收玩具的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH003",
+    "category": "chores_home",
+    "name": "摺衣服3件",
+    "description": "摺好3件自己的衣服。",
+    "completionCriteria": "完成3件",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "把衣服攤平",
+      "袖子往內折",
+      "折成整齊方形"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "摺衣服的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：摺衣服的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH004",
+    "category": "chores_home",
+    "name": "整理書包",
+    "description": "把明天要用的課本文具放進書包。",
+    "completionCriteria": "依清單完成",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "對照功課表或清單",
+      "重的書放中間",
+      "最後確認水壺與聯絡簿"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理書包的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理書包的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH005",
+    "category": "chores_home",
+    "name": "掃地5分鐘",
+    "description": "在指定區域掃地5分鐘。",
+    "completionCriteria": "完成指定區域",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "從角落往中間掃",
+      "垃圾集中成一堆",
+      "不要邊掃邊踢垃圾"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "掃地的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：掃地的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH006",
+    "category": "chores_home",
+    "name": "拿抹布擦桌子",
+    "description": "擦乾淨餐桌或書桌。",
+    "completionCriteria": "桌面乾淨",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先把桌上東西移開",
+      "由內往外擦",
+      "擦完把東西放回"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "擦桌子的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：擦桌子的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH007",
+    "category": "chores_home",
+    "name": "整理鞋子",
+    "description": "把門口鞋子排整齊。",
+    "completionCriteria": "鞋子排好",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "左右腳配對",
+      "鞋尖朝同方向",
+      "留出走路空間"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理鞋子的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理鞋子的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH008",
+    "category": "chores_home",
+    "name": "幫忙收餐具",
+    "description": "把吃完的餐具收到水槽。",
+    "completionCriteria": "完成收餐具",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "雙手拿穩",
+      "先把大殘渣倒掉",
+      "輕輕放入水槽"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "收餐具的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：收餐具的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH009",
+    "category": "chores_home",
+    "name": "洗自己的水壺",
+    "description": "清洗自己的水壺。",
+    "completionCriteria": "完成清洗",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先倒掉剩水",
+      "用海綿清洗內外",
+      "沖乾淨後晾乾"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "洗水壺的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：洗水壺的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH010",
+    "category": "chores_home",
+    "name": "洗碗2個",
+    "description": "洗2個不易破的碗或盤子。",
+    "completionCriteria": "完成2個",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先沖掉食物殘渣",
+      "用海綿輕輕刷",
+      "沖淨泡泡再放好"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "洗碗的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：洗碗的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH011",
+    "category": "chores_home",
+    "name": "幫忙擺碗筷",
+    "description": "用餐前幫忙擺好碗筷。",
+    "completionCriteria": "完成擺放",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "數好家裡人數",
+      "每個位置放整齊",
+      "注意安全擺放"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "擺碗筷的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：擺碗筷的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH012",
+    "category": "chores_home",
+    "name": "摺毛巾2條",
+    "description": "把2條毛巾摺好放回原位。",
+    "completionCriteria": "完成2條",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "攤平再對折",
+      "折成適合大小",
+      "放回固定位置"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "摺毛巾的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：摺毛巾的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH013",
+    "category": "chores_home",
+    "name": "整理床鋪",
+    "description": "把棉被、枕頭整理好。",
+    "completionCriteria": "床鋪整齊",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "枕頭放定位",
+      "棉被拉平",
+      "把皺褶整理好"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理床鋪的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理床鋪的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH014",
+    "category": "chores_home",
+    "name": "澆花",
+    "description": "替家裡植物澆適量的水。",
+    "completionCriteria": "完成澆花",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先確認哪盆需要澆",
+      "不要一次倒太多",
+      "澆完把地面擦乾"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "澆花的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：澆花的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH015",
+    "category": "chores_home",
+    "name": "擦門把",
+    "description": "擦拭家中幾個門把。",
+    "completionCriteria": "完成指定數量",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "抹布擰乾",
+      "每個門把都擦到",
+      "擦完洗手"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "擦門把的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：擦門把的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH016",
+    "category": "chores_home",
+    "name": "分類回收",
+    "description": "把紙類、塑膠、金屬做簡單分類。",
+    "completionCriteria": "完成分類",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先聽家長說明分類方式",
+      "不同材質分開",
+      "不確定先詢問"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "做回收分類的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：做回收分類的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH017",
+    "category": "chores_home",
+    "name": "整理鉛筆盒",
+    "description": "把鉛筆盒整理好。",
+    "completionCriteria": "完成整理",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "壞掉或太短的先挑出",
+      "同類文具放一起",
+      "蓋子能順利關上"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理鉛筆盒的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理鉛筆盒的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH018",
+    "category": "chores_home",
+    "name": "幫忙拿衣架",
+    "description": "協助掛衣服或拿衣架。",
+    "completionCriteria": "完成指定量",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "一件一件做",
+      "掛好不要掉地上",
+      "拿取時注意不要打到人"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "拿衣架掛衣服的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：拿衣架掛衣服的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH019",
+    "category": "chores_home",
+    "name": "擦鏡子",
+    "description": "擦拭小面鏡子。",
+    "completionCriteria": "鏡面乾淨",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "用乾淨布擦",
+      "由上往下",
+      "不要留下水痕"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "擦鏡子的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：擦鏡子的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH020",
+    "category": "chores_home",
+    "name": "整理冰箱飲料區",
+    "description": "把飲料或水瓶排整齊。",
+    "completionCriteria": "完成指定區域",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先拿出來再排",
+      "重的放下面",
+      "不要東西放太前面"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理冰箱的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理冰箱的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH021",
+    "category": "chores_home",
+    "name": "整理餐桌椅",
+    "description": "吃完飯後把椅子推回去並整理桌面。",
+    "completionCriteria": "完成整理",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先收掉餐具",
+      "擦拭桌面",
+      "椅子輕輕推回"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理餐桌椅的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理餐桌椅的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH022",
+    "category": "chores_home",
+    "name": "幫忙倒垃圾",
+    "description": "把家中小垃圾袋丟到大垃圾桶。",
+    "completionCriteria": "完成一次",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "袋口綁好",
+      "拿穩不要漏出來",
+      "丟完洗手"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "倒垃圾的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：倒垃圾的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH023",
+    "category": "chores_home",
+    "name": "整理浴室拖鞋",
+    "description": "把浴室拖鞋排好並擦乾地面水滴。",
+    "completionCriteria": "完成整理",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "拖鞋朝同方向",
+      "有水滴就擦掉",
+      "避免滑倒"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理浴室拖鞋的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理浴室拖鞋的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH024",
+    "category": "chores_home",
+    "name": "擦窗台",
+    "description": "擦指定的小窗台。",
+    "completionCriteria": "完成指定區域",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先把物品移開",
+      "由裡往外擦",
+      "注意站穩，不爬高"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "擦窗台的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：擦窗台的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH025",
+    "category": "chores_home",
+    "name": "幫忙洗水果",
+    "description": "幫忙清洗水果。",
+    "completionCriteria": "完成指定量",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "用清水輕輕洗",
+      "洗完放在瀝水籃",
+      "小心不要摔到"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "洗水果的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：洗水果的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH026",
+    "category": "chores_home",
+    "name": "整理餐墊",
+    "description": "把餐墊擦乾淨收好。",
+    "completionCriteria": "完成整理",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "每張都擦過",
+      "擦乾後再疊放",
+      "放回固定位置"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理餐墊的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理餐墊的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH027",
+    "category": "chores_home",
+    "name": "擦白板或小黑板",
+    "description": "把白板擦乾淨。",
+    "completionCriteria": "完成清潔",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先擦字跡",
+      "再把粉塵或殘痕清掉",
+      "最後把筆放好"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "擦白板的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：擦白板的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH028",
+    "category": "chores_home",
+    "name": "分類髒衣服",
+    "description": "把淺色、深色或自己的衣服分開。",
+    "completionCriteria": "完成分類",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "先看家裡分類規則",
+      "不同類分開放",
+      "不確定的問家長"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "分類衣服的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：分類衣服的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH029",
+    "category": "chores_home",
+    "name": "整理玄關",
+    "description": "把玄關區域簡單整理好。",
+    "completionCriteria": "完成指定區域",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "鞋子排好",
+      "物品歸位",
+      "保持走道清楚"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "整理玄關的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：整理玄關的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "CH030",
+    "category": "chores_home",
+    "name": "家事小循環",
+    "description": "依序完成收玩具、擦桌子、整理鞋子各1次。",
+    "completionCriteria": "完成一輪",
+    "difficulty": "★★★",
+    "exp": 5,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "chore",
+    "safetyNote": "請由家長先示範並確認安全；易碎、尖銳、過重或危險工作不交由孩子單獨進行。",
+    "movementTipsZh": [
+      "一件一件完成",
+      "做完再換下一項",
+      "最後自己檢查"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🧹",
+      "visualLabelZh": "做家事循環的小朋友",
+      "imagePromptZh": "兒童友善教學插圖：做家事循環的小朋友，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  }
+]

@@ -1,0 +1,812 @@
+[
+  {
+    "id": "EX001",
+    "category": "exercise_home",
+    "name": "跳繩100下",
+    "description": "拿起跳繩，完成100下跳繩，可以分2～4組完成。",
+    "completionCriteria": "完成100下",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "身體站直，眼睛看前方",
+      "手腕輕轉，不要整隻手大力甩",
+      "雙腳輕輕離地，膝蓋微彎落地"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "跳繩中的孩子",
+      "imagePromptZh": "兒童友善教學插圖：跳繩中的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX002",
+    "category": "exercise_home",
+    "name": "開合跳30下",
+    "description": "完成30下開合跳，動作穩定就算成功。",
+    "completionCriteria": "完成30下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙腳打開同時雙手往上拍",
+      "回到中間時雙手放下",
+      "保持節奏，不要太快"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做開合跳的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做開合跳的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX003",
+    "category": "exercise_home",
+    "name": "原地高抬腿40下",
+    "description": "原地高抬腿40下，左右腳交替。",
+    "completionCriteria": "完成40下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "抬膝蓋到舒服高度",
+      "雙手自然擺動",
+      "保持背部打直"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "原地高抬腿的孩子",
+      "imagePromptZh": "兒童友善教學插圖：原地高抬腿的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX004",
+    "category": "exercise_home",
+    "name": "深蹲15下",
+    "description": "完成15下兒童版深蹲。",
+    "completionCriteria": "完成15下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙腳與肩同寬",
+      "屁股往後坐像坐椅子",
+      "膝蓋方向朝腳尖"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做深蹲的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做深蹲的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX005",
+    "category": "exercise_home",
+    "name": "靠牆伏地挺身15下",
+    "description": "雙手扶牆做15下靠牆伏地挺身。",
+    "completionCriteria": "完成15下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "身體保持一直線",
+      "手掌平貼牆面",
+      "慢慢靠近再推回"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "靠牆做伏地挺身的孩子",
+      "imagePromptZh": "兒童友善教學插圖：靠牆做伏地挺身的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX006",
+    "category": "exercise_home",
+    "name": "平板支撐15秒",
+    "description": "完成一次15秒平板支撐。",
+    "completionCriteria": "撐住15秒",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "手肘在肩膀正下方",
+      "肚子微收，不要塌腰",
+      "眼睛看地板"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做平板支撐的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做平板支撐的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX007",
+    "category": "exercise_home",
+    "name": "平板支撐20秒",
+    "description": "完成一次20秒平板支撐。",
+    "completionCriteria": "撐住20秒",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "手肘撐穩",
+      "身體像一直線",
+      "慢慢呼吸，不憋氣"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做平板支撐20秒的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做平板支撐20秒的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX008",
+    "category": "exercise_home",
+    "name": "弓箭步左右各10下",
+    "description": "左右腳各完成10下弓箭步。",
+    "completionCriteria": "左右各10下",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "往前跨一步",
+      "前腳膝蓋彎曲、後腳自然下降",
+      "上半身保持直立"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做弓箭步的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做弓箭步的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX009",
+    "category": "exercise_home",
+    "name": "踮腳站20下",
+    "description": "雙腳站好，踮腳再放下，共20次。",
+    "completionCriteria": "完成20下",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "扶牆或桌邊保持安全",
+      "腳跟慢慢抬起",
+      "慢慢放下"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "踮腳站立的孩子",
+      "imagePromptZh": "兒童友善教學插圖：踮腳站立的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX010",
+    "category": "exercise_home",
+    "name": "單腳平衡左右各15秒",
+    "description": "左右腳各站15秒。",
+    "completionCriteria": "左右各15秒",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "眼睛看前方固定點",
+      "手打開幫助平衡",
+      "站不穩可扶椅背"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "單腳平衡的孩子",
+      "imagePromptZh": "兒童友善教學插圖：單腳平衡的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX011",
+    "category": "exercise_home",
+    "name": "原地跑步1分鐘",
+    "description": "原地輕鬆跑步1分鐘。",
+    "completionCriteria": "完成1分鐘",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "小步伐即可",
+      "手自然擺動",
+      "腳尖輕輕落地"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "原地跑步的孩子",
+      "imagePromptZh": "兒童友善教學插圖：原地跑步的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX012",
+    "category": "exercise_home",
+    "name": "登山者20下",
+    "description": "做20下兒童版登山者。",
+    "completionCriteria": "完成20下",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙手撐地",
+      "膝蓋輪流往胸口方向收",
+      "速度先慢後快"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做登山者動作的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做登山者動作的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX013",
+    "category": "exercise_home",
+    "name": "小青蛙跳10下",
+    "description": "模仿小青蛙往前或原地跳10下。",
+    "completionCriteria": "完成10下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "先蹲低",
+      "雙腳一起跳起",
+      "落地時膝蓋微彎"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "像青蛙跳的孩子",
+      "imagePromptZh": "兒童友善教學插圖：像青蛙跳的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX014",
+    "category": "exercise_home",
+    "name": "熊爬5公尺",
+    "description": "模仿小熊爬行5公尺或來回一次。",
+    "completionCriteria": "完成指定距離",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙手雙腳著地",
+      "屁股不要抬太高",
+      "慢慢前進"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "熊爬姿勢的孩子",
+      "imagePromptZh": "兒童友善教學插圖：熊爬姿勢的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX015",
+    "category": "exercise_home",
+    "name": "螃蟹走10步",
+    "description": "做螃蟹走10步。",
+    "completionCriteria": "完成10步",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙手撐地、肚子朝上",
+      "慢慢往前或往後移動",
+      "動作以穩定為主"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "螃蟹走的孩子",
+      "imagePromptZh": "兒童友善教學插圖：螃蟹走的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX016",
+    "category": "exercise_home",
+    "name": "小飛機平衡左右各10秒",
+    "description": "雙手張開像飛機，左右各站10秒。",
+    "completionCriteria": "左右各10秒",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "身體微微前傾",
+      "雙手打平",
+      "找固定點看"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "小飛機平衡的孩子",
+      "imagePromptZh": "兒童友善教學插圖：小飛機平衡的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX017",
+    "category": "exercise_home",
+    "name": "坐姿收腿15下",
+    "description": "坐在地上做收腿15下。",
+    "completionCriteria": "完成15下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙手可扶地",
+      "膝蓋收向身體再伸出",
+      "動作慢慢做"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "坐姿收腿的孩子",
+      "imagePromptZh": "兒童友善教學插圖：坐姿收腿的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX018",
+    "category": "exercise_home",
+    "name": "仰臥抬腿10下",
+    "description": "躺著做雙腿抬起10下。",
+    "completionCriteria": "完成10下",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙手放身體兩側",
+      "雙腿慢慢抬起",
+      "不要用力甩腿"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "仰躺抬腿的孩子",
+      "imagePromptZh": "兒童友善教學插圖：仰躺抬腿的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX019",
+    "category": "exercise_home",
+    "name": "毛巾拉拉操20秒",
+    "description": "用毛巾做20秒拉伸。",
+    "completionCriteria": "完成20秒",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "雙手抓住毛巾兩端",
+      "手舉高再慢慢往後",
+      "不要用力過猛"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "拿毛巾伸展的孩子",
+      "imagePromptZh": "兒童友善教學插圖：拿毛巾伸展的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX020",
+    "category": "exercise_home",
+    "name": "伸展全身3分鐘",
+    "description": "跟著家長做3分鐘全身伸展。",
+    "completionCriteria": "完成3分鐘",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "脖子、肩膀、手腳都輕鬆伸展",
+      "不要硬壓",
+      "慢慢呼吸"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做全身伸展的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做全身伸展的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX021",
+    "category": "exercise_home",
+    "name": "踏步上上下下20次",
+    "description": "在低矮穩固的階梯或踏板上上下下20次。",
+    "completionCriteria": "完成20次",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "踩穩再換腳",
+      "速度不要太快",
+      "有需要可扶旁邊"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "踏步運動的孩子",
+      "imagePromptZh": "兒童友善教學插圖：踏步運動的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX022",
+    "category": "exercise_home",
+    "name": "拋接球30下",
+    "description": "和家人或自己對牆拋接球30下。",
+    "completionCriteria": "完成30下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "眼睛看球",
+      "雙手準備接球",
+      "輕拋輕接"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "拋接球的孩子",
+      "imagePromptZh": "兒童友善教學插圖：拋接球的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX023",
+    "category": "exercise_home",
+    "name": "拍球1分鐘",
+    "description": "原地拍球1分鐘。",
+    "completionCriteria": "完成1分鐘",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "手掌不要整個壓球",
+      "眼睛看前方",
+      "球不需要拍很高"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "拍球的孩子",
+      "imagePromptZh": "兒童友善教學插圖：拍球的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX024",
+    "category": "exercise_home",
+    "name": "左右側步20下",
+    "description": "向左向右跨步共20下。",
+    "completionCriteria": "完成20下",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "膝蓋微彎",
+      "腳步輕輕移動",
+      "保持節奏"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "左右側步的孩子",
+      "imagePromptZh": "兒童友善教學插圖：左右側步的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX025",
+    "category": "exercise_home",
+    "name": "瑜伽貓牛式8次",
+    "description": "做8次兒童版貓牛式伸展。",
+    "completionCriteria": "完成8次",
+    "difficulty": "★",
+    "exp": 2,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "四足跪姿",
+      "吸氣抬頭、背下沉",
+      "吐氣低頭、背拱起"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做貓牛式的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做貓牛式的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX026",
+    "category": "exercise_home",
+    "name": "兒童橋式10下",
+    "description": "做10下橋式。",
+    "completionCriteria": "完成10下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "躺著屈膝",
+      "腳踩地後抬高屁股",
+      "慢慢抬、慢慢放"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做橋式的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做橋式的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX027",
+    "category": "exercise_home",
+    "name": "星星跳20下",
+    "description": "做20下星星跳。",
+    "completionCriteria": "完成20下",
+    "difficulty": "★★",
+    "exp": 3,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 1,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "跳起時手腳打開",
+      "落地回到中間",
+      "保持輕快節奏"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做星星跳的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做星星跳的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX028",
+    "category": "exercise_home",
+    "name": "毛毛蟲走5次",
+    "description": "做5次毛毛蟲走路。",
+    "completionCriteria": "完成5次",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "站姿先彎腰摸地",
+      "雙手往前爬",
+      "再把腳慢慢走近"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做毛毛蟲走路的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做毛毛蟲走路的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX029",
+    "category": "exercise_home",
+    "name": "屁股坐牆10秒×3",
+    "description": "靠牆坐姿10秒，做3次。",
+    "completionCriteria": "完成3組",
+    "difficulty": "★★★",
+    "exp": 4,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "背貼牆",
+      "膝蓋彎曲像坐椅子",
+      "每組之間休息"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "靠牆坐姿的孩子",
+      "imagePromptZh": "兒童友善教學插圖：靠牆坐姿的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  },
+  {
+    "id": "EX030",
+    "category": "exercise_home",
+    "name": "居家運動小循環",
+    "description": "依序完成開合跳10下、深蹲10下、高抬腿20下。",
+    "completionCriteria": "完成一輪",
+    "difficulty": "★★★",
+    "exp": 5,
+    "ability": "life",
+    "abilityZh": "生活力",
+    "abilityExp": 2,
+    "requiresParentConfirmation": true,
+    "screenMode": "offscreen",
+    "repeatable": true,
+    "taskType": "exercise",
+    "safetyNote": "請在安全、空間足夠的地方進行；若身體不舒服請停止，並由家長在旁留意。",
+    "movementTipsZh": [
+      "每個動作之間休息一下",
+      "動作正確比速度重要",
+      "有不舒服就停止"
+    ],
+    "imageDisplay": {
+      "iconEmoji": "🏃",
+      "visualLabelZh": "做居家循環運動的孩子",
+      "imagePromptZh": "兒童友善教學插圖：做居家循環運動的孩子，動作清楚、背景簡單、適合8歲兒童理解。"
+    }
+  }
+]

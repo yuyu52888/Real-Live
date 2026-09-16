@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Real Life Quest Vocabulary Pack",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "packId",
+    "packVersion",
+    "title",
+    "locale",
+    "words"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "packId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "packVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "locale": {
+      "type": "string",
+      "minLength": 2
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "builtin",
+        "imported",
+        "future"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "enabledByDefault": {
+      "type": "boolean"
+    },
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "wordId",
+          "packId",
+          "word",
+          "meaningZh"
+        ],
+        "properties": {
+          "wordId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "legacyId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "packId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "word": {
+            "type": "string",
+            "minLength": 1
+          },
+          "meaningZh": {
+            "type": "string",
+            "minLength": 1
+          },
+          "partOfSpeech": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "level": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ]
+          },
+          "difficulty": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 5
+          },
+          "example": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "exampleZh": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "spellingRequired": {
+            "type": "boolean"
+          },
+          "imageAsset": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "imageCueZh": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "audioFile": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "audioLocale": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reviewScheduleDays": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "exerciseTaskCards": {
+    "count": 30,
+    "suitableAge": "約8歲，可由家長依能力調整次數",
+    "defaultScreenMode": "offscreen",
+    "requiresParentConfirmation": true,
+    "requiredFields": [
+      "name",
+      "description",
+      "completionCriteria",
+      "difficulty",
+      "exp",
+      "movementTipsZh",
+      "safetyNote",
+      "imageDisplay"
+    ]
+  },
+  "choreTaskCards": {
+    "count": 30,
+    "suitableAge": "約8歲，需由家長先示範",
+    "defaultScreenMode": "offscreen",
+    "requiresParentConfirmation": true,
+    "requiredFields": [
+      "name",
+      "description",
+      "completionCriteria",
+      "difficulty",
+      "exp",
+      "movementTipsZh",
+      "safetyNote",
+      "imageDisplay"
+    ]
+  },
+  "imageDisplayGuideline": {
+    "useEmojiFallback": true,
+    "preferredIllustrationStyle": "兒童友善、簡單教學圖、背景乾淨",
+    "mustShow": [
+      "動作主體",
+      "基本姿勢",
+      "器材（若有）"
+    ]
+  }
+}

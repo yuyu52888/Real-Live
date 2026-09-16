@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "coreWordCount": 300,
+  "spellingTargetCount": 180,
+  "levels": {
+    "A": 100,
+    "B": 100,
+    "C": 100
+  },
+  "dailyLearning": {
+    "newWordsMin": 3,
+    "newWordsMax": 5,
+    "reviewWordsMin": 3,
+    "reviewWordsMax": 5
+  },
+  "masteryStates": [
+    "unseen",
+    "seen",
+    "known",
+    "practiced",
+    "mastered"
+  ],
+  "reviewScheduleDays": [
+    1,
+    3,
+    7,
+    14,
+    30
+  ],
+  "wrongAnswerRule": "答錯後將下一次複習提前至今天稍後或隔天；連續答對才恢復正常間隔。",
+  "speech": {
+    "engine": "Web Speech API / SpeechSynthesis",
+    "localeDefault": "en-US",
+    "rateDefault": 0.75,
+    "rateMin": 0.6,
+    "rateMax": 1.1,
+    "rateStep": 0.05,
+    "quickRates": [
+      0.6,
+      0.75,
+      0.9,
+      1.0,
+      1.1
+    ],
+    "persistSetting": true,
+    "applyTo": [
+      "word",
+      "exampleSentence",
+      "listeningQuiz"
+    ],
+    "parentLockSupported": true
+  },
+  "gameModes": [
+    "中文找英文",
+    "英文找圖片",
+    "聽音找字",
+    "記憶翻牌",
+    "熟練後拼字挑戰"
+  ],
+  "expRules": {
+    "playAudio": 0,
+    "completeLearningSet": 2,
+    "completeReviewSet": 2,
+    "perfectSetBonus": 1,
+    "correctPreviouslyWrongWordAbilityBonus": "耐心力 +1（每日最多1次）"
+  }
+}
