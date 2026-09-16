@@ -1,0 +1,66 @@
+import { APP_ROUTES } from "../core/router.js";
+import { renderHome } from "../pages/home.js";
+import { renderPlaceholder } from "../pages/placeholder.js";
+import { renderQuests } from "../pages/quests.js";
+import { renderParentApprovals } from "../pages/parent-approvals.js";
+import { uiText } from "../services/ui-copy.js";
+import { icon } from "./components.js";
+
+export function mountAppShell(root, state, actions) {
+  const page = state.route === "home"
+    ? renderHome(state)
+    : state.route === "quests" ? renderQuests(state)
+      : state.route === "parent" ? renderParentApprovals(state)
+        : renderPlaceholder(state.route, state);
+  root.innerHTML = `
+    <div class="app-shell">
+      <main class="page-content">${page}</main>
+      <nav class="bottom-nav" aria-label="${uiText("accessibility.bottomNav")}">
+        ${APP_ROUTES.map((route) => navItem(route, state.route)).join("")}
+      </nav>
+    </div>
+  `;
+
+  for (const target of root.querySelectorAll("[data-route]")) {
+    target.addEventListener("click", (event) => {
+      event.preventDefault();
+      actions.navigate(target.dataset.route);
+    });
+  }
+
+  bindButtons(root, "[data-open-quest]", (target) => actions.openQuest(target.dataset.openQuest));
+  bindButtons(root, "[data-select-quest]", (target) => actions.selectQuest(target.dataset.selectQuest));
+  bindButtons(root, "[data-quest-filter]", (target) => actions.filterQuests(target.dataset.questFilter));
+  bindButtons(root, "[data-start-quest]", (target) => actions.startQuest(target.dataset.startQuest));
+  bindButtons(root, "[data-complete-quest]", (target) => actions.completeQuest(target.dataset.completeQuest));
+  bindButtons(root, "[data-adjust-quest]", (target) => actions.adjustQuest(target.dataset.adjustQuest, Number(target.dataset.delta)));
+  bindButtons(root, "[data-toggle-quest-timer]", (target) => actions.toggleQuestTimer(target.dataset.toggleQuestTimer));
+  bindButtons(root, "[data-approve-completion]", (target) => actions.approveCompletion(target.dataset.approveCompletion));
+
+  const parentForm = root.querySelector("[data-parent-unlock]");
+  parentForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const error = parentForm.querySelector("#parent-error");
+    const unlocked = await actions.unlockParent(new FormData(parentForm).get("pin"));
+    if (!unlocked && error) {
+      error.hidden = false;
+      error.textContent = uiText("parent.wrongPin");
+    }
+  });
+}
+
+function bindButtons(root, selector, action) {
+  for (const target of root.querySelectorAll(selector)) {
+    target.addEventListener("click", () => action(target));
+  }
+}
+
+function navItem(route, activeRoute) {
+  const active = route.id === activeRoute;
+  return `
+    <button class="bottom-nav__item ${active ? "is-active" : ""}" type="button" data-route="${route.id}" aria-current="${active ? "page" : "false"}">
+      <span class="bottom-nav__icon">${icon(route.icon)}</span>
+      <span>${uiText(route.labelKey)}</span>
+    </button>
+  `;
+}

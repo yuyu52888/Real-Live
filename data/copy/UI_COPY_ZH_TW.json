@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0",
+  "locale": "zh-TW",
+  "product": "Real Life Quest",
+  "sourceOfTruth": [
+    "01_SPECS/UI_UX_IMPLEMENTATION_SPEC.md",
+    "01_SPECS/UI_UX_FLOW_SPEC.md",
+    "00_START_HERE/GPT6_DEVELOPMENT_PROMPT.md"
+  ],
+  "interpolation": {
+    "syntax": "{token}",
+    "rule": "UI layer replaces named tokens at render time. Missing tokens must remain visible in development and must not silently become blank."
+  },
+  "copy": {
+    "common": {
+      "appName": "Real Life Quest",
+      "tagline": "把真實生活，變成大冒險",
+      "buttons": {
+        "startAdventure": "開始冒險",
+        "start": "開始",
+        "startQuest": "開始任務",
+        "continue": "繼續",
+        "back": "返回",
+        "next": "下一步",
+        "previous": "上一步",
+        "done": "完成",
+        "confirm": "確認",
+        "cancel": "取消",
+        "close": "關閉",
+        "save": "儲存",
+        "retry": "再試一次",
+        "tryAnotherWay": "換個方法試試看",
+        "notNow": "稍後再說",
+        "viewDetails": "查看詳情"
+      },
+      "labels": {
+        "level": "Lv.{level}",
+        "exp": "EXP",
+        "difficulty": "難度",
+        "reward": "獎勵",
+        "progress": "進度",
+        "today": "今天",
+        "thisWeek": "本週",
+        "streak": "連續冒險",
+        "dayCount": "{count} 天",
+        "chestFragments": "寶箱碎片",
+        "parentApproval": "需要家長確認",
+        "optional": "選用",
+        "minutes": "約 {minutes} 分鐘"
+      },
+      "status": {
+        "loading": "準備冒險中…",
+        "saving": "正在儲存…",
+        "saved": "已儲存",
+        "completed": "完成了！",
+        "pending": "等待確認",
+        "locked": "尚未解鎖",
+        "offline": "目前是離線模式",
+        "comingSoon": "準備中"
+      }
+    },
+    "navigation": {
+      "home": "首頁",
+      "quests": "任務",
+      "learn": "學習",
+      "hero": "角色",
+      "parent": "家長"
+    },
+    "onboarding": {
+      "welcome": {
+        "title": "Real Life Quest",
+        "subtitle": "把真實生活，變成大冒險",
+        "start": "開始冒險"
+      },
+      "avatar": {
+        "title": "選擇你的冒險角色",
+        "boy": "男主角",
+        "girl": "女主角",
+        "boyDescription": "勇敢、開朗，準備開始新的挑戰。",
+        "girlDescription": "自信、溫暖，準備思考與成長。",
+        "selected": "就選這位！",
+        "note": "角色只改變外觀，不會影響能力、任務或獎勵。"
+      },
+      "nickname": {
+        "title": "你的冒險名字是？",
+        "placeholder": "輸入暱稱",
+        "hint": "最多 12 個字",
+        "create": "建立角色",
+        "required": "先幫角色取一個名字吧！",
+        "tooLong": "名字最多 12 個字。"
+      },
+      "parentSetup": {
+        "title": "家長設定",
+        "pinLabel": "設定 4 位數 PIN",
+        "pinConfirmLabel": "再輸入一次 PIN",
+        "dailyQuestCount": "每日任務量",
+        "enableExercise": "啟用運動任務",
+        "enableChores": "啟用家事任務",
+        "requireApproval": "完成任務後需要家長確認",
+        "speechRate": "英文發音預設速度",
+        "finish": "完成設定",
+        "pinInvalid": "請輸入 4 位數字。",
+        "pinMismatch": "兩次 PIN 不一樣，請再確認一次。"
+      }
+    },
+    "home": {
+      "title": "今天的冒險",
+      "greeting": "{name}，今天也來完成一小步吧！",
+      "quickEntries": {
+        "todayQuests": "今日任務",
+        "english": "英文學習",
+        "stories": "思維故事"
+      },
+      "todayBoss": "今日 Boss",
+      "challengeBoss": "前往挑戰",
+      "todayQuestProgress": "今日任務進度",
+      "completedCount": "已完成 {done} / {total}",
+      "emptyToday": "今天還沒有完成任務。選一個最想開始的就好！",
+      "restDay": "今天是休息日。休息也是冒險的一部分。",
+      "encouragementPool": [
+        "先開始一小步，比等到完美更有力量。",
+        "遇到卡住的地方，可以換個方法再試一次。",
+        "今天不用做很多，完成一件重要的事就很棒。",
+        "慢慢做也算前進，找到自己的節奏。",
+        "先完成第一步，後面的路會更清楚。",
+        "願意重試，就是在累積真正的經驗值。",
+        "把大任務切小一點，會更容易開始。",
+        "先觀察，再決定下一步怎麼做。",
+        "今天學到的方法，也可以留給明天的自己。",
+        "完成後想一想：哪個方法最有效？",
+        "需要休息時先休息，再回來繼續。",
+        "不用和別人比，只要比昨天多懂一點。",
+        "先把最重要的一件事做好。",
+        "犯錯不會扣 EXP，修正就是新的線索。",
+        "願意求助也是一種好策略。",
+        "專心幾分鐘，也能完成很有價值的一步。"
+      ]
+    },
+    "quests": {
+      "title": "任務總覽",
+      "tabs": {
+        "all": "全部",
+        "reading": "閱讀",
+        "english": "英文",
+        "exercise": "運動",
+        "chores": "家事",
+        "life": "生活",
+        "hidden": "隱藏任務"
+      },
+      "card": {
+        "start": "開始",
+        "requiresApproval": "家長確認",
+        "repeatable": "可重複挑戰"
+      },
+      "detail": {
+        "goal": "任務目標",
+        "description": "任務說明",
+        "tips": "小技巧",
+        "safety": "安全提醒",
+        "completion": "完成條件",
+        "start": "開始任務",
+        "reroll": "換一張任務卡"
+      },
+      "state": {
+        "inProgress": "進行中",
+        "completed": "任務完成",
+        "pendingApproval": "已送出，等待家長確認",
+        "approved": "家長已確認",
+        "returned": "這次先不算完成，可以調整後再試一次"
+      },
+      "empty": "目前沒有符合這個分類的任務。"
+    },
+    "exercise": {
+      "title": "運動任務",
+      "tipsTitle": "動作小技巧",
+      "safetyTitle": "安全提示",
+      "counterTitle": "目前完成",
+      "manualCounter": "手動計數",
+      "timerMode": "計時模式",
+      "countUnit": "{current} / {target} 下",
+      "secondsUnit": "{seconds} 秒",
+      "minutesUnit": "{minutes} 分鐘",
+      "complete": "完成任務",
+      "pending": "等待家長確認",
+      "stopSafety": "如果覺得不舒服、頭暈或疼痛，請立刻停止並告訴家長。",
+      "counterDecrease": "減少一次",
+      "counterIncrease": "增加一次"
+    },
+    "chores": {
+      "title": "家事任務",
+      "stepsTitle": "操作步驟",
+      "safetyTitle": "安全提醒",
+      "photo": "拍照紀錄",
+      "photoOptional": "照片只是紀錄，不是完成任務的必要條件。",
+      "complete": "完成任務",
+      "pending": "完成後請家長確認",
+      "safetyDefault": "遇到尖銳、過重、過熱、需要爬高或使用化學清潔用品的工作，請先找家長。"
+    },
+    "learn": {
+      "title": "學習樂園",
+      "englishTitle": "英文學習",
+      "newWords": "今日新單字",
+      "reviews": "今日複習",
+      "listenFind": "聽音找字",
+      "imageChoose": "圖片選字",
+      "spelling": "拼字挑戰",
+      "memoryMatch": "記憶翻牌",
+      "pronounce": "播放發音",
+      "examplePronounce": "播放例句",
+      "speechRate": "發音速度",
+      "nextWord": "下一張",
+      "showAnswer": "看答案",
+      "known": "我記得",
+      "practiceAgain": "再練一次",
+      "dueFirst": "先完成今天到期的複習，再認識新單字。",
+      "sessionDone": "今天的英文小冒險完成！",
+      "noDueReview": "今天沒有到期複習，可以開始新單字。",
+      "speechUnavailable": "這個瀏覽器目前無法播放語音，可以先看單字與例句。"
+    },
+    "stories": {
+      "title": "思維故事",
+      "chapter": "第 {chapter} 章",
+      "readingTime": "約 {minutes} 分鐘",
+      "thinkTitle": "想一想",
+      "realityTask": "今日現實任務",
+      "thoughtCard": "今日思維卡",
+      "completeReading": "完成閱讀",
+      "completed": "故事完成！把今天想到的方法帶回生活中試試看。",
+      "noQuizPressure": "沒有標準答案，把你的想法說出來就好。"
+    },
+    "boss": {
+      "title": "Boss 挑戰",
+      "hp": "Boss HP",
+      "challenge": "挑戰條件",
+      "steps": "挑戰進度",
+      "rewards": "勝利獎勵",
+      "start": "前往挑戰",
+      "stepDone": "完成這一步",
+      "victory": "挑戰成功！",
+      "victoryMessage": "你靠著行動完成了這次挑戰。",
+      "retryMessage": "還沒完成也沒關係，找一個可以調整的方法再試。",
+      "chapterUnlocked": "新章節已解鎖！"
+    },
+    "hero": {
+      "title": "我的角色",
+      "abilities": "五大能力",
+      "titleLabel": "稱號",
+      "equipment": "外觀裝備",
+      "badges": "徽章牆",
+      "pets": "寵物",
+      "backgrounds": "背景",
+      "slots": {
+        "head": "帽子",
+        "body": "衣服",
+        "cape": "披風",
+        "backpack": "背包",
+        "pet": "寵物",
+        "background": "背景",
+        "frame": "頭像框"
+      },
+      "changeAvatarParentOnly": "更換主角需要進入家長模式。",
+      "cosmeticOnly": "外觀不會改變能力值。"
+    },
+    "rewards": {
+      "title": "冒險獎勵",
+      "chest": "寶箱",
+      "fragments": "寶箱碎片 {current} / {target}",
+      "openChest": "開啟寶箱",
+      "newReward": "獲得新獎勵！",
+      "levelUp": "升級了！",
+      "chooseOne": "選一個你喜歡的獎勵",
+      "tickets": "任務券",
+      "cosmetics": "外觀收藏",
+      "materialDisabled": "物質獎勵目前未啟用。"
+    },
+    "parent": {
+      "title": "家長模式",
+      "enterPin": "輸入家長 PIN",
+      "unlock": "進入家長模式",
+      "wrongPin": "PIN 不正確，請再試一次。",
+      "pending": "待審核",
+      "weeklyReport": "本週報告",
+      "settings": "設定",
+      "approve": "核准",
+      "return": "退回調整",
+      "noPending": "目前沒有等待審核的任務。",
+      "completedAt": "完成時間：{time}",
+      "weekMetrics": {
+        "quests": "完成任務",
+        "englishReviews": "英文複習",
+        "stories": "思維故事",
+        "exercise": "運動次數",
+        "chores": "家事次數",
+        "focusMinutes": "專注時間",
+        "retries": "重試次數"
+      },
+      "settingsLabels": {
+        "difficulty": "任務難度",
+        "dailyCount": "每日任務數",
+        "approval": "家長確認條件",
+        "restDays": "休息日",
+        "speechRange": "英文語速範圍",
+        "materialRewards": "物質獎勵",
+        "vocabularyPacks": "字庫管理",
+        "backup": "備份與還原"
+      },
+      "approvalNote": "退回不會扣除孩子已經取得的 EXP；若尚未正式發獎，保留任務狀態讓孩子可以調整後再試。"
+    },
+    "backup": {
+      "title": "備份與還原",
+      "export": "匯出備份",
+      "import": "匯入備份",
+      "exportSuccess": "備份檔已建立。",
+      "importSuccess": "資料已還原。",
+      "invalidBackup": "這個備份檔無法使用，原本的資料沒有被修改。",
+      "confirmImport": "還原備份會以備份內容更新目前資料。要繼續嗎？"
+    },
+    "dialogs": {
+      "leaveQuestTitle": "先離開任務？",
+      "leaveQuestBody": "目前進度會保留，你之後可以再回來。",
+      "resetDevTitle": "重設開發測試資料",
+      "resetDevBody": "這只應出現在開發工具，不可放在一般孩子介面。"
+    },
+    "errors": {
+      "generic": "剛剛有一個地方沒有成功，請再試一次。",
+      "load": "資料暫時讀不到，請重新開啟這個畫面。",
+      "save": "這次沒有儲存成功，請再試一次。",
+      "invalidData": "這份資料格式不正確，沒有套用變更。",
+      "assetMissing": "圖片正在準備中，不影響任務進行。",
+      "offlineActionUnavailable": "這個功能目前無法在離線狀態使用。",
+      "duplicateAction": "這個完成紀錄已經處理過了。",
+      "notFound": "找不到這個內容，請回上一頁重新選擇。"
+    },
+    "accessibility": {
+      "bottomNav": "主要導覽",
+      "closeDialog": "關閉視窗",
+      "expProgress": "目前 EXP 進度 {current} / {target}",
+      "bossHp": "Boss 剩餘進度 {current} / {max}",
+      "chestProgress": "寶箱碎片 {current} / {target}",
+      "speechRate": "英文發音速度 {rate} 倍",
+      "questDifficulty": "任務難度 {stars} 星",
+      "selectedAvatar": "已選擇 {avatar} 主角",
+      "decorativeImage": ""
+    }
+  }
+}
