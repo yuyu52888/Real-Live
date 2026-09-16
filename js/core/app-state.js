@@ -31,6 +31,8 @@ export function createInitialState() {
       exp: { current: 0, target: 100 },
     },
     learnUi: { loading: true },
+    learnSurface: "english",
+    storyUi: { loading: true },
   };
 }
 

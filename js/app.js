@@ -17,6 +17,8 @@ import { ensureCoreVocabulary, loadEnglishDashboard, saveLearningSession } from 
 import { createMatchingGame, selectMatchingCard as advanceMatchingGame } from "./services/matching-game.js";
 import { recordWordAnswer } from "./services/review-scheduler.js";
 import { setSpeechRate, speakVocabulary } from "./services/speech.js";
+import { getStoryById } from "./repositories/stories.js";
+import { completeStory as recordStoryCompletion, loadStoryDashboard } from "./services/story-service.js";
 
 const root = document.querySelector("#app");
 let state = createInitialState();
@@ -40,6 +42,34 @@ const actions = {
     if (route !== "quests") stopQuestTimer();
     state = navigate(state, route);
     render();
+  },
+  openLearnSurface(surface) {
+    if (!["english", "stories"].includes(surface)) return;
+    state = { ...state, route: "learn", learnSurface: surface };
+    render();
+  },
+  selectStoryChapter(chapter) {
+    if (!state.storyUi?.chapters?.some(({ number }) => number === chapter)) return;
+    state = { ...state, storyUi: { ...state.storyUi, selectedChapter: chapter, selectedStoryId: null } };
+    render();
+  },
+  openStory(storyId) {
+    const story = getStoryById(state.storyUi?.stories ?? [], storyId);
+    if (!story) return;
+    state = { ...state, route: "learn", learnSurface: "stories", storyUi: { ...state.storyUi, selectedStoryId: storyId } };
+    render();
+  },
+  closeStory() {
+    state = { ...state, storyUi: { ...state.storyUi, selectedStoryId: null } };
+    render();
+  },
+  completeStory(storyId) {
+    if (!getStoryById(state.storyUi?.stories ?? [], storyId)) return Promise.resolve();
+    return performStory(async () => {
+      const result = await recordStoryCompletion(database, storyId);
+      state = { ...state, storyUi: { ...state.storyUi, progress: result.progress } };
+      render();
+    });
   },
   selectLearnMode(mode) {
     const availableItems = state.learnUi?.plan?.items ?? [];
@@ -191,6 +221,21 @@ const actions = {
   },
 };
 
+async function performStory(operation) {
+  if (saving || !database) return;
+  saving = true;
+  root.setAttribute("aria-busy", "true");
+  try {
+    await operation();
+  } catch (error) {
+    console.error(error);
+    showPageError(error.message);
+  } finally {
+    saving = false;
+    root.removeAttribute("aria-busy");
+  }
+}
+
 async function performEnglish(operation) {
   if (saving || !database) return;
   saving = true;
@@ -301,8 +346,12 @@ try {
   database = await openDatabase();
   state = await loadOnboarding(database);
   await ensureCoreVocabulary(database);
-  const [english] = await Promise.all([loadEnglishDashboard(database), refreshQuestState()]);
-  state = { ...state, learnUi: { ...english, active: false, sessionDone: false } };
+  const [english, storyDashboard] = await Promise.all([
+    loadEnglishDashboard(database),
+    loadStoryDashboard(database),
+    refreshQuestState(),
+  ]);
+  state = { ...state, learnUi: { ...english, active: false, sessionDone: false }, storyUi: { ...storyDashboard, selectedChapter: 1, selectedStoryId: null } };
   render();
 } catch (error) {
   root.textContent = "資料暫時讀不到，請重新載入再試。原有資料會保留。";

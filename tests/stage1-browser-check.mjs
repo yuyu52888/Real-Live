@@ -93,7 +93,51 @@ try {
     };
   })()`);
 
-  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="learn"]').click()`);
+  await client.evaluate(`document.querySelector('[data-learn-surface-link="stories"]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelectorAll('.story-card').length === 5`));
+  const storyOverview = await client.evaluate(`({
+    activeRoute: document.querySelector('.bottom-nav__item.is-active')?.dataset.route,
+    chapterCount: document.querySelectorAll('[data-story-chapter]').length,
+    cardCount: document.querySelectorAll('.story-card').length,
+    cover: document.querySelector('.story-card img')?.getAttribute('src'),
+  })`);
+  await client.evaluate(`document.querySelector('[data-open-story="S01"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.story-reader'))`));
+  const storyReader = await client.evaluate(`(async () => {
+    const canonical = (await (await fetch('/02_DATA/thinking_stories_30.json')).json()).find(({ id }) => id === 'S01');
+    const renderedBody = [...document.querySelectorAll('.story-body p')].map((node) => node.textContent).join('\\n');
+    return {
+      fullBody: renderedBody === canonical.body.split(/\\n+/).filter(Boolean).join('\\n'),
+      questionCount: document.querySelectorAll('.reflection-card li').length,
+      realityTask: document.querySelector('.reality-card h2')?.textContent === canonical.realityTask,
+      takeaway: document.querySelector('.thought-card p')?.textContent === canonical.takeaway,
+      hasScoring: Boolean(document.querySelector('[data-answer], [data-score], [data-correct]')),
+    };
+  })()`);
+  await client.evaluate(`document.querySelector('[data-complete-story="S01"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.story-completed-note')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.evaluate(`document.querySelector('[data-story-back]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelector('.story-chapter-progress strong')?.textContent?.trim() === '1 / 5'`));
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  await client.evaluate(`document.querySelector('[data-learn-surface-link="stories"]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelector('.story-chapter-progress strong')?.textContent?.trim() === '1 / 5'`));
+  await client.evaluate(`document.querySelector('[data-open-story="S01"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.story-completed-note'))`));
+  await client.evaluate(`document.querySelector('[data-complete-story="S01"]').click()`);
+  await waitFor(() => client.evaluate(`!document.querySelector('#app').hasAttribute('aria-busy')`));
+  const storyRecordCount = await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { listStoryProgress } = await import('/js/repositories/story-progress.js');
+    const db = await openDatabase();
+    const count = (await listStoryProgress(db)).filter(({ storyId }) => storyId === 'S01').length;
+    db.close();
+    return count;
+  })()`);
+  if (storyOverview.activeRoute !== 'learn' || storyOverview.chapterCount !== 6 || storyOverview.cardCount !== 5 || !storyOverview.cover?.includes('fox_reading.png')) throw new Error(`Stage 5 overview failed: ${JSON.stringify(storyOverview)}`);
+  if (!storyReader.fullBody || storyReader.questionCount !== 4 || !storyReader.realityTask || !storyReader.takeaway || storyReader.hasScoring) throw new Error(`Stage 5 reader failed: ${JSON.stringify(storyReader)}`);
+  if (storyRecordCount !== 1) throw new Error(`Stage 5 reread paid twice: ${storyRecordCount} records`);
+  await client.evaluate(`document.querySelector('[data-learn-surface="english"]').click()`);
   await waitFor(() => client.evaluate(`Boolean(document.querySelector('.learn-page'))`));
   const learnResult = await client.evaluate(`({
     activeRoute: document.querySelector('.bottom-nav__item.is-active')?.dataset.route,
@@ -283,11 +327,16 @@ try {
     const { testStage4Persistence } = await import('/tests/stage4-persistence-browser.js');
     return testStage4Persistence();
   })()`);
+  const stage5Persistence = await client.evaluate(`(async () => {
+    const { testStage5Persistence } = await import('/tests/stage5-persistence-browser.js');
+    return testStage5Persistence();
+  })()`);
   console.log("Browser PASS: tablet portrait onboarding, quest list/detail, reload, pending approval, PIN approval, A5 fallback, navigation.");
   console.log(persistence);
   console.log(stage3Persistence);
   console.log(a7Stage3Persistence);
   console.log(stage4Persistence);
+  console.log(stage5Persistence);
   if (pageErrors.length) throw new Error(pageErrors.join("\n"));
   client.close();
 } finally {

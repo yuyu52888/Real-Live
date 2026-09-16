@@ -52,8 +52,8 @@ export function renderHome(state) {
 
       <div class="quick-grid" aria-label="主要冒險入口">
         ${quickCard("quests", uiText("home.quickEntries.todayQuests"), "完成生活中的小挑戰", "📜", "green")}
-        ${quickCard("learn", uiText("home.quickEntries.english"), "先複習到期單字，再認識今天的新單字", "ABC", "blue")}
-        ${quickCard(null, uiText("home.quickEntries.stories"), "故事內容將在 Stage 5 開放", "📖", "orange")}
+        ${quickCard("learn", uiText("home.quickEntries.english"), "先複習到期單字，再認識今天的新單字", "ABC", "blue", "english")}
+        ${quickCard("learn", uiText("home.quickEntries.stories"), "讀故事、想一想，再把想法帶回生活", "📖", "orange", "stories")}
       </div>
 
       <div class="dashboard-grid">
@@ -106,9 +106,9 @@ function homeQuest(task, state) {
   return `<button type="button" data-open-quest="${task.id}"><span>${status}</span><strong>${escapeHtml(task.name)}</strong><small>${task.exp} EXP</small></button>`;
 }
 
-function quickCard(route, title, description, symbol, color) {
+function quickCard(route, title, description, symbol, color, learnSurface) {
   return `
-    <button class="quick-card quick-card--${color}" type="button" ${route ? `data-route="${route}"` : "disabled"}>
+    <button class="quick-card quick-card--${color}" type="button" ${route ? `data-route="${route}"${learnSurface ? ` data-learn-surface-link="${learnSurface}"` : ""}` : "disabled"}>
       <span class="quick-card__symbol" aria-hidden="true">${symbol}</span>
       <span><strong>${title}</strong><small>${description}</small></span>
       <span class="quick-card__arrow">${icon("arrow")}</span>

@@ -1,6 +1,7 @@
 import { uiText } from "../services/ui-copy.js";
 import { SPEECH_DEFAULTS } from "../services/speech.js";
 import { escapeHtml, icon } from "../ui/components.js";
+import { renderStories } from "./stories.js";
 
 export const LEARN_MODES = Object.freeze([
   { id: "meaning", labelKey: "learn.newWords", title: "中文找英文", symbol: "中 / EN" },
@@ -11,6 +12,18 @@ export const LEARN_MODES = Object.freeze([
 ]);
 
 export function renderLearn(state) {
+  const surface = state.learnSurface === "stories" ? "stories" : "english";
+  const content = surface === "stories" ? renderStories(state) : renderEnglish(state);
+  return `<div class="learn-hub">
+    <div class="learn-switcher" aria-label="學習內容切換">
+      <button type="button" data-learn-surface="english" class="${surface === "english" ? "is-active" : ""}" aria-pressed="${surface === "english"}">英文學習</button>
+      <button type="button" data-learn-surface="stories" class="${surface === "stories" ? "is-active" : ""}" aria-pressed="${surface === "stories"}">思維故事</button>
+    </div>
+    ${content}
+  </div>`;
+}
+
+function renderEnglish(state) {
   const ui = state.learnUi;
   if (!ui || ui.loading) return loadingView();
   if (ui.sessionDone) return doneView(ui);

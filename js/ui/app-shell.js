@@ -26,7 +26,11 @@ export function mountAppShell(root, state, actions) {
   for (const target of root.querySelectorAll("[data-route]")) {
     target.addEventListener("click", (event) => {
       event.preventDefault();
-      actions.navigate(target.dataset.route);
+      if (target.dataset.learnSurfaceLink) {
+        actions.openLearnSurface(target.dataset.learnSurfaceLink);
+      } else {
+        actions.navigate(target.dataset.route);
+      }
     });
   }
 
@@ -44,6 +48,11 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-learn-exit]", () => actions.exitLearn());
   bindButtons(root, "[data-speech-rate]", (target) => actions.changeSpeechRate(Number(target.dataset.speechRate)));
   bindButtons(root, "[data-speak]", (target) => actions.speakLearn(target.dataset.speak));
+  bindButtons(root, "[data-learn-surface]", (target) => actions.openLearnSurface(target.dataset.learnSurface));
+  bindButtons(root, "[data-story-chapter]", (target) => actions.selectStoryChapter(Number(target.dataset.storyChapter)));
+  bindButtons(root, "[data-open-story]", (target) => actions.openStory(target.dataset.openStory));
+  bindButtons(root, "[data-story-back]", () => actions.closeStory());
+  bindButtons(root, "[data-complete-story]", (target) => actions.completeStory(target.dataset.completeStory));
 
   const spellingForm = root.querySelector("[data-spelling-form]");
   spellingForm?.addEventListener("submit", (event) => {
