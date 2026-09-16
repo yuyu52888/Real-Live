@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "note": "Later-stage A7 examples; do NOT wire into Stage 3 runtime.",
+  "cases": [
+    {
+      "id": "D8-QA-PIN-001",
+      "stage": 8,
+      "status": "deferred",
+      "title": "錯 PIN 不得進家長模式",
+      "expected": [
+        "wrong PIN rejected",
+        "correct PIN works",
+        "no data reset"
+      ]
+    },
+    {
+      "id": "D8-QA-RETURN-001",
+      "stage": 8,
+      "status": "deferred",
+      "title": "退回任務不亂扣其他 EXP",
+      "expected": [
+        "unrelated earned EXP unchanged"
+      ]
+    },
+    {
+      "id": "D4-QA-BADJSON-001",
+      "stage": 4,
+      "status": "deferred",
+      "title": "壞 JSON 匯入",
+      "fixtureText": "{\"schemaVersion\":\"1.0\",\"packId\":\"broken\",",
+      "expected": [
+        "validation fails",
+        "existing Core 300/progress intact"
+      ]
+    },
+    {
+      "id": "D4-QA-DUPID-001",
+      "stage": 4,
+      "status": "deferred",
+      "title": "duplicate wordId pack",
+      "expected": [
+        "reject before commit",
+        "existing progress intact"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "Stage 6 implementation guidance only; does not modify canonical REWARD_SYSTEM.json.",
+  "aliases": [
+    {
+      "rewardOptionId": "reroll_1",
+      "canonicalTicketId": "reroll",
+      "quantity": 1
+    },
+    {
+      "rewardOptionId": "bonus_exp_2",
+      "canonicalTicketId": "bonus2",
+      "quantity": 1
+    },
+    {
+      "rewardOptionId": "boss_retry",
+      "canonicalTicketId": "boss_retry",
+      "quantity": 1
+    },
+    {
+      "rewardOptionId": "quest_skip",
+      "canonicalTicketId": "skip",
+      "quantity": 1
+    },
+    {
+      "rewardOptionId": "double_exp",
+      "canonicalTicketId": "double",
+      "quantity": 1
+    },
+    {
+      "rewardOptionId": "rest_card",
+      "canonicalTicketId": "rest",
+      "quantity": 1
+    },
+    {
+      "rewardOptionId": "reroll_3",
+      "canonicalTicketId": "reroll",
+      "quantity": 3
+    }
+  ],
+  "unresolved": [
+    {
+      "rewardOptionId": "mystery_unlock",
+      "name": "神秘任務解鎖券",
+      "issue": "No matching canonical ticket exists in REWARD_SYSTEM.tickets[].",
+      "recommendedAction": "Do not invent a durable ticket ID silently. At Stage 6, either add an explicit canonical ticket through an approved data revision or model this as a one-shot special_event entitlement."
+    }
+  ]
+}

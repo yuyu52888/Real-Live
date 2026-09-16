@@ -1,0 +1,5813 @@
+{
+  "schemaVersion": 1,
+  "packId": "mock-expansion-200-zhTW",
+  "packVersion": "1.0.0",
+  "title": "Mock Expansion 200",
+  "locale": "zh-TW",
+  "sourceType": "imported",
+  "description": "Real Life Quest A1 自動驗收用 200 字測試包；不得作為正式學習內容。",
+  "order": 910,
+  "enabledByDefault": true,
+  "words": [
+    {
+      "wordId": "mock-expansion-200-zhTW:W001",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword001",
+      "meaningZh": "A1B測試詞001",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword001.",
+      "exampleZh": "這是A1B測試詞001。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword001",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W002",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword002",
+      "meaningZh": "A1B測試詞002",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword002.",
+      "exampleZh": "這是A1B測試詞002。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword002",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W003",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword003",
+      "meaningZh": "A1B測試詞003",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword003.",
+      "exampleZh": "這是A1B測試詞003。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword003",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W004",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword004",
+      "meaningZh": "A1B測試詞004",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword004.",
+      "exampleZh": "這是A1B測試詞004。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword004",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W005",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword005",
+      "meaningZh": "A1B測試詞005",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword005.",
+      "exampleZh": "這是A1B測試詞005。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword005",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W006",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword006",
+      "meaningZh": "A1B測試詞006",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword006.",
+      "exampleZh": "這是A1B測試詞006。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword006",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W007",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword007",
+      "meaningZh": "A1B測試詞007",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword007.",
+      "exampleZh": "這是A1B測試詞007。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword007",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W008",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword008",
+      "meaningZh": "A1B測試詞008",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword008.",
+      "exampleZh": "這是A1B測試詞008。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword008",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W009",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword009",
+      "meaningZh": "A1B測試詞009",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword009.",
+      "exampleZh": "這是A1B測試詞009。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword009",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W010",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword010",
+      "meaningZh": "A1B測試詞010",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword010.",
+      "exampleZh": "這是A1B測試詞010。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword010",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W011",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword011",
+      "meaningZh": "A1B測試詞011",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword011.",
+      "exampleZh": "這是A1B測試詞011。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword011",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W012",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword012",
+      "meaningZh": "A1B測試詞012",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword012.",
+      "exampleZh": "這是A1B測試詞012。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword012",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W013",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword013",
+      "meaningZh": "A1B測試詞013",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword013.",
+      "exampleZh": "這是A1B測試詞013。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword013",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W014",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword014",
+      "meaningZh": "A1B測試詞014",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword014.",
+      "exampleZh": "這是A1B測試詞014。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword014",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W015",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword015",
+      "meaningZh": "A1B測試詞015",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword015.",
+      "exampleZh": "這是A1B測試詞015。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword015",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W016",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword016",
+      "meaningZh": "A1B測試詞016",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword016.",
+      "exampleZh": "這是A1B測試詞016。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword016",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W017",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword017",
+      "meaningZh": "A1B測試詞017",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword017.",
+      "exampleZh": "這是A1B測試詞017。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword017",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W018",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword018",
+      "meaningZh": "A1B測試詞018",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword018.",
+      "exampleZh": "這是A1B測試詞018。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword018",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W019",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword019",
+      "meaningZh": "A1B測試詞019",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword019.",
+      "exampleZh": "這是A1B測試詞019。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword019",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W020",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword020",
+      "meaningZh": "A1B測試詞020",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword020.",
+      "exampleZh": "這是A1B測試詞020。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword020",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W021",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword021",
+      "meaningZh": "A1B測試詞021",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword021.",
+      "exampleZh": "這是A1B測試詞021。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword021",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W022",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword022",
+      "meaningZh": "A1B測試詞022",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword022.",
+      "exampleZh": "這是A1B測試詞022。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword022",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W023",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword023",
+      "meaningZh": "A1B測試詞023",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword023.",
+      "exampleZh": "這是A1B測試詞023。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword023",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W024",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword024",
+      "meaningZh": "A1B測試詞024",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword024.",
+      "exampleZh": "這是A1B測試詞024。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword024",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W025",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword025",
+      "meaningZh": "A1B測試詞025",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword025.",
+      "exampleZh": "這是A1B測試詞025。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword025",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W026",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword026",
+      "meaningZh": "A1B測試詞026",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword026.",
+      "exampleZh": "這是A1B測試詞026。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword026",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W027",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword027",
+      "meaningZh": "A1B測試詞027",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword027.",
+      "exampleZh": "這是A1B測試詞027。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword027",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W028",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword028",
+      "meaningZh": "A1B測試詞028",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword028.",
+      "exampleZh": "這是A1B測試詞028。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword028",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W029",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword029",
+      "meaningZh": "A1B測試詞029",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword029.",
+      "exampleZh": "這是A1B測試詞029。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword029",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W030",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword030",
+      "meaningZh": "A1B測試詞030",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword030.",
+      "exampleZh": "這是A1B測試詞030。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword030",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W031",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword031",
+      "meaningZh": "A1B測試詞031",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword031.",
+      "exampleZh": "這是A1B測試詞031。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword031",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W032",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword032",
+      "meaningZh": "A1B測試詞032",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword032.",
+      "exampleZh": "這是A1B測試詞032。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword032",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W033",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword033",
+      "meaningZh": "A1B測試詞033",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword033.",
+      "exampleZh": "這是A1B測試詞033。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword033",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W034",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword034",
+      "meaningZh": "A1B測試詞034",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword034.",
+      "exampleZh": "這是A1B測試詞034。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword034",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W035",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword035",
+      "meaningZh": "A1B測試詞035",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword035.",
+      "exampleZh": "這是A1B測試詞035。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword035",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W036",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword036",
+      "meaningZh": "A1B測試詞036",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword036.",
+      "exampleZh": "這是A1B測試詞036。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword036",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W037",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword037",
+      "meaningZh": "A1B測試詞037",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword037.",
+      "exampleZh": "這是A1B測試詞037。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword037",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W038",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword038",
+      "meaningZh": "A1B測試詞038",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword038.",
+      "exampleZh": "這是A1B測試詞038。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword038",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W039",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword039",
+      "meaningZh": "A1B測試詞039",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword039.",
+      "exampleZh": "這是A1B測試詞039。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword039",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W040",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword040",
+      "meaningZh": "A1B測試詞040",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword040.",
+      "exampleZh": "這是A1B測試詞040。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword040",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W041",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword041",
+      "meaningZh": "A1B測試詞041",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword041.",
+      "exampleZh": "這是A1B測試詞041。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword041",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W042",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword042",
+      "meaningZh": "A1B測試詞042",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword042.",
+      "exampleZh": "這是A1B測試詞042。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword042",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W043",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword043",
+      "meaningZh": "A1B測試詞043",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword043.",
+      "exampleZh": "這是A1B測試詞043。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword043",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W044",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword044",
+      "meaningZh": "A1B測試詞044",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword044.",
+      "exampleZh": "這是A1B測試詞044。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword044",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W045",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword045",
+      "meaningZh": "A1B測試詞045",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword045.",
+      "exampleZh": "這是A1B測試詞045。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword045",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W046",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword046",
+      "meaningZh": "A1B測試詞046",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword046.",
+      "exampleZh": "這是A1B測試詞046。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword046",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W047",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword047",
+      "meaningZh": "A1B測試詞047",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword047.",
+      "exampleZh": "這是A1B測試詞047。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword047",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W048",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword048",
+      "meaningZh": "A1B測試詞048",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword048.",
+      "exampleZh": "這是A1B測試詞048。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword048",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W049",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword049",
+      "meaningZh": "A1B測試詞049",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword049.",
+      "exampleZh": "這是A1B測試詞049。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword049",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W050",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword050",
+      "meaningZh": "A1B測試詞050",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword050.",
+      "exampleZh": "這是A1B測試詞050。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword050",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W051",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword051",
+      "meaningZh": "A1B測試詞051",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword051.",
+      "exampleZh": "這是A1B測試詞051。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword051",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W052",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword052",
+      "meaningZh": "A1B測試詞052",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword052.",
+      "exampleZh": "這是A1B測試詞052。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword052",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W053",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword053",
+      "meaningZh": "A1B測試詞053",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword053.",
+      "exampleZh": "這是A1B測試詞053。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword053",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W054",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword054",
+      "meaningZh": "A1B測試詞054",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword054.",
+      "exampleZh": "這是A1B測試詞054。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword054",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W055",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword055",
+      "meaningZh": "A1B測試詞055",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword055.",
+      "exampleZh": "這是A1B測試詞055。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword055",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W056",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword056",
+      "meaningZh": "A1B測試詞056",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword056.",
+      "exampleZh": "這是A1B測試詞056。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword056",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W057",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword057",
+      "meaningZh": "A1B測試詞057",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword057.",
+      "exampleZh": "這是A1B測試詞057。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword057",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W058",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword058",
+      "meaningZh": "A1B測試詞058",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword058.",
+      "exampleZh": "這是A1B測試詞058。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword058",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W059",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword059",
+      "meaningZh": "A1B測試詞059",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword059.",
+      "exampleZh": "這是A1B測試詞059。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword059",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W060",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword060",
+      "meaningZh": "A1B測試詞060",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword060.",
+      "exampleZh": "這是A1B測試詞060。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword060",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W061",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword061",
+      "meaningZh": "A1B測試詞061",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword061.",
+      "exampleZh": "這是A1B測試詞061。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword061",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W062",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword062",
+      "meaningZh": "A1B測試詞062",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword062.",
+      "exampleZh": "這是A1B測試詞062。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword062",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W063",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword063",
+      "meaningZh": "A1B測試詞063",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword063.",
+      "exampleZh": "這是A1B測試詞063。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword063",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W064",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword064",
+      "meaningZh": "A1B測試詞064",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword064.",
+      "exampleZh": "這是A1B測試詞064。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword064",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W065",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword065",
+      "meaningZh": "A1B測試詞065",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword065.",
+      "exampleZh": "這是A1B測試詞065。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword065",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W066",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword066",
+      "meaningZh": "A1B測試詞066",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword066.",
+      "exampleZh": "這是A1B測試詞066。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword066",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W067",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword067",
+      "meaningZh": "A1B測試詞067",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword067.",
+      "exampleZh": "這是A1B測試詞067。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword067",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W068",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword068",
+      "meaningZh": "A1B測試詞068",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword068.",
+      "exampleZh": "這是A1B測試詞068。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword068",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W069",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword069",
+      "meaningZh": "A1B測試詞069",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword069.",
+      "exampleZh": "這是A1B測試詞069。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword069",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W070",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword070",
+      "meaningZh": "A1B測試詞070",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword070.",
+      "exampleZh": "這是A1B測試詞070。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword070",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W071",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword071",
+      "meaningZh": "A1B測試詞071",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword071.",
+      "exampleZh": "這是A1B測試詞071。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword071",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W072",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword072",
+      "meaningZh": "A1B測試詞072",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword072.",
+      "exampleZh": "這是A1B測試詞072。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword072",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W073",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword073",
+      "meaningZh": "A1B測試詞073",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword073.",
+      "exampleZh": "這是A1B測試詞073。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword073",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W074",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword074",
+      "meaningZh": "A1B測試詞074",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword074.",
+      "exampleZh": "這是A1B測試詞074。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword074",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W075",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword075",
+      "meaningZh": "A1B測試詞075",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword075.",
+      "exampleZh": "這是A1B測試詞075。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword075",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W076",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword076",
+      "meaningZh": "A1B測試詞076",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword076.",
+      "exampleZh": "這是A1B測試詞076。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword076",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W077",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword077",
+      "meaningZh": "A1B測試詞077",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword077.",
+      "exampleZh": "這是A1B測試詞077。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword077",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W078",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword078",
+      "meaningZh": "A1B測試詞078",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword078.",
+      "exampleZh": "這是A1B測試詞078。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword078",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W079",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword079",
+      "meaningZh": "A1B測試詞079",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword079.",
+      "exampleZh": "這是A1B測試詞079。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword079",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W080",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword080",
+      "meaningZh": "A1B測試詞080",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword080.",
+      "exampleZh": "這是A1B測試詞080。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword080",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W081",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword081",
+      "meaningZh": "A1B測試詞081",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword081.",
+      "exampleZh": "這是A1B測試詞081。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword081",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W082",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword082",
+      "meaningZh": "A1B測試詞082",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword082.",
+      "exampleZh": "這是A1B測試詞082。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword082",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W083",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword083",
+      "meaningZh": "A1B測試詞083",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword083.",
+      "exampleZh": "這是A1B測試詞083。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword083",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W084",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword084",
+      "meaningZh": "A1B測試詞084",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword084.",
+      "exampleZh": "這是A1B測試詞084。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword084",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W085",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword085",
+      "meaningZh": "A1B測試詞085",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword085.",
+      "exampleZh": "這是A1B測試詞085。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword085",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W086",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword086",
+      "meaningZh": "A1B測試詞086",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword086.",
+      "exampleZh": "這是A1B測試詞086。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword086",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W087",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword087",
+      "meaningZh": "A1B測試詞087",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword087.",
+      "exampleZh": "這是A1B測試詞087。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword087",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W088",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword088",
+      "meaningZh": "A1B測試詞088",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword088.",
+      "exampleZh": "這是A1B測試詞088。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword088",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W089",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword089",
+      "meaningZh": "A1B測試詞089",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword089.",
+      "exampleZh": "這是A1B測試詞089。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword089",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W090",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword090",
+      "meaningZh": "A1B測試詞090",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword090.",
+      "exampleZh": "這是A1B測試詞090。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword090",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W091",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword091",
+      "meaningZh": "A1B測試詞091",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword091.",
+      "exampleZh": "這是A1B測試詞091。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword091",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W092",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword092",
+      "meaningZh": "A1B測試詞092",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword092.",
+      "exampleZh": "這是A1B測試詞092。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword092",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W093",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword093",
+      "meaningZh": "A1B測試詞093",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword093.",
+      "exampleZh": "這是A1B測試詞093。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword093",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W094",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword094",
+      "meaningZh": "A1B測試詞094",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword094.",
+      "exampleZh": "這是A1B測試詞094。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword094",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W095",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword095",
+      "meaningZh": "A1B測試詞095",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword095.",
+      "exampleZh": "這是A1B測試詞095。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword095",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W096",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword096",
+      "meaningZh": "A1B測試詞096",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword096.",
+      "exampleZh": "這是A1B測試詞096。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword096",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W097",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword097",
+      "meaningZh": "A1B測試詞097",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword097.",
+      "exampleZh": "這是A1B測試詞097。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword097",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W098",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword098",
+      "meaningZh": "A1B測試詞098",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword098.",
+      "exampleZh": "這是A1B測試詞098。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword098",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W099",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword099",
+      "meaningZh": "A1B測試詞099",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword099.",
+      "exampleZh": "這是A1B測試詞099。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword099",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W100",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword100",
+      "meaningZh": "A1B測試詞100",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword100.",
+      "exampleZh": "這是A1B測試詞100。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword100",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W101",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword101",
+      "meaningZh": "A1B測試詞101",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword101.",
+      "exampleZh": "這是A1B測試詞101。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword101",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W102",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword102",
+      "meaningZh": "A1B測試詞102",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword102.",
+      "exampleZh": "這是A1B測試詞102。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword102",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W103",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword103",
+      "meaningZh": "A1B測試詞103",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword103.",
+      "exampleZh": "這是A1B測試詞103。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword103",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W104",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword104",
+      "meaningZh": "A1B測試詞104",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword104.",
+      "exampleZh": "這是A1B測試詞104。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword104",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W105",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword105",
+      "meaningZh": "A1B測試詞105",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword105.",
+      "exampleZh": "這是A1B測試詞105。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword105",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W106",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword106",
+      "meaningZh": "A1B測試詞106",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword106.",
+      "exampleZh": "這是A1B測試詞106。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword106",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W107",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword107",
+      "meaningZh": "A1B測試詞107",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword107.",
+      "exampleZh": "這是A1B測試詞107。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword107",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W108",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword108",
+      "meaningZh": "A1B測試詞108",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword108.",
+      "exampleZh": "這是A1B測試詞108。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword108",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W109",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword109",
+      "meaningZh": "A1B測試詞109",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword109.",
+      "exampleZh": "這是A1B測試詞109。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword109",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W110",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword110",
+      "meaningZh": "A1B測試詞110",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword110.",
+      "exampleZh": "這是A1B測試詞110。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword110",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W111",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword111",
+      "meaningZh": "A1B測試詞111",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword111.",
+      "exampleZh": "這是A1B測試詞111。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword111",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W112",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword112",
+      "meaningZh": "A1B測試詞112",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword112.",
+      "exampleZh": "這是A1B測試詞112。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword112",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W113",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword113",
+      "meaningZh": "A1B測試詞113",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword113.",
+      "exampleZh": "這是A1B測試詞113。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword113",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W114",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword114",
+      "meaningZh": "A1B測試詞114",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword114.",
+      "exampleZh": "這是A1B測試詞114。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword114",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W115",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword115",
+      "meaningZh": "A1B測試詞115",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword115.",
+      "exampleZh": "這是A1B測試詞115。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword115",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W116",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword116",
+      "meaningZh": "A1B測試詞116",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword116.",
+      "exampleZh": "這是A1B測試詞116。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword116",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W117",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword117",
+      "meaningZh": "A1B測試詞117",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword117.",
+      "exampleZh": "這是A1B測試詞117。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword117",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W118",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword118",
+      "meaningZh": "A1B測試詞118",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword118.",
+      "exampleZh": "這是A1B測試詞118。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword118",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W119",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword119",
+      "meaningZh": "A1B測試詞119",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword119.",
+      "exampleZh": "這是A1B測試詞119。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword119",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W120",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword120",
+      "meaningZh": "A1B測試詞120",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword120.",
+      "exampleZh": "這是A1B測試詞120。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword120",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W121",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword121",
+      "meaningZh": "A1B測試詞121",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword121.",
+      "exampleZh": "這是A1B測試詞121。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword121",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W122",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword122",
+      "meaningZh": "A1B測試詞122",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword122.",
+      "exampleZh": "這是A1B測試詞122。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword122",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W123",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword123",
+      "meaningZh": "A1B測試詞123",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword123.",
+      "exampleZh": "這是A1B測試詞123。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword123",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W124",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword124",
+      "meaningZh": "A1B測試詞124",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword124.",
+      "exampleZh": "這是A1B測試詞124。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword124",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W125",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword125",
+      "meaningZh": "A1B測試詞125",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword125.",
+      "exampleZh": "這是A1B測試詞125。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword125",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W126",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword126",
+      "meaningZh": "A1B測試詞126",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword126.",
+      "exampleZh": "這是A1B測試詞126。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword126",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W127",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword127",
+      "meaningZh": "A1B測試詞127",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword127.",
+      "exampleZh": "這是A1B測試詞127。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword127",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W128",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword128",
+      "meaningZh": "A1B測試詞128",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword128.",
+      "exampleZh": "這是A1B測試詞128。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword128",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W129",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword129",
+      "meaningZh": "A1B測試詞129",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword129.",
+      "exampleZh": "這是A1B測試詞129。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword129",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W130",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword130",
+      "meaningZh": "A1B測試詞130",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword130.",
+      "exampleZh": "這是A1B測試詞130。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword130",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W131",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword131",
+      "meaningZh": "A1B測試詞131",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword131.",
+      "exampleZh": "這是A1B測試詞131。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword131",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W132",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword132",
+      "meaningZh": "A1B測試詞132",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword132.",
+      "exampleZh": "這是A1B測試詞132。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword132",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W133",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword133",
+      "meaningZh": "A1B測試詞133",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword133.",
+      "exampleZh": "這是A1B測試詞133。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword133",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W134",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword134",
+      "meaningZh": "A1B測試詞134",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword134.",
+      "exampleZh": "這是A1B測試詞134。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword134",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W135",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword135",
+      "meaningZh": "A1B測試詞135",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword135.",
+      "exampleZh": "這是A1B測試詞135。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword135",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W136",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword136",
+      "meaningZh": "A1B測試詞136",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword136.",
+      "exampleZh": "這是A1B測試詞136。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword136",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W137",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword137",
+      "meaningZh": "A1B測試詞137",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword137.",
+      "exampleZh": "這是A1B測試詞137。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword137",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W138",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword138",
+      "meaningZh": "A1B測試詞138",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword138.",
+      "exampleZh": "這是A1B測試詞138。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword138",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W139",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword139",
+      "meaningZh": "A1B測試詞139",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword139.",
+      "exampleZh": "這是A1B測試詞139。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword139",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W140",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword140",
+      "meaningZh": "A1B測試詞140",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword140.",
+      "exampleZh": "這是A1B測試詞140。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword140",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W141",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword141",
+      "meaningZh": "A1B測試詞141",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword141.",
+      "exampleZh": "這是A1B測試詞141。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword141",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W142",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword142",
+      "meaningZh": "A1B測試詞142",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword142.",
+      "exampleZh": "這是A1B測試詞142。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword142",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W143",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword143",
+      "meaningZh": "A1B測試詞143",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword143.",
+      "exampleZh": "這是A1B測試詞143。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword143",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W144",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword144",
+      "meaningZh": "A1B測試詞144",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword144.",
+      "exampleZh": "這是A1B測試詞144。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword144",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W145",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword145",
+      "meaningZh": "A1B測試詞145",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword145.",
+      "exampleZh": "這是A1B測試詞145。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword145",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W146",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword146",
+      "meaningZh": "A1B測試詞146",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword146.",
+      "exampleZh": "這是A1B測試詞146。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword146",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W147",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword147",
+      "meaningZh": "A1B測試詞147",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword147.",
+      "exampleZh": "這是A1B測試詞147。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword147",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W148",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword148",
+      "meaningZh": "A1B測試詞148",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword148.",
+      "exampleZh": "這是A1B測試詞148。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword148",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W149",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword149",
+      "meaningZh": "A1B測試詞149",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword149.",
+      "exampleZh": "這是A1B測試詞149。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword149",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W150",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword150",
+      "meaningZh": "A1B測試詞150",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword150.",
+      "exampleZh": "這是A1B測試詞150。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword150",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W151",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword151",
+      "meaningZh": "A1B測試詞151",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword151.",
+      "exampleZh": "這是A1B測試詞151。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword151",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W152",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword152",
+      "meaningZh": "A1B測試詞152",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword152.",
+      "exampleZh": "這是A1B測試詞152。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword152",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W153",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword153",
+      "meaningZh": "A1B測試詞153",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword153.",
+      "exampleZh": "這是A1B測試詞153。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword153",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W154",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword154",
+      "meaningZh": "A1B測試詞154",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword154.",
+      "exampleZh": "這是A1B測試詞154。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword154",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W155",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword155",
+      "meaningZh": "A1B測試詞155",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword155.",
+      "exampleZh": "這是A1B測試詞155。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword155",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W156",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword156",
+      "meaningZh": "A1B測試詞156",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword156.",
+      "exampleZh": "這是A1B測試詞156。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword156",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W157",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword157",
+      "meaningZh": "A1B測試詞157",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword157.",
+      "exampleZh": "這是A1B測試詞157。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword157",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W158",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword158",
+      "meaningZh": "A1B測試詞158",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword158.",
+      "exampleZh": "這是A1B測試詞158。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword158",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W159",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword159",
+      "meaningZh": "A1B測試詞159",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword159.",
+      "exampleZh": "這是A1B測試詞159。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword159",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W160",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword160",
+      "meaningZh": "A1B測試詞160",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword160.",
+      "exampleZh": "這是A1B測試詞160。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword160",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W161",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword161",
+      "meaningZh": "A1B測試詞161",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword161.",
+      "exampleZh": "這是A1B測試詞161。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword161",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W162",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword162",
+      "meaningZh": "A1B測試詞162",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword162.",
+      "exampleZh": "這是A1B測試詞162。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword162",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W163",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword163",
+      "meaningZh": "A1B測試詞163",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword163.",
+      "exampleZh": "這是A1B測試詞163。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword163",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W164",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword164",
+      "meaningZh": "A1B測試詞164",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword164.",
+      "exampleZh": "這是A1B測試詞164。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword164",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W165",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword165",
+      "meaningZh": "A1B測試詞165",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword165.",
+      "exampleZh": "這是A1B測試詞165。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword165",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W166",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword166",
+      "meaningZh": "A1B測試詞166",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword166.",
+      "exampleZh": "這是A1B測試詞166。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword166",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W167",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword167",
+      "meaningZh": "A1B測試詞167",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword167.",
+      "exampleZh": "這是A1B測試詞167。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword167",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W168",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword168",
+      "meaningZh": "A1B測試詞168",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword168.",
+      "exampleZh": "這是A1B測試詞168。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword168",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W169",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword169",
+      "meaningZh": "A1B測試詞169",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword169.",
+      "exampleZh": "這是A1B測試詞169。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword169",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W170",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword170",
+      "meaningZh": "A1B測試詞170",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword170.",
+      "exampleZh": "這是A1B測試詞170。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword170",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W171",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword171",
+      "meaningZh": "A1B測試詞171",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword171.",
+      "exampleZh": "這是A1B測試詞171。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword171",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W172",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword172",
+      "meaningZh": "A1B測試詞172",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword172.",
+      "exampleZh": "這是A1B測試詞172。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword172",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W173",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword173",
+      "meaningZh": "A1B測試詞173",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword173.",
+      "exampleZh": "這是A1B測試詞173。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword173",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W174",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword174",
+      "meaningZh": "A1B測試詞174",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword174.",
+      "exampleZh": "這是A1B測試詞174。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword174",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W175",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword175",
+      "meaningZh": "A1B測試詞175",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword175.",
+      "exampleZh": "這是A1B測試詞175。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword175",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W176",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword176",
+      "meaningZh": "A1B測試詞176",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword176.",
+      "exampleZh": "這是A1B測試詞176。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword176",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W177",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword177",
+      "meaningZh": "A1B測試詞177",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword177.",
+      "exampleZh": "這是A1B測試詞177。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword177",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W178",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword178",
+      "meaningZh": "A1B測試詞178",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword178.",
+      "exampleZh": "這是A1B測試詞178。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword178",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W179",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword179",
+      "meaningZh": "A1B測試詞179",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword179.",
+      "exampleZh": "這是A1B測試詞179。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword179",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W180",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword180",
+      "meaningZh": "A1B測試詞180",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword180.",
+      "exampleZh": "這是A1B測試詞180。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword180",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W181",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword181",
+      "meaningZh": "A1B測試詞181",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword181.",
+      "exampleZh": "這是A1B測試詞181。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword181",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W182",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword182",
+      "meaningZh": "A1B測試詞182",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword182.",
+      "exampleZh": "這是A1B測試詞182。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword182",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W183",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword183",
+      "meaningZh": "A1B測試詞183",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword183.",
+      "exampleZh": "這是A1B測試詞183。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword183",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W184",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword184",
+      "meaningZh": "A1B測試詞184",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword184.",
+      "exampleZh": "這是A1B測試詞184。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword184",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W185",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword185",
+      "meaningZh": "A1B測試詞185",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword185.",
+      "exampleZh": "這是A1B測試詞185。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword185",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W186",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword186",
+      "meaningZh": "A1B測試詞186",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword186.",
+      "exampleZh": "這是A1B測試詞186。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword186",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W187",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword187",
+      "meaningZh": "A1B測試詞187",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword187.",
+      "exampleZh": "這是A1B測試詞187。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword187",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W188",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword188",
+      "meaningZh": "A1B測試詞188",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword188.",
+      "exampleZh": "這是A1B測試詞188。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword188",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W189",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword189",
+      "meaningZh": "A1B測試詞189",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword189.",
+      "exampleZh": "這是A1B測試詞189。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword189",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W190",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword190",
+      "meaningZh": "A1B測試詞190",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword190.",
+      "exampleZh": "這是A1B測試詞190。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword190",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W191",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword191",
+      "meaningZh": "A1B測試詞191",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword191.",
+      "exampleZh": "這是A1B測試詞191。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword191",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W192",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword192",
+      "meaningZh": "A1B測試詞192",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword192.",
+      "exampleZh": "這是A1B測試詞192。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword192",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W193",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword193",
+      "meaningZh": "A1B測試詞193",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword193.",
+      "exampleZh": "這是A1B測試詞193。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword193",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W194",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword194",
+      "meaningZh": "A1B測試詞194",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword194.",
+      "exampleZh": "這是A1B測試詞194。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword194",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W195",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword195",
+      "meaningZh": "A1B測試詞195",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword195.",
+      "exampleZh": "這是A1B測試詞195。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword195",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W196",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword196",
+      "meaningZh": "A1B測試詞196",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword196.",
+      "exampleZh": "這是A1B測試詞196。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword196",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W197",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword197",
+      "meaningZh": "A1B測試詞197",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword197.",
+      "exampleZh": "這是A1B測試詞197。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword197",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W198",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword198",
+      "meaningZh": "A1B測試詞198",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 3,
+      "example": "This is a1bword198.",
+      "exampleZh": "這是A1B測試詞198。",
+      "spellingRequired": true,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword198",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W199",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword199",
+      "meaningZh": "A1B測試詞199",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is a1bword199.",
+      "exampleZh": "這是A1B測試詞199。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword199",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "mock-expansion-200-zhTW:W200",
+      "legacyId": null,
+      "packId": "mock-expansion-200-zhTW",
+      "word": "a1bword200",
+      "meaningZh": "A1B測試詞200",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 2,
+      "example": "This is a1bword200.",
+      "exampleZh": "這是A1B測試詞200。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：a1bword200",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    }
+  ]
+}

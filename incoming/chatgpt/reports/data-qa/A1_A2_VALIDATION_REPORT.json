@@ -1,0 +1,135 @@
+{
+  "validatorVersion": "1.0.0",
+  "status": "PASS",
+  "projectRoot": "/mnt/data/rlq_a1a2_work/project/Real_Life_Quest_Codex_Project_READY_v1.1",
+  "fixturesRoot": "/mnt/data/rlq_a1a2_work/project/Real_Life_Quest_Codex_Project_READY_v1.1/incoming/chatgpt/data/vocabulary-fixtures",
+  "summary": {
+    "checks": 24,
+    "checksPassed": 24,
+    "errors": 0,
+    "warnings": 0
+  },
+  "checks": [
+    {
+      "name": "core300.count",
+      "passed": true,
+      "detail": "count=300"
+    },
+    {
+      "name": "core300.spellingTargets",
+      "passed": true,
+      "detail": "count=180"
+    },
+    {
+      "name": "core300.uniqueIds",
+      "passed": true,
+      "detail": "unique=300"
+    },
+    {
+      "name": "core300.uniqueWords",
+      "passed": true,
+      "detail": "unique=300"
+    },
+    {
+      "name": "stories.count",
+      "passed": true,
+      "detail": "count=30"
+    },
+    {
+      "name": "stories.fourQuestions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "tasks.general.count",
+      "passed": true,
+      "detail": "count=120"
+    },
+    {
+      "name": "tasks.exercise.count",
+      "passed": true,
+      "detail": "count=30"
+    },
+    {
+      "name": "tasks.chore.count",
+      "passed": true,
+      "detail": "count=30"
+    },
+    {
+      "name": "tasks.all.uniqueIds",
+      "passed": true,
+      "detail": "total=180"
+    },
+    {
+      "name": "bosses.count",
+      "passed": true,
+      "detail": "count=6"
+    },
+    {
+      "name": "rewards.levelThresholds",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rewards.cosmeticsNoStats",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fixture.valid.mock_expansion_300.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fixture.valid.mock_expansion_200.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fixture.valid.valid_minimal_pack_2.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fixture.invalid.invalid_duplicate_word_id.json",
+      "passed": true,
+      "detail": "expected=VOCAB_DUPLICATE_WORD_ID; got=['VOCAB_DUPLICATE_WORD_ID']"
+    },
+    {
+      "name": "fixture.invalid.invalid_missing_word.json",
+      "passed": true,
+      "detail": "expected=VOCAB_REQUIRED_FIELD; got=['VOCAB_REQUIRED_FIELD']"
+    },
+    {
+      "name": "fixture.invalid.invalid_pack_id_mismatch.json",
+      "passed": true,
+      "detail": "expected=VOCAB_PACK_ID_MISMATCH; got=['VOCAB_PACK_ID_MISMATCH']"
+    },
+    {
+      "name": "fixture.invalid.invalid_duplicate_existing_pack_id.json",
+      "passed": true,
+      "detail": "expected=VOCAB_PACK_ID_CONFLICT; got=['VOCAB_PACK_ID_CONFLICT']"
+    },
+    {
+      "name": "fixture.invalid.invalid_example_pair.json",
+      "passed": true,
+      "detail": "expected=VOCAB_EXAMPLE_PAIR; got=['VOCAB_EXAMPLE_PAIR']"
+    },
+    {
+      "name": "fixture.invalid.invalid_review_schedule.json",
+      "passed": true,
+      "detail": "expected=VOCAB_REVIEW_SCHEDULE; got=['VOCAB_REVIEW_SCHEDULE']"
+    },
+    {
+      "name": "fixture.invalid.invalid_schema_version.json",
+      "passed": true,
+      "detail": "expected=VOCAB_SCHEMA_VERSION; got=['VOCAB_SCHEMA_VERSION']"
+    },
+    {
+      "name": "fixture.invalid.invalid_malformed_json.json",
+      "passed": true,
+      "detail": "expected=JSON_PARSE_ERROR; got=['JSON_PARSE_ERROR']"
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,407 @@
+{
+  "report": "Real Life Quest A3-3 Story QA",
+  "version": "1.0",
+  "result": "PASS",
+  "checksPassed": 42,
+  "checksTotal": 42,
+  "blockingErrors": 0,
+  "storyCount": 30,
+  "questionCount": 120,
+  "chapterCounts": {
+    "1": 5,
+    "2": 5,
+    "3": 5,
+    "4": 5,
+    "5": 5,
+    "6": 5
+  },
+  "lengthBand": {
+    "within500to700": 27,
+    "over700": [
+      [
+        "S01",
+        1321
+      ],
+      [
+        "S02",
+        781
+      ],
+      [
+        "S03",
+        726
+      ]
+    ],
+    "under500": []
+  },
+  "estimatedMinutes": {
+    "8": 1,
+    "5": 2,
+    "4": 27
+  },
+  "checks": [
+    {
+      "name": "Story count = 30",
+      "result": "PASS",
+      "detail": "count=30"
+    },
+    {
+      "name": "Story IDs unique",
+      "result": "PASS",
+      "detail": "unique=30"
+    },
+    {
+      "name": "Story IDs sequential S01-S30",
+      "result": "PASS",
+      "detail": "S01, S02, S03 ... S28, S29, S30"
+    },
+    {
+      "name": "Story titles unique",
+      "result": "PASS",
+      "detail": "unique=30"
+    },
+    {
+      "name": "Story themes unique",
+      "result": "PASS",
+      "detail": "unique=30"
+    },
+    {
+      "name": "Required fields present on all stories",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Required text fields nonblank",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Exactly 4 thinking questions per story",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "All question strings nonblank",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No duplicate questions within a story",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "120 total thinking questions",
+      "result": "PASS",
+      "detail": "count=120"
+    },
+    {
+      "name": "Reality task exists for every story",
+      "result": "PASS",
+      "detail": "count=30"
+    },
+    {
+      "name": "Thought card/takeaway exists for every story",
+      "result": "PASS",
+      "detail": "count=30"
+    },
+    {
+      "name": "Estimated minutes are positive integers",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "All estimated reading times <= 10 minutes",
+      "result": "PASS",
+      "detail": "max=8"
+    },
+    {
+      "name": "charCount values are positive integers",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "charCount matches body non-whitespace count",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Story bodies are unique",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Reality tasks are unique",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Thought cards/takeaways are unique",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Every story body has multiple paragraphs",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No empty/null field values in required schema",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No trivial name/age/location recall questions",
+      "result": "PASS",
+      "detail": "found=0"
+    },
+    {
+      "name": "Every story includes application/self-reflection language",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "At least 90% of stories are in the 500-700 target band",
+      "result": "PASS",
+      "detail": "within=27/30; over=[('S01', 1321), ('S02', 781), ('S03', 726)]; under=[]"
+    },
+    {
+      "name": "No story exceeds 1500 non-whitespace characters",
+      "result": "PASS",
+      "detail": "max=1321"
+    },
+    {
+      "name": "Boss chapter map contains chapters 1-6",
+      "result": "PASS",
+      "detail": "{1: '金錢森林', 2: '等待之谷', 3: '成長山脈', 4: '智慧迷宮', 5: '時間王國', 6: '友情之城'}"
+    },
+    {
+      "name": "Story IDs resolve to exactly 6 chapters x 5 stories",
+      "result": "PASS",
+      "detail": "{1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 5}"
+    },
+    {
+      "name": "Each story maps to one valid Boss chapter",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Six story chapter badges exist",
+      "result": "PASS",
+      "detail": "count=6"
+    },
+    {
+      "name": "Story chapter badge conditions match 5-story groups",
+      "result": "PASS",
+      "detail": "{'badge_story_ch1': '完成思維故事1-5', 'badge_story_ch2': '完成思維故事6-10', 'badge_story_ch3': '完成思維故事11-15', 'badge_story_ch4': '完成思維故事16-20', 'badge_story_ch5': '完成思維故事21-25', 'badge_story_ch6': '完成思維故事26-30'}"
+    },
+    {
+      "name": "UI implementation spec requires 4 questions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "UI implementation spec requires 1 reality task",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "UI implementation spec requires a thought card",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "UI flow shows story title/time/body/questions/task",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Development prompt declares thinking_stories_30.json as canonical story source",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Development prompt requires chapter progress after story completion",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Development prompt groups every five stories into one chapter",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Acceptance tests cover 30 stories/questions/task/thought card/chapter progress",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Story UI reference 06 exists",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Reality tasks contain no obvious child-solo hazardous activity keywords",
+      "result": "PASS",
+      "detail": "found=0"
+    },
+    {
+      "name": "Stories contain no leaderboard/EXP-punishment language",
+      "result": "PASS",
+      "detail": ""
+    }
+  ],
+  "chapterMap": {
+    "S01": {
+      "chapter": 1,
+      "chapterName": "金錢森林"
+    },
+    "S02": {
+      "chapter": 1,
+      "chapterName": "金錢森林"
+    },
+    "S03": {
+      "chapter": 1,
+      "chapterName": "金錢森林"
+    },
+    "S04": {
+      "chapter": 1,
+      "chapterName": "金錢森林"
+    },
+    "S05": {
+      "chapter": 1,
+      "chapterName": "金錢森林"
+    },
+    "S06": {
+      "chapter": 2,
+      "chapterName": "等待之谷"
+    },
+    "S07": {
+      "chapter": 2,
+      "chapterName": "等待之谷"
+    },
+    "S08": {
+      "chapter": 2,
+      "chapterName": "等待之谷"
+    },
+    "S09": {
+      "chapter": 2,
+      "chapterName": "等待之谷"
+    },
+    "S10": {
+      "chapter": 2,
+      "chapterName": "等待之谷"
+    },
+    "S11": {
+      "chapter": 3,
+      "chapterName": "成長山脈"
+    },
+    "S12": {
+      "chapter": 3,
+      "chapterName": "成長山脈"
+    },
+    "S13": {
+      "chapter": 3,
+      "chapterName": "成長山脈"
+    },
+    "S14": {
+      "chapter": 3,
+      "chapterName": "成長山脈"
+    },
+    "S15": {
+      "chapter": 3,
+      "chapterName": "成長山脈"
+    },
+    "S16": {
+      "chapter": 4,
+      "chapterName": "智慧迷宮"
+    },
+    "S17": {
+      "chapter": 4,
+      "chapterName": "智慧迷宮"
+    },
+    "S18": {
+      "chapter": 4,
+      "chapterName": "智慧迷宮"
+    },
+    "S19": {
+      "chapter": 4,
+      "chapterName": "智慧迷宮"
+    },
+    "S20": {
+      "chapter": 4,
+      "chapterName": "智慧迷宮"
+    },
+    "S21": {
+      "chapter": 5,
+      "chapterName": "時間王國"
+    },
+    "S22": {
+      "chapter": 5,
+      "chapterName": "時間王國"
+    },
+    "S23": {
+      "chapter": 5,
+      "chapterName": "時間王國"
+    },
+    "S24": {
+      "chapter": 5,
+      "chapterName": "時間王國"
+    },
+    "S25": {
+      "chapter": 5,
+      "chapterName": "時間王國"
+    },
+    "S26": {
+      "chapter": 6,
+      "chapterName": "友情之城"
+    },
+    "S27": {
+      "chapter": 6,
+      "chapterName": "友情之城"
+    },
+    "S28": {
+      "chapter": 6,
+      "chapterName": "友情之城"
+    },
+    "S29": {
+      "chapter": 6,
+      "chapterName": "友情之城"
+    },
+    "S30": {
+      "chapter": 6,
+      "chapterName": "友情之城"
+    }
+  },
+  "advisories": [
+    {
+      "id": "STORY-LENGTH-001",
+      "severity": "NON_BLOCKING",
+      "summary": "Three stories are above the 500-700 character target band.",
+      "detail": "S01=1321, S02=781, S03=726 non-whitespace chars; remaining 27 stories are within 500-700. Do not auto-trim canonical content. Reader must support variable length and use estimatedMinutes from data."
+    },
+    {
+      "id": "STORY-ARCH-002",
+      "severity": "NON_BLOCKING",
+      "summary": "Canonical story records do not carry chapter/chapterName fields.",
+      "detail": "Derive chapter deterministically from stable S01-S30 IDs in groups of five and resolve chapterName from BOSSES_6.json (or a small immutable mapping). Never use current array index as persistent identity and do not rewrite story JSON only to add chapter fields."
+    },
+    {
+      "id": "STORY-REWARD-003",
+      "severity": "NON_BLOCKING",
+      "summary": "Story records do not define per-story EXP amounts.",
+      "detail": "The development spec says story completion leads to EXP/chapter progress, but thinking_stories_30.json contains no exp field and REWARD_SYSTEM.json does not define a per-story EXP amount. Stage 5 should persist idempotent completion/chapter progress and route any EXP award through the shared reward transaction/config layer. Do not invent or hardcode an EXP value inside StoryReader."
+    },
+    {
+      "id": "STORY-CONTENT-004",
+      "severity": "NON_BLOCKING",
+      "summary": "S30 is a capstone long-term-thinking story inside the sixth five-story group.",
+      "detail": "S26-S29 are directly relationship/communication-oriented; S30 theme is 長期思考. Keep canonical order unchanged. Treat S30 as a capstone within chapter 6 unless the product owner later changes chapter content."
+    },
+    {
+      "id": "STORY-STATE-005",
+      "severity": "NON_BLOCKING",
+      "summary": "Completion and rewards must be idempotent.",
+      "detail": "A story may be reread, but first-completion chapter progress/reward must not be issued repeatedly after button double-click, reload, or revisit. Store story progress separately from immutable story content."
+    }
+  ]
+}

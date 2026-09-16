@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "packId": "invalid-duplicate-id",
+  "packVersion": "1.0.0",
+  "title": "Invalid duplicate wordId",
+  "locale": "zh-TW",
+  "sourceType": "imported",
+  "words": [
+    {
+      "wordId": "invalid-duplicate-id:W001",
+      "legacyId": null,
+      "packId": "invalid-duplicate-id",
+      "word": "dupword001",
+      "meaningZh": "DUP測試詞001",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is dupword001.",
+      "exampleZh": "這是DUP測試詞001。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：dupword001",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    },
+    {
+      "wordId": "invalid-duplicate-id:W001",
+      "legacyId": null,
+      "packId": "invalid-duplicate-id",
+      "word": "dupword001",
+      "meaningZh": "DUP測試詞001",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is dupword001.",
+      "exampleZh": "這是DUP測試詞001。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：dupword001",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    }
+  ]
+}

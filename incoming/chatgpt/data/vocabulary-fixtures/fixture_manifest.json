@@ -1,0 +1,68 @@
+{
+  "fixtureSetVersion": "1.0.0",
+  "purpose": "A1 vocabulary extensibility verification for Real Life Quest Stage 4",
+  "canonicalStartingVocabularyCount": 300,
+  "reservedInstalledPackIds": [
+    "core300-zhTW"
+  ],
+  "validFixtures": [
+    {
+      "file": "mock_expansion_300.json",
+      "expectedWordCount": 300,
+      "expectedTotalAfterCore": 600
+    },
+    {
+      "file": "mock_expansion_200.json",
+      "expectedWordCount": 200,
+      "expectedTotalAfterCorePlus300": 800
+    },
+    {
+      "file": "valid_minimal_pack_2.json",
+      "expectedWordCount": 2,
+      "purpose": "Verify optional vocabulary fields are not incorrectly required."
+    }
+  ],
+  "invalidFixtures": [
+    {
+      "file": "invalid_duplicate_word_id.json",
+      "expectedErrorCode": "VOCAB_DUPLICATE_WORD_ID"
+    },
+    {
+      "file": "invalid_missing_word.json",
+      "expectedErrorCode": "VOCAB_REQUIRED_FIELD"
+    },
+    {
+      "file": "invalid_pack_id_mismatch.json",
+      "expectedErrorCode": "VOCAB_PACK_ID_MISMATCH"
+    },
+    {
+      "file": "invalid_duplicate_existing_pack_id.json",
+      "expectedErrorCode": "VOCAB_PACK_ID_CONFLICT"
+    },
+    {
+      "file": "invalid_example_pair.json",
+      "expectedErrorCode": "VOCAB_EXAMPLE_PAIR"
+    },
+    {
+      "file": "invalid_review_schedule.json",
+      "expectedErrorCode": "VOCAB_REVIEW_SCHEDULE"
+    },
+    {
+      "file": "invalid_schema_version.json",
+      "expectedErrorCode": "VOCAB_SCHEMA_VERSION"
+    },
+    {
+      "file": "invalid_malformed_json.json",
+      "expectedErrorCode": "JSON_PARSE_ERROR"
+    }
+  ],
+  "stage4RequiredScenario": [
+    "Load canonical Core 300.",
+    "Create progress for at least 10 Core words.",
+    "Import mock_expansion_300.json and verify enabled total becomes 600.",
+    "Verify the original 10 WordProgress records are unchanged.",
+    "Import mock_expansion_200.json and verify enabled total becomes 800.",
+    "Disable an expansion pack: it must stop supplying new learning items while history/progress remain.",
+    "Re-enable the pack and continue without source-code changes."
+  ]
+}

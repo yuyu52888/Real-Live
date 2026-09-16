@@ -1,0 +1,386 @@
+{
+  "reportVersion": "1.0",
+  "workstream": "A3-2 English QA",
+  "projectPackage": "Real_Life_Quest_Codex_Project_READY_v1.1",
+  "status": "PASS",
+  "blockingErrors": 0,
+  "checksPassed": 37,
+  "checksTotal": 37,
+  "advisories": [
+    {
+      "severity": "ADVISORY",
+      "code": "ENG-ARCH-001",
+      "title": "Canonical Core 300 is a legacy flat list, not a VocabularyPack wrapper",
+      "detail": "Stage 4 loader should transform id -> legacyId, generate stable wordId core300-zhTW:Wxxx, set packId=core300-zhTW, and wrap the 300 records as the builtin pack. Do not require source data to already have the future pack shape."
+    },
+    {
+      "severity": "ADVISORY",
+      "code": "ENG-ARCH-002",
+      "title": "Legacy Core records embed progress-like fields",
+      "detail": "mastery/correctCount/wrongCount/lastReview/nextReview exist in the source records only as initialized legacy fields. Target architecture requires WordProgress to be separate. Stage 4 must not persist or update learning progress inside vocabularyWords content records."
+    },
+    {
+      "severity": "ADVISORY",
+      "code": "ENG-DATA-003",
+      "title": "Two Core 300 JSON files are identical; import only the canonical one",
+      "detail": "core300_words.json and core300_words_enriched.json are content-identical. PROJECT_MANIFEST declares core300_words_enriched.json canonical. Loading both would double-process the same content even if wordId de-duplication later hides it."
+    },
+    {
+      "severity": "ADVISORY",
+      "code": "ENG-SPEECH-004",
+      "title": "Speech applyTo naming differs between two spec files",
+      "detail": "ENGLISH_MODULE_SPEC uses ['word', 'exampleSentence', 'listeningQuiz']; speech_settings.json uses ['word', 'example', 'listeningQuiz']. Treat these as descriptive labels, not separate feature flags. Runtime speech service should expose one shared setting to word, example sentence, and listening quiz modes."
+    },
+    {
+      "severity": "INFO",
+      "code": "ENG-CONTENT-005",
+      "title": "Small number of intentional semantic/example duplicates",
+      "detail": "Duplicate Chinese meanings: 3 groups; duplicate English example sentences: 2 groups; duplicate Chinese example translations: 3 groups. These are not invalid because different target words can share meanings/context. Do not auto-deduplicate content by meaning or sentence text."
+    }
+  ],
+  "stats": {
+    "coreWords": 300,
+    "uniqueCoreWords": 300,
+    "spellingTargets": 180,
+    "levelCounts": {
+      "A": 100,
+      "B": 100,
+      "C": 100
+    },
+    "categoryCounts": {
+      "actions": 32,
+      "animals_nature": 24,
+      "body_health": 20,
+      "colors_shapes": 15,
+      "family_people": 28,
+      "feelings_adjectives": 25,
+      "food_drink": 25,
+      "home_objects": 25,
+      "numbers_time": 26,
+      "places_transport": 13,
+      "positions_questions_connectors": 33,
+      "school_learning": 24,
+      "weather_seasons": 10
+    },
+    "partOfSpeechCounts": {
+      "adjective": 34,
+      "adverb": 11,
+      "conjunction": 5,
+      "expression": 6,
+      "noun": 170,
+      "number": 15,
+      "preposition": 6,
+      "pronoun": 12,
+      "verb": 41
+    },
+    "mockExpansion300": 300,
+    "mockExpansion200": 200,
+    "stage4Totals": [
+      300,
+      600,
+      800
+    ],
+    "duplicateMeaningGroups": 3,
+    "duplicateEnglishExampleGroups": 2,
+    "duplicateChineseExampleGroups": 3
+  },
+  "checks": [
+    {
+      "name": "Canonical Core 300 count",
+      "status": "PASS",
+      "detail": "count=300"
+    },
+    {
+      "name": "Legacy duplicate file count",
+      "status": "PASS",
+      "detail": "count=300"
+    },
+    {
+      "name": "core300_words.json and core300_words_enriched.json content-identical",
+      "status": "PASS",
+      "detail": "Both files contain the same 300 records. PROJECT_MANIFEST selects core300_words_enriched.json as canonical; do not import both."
+    },
+    {
+      "name": "Core IDs unique",
+      "status": "PASS",
+      "detail": "unique=300"
+    },
+    {
+      "name": "Core IDs sequential W001-W300",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Core English words unique case-insensitively",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Core required fields present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Core text fields nonblank",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "All examples contain target word",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Example / exampleZh paired",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Level distribution A/B/C = 100/100/100",
+      "status": "PASS",
+      "detail": "Counter({'A': 100, 'B': 100, 'C': 100})"
+    },
+    {
+      "name": "Difficulty maps A=1, B=2, C=3",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Spelling target count = 180",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Spelling targets are Level A all + first 80 Level B",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Initial mastery = unseen for all 300",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Embedded counters initialized to zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Embedded review timestamps initialized null",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Review schedule = [1,3,7,14,30] for all 300",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Audio locale = en-US for all 300",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No bundled audio files required at baseline",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Per-word speech metadata consistent",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Global speech default/range/step correct",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Speech quick rates correct",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Speech setting persists and parent lock supported",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "English module daily new words = 3-5",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "English module daily review words = 3-5",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Mastery state sequence correct",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Audio playback alone awards 0 EXP",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Five required game modes present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A1 mock +300 pack schema-valid",
+      "status": "PASS",
+      "detail": "valid against vocabulary-pack.schema.json"
+    },
+    {
+      "name": "A1 mock +200 pack schema-valid",
+      "status": "PASS",
+      "detail": "valid against vocabulary-pack.schema.json"
+    },
+    {
+      "name": "A1 mock expansion counts 300 + 200",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A1 pack IDs are distinct",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Global word IDs unique across Core300 + A1 300 + A1 200",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Stage 4 total scenario computes 300 -> 600 -> 800",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Fixture manifest reserves canonical core packId",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A1 invalid fixture set present",
+      "status": "PASS",
+      "detail": "invalidFixtures=8"
+    }
+  ],
+  "duplicateDetails": {
+    "meaningZh": [
+      {
+        "value": "爸爸",
+        "records": [
+          {
+            "id": "W014",
+            "word": "father"
+          },
+          {
+            "id": "W016",
+            "word": "dad"
+          }
+        ]
+      },
+      {
+        "value": "媽媽",
+        "records": [
+          {
+            "id": "W015",
+            "word": "mother"
+          },
+          {
+            "id": "W017",
+            "word": "mom"
+          }
+        ]
+      },
+      {
+        "value": "說",
+        "records": [
+          {
+            "id": "W088",
+            "word": "speak"
+          },
+          {
+            "id": "W207",
+            "word": "say"
+          }
+        ]
+      }
+    ],
+    "example": [
+      {
+        "value": "My family eats dinner together.",
+        "records": [
+          {
+            "id": "W023",
+            "word": "family"
+          },
+          {
+            "id": "W118",
+            "word": "dinner"
+          }
+        ]
+      },
+      {
+        "value": "Please sit here.",
+        "records": [
+          {
+            "id": "W199",
+            "word": "sit"
+          },
+          {
+            "id": "W270",
+            "word": "here"
+          }
+        ]
+      }
+    ],
+    "exampleZh": [
+      {
+        "value": "我的家人一起吃晚餐。",
+        "records": [
+          {
+            "id": "W023",
+            "word": "family"
+          },
+          {
+            "id": "W118",
+            "word": "dinner"
+          }
+        ]
+      },
+      {
+        "value": "這朵花很漂亮。",
+        "records": [
+          {
+            "id": "W134",
+            "word": "flower"
+          },
+          {
+            "id": "W249",
+            "word": "beautiful"
+          }
+        ]
+      },
+      {
+        "value": "請坐這裡。",
+        "records": [
+          {
+            "id": "W199",
+            "word": "sit"
+          },
+          {
+            "id": "W270",
+            "word": "here"
+          }
+        ]
+      }
+    ]
+  }
+}

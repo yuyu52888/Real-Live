@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "note": "Test vectors, not production task records.",
+  "vectors": [
+    {
+      "id": "EDGE-IDEMPOTENCY-001",
+      "setup": {
+        "logicalCompletionId": "qa-c1"
+      },
+      "actions": [
+        "complete qa-c1",
+        "complete qa-c1 again"
+      ],
+      "invariants": [
+        "completionCount=1",
+        "rewardCount<=1",
+        "single EXP delta"
+      ]
+    },
+    {
+      "id": "EDGE-APPROVAL-001",
+      "setup": {
+        "requiresParentConfirmation": true,
+        "logicalCompletionId": "qa-p1"
+      },
+      "actions": [
+        "childComplete"
+      ],
+      "invariants": [
+        "approval=pending",
+        "finalRewardIssued=false"
+      ]
+    },
+    {
+      "id": "EDGE-APPROVAL-002",
+      "setup": {
+        "requiresParentConfirmation": true,
+        "logicalCompletionId": "qa-p2"
+      },
+      "actions": [
+        "childComplete",
+        "approve",
+        "approve again"
+      ],
+      "invariants": [
+        "finalize once",
+        "no duplicate EXP"
+      ]
+    },
+    {
+      "id": "EDGE-REPEATABLE-001",
+      "setup": {
+        "repeatable": true,
+        "logicalCompletionId": "qa-r1"
+      },
+      "actions": [
+        "complete",
+        "reload",
+        "replay same instance"
+      ],
+      "invariants": [
+        "same instance pays at most once"
+      ]
+    },
+    {
+      "id": "EDGE-MULTITAB-001",
+      "setup": {
+        "logicalCompletionId": "qa-m1",
+        "tabs": 2
+      },
+      "actions": [
+        "tab A complete",
+        "tab B near-simultaneous complete"
+      ],
+      "invariants": [
+        "one logical completion",
+        "reward at most once"
+      ]
+    },
+    {
+      "id": "EDGE-BOSSNAME-001",
+      "setup": {
+        "idPrefix": "T",
+        "displayNameContains": "Boss"
+      },
+      "actions": [
+        "start",
+        "complete"
+      ],
+      "invariants": [
+        "ordinary quest history only",
+        "B01-B06 bossProgress unchanged"
+      ]
+    },
+    {
+      "id": "EDGE-EXP-001",
+      "setup": {
+        "startingExp": 100
+      },
+      "actions": [
+        "start",
+        "leave incomplete",
+        "reload"
+      ],
+      "invariants": [
+        "endingExp>=100",
+        "no false completion"
+      ]
+    },
+    {
+      "id": "EDGE-CATEGORY-001",
+      "setup": {
+        "canonicalCategory": "exercise_home",
+        "uiLabelExample": "運動"
+      },
+      "actions": [
+        "render/filter via alias"
+      ],
+      "invariants": [
+        "canonical category remains exercise_home"
+      ]
+    },
+    {
+      "id": "EDGE-PHOTO-001",
+      "setup": {
+        "photoOptional": true
+      },
+      "actions": [
+        "open optional photo flow"
+      ],
+      "invariants": [
+        "no external upload",
+        "no telemetry"
+      ]
+    }
+  ]
+}

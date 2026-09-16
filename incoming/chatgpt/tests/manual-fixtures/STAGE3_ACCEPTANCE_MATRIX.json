@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0",
+  "requirements": [
+    {
+      "requirement": "180 tasks/data-driven repository",
+      "cases": [
+        "S3-QA-001"
+      ]
+    },
+    {
+      "requirement": "filters/category aliases",
+      "cases": [
+        "S3-QA-002"
+      ]
+    },
+    {
+      "requirement": "exercise detail/safety",
+      "cases": [
+        "S3-QA-003",
+        "S3-QA-020"
+      ]
+    },
+    {
+      "requirement": "chore detail/parent confirmation",
+      "cases": [
+        "S3-QA-004",
+        "S3-QA-020"
+      ]
+    },
+    {
+      "requirement": "pending approval/no early reward",
+      "cases": [
+        "S3-QA-006",
+        "S3-QA-007"
+      ]
+    },
+    {
+      "requirement": "idempotency/no double EXP",
+      "cases": [
+        "S3-QA-008",
+        "S3-QA-009",
+        "S3-QA-010",
+        "S3-QA-011",
+        "S3-QA-019"
+      ]
+    },
+    {
+      "requirement": "repeatable anti-farming",
+      "cases": [
+        "S3-QA-012",
+        "S3-QA-013"
+      ]
+    },
+    {
+      "requirement": "ordinary Txxx Boss isolation",
+      "cases": [
+        "S3-QA-014"
+      ]
+    },
+    {
+      "requirement": "no invented hidden quests",
+      "cases": [
+        "S3-QA-015"
+      ]
+    },
+    {
+      "requirement": "failure never subtracts EXP",
+      "cases": [
+        "S3-QA-016"
+      ]
+    },
+    {
+      "requirement": "reload persistence",
+      "cases": [
+        "S3-QA-017"
+      ]
+    },
+    {
+      "requirement": "local-only optional photo",
+      "cases": [
+        "S3-QA-018"
+      ]
+    }
+  ]
+}

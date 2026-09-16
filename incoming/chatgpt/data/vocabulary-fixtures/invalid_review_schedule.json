@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "packId": "invalid-review-schedule",
+  "packVersion": "1.0.0",
+  "title": "Invalid review schedule",
+  "locale": "zh-TW",
+  "sourceType": "imported",
+  "description": "Real Life Quest A1 自動驗收用 1 字測試包；不得作為正式學習內容。",
+  "order": 994,
+  "enabledByDefault": true,
+  "words": [
+    {
+      "wordId": "invalid-review-schedule:W001",
+      "legacyId": null,
+      "packId": "invalid-review-schedule",
+      "word": "schedword001",
+      "meaningZh": "SCHED測試詞001",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is schedword001.",
+      "exampleZh": "這是SCHED測試詞001。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：schedword001",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        -7,
+        14,
+        30
+      ]
+    }
+  ]
+}

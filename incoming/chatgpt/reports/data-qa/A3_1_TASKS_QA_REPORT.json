@@ -1,0 +1,510 @@
+{
+  "reportId": "RLQ-A3-1-TASKS-QA-v1.0",
+  "date": "2026-09-15",
+  "sourcePackage": "Real_Life_Quest_Codex_Project_READY_v1.1",
+  "sourceFiles": [
+    "02_DATA/reality_tasks_120.json",
+    "02_DATA/exercise_task_cards_30.json",
+    "02_DATA/chore_task_cards_30.json",
+    "02_DATA/TASKCARD_EXERCISE_CHORE_SPEC.json"
+  ],
+  "overall": "PASS",
+  "blockingErrors": 0,
+  "warnings": 0,
+  "integrationAdvisories": 5,
+  "checksPassed": 44,
+  "checksTotal": 44,
+  "checks": [
+    {
+      "name": "general_count_120",
+      "pass": true,
+      "detail": "120"
+    },
+    {
+      "name": "exercise_count_30",
+      "pass": true,
+      "detail": "30"
+    },
+    {
+      "name": "chore_count_30",
+      "pass": true,
+      "detail": "30"
+    },
+    {
+      "name": "general_id_sequence",
+      "pass": true,
+      "detail": "first=['T001', 'T002'], last=['T119', 'T120']"
+    },
+    {
+      "name": "exercise_id_sequence",
+      "pass": true,
+      "detail": "first=['EX001', 'EX002'], last=['EX029', 'EX030']"
+    },
+    {
+      "name": "chore_id_sequence",
+      "pass": true,
+      "detail": "first=['CH001', 'CH002'], last=['CH029', 'CH030']"
+    },
+    {
+      "name": "global_id_unique",
+      "pass": true,
+      "detail": "180 ids / 180 unique"
+    },
+    {
+      "name": "global_name_unique",
+      "pass": true,
+      "detail": "180 names / 180 unique"
+    },
+    {
+      "name": "general_required_fields",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "exercise_required_fields",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "chore_required_fields",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "all_required_text_nonempty",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "difficulty_star_format",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "exp_positive_supported_range",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "five_ability_mapping_exact",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ability_exp_values_1_or_2",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "boolean_fields_valid",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "screen_mode_valid",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "general_categories_exact_12",
+      "pass": true,
+      "detail": "{'english': 10, 'reading_story': 10, 'math_process': 10, 'writing': 10, 'focus': 10, 'life': 10, 'cooperation': 10, 'exercise': 10, 'creativity': 10, 'exploration': 10, 'persistence': 10, 'self_management': 10}"
+    },
+    {
+      "name": "general_10_per_category",
+      "pass": true,
+      "detail": "{'english': 10, 'reading_story': 10, 'math_process': 10, 'writing': 10, 'focus': 10, 'life': 10, 'cooperation': 10, 'exercise': 10, 'creativity': 10, 'exploration': 10, 'persistence': 10, 'self_management': 10}"
+    },
+    {
+      "name": "general_screen_mode_consistency",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "math_no_in_app_question_generation",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "exercise_category_exact",
+      "pass": true,
+      "detail": "exercise_home"
+    },
+    {
+      "name": "exercise_task_type_exact",
+      "pass": true,
+      "detail": "exercise"
+    },
+    {
+      "name": "exercise_offscreen_all",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "exercise_parent_confirmation_all",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "exercise_repeatable_all",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "exercise_exactly_3_tips",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "exercise_safety_note_present",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "exercise_image_display_complete",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "chore_category_exact",
+      "pass": true,
+      "detail": "chores_home"
+    },
+    {
+      "name": "chore_task_type_exact",
+      "pass": true,
+      "detail": "chore"
+    },
+    {
+      "name": "chore_offscreen_all",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "chore_parent_confirmation_all",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "chore_repeatable_all",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "chore_exactly_3_tips",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "chore_safety_note_present",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "chore_image_display_complete",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "exercise_safety_note_core_terms",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "chore_safety_note_core_terms",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "general_parent_confirmation_expected_groups",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "general_difficulty_exp_coherence",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "exercise_difficulty_exp_coherence",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "chore_difficulty_exp_coherence",
+      "pass": true,
+      "detail": "[]"
+    }
+  ],
+  "errors": [],
+  "warningsList": [],
+  "advisories": [
+    {
+      "id": "ADV-01",
+      "severity": "integration",
+      "title": "Preserve canonical categories; add UI filter aliases instead of rewriting JSON",
+      "detail": "Canonical categories include reading_story, math_process, writing, self_management and dedicated exercise_home/chores_home. UI tabs use broader labels. Preserve source values and normalize only in the repository/filter layer.",
+      "known_filter_aliases": {
+        "reading": [
+          "reading_story"
+        ],
+        "english": [
+          "english"
+        ],
+        "exercise": [
+          "exercise",
+          "exercise_home"
+        ],
+        "chores": [
+          "chores_home"
+        ],
+        "life": [
+          "life"
+        ],
+        "hidden": [],
+        "all": [
+          "*"
+        ]
+      },
+      "note": "writing/math_process/focus/cooperation/creativity/exploration/persistence/self_management should remain visible under All unless a separate product mapping is explicitly approved."
+    },
+    {
+      "id": "ADV-02",
+      "severity": "integration",
+      "title": "repeatable=true must not mean unlimited same-day EXP farming",
+      "detail": "All 180 cards are repeatable. 12 general tasks award >=6 EXP and are especially sensitive. Stage 3 should use idempotent transaction IDs and a repeat policy/cooldown keyed by task/date/session as appropriate.",
+      "high_value_repeatable": [
+        {
+          "id": "T020",
+          "name": "章節Boss",
+          "category": "reading_story",
+          "difficulty": "★★★★",
+          "exp": 8,
+          "parent": false
+        },
+        {
+          "id": "T028",
+          "name": "數學Boss",
+          "category": "math_process",
+          "difficulty": "★★★★",
+          "exp": 8,
+          "parent": true
+        },
+        {
+          "id": "T040",
+          "name": "寫字Boss",
+          "category": "writing",
+          "difficulty": "★★★★",
+          "exp": 7,
+          "parent": true
+        },
+        {
+          "id": "T046",
+          "name": "十五分鐘Boss",
+          "category": "focus",
+          "difficulty": "★★★★",
+          "exp": 6,
+          "parent": false
+        },
+        {
+          "id": "T059",
+          "name": "五日裝備Boss",
+          "category": "life",
+          "difficulty": "★★★★",
+          "exp": 8,
+          "parent": true
+        },
+        {
+          "id": "T070",
+          "name": "合作Boss",
+          "category": "cooperation",
+          "difficulty": "★★★★",
+          "exp": 7,
+          "parent": false
+        },
+        {
+          "id": "T080",
+          "name": "體能Boss",
+          "category": "exercise",
+          "difficulty": "★★★★",
+          "exp": 7,
+          "parent": true
+        },
+        {
+          "id": "T090",
+          "name": "創意Boss",
+          "category": "creativity",
+          "difficulty": "★★★★",
+          "exp": 7,
+          "parent": false
+        },
+        {
+          "id": "T100",
+          "name": "探索Boss",
+          "category": "exploration",
+          "difficulty": "★★★★",
+          "exp": 7,
+          "parent": true
+        },
+        {
+          "id": "T109",
+          "name": "一週三重試",
+          "category": "persistence",
+          "difficulty": "★★★",
+          "exp": 6,
+          "parent": false
+        },
+        {
+          "id": "T110",
+          "name": "不放棄Boss",
+          "category": "persistence",
+          "difficulty": "★★★★",
+          "exp": 8,
+          "parent": false
+        },
+        {
+          "id": "T120",
+          "name": "一週自主管理Boss",
+          "category": "self_management",
+          "difficulty": "★★★★",
+          "exp": 8,
+          "parent": false
+        }
+      ]
+    },
+    {
+      "id": "ADV-03",
+      "severity": "integration",
+      "title": "General Boss-named tasks are not the formal six Boss entities",
+      "detail": "Several Txxx tasks use “Boss” in their display name. Keep them as ordinary/challenge task records; do not merge them with B01-B06 boss progress/reward state."
+    },
+    {
+      "id": "ADV-04",
+      "severity": "content",
+      "title": "No static hidden-task records are present in these three task files",
+      "detail": "The UI includes a Hidden tab, but these canonical task files contain no hidden category records. Do not fabricate hidden tasks during Stage 3; an empty state or later content source is safer."
+    },
+    {
+      "id": "ADV-05",
+      "severity": "safety-quality",
+      "title": "Chore safetyNote is intentionally generic across all 30 cards",
+      "detail": "All 30 chore cards satisfy the required generic safety rule and require parent confirmation. If task-specific safety copy is later added for dishes/glass/trash/bathroom/window areas, add it as an augmentation without removing the canonical baseline note.",
+      "watch_ids": [
+        "CH008",
+        "CH009",
+        "CH010",
+        "CH019",
+        "CH020",
+        "CH022",
+        "CH023",
+        "CH024"
+      ]
+    }
+  ],
+  "summary": {
+    "general": {
+      "count": 120,
+      "categories": {
+        "english": 10,
+        "reading_story": 10,
+        "math_process": 10,
+        "writing": 10,
+        "focus": 10,
+        "life": 10,
+        "cooperation": 10,
+        "exercise": 10,
+        "creativity": 10,
+        "exploration": 10,
+        "persistence": 10,
+        "self_management": 10
+      },
+      "difficulty": {
+        "★★": 59,
+        "★★★": 48,
+        "★★★★": 11,
+        "★": 2
+      },
+      "exp": {
+        "2": 4,
+        "3": 57,
+        "4": 41,
+        "5": 6,
+        "6": 2,
+        "7": 5,
+        "8": 5
+      },
+      "abilities": {
+        "learning": 34,
+        "persistence": 32,
+        "cooperation": 14,
+        "focus": 24,
+        "life": 16
+      },
+      "parent_confirmation": {
+        "False": 70,
+        "True": 50
+      },
+      "screen_mode": {
+        "onscreen_short": 20,
+        "offscreen": 100
+      }
+    },
+    "exercise": {
+      "count": 30,
+      "categories": {
+        "exercise_home": 30
+      },
+      "difficulty": {
+        "★★★": 10,
+        "★★": 15,
+        "★": 5
+      },
+      "exp": {
+        "2": 5,
+        "3": 15,
+        "4": 9,
+        "5": 1
+      },
+      "abilities": {
+        "life": 30
+      },
+      "parent_confirmation": {
+        "True": 30
+      },
+      "screen_mode": {
+        "offscreen": 30
+      }
+    },
+    "chore": {
+      "count": 30,
+      "categories": {
+        "chores_home": 30
+      },
+      "difficulty": {
+        "★": 17,
+        "★★": 12,
+        "★★★": 1
+      },
+      "exp": {
+        "2": 17,
+        "3": 12,
+        "5": 1
+      },
+      "abilities": {
+        "life": 30
+      },
+      "parent_confirmation": {
+        "True": 30
+      },
+      "screen_mode": {
+        "offscreen": 30
+      }
+    }
+  },
+  "sourceSha256": {
+    "general": "8365d46ffca2be64d14f6448f3d16bca1d17beb35022750b09e2be43ddbbe4cc",
+    "exercise": "1ffa15b03e8679d6c18cfb6e2f244d9db800245d4d98173795221729e1db2368",
+    "chore": "dee5e9147616acda56ec6cbbf097209d8f69840a116f5d3d9486968eae503281",
+    "spec": "5d72d2c564990a42ec3d375b28a86fc02b8d2d96b7a0d068d74ad6eb88576d00"
+  }
+}

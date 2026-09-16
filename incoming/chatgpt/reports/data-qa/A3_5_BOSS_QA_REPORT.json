@@ -1,0 +1,414 @@
+{
+  "qa": "A3-5 Boss QA",
+  "version": "1.0",
+  "result": "PASS",
+  "checksTotal": 55,
+  "passed": 55,
+  "failed": 0,
+  "blockingErrors": 0,
+  "warningCount": 8,
+  "bossCount": 6,
+  "bossSummary": [
+    {
+      "id": "B01",
+      "chapter": 1,
+      "chapterName": "金錢森林",
+      "name": "貪吃錢袋怪",
+      "hp": 3,
+      "exp": 10,
+      "badge": "金錢森林",
+      "chest": "chapter",
+      "cosmetic": "金色錢包頭像框"
+    },
+    {
+      "id": "B02",
+      "chapter": 2,
+      "chapterName": "等待之谷",
+      "name": "現在就要巨人",
+      "hp": 3,
+      "exp": 10,
+      "badge": "等待之谷",
+      "chest": "chapter",
+      "cosmetic": "耐心沙漏"
+    },
+    {
+      "id": "B03",
+      "chapter": 3,
+      "chapterName": "成長山脈",
+      "name": "放棄石巨人",
+      "hp": 3,
+      "exp": 12,
+      "badge": "成長山脈",
+      "chest": "chapter",
+      "cosmetic": "勇者披風"
+    },
+    {
+      "id": "B04",
+      "chapter": 4,
+      "chapterName": "智慧迷宮",
+      "name": "唯一答案魔王",
+      "hp": 5,
+      "exp": 12,
+      "badge": "智慧迷宮",
+      "chest": "chapter",
+      "cosmetic": "智慧眼鏡"
+    },
+    {
+      "id": "B05",
+      "chapter": 5,
+      "chapterName": "時間王國",
+      "name": "時間吞噬獸",
+      "hp": 4,
+      "exp": 12,
+      "badge": "時間王國",
+      "chest": "chapter",
+      "cosmetic": "時間守護者頭像框"
+    },
+    {
+      "id": "B06",
+      "chapter": 6,
+      "chapterName": "友情之城",
+      "name": "誤會迷霧龍",
+      "hp": 3,
+      "exp": 15,
+      "badge": "友情之城",
+      "chest": "chapter",
+      "cosmetic": "友情徽章披肩"
+    }
+  ],
+  "checks": [
+    {
+      "name": "BOSSES_6 is a list",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss count = 6",
+      "status": "PASS",
+      "detail": "count=6"
+    },
+    {
+      "name": "Boss IDs unique",
+      "status": "PASS",
+      "detail": "['B01', 'B02', 'B03', 'B04', 'B05', 'B06']"
+    },
+    {
+      "name": "Boss IDs sequential B01-B06",
+      "status": "PASS",
+      "detail": "['B01', 'B02', 'B03', 'B04', 'B05', 'B06']"
+    },
+    {
+      "name": "Boss chapters are unique",
+      "status": "PASS",
+      "detail": "[1, 2, 3, 4, 5, 6]"
+    },
+    {
+      "name": "Boss chapters sequential 1-6",
+      "status": "PASS",
+      "detail": "[1, 2, 3, 4, 5, 6]"
+    },
+    {
+      "name": "Chapter names match approved six chapters",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss names unique",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "All required Boss fields present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss story/challenge text nonblank",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss HP is positive integer",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Each Boss has 3-5 progress nodes",
+      "status": "PASS",
+      "detail": "{'B01': 3, 'B02': 3, 'B03': 3, 'B04': 5, 'B05': 4, 'B06': 3}"
+    },
+    {
+      "name": "HP equals progress-node count",
+      "status": "PASS",
+      "detail": "{'B01': (3, 3), 'B02': (3, 3), 'B03': (3, 3), 'B04': (5, 5), 'B05': (4, 4), 'B06': (3, 3)}"
+    },
+    {
+      "name": "Progress step numbers are contiguous 1..HP",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Progress descriptions nonblank",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Progress step numbers unique within each Boss",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Reward object exists for each Boss",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Reward fields exp/badge/chest/cosmetic present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss reward EXP is integer 10-15",
+      "status": "PASS",
+      "detail": "{'B01': 10, 'B02': 10, 'B03': 12, 'B04': 12, 'B05': 12, 'B06': 15}"
+    },
+    {
+      "name": "Boss reward badge labels nonblank",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss reward chest labels nonblank",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss reward cosmetic labels nonblank",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss reward cosmetics unique",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss data contains no negative numeric reward values",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Every Boss reward badge label resolves to reward badge catalog",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Every Boss reward chest resolves to known chest type",
+      "status": "PASS",
+      "detail": "{'boss', 'normal', 'chapter'}"
+    },
+    {
+      "name": "All six chapter story badges exist",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss badge label maps exactly to chapter story badge name",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "First Boss victory badge exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss title progression exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bossWin fragment source = 5",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Chest fragmentsNeeded = 5",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss reward chest type is chapter for all six",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Story count = 30 for chapter linkage",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Story IDs sequential S01-S30 for Boss linkage",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Six Boss chapters resolve to six groups of five stories",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Development spec states every five stories form one chapter",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss defeat spec includes chapter progress",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "UI flow requires Boss image/name/chapter/HP/challenge/reward",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "UI flow requires 3-5 progress nodes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "UI implementation requires EXP/badge/chest/cosmetic preview",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "UI implementation requires Boss defeat/chest animation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Acceptance tests require Boss progress reload persistence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Stage 7 dev spec requires step persistence after reload",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Art Bible defines Boss as child-safe growth-obstacle visualization",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Art Bible explicitly forbids scary Boss presentation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A5 contains six Boss illustration logical IDs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A5 Boss illustration content IDs match B01-B06",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A5 Boss illustration labels match canonical Boss names",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A5 Boss illustration chapter metadata matches canonical data",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A5 contains six Boss cosmetic logical IDs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "A5 Boss cosmetic labels match canonical reward cosmetics",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss art remains non-blocking until Stage 10",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss cosmetic art remains non-blocking until Stage 10",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Boss challenges contain no obvious child-solo hazardous activity keywords",
+      "status": "PASS",
+      "detail": "[]"
+    }
+  ],
+  "integrationWarnings": [
+    {
+      "code": "BOSS-W01",
+      "title": "Chapter chest type exists but has no dedicated chapterChestPool",
+      "detail": "All B01-B06 rewards specify chest=\"chapter\" and chestTypes includes chapter, but REWARD_SYSTEM defines only normalChestPool and bossChestPool. Stage 6/7 needs an explicit resolver/pool policy for chapter chests; do not guess from display text.",
+      "stage": "Stage 6 / Stage 7",
+      "severity": "integration-decision"
+    },
+    {
+      "code": "BOSS-W02",
+      "title": "Boss victory can trigger both 5 fragments and an explicit chapter chest",
+      "detail": "fragmentSources.bossWin=5 equals fragmentsNeeded=5, while each Boss separately grants a chapter chest. Decide whether both rewards are intentional. Whatever policy is chosen must be idempotent and tested so one Boss defeat cannot double-pay on reload.",
+      "stage": "Stage 6 / Stage 7",
+      "severity": "integration-decision"
+    },
+    {
+      "code": "BOSS-W03",
+      "title": "Boss badge field stores localized chapter name, not stable badge ID",
+      "detail": "Map B01-B06 deterministically to badge_story_ch1...badge_story_ch6. The same badges currently have story-completion conditions, so define whether story completion, Boss defeat, or both can unlock them; use a single idempotent badge transaction.",
+      "stage": "Stage 6 / Stage 7",
+      "severity": "integration-decision"
+    },
+    {
+      "code": "BOSS-W04",
+      "title": "Boss cosmetic reward field stores display text, not stable inventory ID",
+      "detail": "A5 already supplies stable logical IDs cosmetic.boss_b01...cosmetic.boss_b06. Persist stable IDs/logical IDs rather than localized strings such as 金色錢包頭像框.",
+      "stage": "Stage 7",
+      "severity": "integration-contract"
+    },
+    {
+      "code": "BOSS-W05",
+      "title": "Boss JSON does not encode unlock conditions",
+      "detail": "The product spec says every five thinking stories form one chapter and Stage 7 integrates chapter completion/unlock, but BOSSES_6 has no unlock field. Resolve unlock through the existing story/chapter progression service; do not add an array-index-based or arbitrary unlock rule in Boss UI code.",
+      "stage": "Stage 5 / Stage 7",
+      "severity": "integration-contract"
+    },
+    {
+      "code": "BOSS-W06",
+      "title": "Boss JSON has no structured parent-confirmation flags",
+      "detail": "Stage 7 expects parent-confirmed real-world steps when required, but progress nodes only contain step/desc. Decide a consistent policy in the Boss service or config layer. Do not silently mutate canonical Boss content or infer confirmation from Chinese text at runtime.",
+      "stage": "Stage 7 / Stage 8",
+      "severity": "integration-decision"
+    },
+    {
+      "code": "BOSS-W07",
+      "title": "Multi-day durations are embedded in challenge prose, not structured fields",
+      "detail": "B01/B03/B06 mention one week; B02/B05 mention three days. Treat these as instructional content unless a future explicit duration schema is approved; do not parse localized prose into timers or deadlines.",
+      "stage": "Stage 7",
+      "severity": "implementation-note"
+    },
+    {
+      "code": "BOSS-N01",
+      "title": "B05 uses the phrase 今日Boss inside its real-world challenge",
+      "detail": "This refers to choosing a daily priority task inside the challenge narrative. Do not recursively launch another chapter Boss or bind this phrase to the Home “今日 Boss” entity without an explicit design rule.",
+      "stage": "Stage 7",
+      "severity": "implementation-note"
+    }
+  ]
+}

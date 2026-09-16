@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "1.0",
+  "package": "A7",
+  "scope": "Stage 3 Quest Engine",
+  "notes": [
+    "API-neutral fixtures; Codex must adapt to current repo APIs.",
+    "IndexedDB is persistent source of truth.",
+    "Failure/incompletion never subtracts EXP.",
+    "Do not modify canonical JSON to make a fixture pass."
+  ],
+  "cases": [
+    {
+      "id": "S3-QA-001",
+      "title": "三類任務資料載入與總數",
+      "priority": "blocker",
+      "mode": "automation-candidate",
+      "steps": [
+        "透過 repository 載入 general/exercise/chore 任務並計數。"
+      ],
+      "expected": [
+        "120 general + 30 exercise + 30 chore = 180；ID 唯一；任務內容不是硬寫在 HTML。"
+      ]
+    },
+    {
+      "id": "S3-QA-002",
+      "title": "全部／運動／家事篩選",
+      "priority": "blocker",
+      "mode": "hybrid",
+      "steps": [
+        "在任務頁切換 全部、運動、家事，再回全部。"
+      ],
+      "expected": [
+        "各篩選顯示正確集合；UI alias 不改寫 canonical category。"
+      ]
+    },
+    {
+      "id": "S3-QA-003",
+      "title": "跳繩 100 下詳情",
+      "priority": "blocker",
+      "mode": "manual",
+      "steps": [
+        "打開跳繩 100 下，檢查圖示/插圖、3 個動作要領、安全提示、適當的計數器或 timer。"
+      ],
+      "expected": [
+        "使用 asset service/fallback；tips 與 safety 可見；不得加入醫療/健身診斷。"
+      ]
+    },
+    {
+      "id": "S3-QA-004",
+      "title": "整理書桌詳情",
+      "priority": "blocker",
+      "mode": "manual",
+      "steps": [
+        "打開整理書桌，檢查步驟/提示、安全提醒、家長確認標示。"
+      ],
+      "expected": [
+        "內容來自 canonical data；家長確認清楚；不需要雲端上傳。"
+      ]
+    },
+    {
+      "id": "S3-QA-005",
+      "title": "一般任務完成一次",
+      "priority": "blocker",
+      "mode": "hybrid",
+      "steps": [
+        "記錄 EXP，開始一個免家長確認任務並完成一次。"
+      ],
+      "expected": [
+        "只產生一個 logical completion；同一 instance 最多發一次 EXP/reward。"
+      ]
+    },
+    {
+      "id": "S3-QA-006",
+      "title": "需家長確認任務進 Pending",
+      "priority": "blocker",
+      "mode": "hybrid",
+      "steps": [
+        "記錄 EXP，完成 requiresParentConfirmation=true 任務。"
+      ],
+      "expected": [
+        "進入 pending approval；final EXP/reward 不提前發；pending 可持久化。"
+      ]
+    },
+    {
+      "id": "S3-QA-007",
+      "title": "相同 Approval 重送",
+      "priority": "blocker",
+      "mode": "automation-candidate",
+      "steps": [
+        "對同一 pending completion 執行 approve，再重送同一 approve。"
+      ],
+      "expected": [
+        "finalize 最多一次；第二次為 no-op/安全拒絕；無 double EXP。"
+      ]
+    },
+    {
+      "id": "S3-QA-008",
+      "title": "完成按鈕連點",
+      "priority": "blocker",
+      "mode": "hybrid",
+      "steps": [
+        "快速連按完成 2 次以上。"
+      ],
+      "expected": [
+        "只留一筆 logical completion；EXP/reward 不重複。"
+      ]
+    },
+    {
+      "id": "S3-QA-009",
+      "title": "完成後 F5",
+      "priority": "blocker",
+      "mode": "hybrid",
+      "steps": [
+        "完成任務後記錄 EXP/transaction，F5，再回同一任務。"
+      ],
+      "expected": [
+        "completed state 保留；EXP 不再增加；沒有第二筆同 completion reward。"
+      ]
+    },
+    {
+      "id": "S3-QA-010",
+      "title": "相同 transaction/completion ID replay",
+      "priority": "blocker",
+      "mode": "automation-candidate",
+      "steps": [
+        "用相同 stable identity 送出同一 completion 兩次。"
+      ],
+      "expected": [
+        "第一次可成功；replay idempotent；persistent EXP/history 只變一次。"
+      ]
+    },
+    {
+      "id": "S3-QA-011",
+      "title": "多分頁競態",
+      "priority": "high",
+      "mode": "hybrid",
+      "steps": [
+        "兩分頁開同一 completion instance，近乎同時完成，之後兩頁重整。"
+      ],
+      "expected": [
+        "最多一份 reward；資料仍可讀；無 duplicate EXP。"
+      ]
+    },
+    {
+      "id": "S3-QA-012",
+      "title": "repeatable 同一 instance 防刷",
+      "priority": "blocker",
+      "mode": "automation-candidate",
+      "steps": [
+        "對 repeatable=true 任務完成一次，再 reload/reopen/replay 同一 instance。"
+      ],
+      "expected": [
+        "同一 completion instance 最多發獎一次；repeatable 不繞過 idempotency。"
+      ]
+    },
+    {
+      "id": "S3-QA-013",
+      "title": "repeatable 新 instance 身分",
+      "priority": "high",
+      "mode": "automation-candidate",
+      "steps": [
+        "依實作政策建立真正的新 completion instance。"
+      ],
+      "expected": [
+        "新 instance 必須有新的 stable identity；fixture 不自行規定每日次數/cooldown。"
+      ]
+    },
+    {
+      "id": "S3-QA-014",
+      "title": "Txxx 名稱含 Boss 仍為普通任務",
+      "priority": "blocker",
+      "mode": "automation-candidate",
+      "steps": [
+        "選一個顯示名稱含 Boss 的 Txxx 任務並完成。"
+      ],
+      "expected": [
+        "走普通 quest lifecycle；不得建立/修改 B01-B06 bossProgress。"
+      ]
+    },
+    {
+      "id": "S3-QA-015",
+      "title": "不得自行產生 Hidden Quest",
+      "priority": "high",
+      "mode": "automation-candidate",
+      "steps": [
+        "列舉 repository/UI 暴露的 Stage 3 任務。"
+      ],
+      "expected": [
+        "不因 Stage 3 自行創造 canonical data 沒有的 hidden quest。"
+      ]
+    },
+    {
+      "id": "S3-QA-016",
+      "title": "失敗/取消/未完成不扣 EXP",
+      "priority": "blocker",
+      "mode": "hybrid",
+      "steps": [
+        "記錄 EXP，開始任務後取消/離開未完成，再 reload。"
+      ],
+      "expected": [
+        "EXP 不下降；既有成果保留；不產生 false completion。"
+      ]
+    },
+    {
+      "id": "S3-QA-017",
+      "title": "進行中狀態 Reload",
+      "priority": "blocker",
+      "mode": "hybrid",
+      "steps": [
+        "將任務進入 in-progress，F5 或關閉重開。"
+      ],
+      "expected": [
+        "相關 quest state 從 IndexedDB 恢復；不自動完成、不意外重設。"
+      ]
+    },
+    {
+      "id": "S3-QA-018",
+      "title": "可選照片 local-only",
+      "priority": "high",
+      "mode": "manual",
+      "steps": [
+        "若有 photo placeholder/path，開 Network panel 操作。"
+      ],
+      "expected": [
+        "照片可選；沒有外部 upload/telemetry；若 attachment 尚 deferred，UI 不假裝上傳成功。"
+      ]
+    },
+    {
+      "id": "S3-QA-019",
+      "title": "Back/Forward 不重放交易",
+      "priority": "high",
+      "mode": "hybrid",
+      "steps": [
+        "完成一次後離頁，再用瀏覽器 Back/Forward 回完成/詳情頁。"
+      ],
+      "expected": [
+        "不重播 completion side effect；EXP/transaction 數維持不變。"
+      ]
+    },
+    {
+      "id": "S3-QA-020",
+      "title": "Safety / off-screen / parent flags 保留",
+      "priority": "high",
+      "mode": "hybrid",
+      "steps": [
+        "抽查一個運動、一個家事任務，對照載入資料與畫面/狀態。"
+      ],
+      "expected": [
+        "tips/safety/off-screen/parent-confirmation 不被丟失；不導入危險 child-solo 行為。"
+      ]
+    }
+  ]
+}

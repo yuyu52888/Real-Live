@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "Stage 6/7 deterministic ID resolution recommendation only; does not replace canonical BOSSES_6.json or REWARD_SYSTEM.json.",
+  "bossResolution": [
+    {
+      "bossId": "B01",
+      "chapter": 1,
+      "chapterName": "金錢森林",
+      "storyIds": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "canonicalBadgeId": "badge_story_ch1",
+      "bossBadgeDisplayName": "金錢森林",
+      "bossAssetLogicalId": "boss.B01",
+      "bossCosmeticLogicalId": "cosmetic.boss_b01",
+      "bossCosmeticDisplayName": "金色錢包頭像框",
+      "exp": 10,
+      "chestType": "chapter",
+      "progressNodeCount": 3,
+      "hp": 3
+    },
+    {
+      "bossId": "B02",
+      "chapter": 2,
+      "chapterName": "等待之谷",
+      "storyIds": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "canonicalBadgeId": "badge_story_ch2",
+      "bossBadgeDisplayName": "等待之谷",
+      "bossAssetLogicalId": "boss.B02",
+      "bossCosmeticLogicalId": "cosmetic.boss_b02",
+      "bossCosmeticDisplayName": "耐心沙漏",
+      "exp": 10,
+      "chestType": "chapter",
+      "progressNodeCount": 3,
+      "hp": 3
+    },
+    {
+      "bossId": "B03",
+      "chapter": 3,
+      "chapterName": "成長山脈",
+      "storyIds": [
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "canonicalBadgeId": "badge_story_ch3",
+      "bossBadgeDisplayName": "成長山脈",
+      "bossAssetLogicalId": "boss.B03",
+      "bossCosmeticLogicalId": "cosmetic.boss_b03",
+      "bossCosmeticDisplayName": "勇者披風",
+      "exp": 12,
+      "chestType": "chapter",
+      "progressNodeCount": 3,
+      "hp": 3
+    },
+    {
+      "bossId": "B04",
+      "chapter": 4,
+      "chapterName": "智慧迷宮",
+      "storyIds": [
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20"
+      ],
+      "canonicalBadgeId": "badge_story_ch4",
+      "bossBadgeDisplayName": "智慧迷宮",
+      "bossAssetLogicalId": "boss.B04",
+      "bossCosmeticLogicalId": "cosmetic.boss_b04",
+      "bossCosmeticDisplayName": "智慧眼鏡",
+      "exp": 12,
+      "chestType": "chapter",
+      "progressNodeCount": 5,
+      "hp": 5
+    },
+    {
+      "bossId": "B05",
+      "chapter": 5,
+      "chapterName": "時間王國",
+      "storyIds": [
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25"
+      ],
+      "canonicalBadgeId": "badge_story_ch5",
+      "bossBadgeDisplayName": "時間王國",
+      "bossAssetLogicalId": "boss.B05",
+      "bossCosmeticLogicalId": "cosmetic.boss_b05",
+      "bossCosmeticDisplayName": "時間守護者頭像框",
+      "exp": 12,
+      "chestType": "chapter",
+      "progressNodeCount": 4,
+      "hp": 4
+    },
+    {
+      "bossId": "B06",
+      "chapter": 6,
+      "chapterName": "友情之城",
+      "storyIds": [
+        "S26",
+        "S27",
+        "S28",
+        "S29",
+        "S30"
+      ],
+      "canonicalBadgeId": "badge_story_ch6",
+      "bossBadgeDisplayName": "友情之城",
+      "bossAssetLogicalId": "boss.B06",
+      "bossCosmeticLogicalId": "cosmetic.boss_b06",
+      "bossCosmeticDisplayName": "友情徽章披肩",
+      "exp": 15,
+      "chestType": "chapter",
+      "progressNodeCount": 3,
+      "hp": 3
+    }
+  ],
+  "unresolvedPolicies": [
+    {
+      "id": "chapterChestPool",
+      "status": "requires-explicit-policy",
+      "relatedWarning": "BOSS-W01"
+    },
+    {
+      "id": "bossFragmentsPlusChapterChest",
+      "status": "requires-explicit-policy",
+      "relatedWarning": "BOSS-W02"
+    },
+    {
+      "id": "chapterBadgeTrigger",
+      "status": "requires-explicit-policy",
+      "relatedWarning": "BOSS-W03"
+    },
+    {
+      "id": "bossUnlockCondition",
+      "status": "resolve-through-existing-chapter-progress",
+      "relatedWarning": "BOSS-W05"
+    },
+    {
+      "id": "parentConfirmation",
+      "status": "requires-explicit-policy",
+      "relatedWarning": "BOSS-W06"
+    }
+  ]
+}

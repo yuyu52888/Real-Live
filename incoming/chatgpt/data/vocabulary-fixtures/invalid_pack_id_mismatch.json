@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "packId": "invalid-pack-mismatch",
+  "packVersion": "1.0.0",
+  "title": "Invalid pack mismatch",
+  "locale": "zh-TW",
+  "sourceType": "imported",
+  "description": "Real Life Quest A1 自動驗收用 1 字測試包；不得作為正式學習內容。",
+  "order": 991,
+  "enabledByDefault": true,
+  "words": [
+    {
+      "wordId": "invalid-pack-mismatch:W001",
+      "legacyId": null,
+      "packId": "another-pack-id",
+      "word": "mismatchword001",
+      "meaningZh": "MISMATCH測試詞001",
+      "partOfSpeech": "noun",
+      "category": "fixture",
+      "level": "TEST",
+      "difficulty": 1,
+      "example": "This is mismatchword001.",
+      "exampleZh": "這是MISMATCH測試詞001。",
+      "spellingRequired": false,
+      "imageAsset": null,
+      "imageCueZh": "測試用插圖提示：mismatchword001",
+      "audioFile": null,
+      "audioLocale": "en-US",
+      "tags": [
+        "fixture",
+        "expansion-test"
+      ],
+      "reviewScheduleDays": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "status": "recommendation-only",
+  "doNotOverwriteCanonicalCategories": true,
+  "uiFilterAliases": {
+    "reading": [
+      "reading_story"
+    ],
+    "english": [
+      "english"
+    ],
+    "exercise": [
+      "exercise",
+      "exercise_home"
+    ],
+    "chores": [
+      "chores_home"
+    ],
+    "life": [
+      "life"
+    ],
+    "hidden": [],
+    "all": [
+      "*"
+    ]
+  },
+  "unmappedCanonicalCategories": [
+    "math_process",
+    "writing",
+    "focus",
+    "cooperation",
+    "creativity",
+    "exploration",
+    "persistence",
+    "self_management"
+  ],
+  "rule": "Unmapped categories remain visible under All until an explicit product mapping is approved."
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "packId": "mock-minimal-2-zhTW",
+  "packVersion": "1.0.0",
+  "title": "Mock Minimal 2",
+  "locale": "zh-TW",
+  "words": [
+    {
+      "wordId": "mock-minimal-2-zhTW:W001",
+      "packId": "mock-minimal-2-zhTW",
+      "word": "fixturealpha",
+      "meaningZh": "最小測試甲"
+    },
+    {
+      "wordId": "mock-minimal-2-zhTW:W002",
+      "packId": "mock-minimal-2-zhTW",
+      "word": "fixturebeta",
+      "meaningZh": "最小測試乙"
+    }
+  ]
+}
