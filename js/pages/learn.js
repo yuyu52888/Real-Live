@@ -58,10 +58,11 @@ function modeButton(mode, ui) {
 }
 
 function sessionView(ui) {
+  const mode = LEARN_MODES.find(({ id }) => id === ui.mode) ?? LEARN_MODES[0];
+  if (ui.mode === "matching") return matchingSessionView(ui, mode);
   const item = ui.sessionItems[ui.sessionIndex];
   if (!item) return doneView(ui);
   const { word } = item;
-  const mode = LEARN_MODES.find(({ id }) => id === ui.mode) ?? LEARN_MODES[0];
   const choices = makeChoices(ui.sessionItems, ui.sessionIndex);
   return `
     <section class="learn-page learn-session" aria-labelledby="learn-session-title">
@@ -89,6 +90,12 @@ function cueView(word, mode) {
   if (mode === "image") {
     return `<div class="word-cue"><span class="word-class">image match</span><h2>${escapeHtml(word.word)}</h2><small>選出最符合這個英文單字的圖片提示</small></div>`;
   }
+  if (mode === "spelling") {
+    const visual = word.imageAsset
+      ? `<img class="spelling-cue__image" src="${escapeHtml(word.imageAsset)}" alt="${escapeHtml(word.meaningZh)}">`
+      : `<span class="image-cue" aria-hidden="true">▧</span>`;
+    return `<div class="word-cue spelling-cue">${visual}<h2>${escapeHtml(word.meaningZh)}</h2><small>先聽發音，再輸入你聽到的英文單字。</small></div>`;
+  }
   if (mode === "meaning") {
     return `<div class="word-cue"><span class="word-class">${escapeHtml(word.partOfSpeech ?? "word")}</span><h2>${escapeHtml(word.meaningZh)}</h2><small>哪一個英文單字符合這個意思？</small></div>`;
   }
@@ -97,7 +104,7 @@ function cueView(word, mode) {
 
 function answerView(word, mode, choices) {
   if (mode === "spelling") {
-    return `<form class="spelling-form" data-spelling-answer="${escapeHtml(word.word.toLocaleLowerCase("en-US"))}">
+    return `<form class="spelling-form" data-spelling-form>
       <label for="spelling-input">聽完後輸入英文單字</label>
       <input id="spelling-input" class="text-field" name="spelling" autocomplete="off" autocapitalize="off" spellcheck="false" required>
       <button class="button button--primary" type="submit">確認拼字</button>
@@ -118,6 +125,40 @@ function imageChoice(word, correct) {
     ? `<img src="${escapeHtml(word.imageAsset)}" alt="${escapeHtml(word.imageCueZh ?? word.meaningZh)}">`
     : `<span class="image-choice__fallback" aria-hidden="true">▧</span>`;
   return `<button type="button" data-learn-answer="${correct}">${visual}<small>${escapeHtml(word.imageCueZh ?? word.meaningZh)}</small></button>`;
+}
+
+function matchingSessionView(ui, mode) {
+  const game = ui.matchingGame;
+  const byId = new Map(ui.sessionItems.map(({ word }) => [word.wordId, word]));
+  const cards = [
+    ...game.wordIds.map((wordId) => ({ wordId, side: "en" })),
+    ...[...game.wordIds].reverse().map((wordId) => ({ wordId, side: "zh" })),
+  ];
+  return `
+    <section class="learn-page learn-session" aria-labelledby="learn-session-title">
+      <header class="learn-session__header">
+        <button class="learn-back" type="button" data-learn-exit aria-label="返回英文學習總覽">←</button>
+        <div><p class="eyebrow">${escapeHtml(mode.title)}</p><h1 id="learn-session-title">${game.resolvedWordIds.length} / ${game.wordIds.length}</h1></div>
+        <span class="learn-kind">英中配對</span>
+      </header>
+      <article class="word-card matching-card">
+        <p class="matching-instructions">每次翻兩張牌，找出英文和中文意思相同的一組。</p>
+        <div class="matching-board">${cards.map((card) => matchingCard(byId.get(card.wordId), card, game)).join("")}</div>
+      </article>
+    </section>`;
+}
+
+function matchingCard(word, card, game) {
+  const resolved = game.resolvedWordIds.includes(card.wordId);
+  const selected = game.selected?.wordId === card.wordId && game.selected.side === card.side;
+  const revealed = resolved || selected;
+  const text = revealed ? (card.side === "en" ? word.word : word.meaningZh) : "?";
+  const language = card.side === "en" ? "英文" : "中文";
+  return `<button class="matching-tile ${revealed ? "is-revealed" : ""} ${resolved ? "is-resolved" : ""}" type="button"
+    data-match-card data-match-word-id="${escapeHtml(card.wordId)}" data-match-side="${card.side}"
+    aria-label="${resolved ? `已配對的${language}卡` : selected ? `已翻開的${language}卡` : `未翻開的${language}卡`}" ${resolved ? "disabled" : ""}>
+    <span>${escapeHtml(text)}</span><small>${revealed ? language : "翻牌"}</small>
+  </button>`;
 }
 
 function makeChoices(items, index) {

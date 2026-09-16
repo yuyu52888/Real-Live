@@ -14,6 +14,7 @@ import { getPlayer } from "./repositories/player.js";
 import { approveQuestCompletion, completionInstanceId, requestQuestCompletion, startQuest, updateQuestProgress } from "./services/quest-service.js";
 import { verifyParentPin } from "./services/parent-auth.js";
 import { ensureCoreVocabulary, loadEnglishDashboard, saveLearningSession } from "./services/english-engine.js";
+import { createMatchingGame, selectMatchingCard as advanceMatchingGame } from "./services/matching-game.js";
 import { recordWordAnswer } from "./services/review-scheduler.js";
 import { setSpeechRate, speakVocabulary } from "./services/speech.js";
 
@@ -41,11 +42,12 @@ const actions = {
     render();
   },
   selectLearnMode(mode) {
-    const items = state.learnUi?.plan?.items ?? [];
+    const availableItems = state.learnUi?.plan?.items ?? [];
     const sessionItems = mode === "spelling"
-      ? items.filter(({ word, progress }) => word.spellingRequired && progress?.spellingUnlocked)
-      : items;
+      ? availableItems.filter(({ word, progress }) => word.spellingRequired && progress?.spellingUnlocked)
+      : mode === "matching" ? availableItems.slice(0, 4) : availableItems;
     if (!sessionItems.length) return;
+    const matchingGame = mode === "matching" ? createMatchingGame(sessionItems) : null;
     state = {
       ...state,
       learnUi: {
@@ -57,10 +59,37 @@ const actions = {
         sessionIndex: 0,
         sessionResults: [],
         sessionStartedAt: new Date().toISOString(),
+        matchingGame,
       },
     };
     render();
     if (mode === "listening") actions.speakLearn("word");
+  },
+  selectMatchingCard(wordId, side) {
+    const ui = state.learnUi;
+    if (ui?.mode !== "matching" || !ui.matchingGame) return;
+    const transition = advanceMatchingGame(ui.matchingGame, wordId, side);
+    if (transition.ignored) return;
+    if (!transition.matchedWordId) {
+      state = { ...state, learnUi: { ...ui, matchingGame: transition.game } };
+      render();
+      return;
+    }
+    return performEnglish(async () => {
+      const item = ui.sessionItems.find(({ word }) => word.wordId === transition.matchedWordId);
+      if (!item) return;
+      await recordWordAnswer(database, item.word, true);
+      const results = [...ui.sessionResults, { wordId: item.word.wordId, correct: true }];
+      if (transition.game.resolvedWordIds.length < transition.game.wordIds.length) {
+        state = { ...state, learnUi: { ...ui, matchingGame: transition.game, sessionResults: results } };
+        render();
+        return;
+      }
+      await saveLearningSession(database, { mode: ui.mode, startedAt: ui.sessionStartedAt, results });
+      const dashboard = await loadEnglishDashboard(database);
+      state = { ...state, learnUi: { ...dashboard, active: false, sessionDone: true, lastSessionCount: results.length } };
+      render();
+    });
   },
   answerLearn(correct) {
     return performEnglish(async () => {

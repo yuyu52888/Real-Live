@@ -38,13 +38,14 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-adjust-quest]", (target) => actions.adjustQuest(target.dataset.adjustQuest, Number(target.dataset.delta)));
   bindButtons(root, "[data-toggle-quest-timer]", (target) => actions.toggleQuestTimer(target.dataset.toggleQuestTimer));
   bindButtons(root, "[data-approve-completion]", (target) => actions.approveCompletion(target.dataset.approveCompletion));
+  bindButtons(root, "[data-match-card]", (target) => actions.selectMatchingCard(target.dataset.matchWordId, target.dataset.matchSide));
   bindButtons(root, "[data-learn-mode]", (target) => actions.selectLearnMode(target.dataset.learnMode));
   bindButtons(root, "[data-learn-answer]", (target) => actions.answerLearn(target.dataset.learnAnswer === "true"));
   bindButtons(root, "[data-learn-exit]", () => actions.exitLearn());
   bindButtons(root, "[data-speech-rate]", (target) => actions.changeSpeechRate(Number(target.dataset.speechRate)));
   bindButtons(root, "[data-speak]", (target) => actions.speakLearn(target.dataset.speak));
 
-  const spellingForm = root.querySelector("[data-spelling-answer]");
+  const spellingForm = root.querySelector("[data-spelling-form]");
   spellingForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     actions.submitSpelling(new FormData(spellingForm).get("spelling"));

@@ -51,6 +51,7 @@ export function nextWordProgress(current, word, correct, now = new Date()) {
   if (!correct) {
     return {
       ...existing,
+      state: existing.state === "unseen" ? "seen" : existing.state,
       wrongCount: existing.wrongCount + 1,
       streak: 0,
       lastSeenAt: timestamp,

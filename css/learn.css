@@ -70,6 +70,16 @@
 .word-choices--images img { width: 5rem; height: 5rem; object-fit: contain; }
 .word-choices--images small { color: var(--color-muted); line-height: 1.35; }
 .image-choice__fallback { display: grid; width: 4rem; height: 4rem; place-items: center; border-radius: 18px; background: #dff4ff; color: #168fd4; font-size: 2rem; }
+.spelling-cue__image { width: 8rem; height: 8rem; object-fit: contain; }
+.matching-instructions { color: var(--color-muted); font-weight: 800; text-align: center; }
+.matching-board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); }
+.matching-tile { min-height: 7rem; padding: 0.75rem; border: 3px solid #b7d7e4; border-radius: var(--radius-small); background: linear-gradient(145deg, #4fcaf0, #2588d3); color: white; cursor: pointer; }
+.matching-tile span, .matching-tile small { display: block; }
+.matching-tile span { font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; }
+.matching-tile small { margin-top: 0.35rem; font-size: 0.72rem; }
+.matching-tile.is-revealed { background: white; color: var(--color-wood-dark); }
+.matching-tile.is-resolved { border-color: #55ad55; background: #e1f6d8; color: #24753a; opacity: 1; }
+.matching-tile:disabled { cursor: default; }
 .learn-done > span { color: var(--color-gold-dark); font-size: 5rem; }
 .learn-done h1 { color: var(--color-wood-dark); }
 .learn-done .button { margin-inline: auto; }
@@ -81,3 +91,4 @@
   .speech-panel { align-items: flex-start; flex-direction: column; }
   .word-choices { grid-template-columns: 1fr; }
 }
+  .matching-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }

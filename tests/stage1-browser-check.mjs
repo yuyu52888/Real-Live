@@ -111,6 +111,90 @@ try {
     throw new Error(`Stage 4 Learn UI failed: ${JSON.stringify(learnResult)}`);
   }
 
+  await client.evaluate(`document.querySelector('[data-learn-mode="matching"]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelectorAll('[data-match-card]').length >= 2`));
+  const matchingStart = await client.evaluate(`(() => {
+    const cards = [...document.querySelectorAll('[data-match-card]')];
+    const first = cards.find((card) => card.dataset.matchSide === 'en');
+    return { allHidden: cards.every((card) => card.querySelector('span')?.textContent === '?'), wordId: first?.dataset.matchWordId };
+  })()`);
+  if (!matchingStart.allHidden || !matchingStart.wordId) throw new Error("Matching cards exposed answers before interaction");
+  const matchingWordId = JSON.stringify(matchingStart.wordId);
+  await client.evaluate(`[...document.querySelectorAll('[data-match-card]')].find((card) => card.dataset.matchWordId === ${matchingWordId} && card.dataset.matchSide === 'en').click()`);
+  await waitFor(() => client.evaluate(`[...document.querySelectorAll('[data-match-card]')].find((card) => card.dataset.matchWordId === ${matchingWordId} && card.dataset.matchSide === 'en')?.querySelector('span')?.textContent !== '?'`));
+  await client.evaluate(`[...document.querySelectorAll('[data-match-card]')].find((card) => card.dataset.matchWordId === ${matchingWordId} && card.dataset.matchSide === 'zh').click()`);
+  await waitFor(() => client.evaluate(`[...document.querySelectorAll('[data-match-card]')].filter((card) => card.dataset.matchWordId === ${matchingWordId} && card.classList.contains('is-resolved')).length === 2 && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  const matchingCount = await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getWordProgress } = await import('/js/repositories/vocabulary.js');
+    const db = await openDatabase();
+    const progress = await getWordProgress(db, ${matchingWordId});
+    db.close();
+    return progress?.correctCount;
+  })()`);
+  await client.evaluate(`[...document.querySelectorAll('[data-match-card]')].find((card) => card.dataset.matchWordId === ${matchingWordId} && card.dataset.matchSide === 'en').click()`);
+  const matchingCountAfterRepeat = await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getWordProgress } = await import('/js/repositories/vocabulary.js');
+    const db = await openDatabase();
+    const progress = await getWordProgress(db, ${matchingWordId});
+    db.close();
+    return progress?.correctCount;
+  })()`);
+  if (matchingCount !== 1 || matchingCountAfterRepeat !== 1) throw new Error("Resolved matching pair updated progress more than once");
+  await client.evaluate(`document.querySelector('[data-learn-exit]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.learn-mode-grid')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+
+  const spellingWord = await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getVocabularyWord, saveWordProgress } = await import('/js/repositories/vocabulary.js');
+    const db = await openDatabase();
+    const word = await getVocabularyWord(db, 'core300-zhTW:W050');
+    await saveWordProgress(db, {
+      wordId: word.wordId, state: 'practiced', correctCount: 3, wrongCount: 0, streak: 3,
+      lastSeenAt: '2026-09-01T08:00:00.000Z', lastReviewAt: '2026-09-01T08:00:00.000Z',
+      nextReviewAt: '2000-01-01T00:00:00.000Z', spellingUnlocked: true,
+    });
+    db.close();
+    return { wordId: word.wordId, word: word.word };
+  })()`);
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="learn"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-learn-mode="spelling"]:not(:disabled)'))`));
+  await client.evaluate(`document.querySelector('[data-learn-mode="spelling"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-spelling-form]'))`));
+  const spellingBefore = await client.evaluate(`({
+    text: document.querySelector('.word-card')?.textContent?.toLocaleLowerCase('en-US'),
+    hasPronounce: Boolean(document.querySelector('[data-speak="word"]')),
+  })`);
+  if (spellingBefore.text.includes(spellingWord.word.toLocaleLowerCase('en-US')) || !spellingBefore.hasPronounce) {
+    throw new Error("Spelling challenge exposed the answer or removed pronunciation");
+  }
+  await client.evaluate(`document.querySelector('[data-speak="word"]').click(); document.querySelector('#spelling-input').value='not-the-answer'; document.querySelector('[data-spelling-form]').requestSubmit()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.learn-done')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  let spellingProgress = await readWordProgress(client, spellingWord.wordId);
+  if (spellingProgress.state !== "practiced" || spellingProgress.wrongCount !== 1 || spellingProgress.correctCount !== 3) throw new Error("Incorrect spelling result was not persisted correctly");
+
+  await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getWordProgress, saveWordProgress } = await import('/js/repositories/vocabulary.js');
+    const db = await openDatabase();
+    const progress = await getWordProgress(db, 'core300-zhTW:W050');
+    await saveWordProgress(db, { ...progress, nextReviewAt: '2000-01-01T00:00:00.000Z' });
+    db.close();
+  })()`);
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="learn"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-learn-mode="spelling"]:not(:disabled)'))`));
+  await client.evaluate(`document.querySelector('[data-learn-mode="spelling"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-spelling-form]'))`));
+  await client.evaluate(`document.querySelector('#spelling-input').value=${JSON.stringify(spellingWord.word)}; document.querySelector('[data-spelling-form]').requestSubmit()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.learn-done')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  spellingProgress = await readWordProgress(client, spellingWord.wordId);
+  if (spellingProgress.state !== "mastered" || spellingProgress.wrongCount !== 1 || spellingProgress.correctCount !== 4) throw new Error("Correct spelling result was not persisted correctly");
+
   await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="quests"]').click()`);
   await waitFor(() => client.evaluate(`document.querySelectorAll('.quest-card').length === 180`));
   const questResult = await client.evaluate(`(() => {
@@ -283,6 +367,17 @@ async function waitFor(check) {
     await delay(100);
   }
   throw new Error("頁面載入逾時");
+}
+
+async function readWordProgress(client, wordId) {
+  return client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getWordProgress } = await import('/js/repositories/vocabulary.js');
+    const db = await openDatabase();
+    const progress = await getWordProgress(db, ${JSON.stringify(wordId)});
+    db.close();
+    return progress;
+  })()`);
 }
 
 function delay(milliseconds) {

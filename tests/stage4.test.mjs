@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
+import { renderLearn } from "../js/pages/learn.js";
+import { createMatchingGame, selectMatchingCard } from "../js/services/matching-game.js";
 import { nextWordProgress } from "../js/services/review-scheduler.js";
 import { normalizeSpeechRate, speakVocabulary } from "../js/services/speech.js";
 import { normalizeCorePack, validateVocabularyPack } from "../js/services/vocabulary-pack.js";
@@ -50,11 +52,63 @@ test("Stage 4 progress follows stable states and wrong answers never subtract pr
   const mastered = nextWordProgress(practiced, word, true, start);
   assert.deepEqual([seen.state, known.state, practiced.state, mastered.state], ["seen", "known", "practiced", "mastered"]);
   assert.equal(practiced.spellingUnlocked, true);
+  const firstWrong = nextWordProgress(null, word, false, start);
+  assert.equal(firstWrong.state, "seen");
+  assert.equal(firstWrong.correctCount, 0);
+  assert.equal(firstWrong.wrongCount, 1);
   const wrong = nextWordProgress(mastered, word, false, start);
   assert.equal(wrong.state, "mastered");
   assert.equal(wrong.correctCount, mastered.correctCount);
   assert.equal(wrong.wrongCount, mastered.wrongCount + 1);
   assert.equal(wrong.nextReviewAt, "2026-09-16T14:00:00.000Z");
+});
+
+test("Stage 4 matching hides pairs until flipped and resolved pairs cannot match twice", () => {
+  const items = [
+    { type: "new", word: { wordId: "pack:W001", word: "apple", meaningZh: "蘋果" } },
+    { type: "new", word: { wordId: "pack:W002", word: "book", meaningZh: "書" } },
+  ];
+  const game = createMatchingGame(items);
+  const baseUi = {
+    active: true,
+    sessionDone: false,
+    mode: "matching",
+    sessionItems: items,
+    sessionIndex: 0,
+    sessionResults: [],
+    matchingGame: game,
+  };
+  const hiddenHtml = renderLearn({ learnUi: baseUi });
+  assert.doesNotMatch(hiddenHtml, />apple</i);
+  assert.doesNotMatch(hiddenHtml, />蘋果</);
+
+  const firstFlip = selectMatchingCard(game, "pack:W001", "en");
+  const oneCardHtml = renderLearn({ learnUi: { ...baseUi, matchingGame: firstFlip.game } });
+  assert.match(oneCardHtml, />apple</i);
+  assert.doesNotMatch(oneCardHtml, />蘋果</);
+
+  const match = selectMatchingCard(firstFlip.game, "pack:W001", "zh");
+  assert.equal(match.matchedWordId, "pack:W001");
+  assert.deepEqual(match.game.resolvedWordIds, ["pack:W001"]);
+  const repeated = selectMatchingCard(match.game, "pack:W001", "en");
+  assert.equal(repeated.ignored, true);
+  assert.equal(repeated.matchedWordId, null);
+  assert.deepEqual(repeated.game.resolvedWordIds, ["pack:W001"]);
+});
+
+test("Stage 4 spelling hides target spelling while keeping meaning and pronunciation", () => {
+  const item = { type: "review", word: {
+    wordId: "core300-zhTW:W050", word: "kitchen", meaningZh: "廚房",
+    spellingRequired: true, spellingUnlocked: true, imageAsset: null,
+  }, progress: { spellingUnlocked: true } };
+  const html = renderLearn({ learnUi: {
+    active: true, sessionDone: false, mode: "spelling", sessionItems: [item],
+    sessionIndex: 0, sessionResults: [], speechRate: 0.75,
+  } });
+  assert.doesNotMatch(html, /kitchen/i);
+  assert.match(html, /廚房/);
+  assert.match(html, /data-speak="word"/);
+  assert.match(html, /data-spelling-form/);
 });
 
 test("Stage 4 speech rates enforce range/step and playback gives zero EXP", async () => {
