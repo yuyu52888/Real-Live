@@ -1,0 +1,110 @@
+{
+  "package": "Real_Life_Quest_A1_A2_Parallel_Handoff_v1.0",
+  "files": [
+    {
+      "path": "A1_A2_CODEX_INTEGRATION_PROMPT.md",
+      "size": 1601,
+      "sha256": "d8d611166004e35dc9f4df495cfad58bc82773d3543983f3157d0628432b06ba"
+    },
+    {
+      "path": "A1_A2_HANDOFF.md",
+      "size": 1087,
+      "sha256": "1da7042f252383eb796687d64535581e9310c2f842b3816db96b47d579911133"
+    },
+    {
+      "path": "VALIDATION_SUMMARY.md",
+      "size": 1457,
+      "sha256": "f732387991bd7d3dd282336c67ba80bdceac89a7a509dbd1708345cd6ff9ca03"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/README.md",
+      "size": 957,
+      "sha256": "8b8f80df08b0c087e9d1738b7b37b8c63168840b4b7033c9123425082875d77b"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/fixture_manifest.json",
+      "size": 2081,
+      "sha256": "0a7c23643e714d331cbd228deaa3a0ff3767f2c1e7318a661b940ef54a37a3c2"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_duplicate_existing_pack_id.json",
+      "size": 1045,
+      "sha256": "5dd8298b30aee5518c2ecaf67fbe557389cabbe4b1746f8175d56cbfeac67e13"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_duplicate_word_id.json",
+      "size": 1622,
+      "sha256": "8ee932c87cbd4462277fe40cb054ab9ded6cd740c6e4169ace5ec4473403f33d"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_example_pair.json",
+      "size": 1035,
+      "sha256": "06888d2a0fa79e24940483c4fe86ae03e0b88f2158efea7ed6741cf5b47ccf01"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_malformed_json.json",
+      "size": 52,
+      "sha256": "5d2ac6fd55ea08a563c820d744fb0221eb895f16da41109159694570eb28bab9"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_missing_word.json",
+      "size": 1029,
+      "sha256": "f878f2776209f0d3960c608c6cabcfd6d0c5263c017393472d72e62475bd9882"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_pack_id_mismatch.json",
+      "size": 1076,
+      "sha256": "ee78baeabd62d24f7080123d0348109791853da0ba018cdd579ef06b619f2c4e"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_review_schedule.json",
+      "size": 1076,
+      "sha256": "fa6025c9d59a180f0b0b0cf000fdbe06f8d257fdb79aed0afa7094212b955d47"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/invalid_schema_version.json",
+      "size": 1076,
+      "sha256": "54418dc38e810897e6d795e3ce5d1517adf29b3a4e81440c4a8cd8340e0303fd"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/mock_expansion_200.json",
+      "size": 144475,
+      "sha256": "abbf6b7c75554d44ec693da8d7e4dd842470005c3831cd7dea394911acc7399f"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/mock_expansion_300.json",
+      "size": 216541,
+      "sha256": "8c2abed8e5b1494f7d6af1e925b5387cf3d47479b8715b1f42166dd42eb1fa17"
+    },
+    {
+      "path": "incoming/chatgpt/data/vocabulary-fixtures/valid_minimal_pack_2.json",
+      "size": 478,
+      "sha256": "b5bc9cd9d32ccba19bcf04f9156fffec43bed959f22e7b456b166724203953a0"
+    },
+    {
+      "path": "incoming/chatgpt/reports/data-qa/A1_A2_VALIDATION_REPORT.json",
+      "size": 3416,
+      "sha256": "7cf6099f2fd0347bb26187a61f6a95a78313ae4a935f12b65be46ce189817bbb"
+    },
+    {
+      "path": "incoming/chatgpt/reports/data-qa/A1_A2_VALIDATION_REPORT.md",
+      "size": 1778,
+      "sha256": "a24502a60894282982e02f89020f6cb2ef0f8650da34a6fd2692720ce626721d"
+    },
+    {
+      "path": "incoming/chatgpt/tools/content-validation/README.md",
+      "size": 1330,
+      "sha256": "f916749fc2280b079e32120de1f427ea5f09bf9cae00ca1adb8dfe3e70d5b169"
+    },
+    {
+      "path": "incoming/chatgpt/tools/content-validation/__pycache__/validate_content.cpython-313.pyc",
+      "size": 33691,
+      "sha256": "463f986ba3cbe8351461b3816270629e25eb3b25283d1d84974b48e5c4754cc8"
+    },
+    {
+      "path": "incoming/chatgpt/tools/content-validation/validate_content.py",
+      "size": 18103,
+      "sha256": "7dd7a8f504ab263526c6df1a11fba2b35367ef5a09718bbcb2dd5b8773a53b9e"
+    }
+  ]
+}

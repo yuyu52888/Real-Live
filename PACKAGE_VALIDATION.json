@@ -1,0 +1,25 @@
+{
+  "coreWords": 300,
+  "stories": 30,
+  "exerciseCards": 30,
+  "choreCards": 30,
+  "uiReferences": 7,
+  "avatarVariants": [
+    "boy",
+    "girl"
+  ],
+  "vocabularyExpansionCapacityRequirement": ">=2000",
+  "status": "PASS",
+  "packageVersion": "1.1-final-ready",
+  "agentsMd": true,
+  "codexExecutionPrompts": true,
+  "codexPlaybookDocx": true,
+  "docxVisualQA": "PASS",
+  "artBible": true,
+  "codexPlaybook": "v1.1",
+  "assetManifest": true,
+  "boyAssets": 13,
+  "girlAssets": 13,
+  "foxAssets": 11,
+  "finalAudit": "PASS"
+}

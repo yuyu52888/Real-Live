@@ -1,0 +1,17 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.log
+
+# local tooling
+.vscode/
+.idea/
+
+# generated/runtime backups
+/backups/
+/dist/
+
+# dependencies if ever added
+node_modules/

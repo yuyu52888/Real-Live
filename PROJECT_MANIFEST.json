@@ -1,0 +1,41 @@
+{
+  "packageVersion": "1.1-final-ready",
+  "project": "Real Life Quest",
+  "target": "HTML/CSS/JavaScript PWA",
+  "primaryAge": 8,
+  "requiredAvatarVariants": [
+    "boy",
+    "girl"
+  ],
+  "vocabulary": {
+    "initialCount": 300,
+    "futureAddExpected": "300-500",
+    "minimumArchitecturalCapacity": 2000,
+    "mustBeDataDriven": true
+  },
+  "canonicalFiles": {
+    "developmentPrompt": "00_START_HERE/GPT6_DEVELOPMENT_PROMPT.md",
+    "uiSpec": "01_SPECS/UI_UX_IMPLEMENTATION_SPEC.md",
+    "vocabularySpec": "01_SPECS/VOCABULARY_EXPANSION_SPEC.md",
+    "coreWords": "02_DATA/core300_words_enriched.json",
+    "stories": "02_DATA/thinking_stories_30.json",
+    "tasks": "02_DATA/reality_tasks_120.json",
+    "exercise": "02_DATA/exercise_task_cards_30.json",
+    "chores": "02_DATA/chore_task_cards_30.json",
+    "rewards": "03_REWARDS_BOSSES/REWARD_SYSTEM.json",
+    "bosses": "03_REWARDS_BOSSES/BOSSES_6.json",
+    "codexAgentGuide": "AGENTS.md",
+    "codexExecutionPrompts": "06_GUIDES/CODEX_EXECUTION_PROMPTS.md",
+    "artBible": "01_SPECS/ART_BIBLE.md",
+    "codexPlaybook": "06_GUIDES/Real_Life_Quest_Codex_Execution_Playbook_v1.1.docx",
+    "startCodexHere": "00_START_HERE/START_CODEX_HERE.md",
+    "assetManifest": "assets/ASSET_MANIFEST.json"
+  },
+  "visualReferenceCount": 7,
+  "artAssetBaseline": {
+    "boyPosePack": true,
+    "girlPosePack": true,
+    "foxPosePack": true,
+    "remainingProductionArt": "parallel/non-blocking"
+  }
+}

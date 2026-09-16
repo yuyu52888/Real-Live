@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "files": [
+    {
+      "path": "A4_A5_CODEX_INTEGRATION_PROMPT.md",
+      "sha256": "08ac9423a2170f5740a2c93bfb9d4be4f521af30bf2c7a9166f1e49f066a4e29",
+      "bytes": 1650
+    },
+    {
+      "path": "A4_A5_HANDOFF.md",
+      "sha256": "a82c2a333172a479a9261e308f6c86d1604c2e210238585153698bd9371f574c",
+      "bytes": 737
+    },
+    {
+      "path": "VALIDATION_SUMMARY.md",
+      "sha256": "7d9f3e198008c912720f4d830f16c5a9719a4864e23d41c68430b96639dfa2ec",
+      "bytes": 1266
+    },
+    {
+      "path": "incoming/chatgpt/assets/manifest/ASSET_MANIFEST.json",
+      "sha256": "298bc6a0336e77a2664bfd178265b2c1f7e15c3fc21bba76d77c8ff0f6e3f450",
+      "bytes": 88305
+    },
+    {
+      "path": "incoming/chatgpt/assets/manifest/README.md",
+      "sha256": "2f6b92e33393cc31c3e6998b0257f94feb6b7e687e6b40b46e6a0ddfde5371ae",
+      "bytes": 614
+    },
+    {
+      "path": "incoming/chatgpt/data/copy/README.md",
+      "sha256": "ee8abd0d0815d29a5538f5e18371f232a681695542ceb072e64728e1d72f5906",
+      "bytes": 577
+    },
+    {
+      "path": "incoming/chatgpt/data/copy/UI_COPY_ZH_TW.json",
+      "sha256": "95d05659dce6dd69d0de33a885c6669d38aef7207b362b59f43b82e30ae5ced2",
+      "bytes": 12991
+    },
+    {
+      "path": "incoming/chatgpt/reports/data-qa/A4_A5_VALIDATION_REPORT.json",
+      "sha256": "3ce66df9d8acb27e2f650bfb5f1f6ea266c227035cb148d677a83ee08d238294",
+      "bytes": 1082
+    },
+    {
+      "path": "incoming/chatgpt/reports/data-qa/A4_A5_VALIDATION_REPORT.md",
+      "sha256": "7a145fd625ba113c25af071f6dc5d4fafaca31559e0b41f0138fdf96a93ebe37",
+      "bytes": 860
+    },
+    {
+      "path": "incoming/chatgpt/tools/a4-a5-validation/README.md",
+      "sha256": "fd110bebd371050e82c5429d09cde8972bdd0ec2745808251cc975a5b6f58e56",
+      "bytes": 259
+    },
+    {
+      "path": "incoming/chatgpt/tools/a4-a5-validation/validate_a4_a5.py",
+      "sha256": "27b525440ec6a852193e4674f2166ff9cb579b81aa7700e5ec26aa9b9247a961",
+      "bytes": 4135
+    }
+  ]
+}
