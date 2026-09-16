@@ -1,0 +1,36 @@
+{
+  "visualReferences": [
+    {
+      "file": "01_home_dashboard.png",
+      "purpose": "visual/layout reference only"
+    },
+    {
+      "file": "02_quest_overview.png",
+      "purpose": "visual/layout reference only"
+    },
+    {
+      "file": "03_english_learning.png",
+      "purpose": "visual/layout reference only"
+    },
+    {
+      "file": "04_exercise_task.png",
+      "purpose": "visual/layout reference only"
+    },
+    {
+      "file": "05_chore_task.png",
+      "purpose": "visual/layout reference only"
+    },
+    {
+      "file": "06_thinking_story.png",
+      "purpose": "visual/layout reference only"
+    },
+    {
+      "file": "07_boss_parent.png",
+      "purpose": "visual/layout reference only"
+    }
+  ],
+  "functionalTruth": "01_SPECS + 02_DATA + 03_REWARDS_BOSSES",
+  "note": "UI reference images define layout/composition only; JSON/specs control live data and ART_BIBLE controls character/world visual identity.",
+  "artAuthority": "01_SPECS/ART_BIBLE.md",
+  "layoutAuthority": "04_UI_REFERENCES/*.png"
+}

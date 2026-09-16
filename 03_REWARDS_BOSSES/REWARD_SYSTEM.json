@@ -1,0 +1,574 @@
+{
+  "version": "1.0",
+  "designPrinciples": [
+    "EXP 用於角色等級成長，不可兌現金。",
+    "完成普通任務主要給即時回饋；較大型獎勵集中在升級、Boss、章節完成。",
+    "物質獎勵比例低於 20%，避免形成『做事換東西』。",
+    "角色裝備只影響外觀，不提供能力加成。",
+    "失敗不扣 EXP，不沒收已取得獎勵。",
+    "家長可關閉任何不適合家庭規則的獎勵。"
+  ],
+  "levelThresholds": [
+    {
+      "level": 1,
+      "expRequired": 0
+    },
+    {
+      "level": 2,
+      "expRequired": 30
+    },
+    {
+      "level": 3,
+      "expRequired": 65
+    },
+    {
+      "level": 4,
+      "expRequired": 105
+    },
+    {
+      "level": 5,
+      "expRequired": 150
+    },
+    {
+      "level": 6,
+      "expRequired": 200
+    },
+    {
+      "level": 7,
+      "expRequired": 255
+    },
+    {
+      "level": 8,
+      "expRequired": 315
+    },
+    {
+      "level": 9,
+      "expRequired": 380
+    },
+    {
+      "level": 10,
+      "expRequired": 450
+    }
+  ],
+  "levelRewards": [
+    {
+      "level": 2,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "frame_bronze",
+          "name": "青銅冒險框"
+        },
+        {
+          "type": "privilege",
+          "id": "choose_family_movie",
+          "name": "今晚家庭電影由你選"
+        },
+        {
+          "type": "ticket",
+          "id": "reroll_1",
+          "name": "任務重抽券 ×1"
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "hat_explorer",
+          "name": "探索者帽"
+        },
+        {
+          "type": "privilege",
+          "id": "choose_dessert",
+          "name": "今天甜點由你選"
+        },
+        {
+          "type": "ticket",
+          "id": "bonus_exp_2",
+          "name": "下一個挑戰任務 +2 EXP"
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "backpack_green",
+          "name": "冒險背包"
+        },
+        {
+          "type": "privilege",
+          "id": "family_game_30",
+          "name": "指定一次30分鐘家庭遊戲"
+        },
+        {
+          "type": "ticket",
+          "id": "boss_retry",
+          "name": "Boss復活券 ×1"
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "pet_egg_1",
+          "name": "神秘寵物蛋"
+        },
+        {
+          "type": "privilege",
+          "id": "weekend_activity",
+          "name": "從家長預設清單選一次週末活動"
+        },
+        {
+          "type": "ticket",
+          "id": "quest_skip",
+          "name": "普通任務跳過券 ×1"
+        }
+      ]
+    },
+    {
+      "level": 6,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "cape_blue",
+          "name": "藍色冒險披風"
+        },
+        {
+          "type": "privilege",
+          "id": "choose_breakfast",
+          "name": "週末早餐由你選"
+        },
+        {
+          "type": "ticket",
+          "id": "double_exp",
+          "name": "一次挑戰任務 EXP ×2"
+        }
+      ]
+    },
+    {
+      "level": 7,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "pet_1",
+          "name": "寵物夥伴：小狐狸"
+        },
+        {
+          "type": "privilege",
+          "id": "team_leader",
+          "name": "當一天家庭小隊長"
+        },
+        {
+          "type": "ticket",
+          "id": "mystery_unlock",
+          "name": "神秘任務解鎖券"
+        }
+      ]
+    },
+    {
+      "level": 8,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "background_forest",
+          "name": "森林營地背景"
+        },
+        {
+          "type": "privilege",
+          "id": "choose_walk_route",
+          "name": "一次家庭散步路線由你決定"
+        },
+        {
+          "type": "ticket",
+          "id": "rest_card",
+          "name": "休息日卡 ×1"
+        }
+      ]
+    },
+    {
+      "level": 9,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "armor_light",
+          "name": "光之冒險服"
+        },
+        {
+          "type": "privilege",
+          "id": "special_parent_time",
+          "name": "指定一次30分鐘一對一親子時間"
+        },
+        {
+          "type": "ticket",
+          "id": "reroll_3",
+          "name": "任務重抽券 ×3"
+        }
+      ]
+    },
+    {
+      "level": 10,
+      "choose": 1,
+      "options": [
+        {
+          "type": "cosmetic",
+          "id": "crown_chapter1",
+          "name": "第一章冒險王冠"
+        },
+        {
+          "type": "privilege",
+          "id": "major_family_choice",
+          "name": "從家長預設清單選一次大型家庭活動"
+        },
+        {
+          "type": "material_optional",
+          "id": "small_gift",
+          "name": "家長可選：一份預先設定的小禮物"
+        }
+      ]
+    }
+  ],
+  "chestSystem": {
+    "fragmentsNeeded": 5,
+    "fragmentSources": {
+      "challengeTask": 1,
+      "bossWin": 5,
+      "hiddenTaskChance": 0.15
+    },
+    "chestTypes": [
+      {
+        "id": "normal",
+        "name": "普通寶箱"
+      },
+      {
+        "id": "boss",
+        "name": "Boss寶箱"
+      },
+      {
+        "id": "chapter",
+        "name": "章節寶箱"
+      }
+    ],
+    "normalChestPool": [
+      {
+        "type": "cosmetic",
+        "weight": 25,
+        "items": [
+          "頭像框",
+          "帽子",
+          "背包貼飾",
+          "角色小配件"
+        ]
+      },
+      {
+        "type": "ticket",
+        "weight": 20,
+        "items": [
+          "任務重抽券",
+          "普通任務跳過券"
+        ]
+      },
+      {
+        "type": "privilege",
+        "weight": 20,
+        "items": [
+          "選一首車上的歌",
+          "選今晚家庭遊戲",
+          "選睡前故事"
+        ]
+      },
+      {
+        "type": "badge_fragment",
+        "weight": 15,
+        "items": [
+          "隨機徽章碎片"
+        ]
+      },
+      {
+        "type": "bonus_exp",
+        "weight": 10,
+        "items": [
+          "+2 EXP",
+          "+3 EXP"
+        ]
+      },
+      {
+        "type": "special_event",
+        "weight": 10,
+        "items": [
+          "家庭任務",
+          "神秘任務",
+          "Double Quest"
+        ]
+      }
+    ],
+    "bossChestPool": [
+      {
+        "type": "cosmetic_rare",
+        "weight": 35,
+        "items": [
+          "稀有帽子",
+          "披風",
+          "寵物配件",
+          "Boss頭像框"
+        ]
+      },
+      {
+        "type": "ticket_rare",
+        "weight": 20,
+        "items": [
+          "Boss復活券",
+          "EXP×2券"
+        ]
+      },
+      {
+        "type": "privilege",
+        "weight": 20,
+        "items": [
+          "30分鐘家庭遊戲",
+          "週末活動選擇權"
+        ]
+      },
+      {
+        "type": "badge",
+        "weight": 15,
+        "items": [
+          "Boss專屬徽章"
+        ]
+      },
+      {
+        "type": "special_event",
+        "weight": 10,
+        "items": [
+          "神秘章節任務"
+        ]
+      }
+    ]
+  },
+  "titles": [
+    {
+      "id": "first_quest",
+      "name": "初學冒險者",
+      "condition": "完成第1個任務"
+    },
+    {
+      "id": "task_10",
+      "name": "任務新手",
+      "condition": "完成10個任務"
+    },
+    {
+      "id": "task_50",
+      "name": "冒險熟手",
+      "condition": "完成50個任務"
+    },
+    {
+      "id": "retry_5",
+      "name": "不放棄見習生",
+      "condition": "完成5次重試"
+    },
+    {
+      "id": "retry_20",
+      "name": "不放棄勇者",
+      "condition": "完成20次重試"
+    },
+    {
+      "id": "english_10",
+      "name": "單字獵人",
+      "condition": "完成10次英文任務"
+    },
+    {
+      "id": "english_50",
+      "name": "Word Ranger",
+      "condition": "累積掌握50個單字"
+    },
+    {
+      "id": "reading_10",
+      "name": "故事旅人",
+      "condition": "完成10篇思維故事"
+    },
+    {
+      "id": "reading_30",
+      "name": "思維冒險家",
+      "condition": "完成30篇思維故事"
+    },
+    {
+      "id": "focus_100",
+      "name": "專注學徒",
+      "condition": "累積100分鐘專注任務"
+    },
+    {
+      "id": "life_10",
+      "name": "裝備管理師",
+      "condition": "完成10次生活任務"
+    },
+    {
+      "id": "coop_10",
+      "name": "家庭小助手",
+      "condition": "完成10次合作任務"
+    },
+    {
+      "id": "boss_5",
+      "name": "Boss Slayer",
+      "condition": "擊敗5個Boss"
+    },
+    {
+      "id": "streak_7",
+      "name": "七日冒險者",
+      "condition": "達成7日冒險紀錄"
+    },
+    {
+      "id": "self_start_10",
+      "name": "主動起跑者",
+      "condition": "10次在60秒內主動開始任務"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge_first",
+      "name": "第一次冒險",
+      "condition": "完成首個任務"
+    },
+    {
+      "id": "badge_first_boss",
+      "name": "第一場Boss勝利",
+      "condition": "首次擊敗Boss"
+    },
+    {
+      "id": "badge_7day",
+      "name": "七日足跡",
+      "condition": "7日冒險"
+    },
+    {
+      "id": "badge_30task",
+      "name": "30任務",
+      "condition": "完成30個任務"
+    },
+    {
+      "id": "badge_100task",
+      "name": "100任務",
+      "condition": "完成100個任務"
+    },
+    {
+      "id": "badge_word100",
+      "name": "100 Words",
+      "condition": "掌握100個單字"
+    },
+    {
+      "id": "badge_story_ch1",
+      "name": "金錢森林",
+      "condition": "完成思維故事1-5"
+    },
+    {
+      "id": "badge_story_ch2",
+      "name": "等待之谷",
+      "condition": "完成思維故事6-10"
+    },
+    {
+      "id": "badge_story_ch3",
+      "name": "成長山脈",
+      "condition": "完成思維故事11-15"
+    },
+    {
+      "id": "badge_story_ch4",
+      "name": "智慧迷宮",
+      "condition": "完成思維故事16-20"
+    },
+    {
+      "id": "badge_story_ch5",
+      "name": "時間王國",
+      "condition": "完成思維故事21-25"
+    },
+    {
+      "id": "badge_story_ch6",
+      "name": "友情之城",
+      "condition": "完成思維故事26-30"
+    }
+  ],
+  "privilegeRewards": [
+    "選今晚家庭電影",
+    "選今天的水果",
+    "選今天甜點",
+    "選一首車上的歌",
+    "決定睡前故事",
+    "選家庭桌遊",
+    "指定一次30分鐘親子遊戲",
+    "選週末早餐",
+    "選家庭散步路線",
+    "當一天家庭小隊長",
+    "選一個週末小活動",
+    "指定一次30分鐘一對一親子時間"
+  ],
+  "tickets": [
+    {
+      "id": "reroll",
+      "name": "任務重抽券",
+      "effect": "更換一張未開始的普通任務"
+    },
+    {
+      "id": "skip",
+      "name": "普通任務跳過券",
+      "effect": "跳過一張普通任務且不影響當日冒險紀錄"
+    },
+    {
+      "id": "boss_retry",
+      "name": "Boss復活券",
+      "effect": "Boss失敗後立即再挑戰一次"
+    },
+    {
+      "id": "bonus2",
+      "name": "+2 EXP卡",
+      "effect": "完成下一張挑戰任務後額外+2 EXP"
+    },
+    {
+      "id": "double",
+      "name": "Double Quest",
+      "effect": "下一張挑戰任務 EXP×2"
+    },
+    {
+      "id": "rest",
+      "name": "休息日卡",
+      "effect": "將指定一天標記為休息日，不中斷Streak"
+    }
+  ],
+  "cosmetics": {
+    "slots": [
+      "頭像框",
+      "帽子",
+      "衣服",
+      "披風",
+      "背包",
+      "寵物",
+      "背景"
+    ],
+    "rules": [
+      "純外觀，不提供數值能力。",
+      "解鎖後永久保留。",
+      "孩子可自由更換，不需花EXP。",
+      "稀有外觀主要由Boss、章節、Lv里程碑取得。"
+    ]
+  },
+  "materialRewardPolicy": {
+    "recommendedRatioMax": 0.2,
+    "defaultEnabled": false,
+    "examples": [
+      "小文具",
+      "一本書",
+      "一個小模型",
+      "一次小額選購權"
+    ],
+    "warning": "不建議把每個日常任務直接兌換現金、玩具或遊戲時間。物質獎勵應綁定長期里程碑。"
+  }
+}
