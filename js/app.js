@@ -13,6 +13,9 @@ import { listPendingApprovals } from "./repositories/approvals.js";
 import { getPlayer } from "./repositories/player.js";
 import { approveQuestCompletion, completionInstanceId, requestQuestCompletion, startQuest, updateQuestProgress } from "./services/quest-service.js";
 import { verifyParentPin } from "./services/parent-auth.js";
+import { ensureCoreVocabulary, loadEnglishDashboard, saveLearningSession } from "./services/english-engine.js";
+import { recordWordAnswer } from "./services/review-scheduler.js";
+import { setSpeechRate, speakVocabulary } from "./services/speech.js";
 
 const root = document.querySelector("#app");
 let state = createInitialState();
@@ -36,6 +39,79 @@ const actions = {
     if (route !== "quests") stopQuestTimer();
     state = navigate(state, route);
     render();
+  },
+  selectLearnMode(mode) {
+    const items = state.learnUi?.plan?.items ?? [];
+    const sessionItems = mode === "spelling"
+      ? items.filter(({ word, progress }) => word.spellingRequired && progress?.spellingUnlocked)
+      : items;
+    if (!sessionItems.length) return;
+    state = {
+      ...state,
+      learnUi: {
+        ...state.learnUi,
+        active: true,
+        sessionDone: false,
+        mode,
+        sessionItems,
+        sessionIndex: 0,
+        sessionResults: [],
+        sessionStartedAt: new Date().toISOString(),
+      },
+    };
+    render();
+    if (mode === "listening") actions.speakLearn("word");
+  },
+  answerLearn(correct) {
+    return performEnglish(async () => {
+      const ui = state.learnUi;
+      const item = ui.sessionItems[ui.sessionIndex];
+      if (!item) return;
+      await recordWordAnswer(database, item.word, Boolean(correct));
+      const results = [...ui.sessionResults, { wordId: item.word.wordId, correct: Boolean(correct) }];
+      const nextIndex = ui.sessionIndex + 1;
+      if (nextIndex < ui.sessionItems.length) {
+        state = { ...state, learnUi: { ...ui, sessionIndex: nextIndex, sessionResults: results } };
+        render();
+        if (ui.mode === "listening") actions.speakLearn("word");
+        return;
+      }
+      await saveLearningSession(database, { mode: ui.mode, startedAt: ui.sessionStartedAt, results });
+      const dashboard = await loadEnglishDashboard(database);
+      state = { ...state, learnUi: { ...dashboard, active: false, sessionDone: true, lastSessionCount: results.length } };
+      render();
+    });
+  },
+  submitSpelling(value) {
+    const item = state.learnUi?.sessionItems?.[state.learnUi.sessionIndex];
+    const correct = String(value ?? "").trim().toLocaleLowerCase("en-US") === item?.word.word.toLocaleLowerCase("en-US");
+    return actions.answerLearn(correct);
+  },
+  exitLearn() {
+    return performEnglish(async () => {
+      const dashboard = await loadEnglishDashboard(database);
+      state = { ...state, learnUi: { ...dashboard, active: false, sessionDone: false } };
+      render();
+    });
+  },
+  changeSpeechRate(rate) {
+    return performEnglish(async () => {
+      const speechRate = await setSpeechRate(database, rate);
+      state = { ...state, learnUi: { ...state.learnUi, speechRate } };
+      render();
+    });
+  },
+  async speakLearn(kind) {
+    const item = state.learnUi?.sessionItems?.[state.learnUi.sessionIndex];
+    if (!item) return;
+    const text = kind === "example" ? item.word.example : item.word.word;
+    const result = await speakVocabulary({
+      text,
+      audioFile: item.word.audioFile,
+      locale: item.word.audioLocale,
+      rate: state.learnUi.speechRate,
+    });
+    if (result.method === "unavailable") showPageError("這個瀏覽器目前無法播放語音，可以先看單字與例句。");
   },
   openQuest(taskId) {
     state = { ...state, route: "quests", questUi: { ...state.questUi, selectedTaskId: taskId } };
@@ -85,6 +161,21 @@ const actions = {
     return performQuest(() => approveQuestCompletion(database, completionId));
   },
 };
+
+async function performEnglish(operation) {
+  if (saving || !database) return;
+  saving = true;
+  root.setAttribute("aria-busy", "true");
+  try {
+    await operation();
+  } catch (error) {
+    console.error(error);
+    showPageError(error.message);
+  } finally {
+    saving = false;
+    root.removeAttribute("aria-busy");
+  }
+}
 
 async function performQuest(operation, taskId) {
   if (saving || !database) return;
@@ -180,7 +271,9 @@ function render() {
 try {
   database = await openDatabase();
   state = await loadOnboarding(database);
-  await refreshQuestState();
+  await ensureCoreVocabulary(database);
+  const [english] = await Promise.all([loadEnglishDashboard(database), refreshQuestState()]);
+  state = { ...state, learnUi: { ...english, active: false, sessionDone: false } };
   render();
 } catch (error) {
   root.textContent = "資料暫時讀不到，請重新載入再試。原有資料會保留。";

@@ -3,6 +3,7 @@ import { renderHome } from "../pages/home.js";
 import { renderPlaceholder } from "../pages/placeholder.js";
 import { renderQuests } from "../pages/quests.js";
 import { renderParentApprovals } from "../pages/parent-approvals.js";
+import { renderLearn } from "../pages/learn.js";
 import { uiText } from "../services/ui-copy.js";
 import { icon } from "./components.js";
 
@@ -10,6 +11,7 @@ export function mountAppShell(root, state, actions) {
   const page = state.route === "home"
     ? renderHome(state)
     : state.route === "quests" ? renderQuests(state)
+      : state.route === "learn" ? renderLearn(state)
       : state.route === "parent" ? renderParentApprovals(state)
         : renderPlaceholder(state.route, state);
   root.innerHTML = `
@@ -36,6 +38,17 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-adjust-quest]", (target) => actions.adjustQuest(target.dataset.adjustQuest, Number(target.dataset.delta)));
   bindButtons(root, "[data-toggle-quest-timer]", (target) => actions.toggleQuestTimer(target.dataset.toggleQuestTimer));
   bindButtons(root, "[data-approve-completion]", (target) => actions.approveCompletion(target.dataset.approveCompletion));
+  bindButtons(root, "[data-learn-mode]", (target) => actions.selectLearnMode(target.dataset.learnMode));
+  bindButtons(root, "[data-learn-answer]", (target) => actions.answerLearn(target.dataset.learnAnswer === "true"));
+  bindButtons(root, "[data-learn-exit]", () => actions.exitLearn());
+  bindButtons(root, "[data-speech-rate]", (target) => actions.changeSpeechRate(Number(target.dataset.speechRate)));
+  bindButtons(root, "[data-speak]", (target) => actions.speakLearn(target.dataset.speak));
+
+  const spellingForm = root.querySelector("[data-spelling-answer]");
+  spellingForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    actions.submitSpelling(new FormData(spellingForm).get("spelling"));
+  });
 
   const parentForm = root.querySelector("[data-parent-unlock]");
   parentForm?.addEventListener("submit", async (event) => {

@@ -30,6 +30,7 @@ export function createInitialState() {
       title: "新手冒險家",
       exp: { current: 0, target: 100 },
     },
+    learnUi: { loading: true },
   };
 }
 

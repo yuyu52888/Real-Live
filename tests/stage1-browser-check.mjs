@@ -93,6 +93,24 @@ try {
     };
   })()`);
 
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="learn"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.learn-page'))`));
+  const learnResult = await client.evaluate(`({
+    activeRoute: document.querySelector('.bottom-nav__item.is-active')?.dataset.route,
+    total: document.querySelector('.learn-progress strong')?.textContent?.trim(),
+    modeCount: document.querySelectorAll('[data-learn-mode]').length,
+    speechRate: document.querySelector('[data-speech-rate].is-active')?.dataset.speechRate,
+  })`);
+  await client.evaluate(`document.querySelector('[data-learn-mode="meaning"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.word-card [data-learn-answer="true"]'))`));
+  await client.evaluate(`document.querySelector('.word-card [data-learn-answer="true"]').click()`);
+  await waitFor(() => client.evaluate(`!document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.evaluate(`document.querySelector('[data-learn-exit]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.learn-mode-grid')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  if (learnResult.activeRoute !== "learn" || learnResult.total !== "0 / 300" || learnResult.modeCount !== 5 || learnResult.speechRate !== "0.75") {
+    throw new Error(`Stage 4 Learn UI failed: ${JSON.stringify(learnResult)}`);
+  }
+
   await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="quests"]').click()`);
   await waitFor(() => client.evaluate(`document.querySelectorAll('.quest-card').length === 180`));
   const questResult = await client.evaluate(`(() => {
@@ -177,10 +195,15 @@ try {
     const { testA7Stage3Persistence } = await import('/tests/a7-stage3-persistence-browser.js');
     return testA7Stage3Persistence();
   })()`);
+  const stage4Persistence = await client.evaluate(`(async () => {
+    const { testStage4Persistence } = await import('/tests/stage4-persistence-browser.js');
+    return testStage4Persistence();
+  })()`);
   console.log("Browser PASS: tablet portrait onboarding, quest list/detail, reload, pending approval, PIN approval, A5 fallback, navigation.");
   console.log(persistence);
   console.log(stage3Persistence);
   console.log(a7Stage3Persistence);
+  console.log(stage4Persistence);
   if (pageErrors.length) throw new Error(pageErrors.join("\n"));
   client.close();
 } finally {
