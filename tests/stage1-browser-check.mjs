@@ -93,6 +93,70 @@ try {
     };
   })()`);
 
+  await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getPlayer, savePlayer } = await import('/js/repositories/player.js');
+    const db = await openDatabase();
+    const player = await getPlayer(db);
+    await savePlayer(db, { ...player, progress: { ...player.progress, level: 1, exp: { ...player.progress.exp, current: 30, target: 100 } } });
+    db.close();
+  })()`);
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  const rewardHome = await client.evaluate(`({
+    level: document.querySelector('.level-pill')?.textContent,
+    exp: document.querySelector('.exp-caption')?.textContent,
+    fragments: document.querySelector('.status-chip__icon--chest')?.nextElementSibling?.querySelector('small')?.textContent,
+  })`);
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="hero"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.hero-page [data-claim-level="2"]'))`));
+  const rewardHero = await client.evaluate(`({
+    name: document.querySelector('#hero-title')?.textContent,
+    pendingLevel2: document.querySelectorAll('[data-claim-level="2"]').length,
+    exp: document.querySelector('.hero-profile small')?.textContent,
+  })`);
+  await client.evaluate(`document.querySelector('[data-claim-level="2"][data-reward-option="frame_bronze"]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelector('.hero-page')?.textContent?.includes('青銅冒險框') && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="hero"]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelector('.hero-page')?.textContent?.includes('青銅冒險框')`));
+  const claimPersisted = await client.evaluate(`document.querySelectorAll('[data-claim-level="2"]').length === 0`);
+  const chestId = await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { loadRewardSystem } = await import('/js/services/reward-system.js');
+    const { grantChestFragments } = await import('/js/services/reward-service.js');
+    const db = await openDatabase();
+    const system = await loadRewardSystem('/03_REWARDS_BOSSES/REWARD_SYSTEM.json');
+    const grant = await grantChestFragments(db, system, { sourceType: 'browser-test', sourceId: 'one', amount: 5, rng: () => 0 });
+    db.close();
+    return grant.chestIds[0];
+  })()`);
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#home-title'))`));
+  const realFragmentText = await client.evaluate(`document.querySelector('.status-chip__icon--chest')?.nextElementSibling?.querySelector('small')?.textContent`);
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="hero"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-open-chest]'))`));
+  await client.evaluate(`document.querySelector('[data-open-chest]').click()`);
+  await waitFor(() => client.evaluate(`!document.querySelector('[data-open-chest]') && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  const chestRepeat = await client.evaluate(`(async () => {
+    const { openDatabase } = await import('/js/core/database.js');
+    const { getRewardRecord } = await import('/js/repositories/rewards.js');
+    const { loadRewardSystem } = await import('/js/services/reward-system.js');
+    const { openChest } = await import('/js/services/reward-service.js');
+    const db = await openDatabase();
+    const system = await loadRewardSystem('/03_REWARDS_BOSSES/REWARD_SYSTEM.json');
+    const before = await getRewardRecord(db, ${JSON.stringify("PLACEHOLDER")});
+    const first = await openChest(db, system, ${JSON.stringify("PLACEHOLDER")});
+    const second = await openChest(db, system, ${JSON.stringify("PLACEHOLDER")});
+    const inventory = first.inventoryId ? await getRewardRecord(db, first.inventoryId) : null;
+    db.close();
+    return { sameOpenedAt: first.openedAt === second.openedAt, quantity: inventory?.quantity ?? 0, outcome: before?.outcome?.id };
+  })()`.replaceAll(JSON.stringify("PLACEHOLDER"), JSON.stringify(chestId)));
+  if (!rewardHome.level?.includes('2') || !rewardHome.exp?.includes('30 / 65') || rewardHome.fragments !== '0 / 5') throw new Error(`Stage 6 Home normalization failed: ${JSON.stringify(rewardHome)}`);
+  if (rewardHero.name !== '小晴' || rewardHero.pendingLevel2 !== 3 || !rewardHero.exp?.includes('30 / 65') || !claimPersisted) throw new Error(`Stage 6 Hero claim failed: ${JSON.stringify({ rewardHero, claimPersisted })}`);
+  if (realFragmentText !== '0 / 5' || !chestRepeat.sameOpenedAt || chestRepeat.quantity !== 1 || !chestRepeat.outcome) throw new Error(`Stage 6 chest failed: ${JSON.stringify({ realFragmentText, chestRepeat })}`);
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="home"]').click()`);
   await client.evaluate(`document.querySelector('[data-learn-surface-link="stories"]').click()`);
   await waitFor(() => client.evaluate(`document.querySelectorAll('.story-card').length === 5`));
   const storyOverview = await client.evaluate(`({
@@ -280,7 +344,7 @@ try {
   const heroResult = await client.evaluate(`(() => {
     document.querySelector('.bottom-nav__item[data-route="hero"]').click();
     return {
-      heroName: document.querySelector('#page-title')?.textContent,
+      heroName: document.querySelector('#hero-title')?.textContent,
       activeRoute: document.querySelector('.bottom-nav__item.is-active')?.dataset.route,
     };
   })()`);
@@ -331,12 +395,17 @@ try {
     const { testStage5Persistence } = await import('/tests/stage5-persistence-browser.js');
     return testStage5Persistence();
   })()`);
+  const stage6Persistence = await client.evaluate(`(async () => {
+    const { testStage6Persistence } = await import('/tests/stage6-persistence-browser.js');
+    return testStage6Persistence();
+  })()`);
   console.log("Browser PASS: tablet portrait onboarding, quest list/detail, reload, pending approval, PIN approval, A5 fallback, navigation.");
   console.log(persistence);
   console.log(stage3Persistence);
   console.log(a7Stage3Persistence);
   console.log(stage4Persistence);
   console.log(stage5Persistence);
+  console.log(stage6Persistence);
   if (pageErrors.length) throw new Error(pageErrors.join("\n"));
   client.close();
 } finally {

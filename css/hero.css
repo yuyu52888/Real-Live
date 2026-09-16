@@ -1,0 +1,33 @@
+.hero-page { min-height: calc(100vh - var(--nav-height)); padding: clamp(1rem, 4vw, 2.5rem); background: linear-gradient(180deg, #dff5ff 0 13rem, #f5f1d6 28rem, #dbeccc 100%); }
+.hero-profile { display: grid; grid-template-columns: 10rem 1fr auto; align-items: center; gap: var(--space-4); padding: clamp(1.25rem, 4vw, 2.5rem); border: 4px solid white; border-radius: var(--radius-large); background: rgb(255 255 255 / 88%); box-shadow: var(--shadow-card); }
+.hero-profile__avatar img { width: 10rem; height: 10rem; object-fit: contain; }
+.hero-profile h1 { margin: .2rem 0; color: var(--color-wood-dark); font-size: clamp(2rem, 6vw, 3.5rem); }
+.hero-profile strong { color: var(--color-wood); }
+.hero-exp { height: .85rem; margin-top: var(--space-2); overflow: hidden; border-radius: 99px; background: #d8e1dc; }
+.hero-exp i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--color-gold), var(--color-orange)); }
+.hero-profile small { color: var(--color-muted); font-weight: 800; }
+.fragment-orb { display: grid; min-width: 8rem; min-height: 8rem; place-content: center; border: 4px solid white; border-radius: 50%; background: #fff2b7; text-align: center; }
+.fragment-orb strong, .fragment-orb span { display: block; }
+.fragment-orb strong { color: var(--color-gold-dark); font-size: 1.7rem; }
+.reward-section { margin-top: var(--space-4); padding: var(--space-4); border: 3px solid white; border-radius: var(--radius-medium); background: rgb(255 255 255 / 80%); box-shadow: var(--shadow-card); }
+.reward-section h2 { margin-top: 0; color: var(--color-wood-dark); }
+.reward-section > p { color: var(--color-muted); }
+.milestone-list { display: grid; gap: var(--space-3); }
+.milestone-card { padding: var(--space-3); border-radius: var(--radius-medium); background: #fff8db; }
+.milestone-card header { display: flex; justify-content: space-between; margin-bottom: var(--space-2); color: var(--color-wood-dark); }
+.milestone-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.milestone-options button { display: grid; min-height: 8rem; place-content: center; gap: .35rem; padding: .75rem; border: 2px solid #dfc77d; border-radius: var(--radius-small); background: white; cursor: pointer; }
+.milestone-options button > span { color: var(--color-orange); font-size: 1.7rem; }
+.milestone-options button small { color: var(--color-muted); }
+.milestone-options button:disabled { cursor: not-allowed; filter: grayscale(.6); opacity: .55; }
+.hero-collections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.collection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--space-2); }
+.collection-card { display: grid; min-height: 8rem; place-content: center; gap: .45rem; padding: var(--space-2); border: 2px solid #e5d7bc; border-radius: var(--radius-small); background: white; text-align: center; }
+.collection-card > span { color: var(--color-gold-dark); font-size: 2rem; }
+.collection-card button { min-height: 44px; border: 2px solid #91cda4; border-radius: 99px; background: #e4f5df; cursor: pointer; font-weight: 900; }
+.collection-card button:disabled { cursor: default; opacity: .65; }
+.collection-empty { grid-column: 1 / -1; margin: 0; padding: var(--space-4); border-radius: var(--radius-small); background: #f7f3e8; color: var(--color-muted); text-align: center; }
+.chest-card .button { min-height: 48px; }
+.cosmetic-note { margin-top: var(--space-4); padding: var(--space-3); border-radius: var(--radius-medium); background: #fff3bd; color: var(--color-wood-dark); font-weight: 900; text-align: center; }
+.hero-loading { display: grid; place-items: center; }
+@media (max-width: 48rem) { .hero-profile { grid-template-columns: 7rem 1fr; } .hero-profile__avatar img { width: 7rem; height: 7rem; } .fragment-orb { grid-column: 1 / -1; width: 100%; min-height: 5rem; border-radius: var(--radius-medium); } .hero-collections { grid-template-columns: 1fr; } .milestone-options { grid-template-columns: 1fr; } }

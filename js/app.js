@@ -19,6 +19,8 @@ import { recordWordAnswer } from "./services/review-scheduler.js";
 import { setSpeechRate, speakVocabulary } from "./services/speech.js";
 import { getStoryById } from "./repositories/stories.js";
 import { completeStory as recordStoryCompletion, loadStoryDashboard } from "./services/story-service.js";
+import { loadRewardSystem } from "./services/reward-system.js";
+import { claimLevelReward as claimMilestone, openChest as openRewardChest, selectActiveTitle as saveActiveTitle, synchronizeRewards } from "./services/reward-service.js";
 
 const root = document.querySelector("#app");
 let state = createInitialState();
@@ -26,6 +28,7 @@ let database;
 let saving = false;
 let taskCatalog = [];
 let questTimer = null;
+let rewardSystem;
 
 if (!root) {
   throw new Error("App root is missing.");
@@ -68,8 +71,18 @@ const actions = {
     return performStory(async () => {
       const result = await recordStoryCompletion(database, storyId);
       state = { ...state, storyUi: { ...state.storyUi, progress: result.progress } };
+      await refreshRewardState();
       render();
     });
+  },
+  claimLevelReward(level, optionId) {
+    return performReward(() => claimMilestone(database, rewardSystem, level, optionId));
+  },
+  selectActiveTitle(titleId) {
+    return performReward(() => saveActiveTitle(database, titleId));
+  },
+  openChest(chestId) {
+    return performReward(() => openRewardChest(database, rewardSystem, chestId));
   },
   selectLearnMode(mode) {
     const availableItems = state.learnUi?.plan?.items ?? [];
@@ -117,6 +130,7 @@ const actions = {
       }
       await saveLearningSession(database, { mode: ui.mode, startedAt: ui.sessionStartedAt, results });
       const dashboard = await loadEnglishDashboard(database);
+      await refreshRewardState();
       state = { ...state, learnUi: { ...dashboard, active: false, sessionDone: true, lastSessionCount: results.length } };
       render();
     });
@@ -137,6 +151,7 @@ const actions = {
       }
       await saveLearningSession(database, { mode: ui.mode, startedAt: ui.sessionStartedAt, results });
       const dashboard = await loadEnglishDashboard(database);
+      await refreshRewardState();
       state = { ...state, learnUi: { ...dashboard, active: false, sessionDone: true, lastSessionCount: results.length } };
       render();
     });
@@ -221,6 +236,23 @@ const actions = {
   },
 };
 
+async function performReward(operation) {
+  if (saving || !database) return;
+  saving = true;
+  root.setAttribute("aria-busy", "true");
+  try {
+    await operation();
+    await refreshRewardState();
+    render();
+  } catch (error) {
+    console.error(error);
+    showPageError(error.message);
+  } finally {
+    saving = false;
+    root.removeAttribute("aria-busy");
+  }
+}
+
 async function performStory(operation) {
   if (saving || !database) return;
   saving = true;
@@ -260,6 +292,7 @@ async function performQuest(operation, taskId) {
   try {
     await operation(task);
     await refreshQuestState();
+    await refreshRewardState();
     render();
   } catch (error) {
     console.error(error);
@@ -291,6 +324,11 @@ async function refreshQuestState() {
   };
 }
 
+async function refreshRewardState() {
+  const rewardUi = await synchronizeRewards(database, rewardSystem);
+  state = { ...state, player: rewardUi.player ?? state.player, rewardUi };
+}
+
 function stopQuestTimer() {
   if (questTimer) clearInterval(questTimer);
   questTimer = null;
@@ -314,6 +352,7 @@ async function tryUpdate(update) {
   root.setAttribute("aria-busy", "true");
   try {
     state = await persistOnboarding(database, update());
+    if (state.onboarding.step === "complete") await refreshRewardState();
     render();
   } catch (error) {
     const errorNode = document.querySelector("#form-error") ?? createErrorNode();
@@ -341,7 +380,7 @@ function render() {
   mountOnboarding(root, state, actions);
 }
 
-[, , taskCatalog] = await Promise.all([loadUiCopy(), loadAssetManifest(), loadTasks()]);
+[, , taskCatalog, rewardSystem] = await Promise.all([loadUiCopy(), loadAssetManifest(), loadTasks(), loadRewardSystem()]);
 try {
   database = await openDatabase();
   state = await loadOnboarding(database);
@@ -352,6 +391,7 @@ try {
     refreshQuestState(),
   ]);
   state = { ...state, learnUi: { ...english, active: false, sessionDone: false }, storyUi: { ...storyDashboard, selectedChapter: 1, selectedStoryId: null } };
+  await refreshRewardState();
   render();
 } catch (error) {
   root.textContent = "資料暫時讀不到，請重新載入再試。原有資料會保留。";

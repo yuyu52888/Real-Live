@@ -4,6 +4,7 @@ import { renderPlaceholder } from "../pages/placeholder.js";
 import { renderQuests } from "../pages/quests.js";
 import { renderParentApprovals } from "../pages/parent-approvals.js";
 import { renderLearn } from "../pages/learn.js";
+import { renderHero } from "../pages/hero.js";
 import { uiText } from "../services/ui-copy.js";
 import { icon } from "./components.js";
 
@@ -12,6 +13,7 @@ export function mountAppShell(root, state, actions) {
     ? renderHome(state)
     : state.route === "quests" ? renderQuests(state)
       : state.route === "learn" ? renderLearn(state)
+      : state.route === "hero" ? renderHero(state)
       : state.route === "parent" ? renderParentApprovals(state)
         : renderPlaceholder(state.route, state);
   root.innerHTML = `
@@ -53,6 +55,9 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-open-story]", (target) => actions.openStory(target.dataset.openStory));
   bindButtons(root, "[data-story-back]", () => actions.closeStory());
   bindButtons(root, "[data-complete-story]", (target) => actions.completeStory(target.dataset.completeStory));
+  bindButtons(root, "[data-claim-level]", (target) => actions.claimLevelReward(Number(target.dataset.claimLevel), target.dataset.rewardOption));
+  bindButtons(root, "[data-select-title]", (target) => actions.selectActiveTitle(target.dataset.selectTitle));
+  bindButtons(root, "[data-open-chest]", (target) => actions.openChest(target.dataset.openChest));
 
   const spellingForm = root.querySelector("[data-spelling-form]");
   spellingForm?.addEventListener("submit", (event) => {

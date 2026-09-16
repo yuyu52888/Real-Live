@@ -33,6 +33,7 @@ export function createInitialState() {
     learnUi: { loading: true },
     learnSurface: "english",
     storyUi: { loading: true },
+    rewardUi: { loading: true },
   };
 }
 

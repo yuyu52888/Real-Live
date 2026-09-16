@@ -4,6 +4,7 @@ import { completionDateKey, completionInstanceId } from "../services/quest-servi
 
 export function renderHome(state) {
   const { onboarding, player } = state;
+  const fragments = state.rewardUi?.fragments ?? { current: 0, needed: 5 };
   const nickname = escapeHtml(onboarding.nickname);
   const avatar = onboarding.avatarVariant;
   const encouragement = escapeHtml(uiList("home.encouragementPool")[0] ?? "先開始一小步，比等到完美更有力量。");
@@ -43,7 +44,7 @@ export function renderHome(state) {
           </article>
           <article class="status-chip">
             <span class="status-chip__icon status-chip__icon--chest">◇</span>
-            <span><strong>${uiText("common.labels.chestFragments")}</strong><small>等待獎勵系統</small></span>
+            <span><strong>${uiText("common.labels.chestFragments")}</strong><small>${fragments.current} / ${fragments.needed}</small></span>
           </article>
         </div>
       </div>
