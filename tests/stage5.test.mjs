@@ -46,6 +46,7 @@ test("Stage 5 overview and reader expose canonical content without scoring", () 
   assert.match(overview, /0 \/ 5/);
 
   const reader = renderStories({ storyUi: { ...base, selectedStoryId: "S01" } });
+  assert.match(reader, /第 1 章 · 金錢森林 · 約 8 分鐘/);
   for (const paragraph of stories[0].body.split(/\n+/).filter(Boolean)) assert.match(reader, new RegExp(escapeRegExp(paragraph)));
   for (const question of stories[0].questions) assert.match(reader, new RegExp(escapeRegExp(question)));
   assert.equal((reader.match(/<li>/g) ?? []).length, 4);
@@ -56,8 +57,14 @@ test("Stage 5 overview and reader expose canonical content without scoring", () 
 });
 
 test("Stage 5 progress is derived at 1/5 and 5/5", () => {
-  assert.deepEqual(chapterProgress(chapters[0], [{ storyId: "S01", completedAt: "2026-09-16T00:00:00.000Z" }]), { completed: 1, total: 5, complete: false });
-  assert.deepEqual(chapterProgress(chapters[0], chapters[0].stories.map(({ id }) => ({ storyId: id, completedAt: "2026-09-16T00:00:00.000Z" }))), { completed: 5, total: 5, complete: true });
+  const oneCompletion = [{ storyId: "S01", completedAt: "2026-09-16T00:00:00.000Z" }];
+  const fiveCompletions = chapters[0].stories.map(({ id }) => ({ storyId: id, completedAt: "2026-09-16T00:00:00.000Z" }));
+  assert.deepEqual(chapterProgress(chapters[0], oneCompletion), { completed: 1, total: 5, complete: false });
+  assert.deepEqual(chapterProgress(chapters[0], fiveCompletions), { completed: 5, total: 5, complete: true });
+  assert.match(renderStories({ storyUi: { stories, chapters, progress: oneCompletion, selectedChapter: 1, selectedStoryId: "S01" } }), /本章進度 1 \/ 5/);
+  const completedChapterReader = renderStories({ storyUi: { stories, chapters, progress: fiveCompletions, selectedChapter: 1, selectedStoryId: "S05" } });
+  assert.match(completedChapterReader, /本章進度 5 \/ 5/);
+  assert.match(completedChapterReader, /本章完成/);
 });
 
 test("Stage 5 pending covers resolve through the declared fox reading fallback", async () => {

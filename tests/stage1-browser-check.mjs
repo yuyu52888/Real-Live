@@ -115,7 +115,7 @@ try {
     };
   })()`);
   await client.evaluate(`document.querySelector('[data-complete-story="S01"]').click()`);
-  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.story-completed-note')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await waitFor(() => client.evaluate(`document.querySelector('.story-reader-progress')?.textContent?.includes('本章進度 1 / 5') && !document.querySelector('#app').hasAttribute('aria-busy')`));
   await client.evaluate(`document.querySelector('[data-story-back]').click()`);
   await waitFor(() => client.evaluate(`document.querySelector('.story-chapter-progress strong')?.textContent?.trim() === '1 / 5'`));
   await client.send("Page.reload");

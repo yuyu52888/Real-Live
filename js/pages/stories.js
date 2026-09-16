@@ -51,12 +51,16 @@ function storyCard(story, progress) {
 }
 
 function readerView(story, ui) {
+  const chapterNumber = chapterNumberForStory(story.id);
+  const chapter = ui.chapters.find(({ number }) => number === chapterNumber);
+  if (!chapter) throw new Error(`缺少第 ${chapterNumber} 章的故事 metadata。`);
+  const progress = chapterProgress(chapter, ui.progress);
   const completed = ui.progress.some((record) => record.storyId === story.id && record.completedAt);
   const paragraphs = story.body.split(/\n+/).map((paragraph) => paragraph.trim()).filter(Boolean);
   return `<section class="story-page story-reader" aria-labelledby="story-reader-title">
     <header class="story-reader__header">
       <button class="story-back" type="button" data-story-back aria-label="返回故事總覽">←</button>
-      <div><p>第 ${chapterNumberForStory(story.id)} 章 · 約 ${story.estimatedMinutes} 分鐘</p><h1 id="story-reader-title">${escapeHtml(story.title)}</h1><span>${escapeHtml(story.theme)}</span></div>
+      <div><p>第 ${chapter.number} 章 · ${escapeHtml(chapter.chapterName)} · 約 ${story.estimatedMinutes} 分鐘</p><h1 id="story-reader-title">${escapeHtml(story.title)}</h1><span>${escapeHtml(story.theme)}</span></div>
       <img src="${coverSource(story.id)}" alt="狐狸陪伴閱讀">
     </header>
     <article class="story-body">${paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}</article>
@@ -64,7 +68,7 @@ function readerView(story, ui) {
     <section class="reality-card"><div><small>今日現實任務</small><h2>${escapeHtml(story.realityTask)}</h2></div></section>
     <blockquote class="thought-card"><small>今日思維卡</small><p>${escapeHtml(story.takeaway)}</p></blockquote>
     <button class="button button--primary story-complete-button" type="button" data-complete-story="${story.id}">${completed ? "已完成閱讀，可再次確認" : "完成閱讀"}</button>
-    ${completed ? '<p class="story-completed-note" role="status">✓ 這篇故事已完成，重讀不會重複計算。</p>' : ""}
+    ${completed ? `<p class="story-completed-note story-reader-progress" role="status">✓ 這篇故事已完成，本章進度 ${progress.completed} / ${progress.total}${progress.complete ? "，本章完成！" : ""}。重讀不會重複計算。</p>` : ""}
   </section>`;
 }
 
