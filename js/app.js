@@ -204,7 +204,7 @@ const actions = {
   },
   completeQuest(taskId) {
     stopQuestTimer();
-    return performQuest(async (task) => requestQuestCompletion(database, task), taskId);
+    return performQuest(async (task) => requestQuestCompletion(database, task), taskId, { syncRewards: true });
   },
   adjustQuest(taskId, delta) {
     const task = getTaskById(taskCatalog, taskId);
@@ -232,7 +232,7 @@ const actions = {
     return unlocked;
   },
   approveCompletion(completionId) {
-    return performQuest(() => approveQuestCompletion(database, completionId));
+    return performQuest(() => approveQuestCompletion(database, completionId), undefined, { syncRewards: true });
   },
 };
 
@@ -283,7 +283,7 @@ async function performEnglish(operation) {
   }
 }
 
-async function performQuest(operation, taskId) {
+async function performQuest(operation, taskId, { syncRewards = false } = {}) {
   if (saving || !database) return;
   const task = taskId ? getTaskById(taskCatalog, taskId) : null;
   if (taskId && !task) return;
@@ -292,7 +292,7 @@ async function performQuest(operation, taskId) {
   try {
     await operation(task);
     await refreshQuestState();
-    await refreshRewardState();
+    if (syncRewards) await refreshRewardState();
     render();
   } catch (error) {
     console.error(error);

@@ -83,6 +83,30 @@ test("Stage 6 Hero and Home render real reward state", () => {
   assert.match(home, /3 \/ 5/);
 });
 
+test("Stage 6 preserves cumulative Lv10 EXP text while clamping progressbar ARIA", () => {
+  const player = { level: 10, title: "傳奇冒險者", exp: { current: 451, target: 450 } };
+  const state = {
+    onboarding: { nickname: "小晴", avatarVariant: "girl", settings: { dailyTaskGoal: 2, exerciseEnabled: true, choresEnabled: true } },
+    player,
+    rewardUi: { player, pendingClaims: [], titles: [], badges: [], cosmetics: [], tickets: [], privileges: [], fragments: { current: 0, needed: 5 }, chests: [] },
+    questUi: { tasks: [], history: [] },
+  };
+  for (const html of [renderHome(state), renderHero(state)]) {
+    assert.match(html, /451 \/ 450/);
+    assert.match(html, /aria-valuemax="450" aria-valuenow="450"/);
+  }
+});
+
+test("Stage 6 synchronizes rewards only for quest completion and approval", async () => {
+  const source = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
+  assert.match(source, /requestQuestCompletion\(database, task\), taskId, \{ syncRewards: true \}/);
+  assert.match(source, /approveQuestCompletion\(database, completionId\), undefined, \{ syncRewards: true \}/);
+  assert.match(source, /async function performQuest\(operation, taskId, \{ syncRewards = false \} = \{\}\)/);
+  assert.match(source, /if \(syncRewards\) await refreshRewardState\(\)/);
+  assert.doesNotMatch(source, /startQuest\(database, task\), taskId, \{ syncRewards: true \}/);
+  assert.doesNotMatch(source, /updateQuestProgress[\s\S]{0,160}syncRewards: true/);
+});
+
 test("Stage 6 runtime does not add Boss progress or infer ordinary quest fragments", async () => {
   const source = await Promise.all(["js/services/reward-service.js", "js/app.js"].map((path) => readFile(new URL(`../${path}`, import.meta.url), "utf8")));
   assert.doesNotMatch(source.join("\n"), /bossProgress/);

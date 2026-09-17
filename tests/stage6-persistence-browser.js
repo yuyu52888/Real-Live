@@ -2,7 +2,7 @@ import { openDatabase, putRecord } from "../js/core/database.js";
 import { getPlayer, savePlayer } from "../js/repositories/player.js";
 import { getRewardRecord, listRewardRecords } from "../js/repositories/rewards.js";
 import { saveSettings } from "../js/repositories/settings.js";
-import { claimLevelReward, grantChestFragments, normalizePlayerLevel, openChest, selectActiveTitle, synchronizeRewards } from "../js/services/reward-service.js";
+import { claimLevelReward, grantChest, grantChestFragments, grantInventoryReward, normalizePlayerLevel, openChest, selectActiveTitle, synchronizeRewards } from "../js/services/reward-service.js";
 import { loadRewardSystem } from "../js/services/reward-system.js";
 
 export async function testStage6Persistence() {
@@ -52,6 +52,38 @@ export async function testStage6Persistence() {
 
   const bossSentinel = { bossId: "B01", hp: 3 };
   await putRecord(db, "bossProgress", bossSentinel);
+
+  const ticketBeforeGenericGrant = (await getRewardRecord(db, "inventory:ticket:reroll")).quantity;
+  const inventoryGrantArgs = { sourceType: "stage7-boundary", sourceId: "ticket-grant", category: "ticket", itemId: "reroll", name: "任務重抽券", quantity: 2 };
+  const [firstInventoryGrant, duplicateInventoryGrant] = await Promise.all([
+    grantInventoryReward(db, inventoryGrantArgs),
+    grantInventoryReward(db, inventoryGrantArgs),
+  ]);
+  assertEqual(JSON.stringify(duplicateInventoryGrant), JSON.stringify(firstInventoryGrant), "generic inventory source idempotency");
+  assertEqual((await getRewardRecord(db, "inventory:ticket:reroll")).quantity, ticketBeforeGenericGrant + 2, "additive inventory granted once");
+  await grantInventoryReward(db, { sourceType: "stage7-boundary", sourceId: "owned-cosmetic", category: "cosmetic", itemId: "frame_bronze", name: "青銅相框" });
+  await grantInventoryReward(db, { sourceType: "stage7-boundary", sourceId: "owned-badge", category: "badge", itemId: "badge_first", name: "第一步徽章" });
+  assertEqual((await getRewardRecord(db, "inventory:cosmetic:frame_bronze")).quantity, 1, "owned cosmetic remains single ownership");
+  assertEqual((await getRewardRecord(db, "inventory:badge:badge_first")).quantity, 1, "owned badge remains single ownership");
+
+  const directOutcome = { id: "stage7-test-outcome", type: "ticket", label: "任務重抽券", ticketId: "reroll" };
+  const directChestArgs = { sourceType: "stage7-boundary", sourceId: "chapter-reward", chestType: "chapter", outcome: directOutcome };
+  const [directChest, duplicateDirectChest] = await Promise.all([
+    grantChest(db, system, directChestArgs),
+    grantChest(db, system, directChestArgs),
+  ]);
+  assertEqual(duplicateDirectChest.id, directChest.id, "direct chest source idempotency");
+  assertEqual(JSON.stringify(duplicateDirectChest.outcome), JSON.stringify(directOutcome), "direct chest outcome frozen");
+  db.close();
+  db = await openDatabase({ name });
+  const reloadedDirectChest = await getRewardRecord(db, directChest.id);
+  assertEqual(JSON.stringify(reloadedDirectChest.outcome), JSON.stringify(directOutcome), "direct chest outcome survives reload");
+  const ticketsBeforeDirectOpen = (await getRewardRecord(db, "inventory:ticket:reroll")).quantity;
+  const openedDirectChest = await openChest(db, system, directChest.id);
+  const openedDirectChestAgain = await openChest(db, system, directChest.id);
+  assertEqual(openedDirectChestAgain.openedAt, openedDirectChest.openedAt, "direct chest opens idempotently");
+  assertEqual((await getRewardRecord(db, "inventory:ticket:reroll")).quantity, ticketsBeforeDirectOpen + 1, "direct chest pays once");
+
   let grant = await grantChestFragments(db, system, { sourceType: "test", sourceId: "four", amount: 4, rng: () => 0 });
   assertEqual(grant.balance, 4, "4 fragments remainder");
   assertEqual(grant.chestIds.length, 0, "4 fragments no chest");
@@ -92,7 +124,7 @@ export async function testStage6Persistence() {
   assertEqual(dashboard.chests.filter(({ id }) => id === bonusChestId).length, 0, "opened chest remains opened");
   assertEqual((await listRewardRecords(db)).filter(({ id }) => id === "level-claim:2").length, 1, "claim remains single record");
   db.close();
-  return "Stage 6 persistence PASS: normalization, claims, aliases, backfill, titles, fragments, frozen chests, idempotent EXP.";
+  return "Stage 6 persistence PASS: normalization, claims, aliases, generic grants, backfill, titles, fragments, frozen chests, idempotent EXP.";
 }
 
 function getRewardTransaction(db, id) { return readStore(db, "transactions", id); }

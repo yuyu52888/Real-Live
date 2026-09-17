@@ -4,11 +4,12 @@ export function renderHero(state) {
   const ui = state.rewardUi;
   if (!ui || ui.loading) return `<section class="hero-page hero-loading" aria-live="polite"><p>獎勵資料準備中…</p></section>`;
   const player = ui.player ?? state.player;
+  const ariaExp = Math.min(Math.max(Number(player.exp.current) || 0, 0), Math.max(Number(player.exp.target) || 1, 1));
   return `<section class="hero-page" aria-labelledby="hero-title">
     <header class="hero-profile">
       <div class="hero-profile__avatar">${avatarImage(state.onboarding.avatarVariant, "happy")}</div>
       <div><p class="eyebrow">MY HERO</p><h1 id="hero-title">${escapeHtml(state.onboarding.nickname)}</h1><strong>Lv.${player.level} · ${escapeHtml(player.title)}</strong>
-        <div class="hero-exp" role="progressbar" aria-valuemin="0" aria-valuemax="${player.exp.target}" aria-valuenow="${player.exp.current}"><i style="width:${Math.min(100, Math.round(player.exp.current / Math.max(1, player.exp.target) * 100))}%"></i></div>
+        <div class="hero-exp" role="progressbar" aria-valuemin="0" aria-valuemax="${player.exp.target}" aria-valuenow="${ariaExp}"><i style="width:${Math.round(ariaExp / Math.max(1, player.exp.target) * 100)}%"></i></div>
         <small>累積 EXP ${player.exp.current} / ${player.exp.target}</small>
       </div>
       <div class="fragment-orb"><strong>${ui.fragments.current} / ${ui.fragments.needed}</strong><span>寶箱碎片</span></div>

@@ -47,14 +47,15 @@ export function foxImage(pose = "idle", className = "") {
 }
 
 export function expBar(current, target) {
+  const currentValue = Math.max(Number(current) || 0, 0);
   const maximum = Math.max(Number(target) || 1, 1);
-  const value = Math.min(Math.max(Number(current) || 0, 0), maximum);
+  const value = Math.min(currentValue, maximum);
   const percentage = Math.round((value / maximum) * 100);
   return `
-    <div class="exp-bar" role="progressbar" aria-label="${uiText("accessibility.expProgress", { current: value, target: maximum })}" aria-valuemin="0" aria-valuemax="${maximum}" aria-valuenow="${value}">
+    <div class="exp-bar" role="progressbar" aria-label="${uiText("accessibility.expProgress", { current: currentValue, target: maximum })}" aria-valuemin="0" aria-valuemax="${maximum}" aria-valuenow="${value}">
       <span style="width: ${percentage}%"></span>
     </div>
-    <span class="exp-caption">${uiText("common.labels.exp")} ${value} / ${maximum}</span>
+    <span class="exp-caption">${uiText("common.labels.exp")} ${currentValue} / ${maximum}</span>
   `;
 }
 

@@ -5,6 +5,7 @@ import { listRewardRecords } from "../repositories/rewards.js";
 import { availableLevelOptions, deriveLevel, normalizeTicketOption, selectChestOutcome } from "./reward-system.js";
 
 const FRAGMENT_BALANCE_ID = "reward-balance:chest-fragments";
+const PERMANENT_INVENTORY_CATEGORIES = new Set(["title", "badge", "cosmetic"]);
 
 export async function normalizePlayerLevel(db, system) {
   return runTransaction(db, ["player"], "readwrite", (tx) => {
@@ -134,6 +135,71 @@ export function grantChestFragments(db, system, { sourceType, sourceId, amount, 
   });
 }
 
+export function grantInventoryReward(db, { sourceType, sourceId, category, itemId, name, quantity = 1, now = new Date() }) {
+  const grantQuantity = Number(quantity);
+  if (![sourceType, sourceId, category, itemId, name].every((value) => String(value ?? "").trim())) {
+    return Promise.reject(new Error("獎勵來源與庫存資料無效。"));
+  }
+  if (!Number.isInteger(grantQuantity) || grantQuantity <= 0) return Promise.reject(new Error("獎勵數量必須是正整數。"));
+  const inventoryId = `inventory:${category}:${itemId}`;
+  const markerId = `inventory-grant:${stableSegment(sourceType)}:${stableSegment(sourceId)}`;
+  return runTransaction(db, ["rewards"], "readwrite", (tx) => {
+    const store = tx.objectStore("rewards");
+    const markerRequest = store.get(markerId);
+    let result;
+    markerRequest.onsuccess = () => {
+      if (markerRequest.result) { result = markerRequest.result.result; return; }
+      const inventoryRequest = store.get(inventoryId);
+      inventoryRequest.onsuccess = () => {
+        const incoming = { id: inventoryId, type: "inventory", category, itemId, name, quantity: grantQuantity, unlockedAt: now.toISOString() };
+        const savedInventory = mergeInventory(inventoryRequest.result, incoming);
+        store.put(savedInventory);
+        result = { inventoryId, category, itemId, quantityGranted: savedInventory === inventoryRequest.result ? 0 : grantQuantity };
+        store.add({ id: markerId, type: "inventory-grant", sourceType, sourceId, category, itemId, quantity: grantQuantity, result, grantedAt: now.toISOString() });
+      };
+    };
+    return () => result;
+  });
+}
+
+export async function grantChest(db, system, { sourceType, sourceId, chestType, outcome, poolType, rng = Math.random, now = new Date() }) {
+  const suppliedOutcome = outcome ? { ...outcome } : null;
+  if (![sourceType, sourceId, chestType].every((value) => String(value ?? "").trim())) throw new Error("寶箱來源與類型無效。");
+  if (!suppliedOutcome && !["normal", "boss"].includes(poolType)) throw new Error("請提供固定寶箱內容或明確的獎池類型。");
+  if (suppliedOutcome && (!suppliedOutcome.id || !suppliedOutcome.label)) throw new Error("固定寶箱內容缺少穩定 ID 或顯示名稱。");
+  const markerId = `chest-grant:${stableSegment(sourceType)}:${stableSegment(sourceId)}`;
+  const chestId = `chest:direct:${stableSegment(chestType)}:${stableSegment(sourceType)}:${stableSegment(sourceId)}`;
+  const result = await runTransaction(db, ["rewards"], "readwrite", (tx) => {
+    const store = tx.objectStore("rewards");
+    const markerRequest = store.get(markerId);
+    let result;
+    markerRequest.onsuccess = () => {
+      if (markerRequest.result) {
+        const chestRequest = store.get(markerRequest.result.chestId);
+        chestRequest.onsuccess = () => { result = chestRequest.result; };
+        return;
+      }
+      const frozenOutcome = suppliedOutcome ?? { ...selectChestOutcome(system, poolType, rng) };
+      const chest = {
+        id: chestId,
+        type: "chest",
+        chestType,
+        sourceType,
+        sourceId,
+        outcome: frozenOutcome,
+        status: "unopened",
+        createdAt: now.toISOString(),
+      };
+      store.add(chest);
+      store.add({ id: markerId, type: "chest-grant", sourceType, sourceId, chestId, grantedAt: now.toISOString() });
+      result = chest;
+    };
+    return () => result;
+  });
+  if (!result) throw new Error("找不到已建立的寶箱。");
+  return result;
+}
+
 export async function openChest(db, system, chestId, now = new Date()) {
   const result = await runTransaction(db, ["rewards", "transactions", "player"], "readwrite", (tx) => {
     const rewards = tx.objectStore("rewards");
@@ -234,9 +300,13 @@ function levelOptionInventory(option, normalizedTicket, now) {
   return { id: `inventory:${category}:${option.id}`, type: "inventory", category, itemId: option.id, name: option.name, quantity: 1, unlockedAt: at };
 }
 
+function stableSegment(value) {
+  return encodeURIComponent(String(value));
+}
+
 function mergeInventory(existing, incoming) {
   if (!existing) return incoming;
-  if (["title", "badge", "cosmetic"].includes(incoming.category)) return existing;
+  if (PERMANENT_INVENTORY_CATEGORIES.has(incoming.category)) return existing;
   return { ...existing, quantity: (existing.quantity ?? 1) + incoming.quantity };
 }
 
