@@ -1,15 +1,38 @@
 let activeResolver = createAssetResolver({ assets: [], logicalFallbacks: {} });
 
-export async function loadAssetManifest(url = "./assets/ASSET_MANIFEST.json") {
+export async function loadAssetManifest(
+  url = "./assets/ASSET_MANIFEST.json",
+  readyOverlayUrl = "./assets/A6_READY_ASSETS.json",
+) {
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const contract = await response.json();
+    let contract = await response.json();
+    try {
+      const overlayResponse = await fetch(readyOverlayUrl);
+      if (overlayResponse.ok) {
+        const overlay = await overlayResponse.json();
+        contract = applyReadyAssetOverlay(contract, overlay.readyLogicalIds ?? []);
+      }
+    } catch (overlayError) {
+      console.warn("Using base asset readiness without A6 overlay.", overlayError);
+    }
     activeResolver = createAssetResolver(contract);
   } catch (error) {
     console.warn("Using stable asset path fallbacks.", error);
   }
   return activeResolver;
+}
+
+export function applyReadyAssetOverlay(contract, readyLogicalIds = []) {
+  const ready = new Set(readyLogicalIds);
+  if (!ready.size) return contract;
+  return {
+    ...contract,
+    assets: (contract.assets ?? []).map((asset) => (
+      ready.has(asset.logicalId) ? { ...asset, status: "ready" } : asset
+    )),
+  };
 }
 
 export function assetSource(logicalId, context, fallbackPath) {
