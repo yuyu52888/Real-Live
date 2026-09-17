@@ -1,0 +1,1 @@
+Temporary integration note: binary promotion will use existing Git blob SHAs from `incoming/chatgpt/assets/a6/`, so the PNG bytes are not regenerated or recompressed. Canonical naming/path reconciliation follows the current repository manifest.
