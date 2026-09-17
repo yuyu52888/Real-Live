@@ -4,17 +4,22 @@
 - Male protagonist pose pack
 - Female protagonist pose pack
 - Fox companion pose pack
+- Exercise and chore task illustrations
+- Story covers, chapter backgrounds, and home background
+- Boss illustrations
+- Badges and cosmetics/decorations
 - Canonical `*_master.png` reference aliases are provided for stable asset paths.
-- All supplied PNG assets have alpha transparency and are suitable for UI layering.
-- `ASSET_MANIFEST.json` maps ready and pending art through stable logical IDs and declared fallbacks.
+- The canonical manifest now contains 167/167 ready logical assets.
+- Isolated character/task/badge assets use transparency where applicable; scene art is opaque.
+- `ASSET_MANIFEST.json` maps production art through stable logical IDs and retains harmless declared fallbacks.
 
 ## Art authority
 Always read `01_SPECS/ART_BIBLE.md` before generating or integrating new artwork.
 
 ## Non-blocking future assets
-The following production asset sets are not yet included: exercise-specific illustrations, chore-specific illustrations, bosses, chapter/background art, badges/icons/decorations, and optional vocabulary images.
+Optional vocabulary images remain future work outside the current 167-slot production asset contract.
 
-Do **not** stop Stage 0-9 development waiting for these images. Resolve the logical slot through its declared character or CSS fallback. Approved art can replace the same logical slot during the parallel asset track without changing business logic, then be polished in Stage 10.
+Do **not** stop development waiting for optional vocabulary imagery. Continue to resolve all art through stable logical IDs.
 
 ## Important
 Do not place live UI text, EXP, counters, buttons, or navigation inside illustration PNGs. Those remain real HTML/CSS/JS UI.

@@ -198,7 +198,7 @@ try {
     db.close();
     return count;
   })()`);
-  if (storyOverview.activeRoute !== 'learn' || storyOverview.chapterCount !== 6 || storyOverview.cardCount !== 5 || !storyOverview.cover?.includes('fox_reading.png')) throw new Error(`Stage 5 overview failed: ${JSON.stringify(storyOverview)}`);
+  if (storyOverview.activeRoute !== 'learn' || storyOverview.chapterCount !== 6 || storyOverview.cardCount !== 5 || !storyOverview.cover?.includes('story_s01_cover.png')) throw new Error(`Stage 5 overview failed: ${JSON.stringify(storyOverview)}`);
   if (!storyReader.fullBody || storyReader.questionCount !== 4 || !storyReader.realityTask || !storyReader.takeaway || storyReader.hasScoring) throw new Error(`Stage 5 reader failed: ${JSON.stringify(storyReader)}`);
   if (storyRecordCount !== 1) throw new Error(`Stage 5 reread paid twice: ${storyRecordCount} records`);
   await client.evaluate(`document.querySelector('[data-learn-surface="english"]').click()`);
@@ -362,7 +362,7 @@ try {
     result.questActiveRoute !== "quests" && "Quest navigation did not activate",
     result.tipCount !== 3 && "Exercise detail does not expose 3 tips",
     !result.hasSafety && "Exercise detail safety is missing",
-    !result.artSource?.includes("girl_exercise.png") && "A5 exercise fallback was not used",
+    !result.artSource?.includes("exercise_ex001_jump_rope_01.png") && "A6 exercise production art was not used",
     ...pageErrors,
   ].filter(Boolean);
 
@@ -399,7 +399,7 @@ try {
     const { testStage6Persistence } = await import('/tests/stage6-persistence-browser.js');
     return testStage6Persistence();
   })()`);
-  console.log("Browser PASS: tablet portrait onboarding, quest list/detail, reload, pending approval, PIN approval, A5 fallback, navigation.");
+  console.log("Browser PASS: tablet portrait onboarding, quest list/detail, reload, pending approval, PIN approval, A6 production art, navigation.");
   console.log(persistence);
   console.log(stage3Persistence);
   console.log(a7Stage3Persistence);

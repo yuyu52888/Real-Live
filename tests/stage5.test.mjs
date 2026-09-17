@@ -67,12 +67,13 @@ test("Stage 5 progress is derived at 1/5 and 5/5", () => {
   assert.match(completedChapterReader, /本章完成/);
 });
 
-test("Stage 5 pending covers resolve through the declared fox reading fallback", async () => {
+test("Stage 5 story covers resolve through their production logical slots", async () => {
   const manifest = await readJson("assets/ASSET_MANIFEST.json");
   const resolver = createAssetResolver(manifest);
   for (const story of stories) {
+    const logicalId = `story.${story.id}.cover`;
     assert.deepEqual(resolver.resolve(`story.${story.id}.cover`), {
-      type: "path", logicalId: "pet.fox.reading", value: "./assets/pets/fox/fox_reading.png",
+      type: "path", logicalId, value: `./assets/backgrounds/story_${story.id.toLowerCase()}_cover.png`,
     });
   }
 });

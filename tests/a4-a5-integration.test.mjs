@@ -15,48 +15,43 @@ test("A4 runtime copy is Traditional Chinese fixed UI copy", () => {
   assert.equal(interpolate("完成 {done} / {total}", { done: 1 }), "完成 1 / {total}");
 });
 
-test("A5 canonical contract preserves ready assets and logical IDs", () => {
+test("A6 canonical contract preserves all logical IDs with 167 ready assets", () => {
   assert.equal(assets.status, "coding-ready logical asset contract");
   assert.equal(assets.assets.length, 167);
-  assert.equal(assets.assets.filter((asset) => asset.status === "ready").length, 37);
+  assert.equal(assets.assets.filter((asset) => asset.status === "ready").length, 167);
+  assert.equal(assets.assets.filter((asset) => asset.status === "pending").length, 0);
   assert.equal(new Set(assets.assets.map((asset) => asset.logicalId)).size, 167);
   assert.ok(assets.canonicalMasterAliases["assets/characters/boy/boy_master.png"]);
 });
 
-test("pending task art resolves through the declared avatar fallback", () => {
+test("A6 production logical slots resolve directly to canonical paths", () => {
   const resolver = createAssetResolver(assets);
-  assert.deepEqual(
-    resolver.resolve("task.exercise.EX001", { avatarVariant: "girl" }),
-    {
+  for (const logicalId of [
+    "task.exercise.EX001",
+    "task.chore.CH001",
+    "story.S01.cover",
+    "boss.B01",
+    "badge.badge_first",
+    "cosmetic.boss_b01",
+  ]) {
+    const asset = assets.assets.find((item) => item.logicalId === logicalId);
+    assert.ok(asset, logicalId);
+    assert.equal(asset.status, "ready", logicalId);
+    assert.deepEqual(resolver.resolve(logicalId, { avatarVariant: "girl" }), {
       type: "path",
-      logicalId: "character.girl.exercise",
-      value: "./assets/characters/girl/girl_exercise.png",
-    },
-  );
-});
-
-test("pending Boss art resolves to a generic CSS slot", () => {
-  const resolver = createAssetResolver(assets);
-  const boss = assets.assets.find((asset) => asset.kind === "boss-illustration");
-  assert.equal(resolver.resolve(boss.logicalId).type, "css");
-  assert.equal(resolver.resolve(boss.logicalId).value, "css-placeholder-card");
-});
-
-test("all pending art resolves to a non-blocking fallback", () => {
-  const resolver = createAssetResolver(assets);
-  for (const asset of assets.assets.filter((item) => item.status === "pending")) {
-    assert.notEqual(
-      resolver.resolve(asset.logicalId, { avatarVariant: "boy" }).type,
-      "missing",
-      `${asset.logicalId} must have a fallback`,
-    );
+      logicalId,
+      value: `./${asset.path}`,
+    });
   }
 });
 
-test("all ready asset files retain their canonical SHA-256", async () => {
+test("all production asset files retain canonical metadata and SHA-256", async () => {
   for (const asset of assets.assets.filter((item) => item.status === "ready")) {
     const bytes = await readFile(new URL(`../${asset.path}`, import.meta.url));
     const digest = createHash("sha256").update(bytes).digest("hex");
     assert.equal(digest, asset.sha256, asset.path);
+    assert.ok(asset.width > 0 && asset.height > 0, asset.path);
+    assert.ok(["RGB", "RGBA"].includes(asset.mode), asset.path);
+    assert.equal(typeof asset.transparent, "boolean", asset.path);
   }
 });
