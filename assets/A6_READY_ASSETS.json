@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "source": "A6 completed artwork integration",
+  "readyLogicalIds": [
+    "task.exercise.EX001","task.exercise.EX002","task.exercise.EX003","task.exercise.EX004","task.exercise.EX005","task.exercise.EX006","task.exercise.EX007","task.exercise.EX008","task.exercise.EX009","task.exercise.EX010","task.exercise.EX011","task.exercise.EX012","task.exercise.EX013","task.exercise.EX014","task.exercise.EX015","task.exercise.EX016","task.exercise.EX017","task.exercise.EX018","task.exercise.EX019","task.exercise.EX020","task.exercise.EX021","task.exercise.EX022","task.exercise.EX023","task.exercise.EX024","task.exercise.EX025","task.exercise.EX026","task.exercise.EX027","task.exercise.EX028","task.exercise.EX029","task.exercise.EX030",
+    "task.chore.CH001","task.chore.CH002","task.chore.CH003","task.chore.CH004","task.chore.CH005","task.chore.CH006","task.chore.CH007","task.chore.CH008","task.chore.CH009","task.chore.CH010","task.chore.CH011","task.chore.CH012","task.chore.CH013","task.chore.CH014","task.chore.CH015","task.chore.CH016","task.chore.CH017","task.chore.CH018","task.chore.CH019","task.chore.CH020","task.chore.CH021","task.chore.CH022","task.chore.CH023","task.chore.CH024","task.chore.CH025","task.chore.CH026","task.chore.CH027","task.chore.CH028","task.chore.CH029","task.chore.CH030",
+    "story.S01.cover","story.S02.cover","story.S03.cover","story.S04.cover","story.S05.cover","story.S06.cover","story.S07.cover","story.S08.cover","story.S09.cover","story.S10.cover","story.S11.cover","story.S12.cover","story.S13.cover","story.S14.cover","story.S15.cover","story.S16.cover","story.S17.cover","story.S18.cover","story.S19.cover","story.S20.cover","story.S21.cover","story.S22.cover","story.S23.cover","story.S24.cover","story.S25.cover","story.S26.cover","story.S27.cover","story.S28.cover","story.S29.cover","story.S30.cover",
+    "background.home","background.chapter01","background.chapter02","background.chapter03","background.chapter04","background.chapter05","background.chapter06",
+    "boss.B01","boss.B02","boss.B03","boss.B04","boss.B05","boss.B06",
+    "badge.badge_first","badge.badge_first_boss","badge.badge_7day","badge.badge_30task","badge.badge_100task","badge.badge_word100","badge.badge_story_ch1","badge.badge_story_ch2","badge.badge_story_ch3","badge.badge_story_ch4","badge.badge_story_ch5","badge.badge_story_ch6",
+    "cosmetic.frame_bronze","cosmetic.hat_explorer","cosmetic.backpack_green","cosmetic.pet_egg_1","cosmetic.cape_blue","cosmetic.pet_1","cosmetic.background_forest","cosmetic.armor_light","cosmetic.crown_chapter1","cosmetic.boss_b01","cosmetic.boss_b02","cosmetic.boss_b03","cosmetic.boss_b04","cosmetic.boss_b05","cosmetic.boss_b06"
+  ]
+}
