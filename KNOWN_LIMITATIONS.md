@@ -1,9 +1,12 @@
 # Known limitations
 
-This repository is at Stage 2.
+Current implementation is through **Stage 9 (PWA / Offline / Backup & Restore)**.
 
-- Onboarding state, nickname, avatar and settings persist in IndexedDB for the current origin. Parent PIN verification UI remains for Stage 8; only a salted verifier is stored.
-- Runtime data packs are not yet copied or loaded.
-- PWA icons, installability validation, offline caching, and backup/restore UI remain for Stage 9. Backup primitives currently support same-version JSON records and atomic merge; attachments and cross-version conversion are deferred.
-- Quest, vocabulary, story, reward, boss, parent, and report logic are intentionally absent.
-- Automated checks cover the shell and storage foundation, including browser reload and migration rollback; full acceptance testing remains for Stage 11.
+- Core app/content works offline after one successful online Service Worker installation. A completely fresh device still needs one online load before offline use is possible.
+- The production-art library is roughly 260 MB, so Stage 9 does not precache every image. Critical first-screen art is precached; other same-origin images are cached as viewed, with a local image fallback when an uncached asset is requested offline.
+- Backup/restore is JSON-only. Optional task-photo Blob persistence is not implemented yet.
+- Backup conversion currently supports same-version restores and DB v1→v2. Unknown future/other DB versions are rejected until a specific migration exists.
+- Backup files are local files and are not encrypted by the app. They contain progress and local settings/PIN verifier and should be stored privately.
+- No cloud account, sync, analytics, telemetry, or external upload service is included.
+- Vocabulary illustration art remains optional/later; the learning engine works without it.
+- Broad visual refinement/animation polish remains Stage 10; final end-to-end acceptance and release hardening remain Stage 11.

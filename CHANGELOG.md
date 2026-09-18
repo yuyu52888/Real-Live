@@ -6,6 +6,12 @@ All notable changes to Real Life Quest will be documented here.
 
 ### Added
 
+- Stage 9 installable PWA manifest with local 192/512/maskable icons.
+- Stage 9 Service Worker app-shell/core-data precache, runtime same-origin caching, offline navigation, connectivity banner, and image fallback.
+- Parent Mode JSON backup download, validation preview, explicit full restore confirmation, and atomic replacement restore.
+- Backup DB v1→v2 conversion plus invalid/failed restore rollback guarantees.
+- Stage 9 unit, persistence, and real-browser offline regression coverage.
+
 - Stage 2 IndexedDB stores, additive migrations, repositories and atomic onboarding persistence.
 - Salted PIN verifier, JSON backup primitives and isolated development reset with backup/concurrency guards.
 - Real-browser reload, migration, rollback and backup storage regression checks.

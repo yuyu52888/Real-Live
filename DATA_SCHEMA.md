@@ -1,40 +1,61 @@
-# Stage 2 persistence
+# Real Life Quest persistence and backup
 
-Database: `real-life-quest`, current version **2**. IndexedDB is authoritative; application memory is a rendered snapshot. No LocalStorage persistence is used.
+Database: `real-life-quest`, current version **2**. IndexedDB is authoritative; application memory is a rendered snapshot. No LocalStorage persistence is used for critical state.
 
 | Store | Stable primary key | Purpose |
 | --- | --- | --- |
 | player | id (`local-player`) | nickname, avatarVariant, onboardingStep, progress |
 | settings | id (`app-settings`) | preferences, salted PIN verifier |
-| questHistory | id | completion history |
-| approvals | id | approval records |
-| rewards | id | reward inventory records |
-| transactions | id | reward/EXP transaction records |
-| vocabularyPacks | packId | pack metadata |
+| questHistory | id | quest completion/progress history |
+| approvals | id | parent approval and return history |
+| rewards | id | inventory, chests, fragments, claims |
+| transactions | id | reward/EXP transactions |
+| vocabularyPacks | packId | vocabulary pack metadata |
 | vocabularyWords | wordId | vocabulary content |
 | wordProgress | wordId | progress independent of content |
 | wordSessions | id | learning sessions |
-| storyProgress | storyId | story progress |
-| bossProgress | bossId | Boss progress |
+| storyProgress | storyId | thinking-story progress |
+| bossProgress | bossId | Boss steps/defeat/reward recovery |
 
-Use canonical content IDs, semantic event IDs, or `newRecordId()` (UUID). Never use array positions. Only player/settings repositories and onboarding persistence are implemented; other stores reserve boundaries for future services. No EXP calculation or reward issuance is implemented here.
+Use canonical content IDs, semantic event IDs, or UUIDs. Never use array positions as persistent IDs.
 
 ## Migrations and transactions
 
-Version 1 creates stores. Version 2 adds query indexes without changing records. Append numbered migrations in `js/core/db-schema.js`; never modify released migrations or delete/recreate a database. Upgrade callbacks synchronously enqueue IndexedDB operations. If an upgrade fails, IndexedDB rolls back its records and version. Future destructive transformations require a backup first.
+Version 1 creates all stores. Version 2 adds indexes without changing record shapes. Append numbered migrations in `js/core/db-schema.js`; never modify a released migration or delete/recreate a production database. Upgrade callbacks enqueue IndexedDB operations synchronously, and IndexedDB rolls back both records and version if an upgrade fails.
 
-`runTransaction` resolves after commit and rejects on abort. Its callback must enqueue operations synchronously; perform network/crypto work before entering it. Connections close on `versionchange`; blocked upgrades surface an actionable error. Player and settings onboarding updates commit together. Reload resumes the saved step; PIN input is cleared from memory after saving a PBKDF2-SHA-256 verifier with a random salt. A four-digit PIN is a local parental control, not encryption; parent verification UI is a later stage.
+`runTransaction` resolves only after commit and rejects on abort. Player/settings onboarding saves are atomic. PIN input is not persisted: only a PBKDF2-SHA-256 verifier with random salt is stored. The four-digit PIN is a local parental control, not encryption.
 
-## Backup primitives
+## Backup format
 
-`exportBackup(db)` returns a consistent JSON-compatible snapshot of all stores with format, schemaVersion, dbVersion and exportedAt. `importBackup(db, objectOrJson)` validates IDs, duplicate IDs, profile structure and versions before an atomic merge/upsert. Records absent from a backup remain intact. Unknown or different database versions are rejected until a specific conversion is implemented. Blobs, Dates and other non-JSON values are explicitly rejected; no silent serialization loss.
+`exportBackup(db)` returns a JSON-compatible snapshot of every store plus:
 
-Backup format version is separate from database version. Store-specific validation for future business records, attachments, preview/confirmation, download/import UI, and cross-version conversion remain for later stages.
+- `format: "real-life-quest"`
+- backup `schemaVersion`
+- `dbVersion`
+- `exportedAt`
+
+The product UI serializes this as `real-life-quest-backup-YYYY-MM-DD.json`. Non-JSON values such as Blob, Date objects, or `undefined` are rejected rather than silently dropped.
+
+### Preview and validation
+
+`previewBackup(input, currentDbVersion)` parses and validates the complete backup before mutation. It validates store presence, stable primary keys, duplicate IDs, player/settings pairing, onboarding structure, EXP values, and PIN verifier structure. DB v1→v2 is supported because v2 only adds indexes and keeps the same record/store layout. Other unsupported database versions are rejected explicitly.
+
+### Restore semantics
+
+`restoreBackup(db, input)` is the product restore path. After validation/migration, it clears and repopulates all stores in **one** read/write IndexedDB transaction. The result is a full replacement matching the selected backup. If any write aborts, the whole transaction rolls back and the pre-restore data remains intact.
+
+`importBackup(db, input)` remains as the older merge/upsert primitive for backward compatibility and targeted tests; the Parent restore UI does not use it.
+
+Restore confirmation is a Parent Mode UI concern: the selected file is first previewed, then the parent must explicitly confirm. The in-memory preview is cleared when leaving Parent Mode. After a successful restore the app reloads, so Parent Mode is locked again and the restored PIN verifier applies.
+
+## Attachments
+
+Stage 9 backups are intentionally JSON-only. Optional task-photo Blob persistence is not part of the current MVP and therefore is not silently omitted from backups.
 
 ## Development reset
 
-No production module imports `js/dev/reset.js`. A developer can explicitly import `resetDevelopmentDatabase` on localhost and provide `{ enabled: true, confirmation: 'RESET <exact db name>', preserveBackup }`. The callback must save the returned snapshot before clearing records. A concurrent change after capture aborts the reset. Clearing is atomic and retains the database schema. No reset button exists in the product UI.
+No production module imports `js/dev/reset.js`. The guarded reset API is development-only, requires explicit confirmation, captures a backup first, detects concurrent changes, and clears records atomically without deleting the database schema.
 
 ## Verification
 
-Run `npm run check:persistence` and `npm run test:persistence`. The real-browser test uses a temporary profile and UUID-named fixture database; only that fixture database is deleted during cleanup.
+Run `npm run check:persistence`, `npm run test:persistence`, and `npm run test:stage9`. Real-browser tests use UUID-named fixture databases and temporary browser profiles.
