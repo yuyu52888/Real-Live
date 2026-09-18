@@ -1,20 +1,27 @@
 import { uiText } from "../services/ui-copy.js";
 import { escapeHtml } from "../ui/components.js";
 import { getTaskById } from "../repositories/tasks.js";
+import { renderParentTab } from "./parent-sections.js";
 
 export function renderParentApprovals(state) {
   if (!state.questUi.parentUnlocked) return lockedView();
+  const active = state.parentUi?.activeTab ?? "approvals";
   const pending = state.questUi.approvals.filter((approval) => approval.status === "pending");
   return `
     <section class="parent-page" aria-labelledby="parent-title">
       <header><p class="eyebrow">PARENT</p><h1 id="parent-title">${uiText("parent.title")}</h1></header>
-      <article class="parent-panel">
-        <h2>${uiText("parent.pending")}</h2>
-        ${pending.length ? pending.map((approval) => approvalCard(approval, state)).join("") : `<p class="parent-empty">${uiText("parent.noPending")}</p>`}
-      </article>
-      <p class="stage-badge">週報、完整設定與退回流程將在後續階段接入</p>
+      <div class="parent-tabs" role="tablist" aria-label="家長專區">
+        ${tabButton("approvals", "待審核", active)}
+        ${tabButton("report", "本週報告", active)}
+        ${tabButton("settings", "設定", active)}
+      </div>
+      ${renderParentTab(state, active, pending, approvalCard)}
     </section>
   `;
+}
+
+function tabButton(id, label, active) {
+  return `<button type="button" role="tab" data-parent-tab="${id}" class="${id === active ? "is-active" : ""}" aria-selected="${id === active}">${label}</button>`;
 }
 
 function lockedView() {
@@ -37,7 +44,10 @@ function approvalCard(approval, state) {
   return `
     <article class="approval-card">
       <div><strong>${escapeHtml(task?.name ?? approval.questId)}</strong><small>${uiText("parent.completedAt", { time: formatTime(approval.requestedAt) })}</small></div>
-      <button class="button button--gold" type="button" data-approve-completion="${escapeHtml(approval.questHistoryId)}">${uiText("parent.approve")}</button>
+      <div class="approval-card__actions">
+        <button class="button button--secondary" type="button" data-return-completion="${escapeHtml(approval.questHistoryId)}">退回再調整</button>
+        <button class="button button--gold" type="button" data-approve-completion="${escapeHtml(approval.questHistoryId)}">${uiText("parent.approve")}</button>
+      </div>
     </article>
   `;
 }

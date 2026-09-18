@@ -9,9 +9,9 @@ import { openDatabase } from "./core/database.js";
 import { loadOnboarding, persistOnboarding } from "./services/onboarding-storage.js";
 import { loadTasks, getTaskById } from "./repositories/tasks.js";
 import { listQuestHistory } from "./repositories/quest-history.js";
-import { listPendingApprovals } from "./repositories/approvals.js";
+import { listApprovals } from "./repositories/approvals.js";
 import { getPlayer } from "./repositories/player.js";
-import { approveQuestCompletion, completionInstanceId, requestQuestCompletion, startQuest, updateQuestProgress } from "./services/quest-service.js";
+import { approveQuestCompletion, completionInstanceId, requestQuestCompletion, returnQuestCompletion, startQuest, updateQuestProgress } from "./services/quest-service.js";
 import { verifyParentPin } from "./services/parent-auth.js";
 import { ensureCoreVocabulary, loadEnglishDashboard, saveLearningSession } from "./services/english-engine.js";
 import { createMatchingGame, selectMatchingCard as advanceMatchingGame } from "./services/matching-game.js";
@@ -23,6 +23,10 @@ import { loadRewardSystem } from "./services/reward-system.js";
 import { claimLevelReward as claimMilestone, openChest as openRewardChest, selectActiveTitle as saveActiveTitle, synchronizeRewards } from "./services/reward-service.js";
 import { getBossById, loadBosses } from "./repositories/bosses.js";
 import { completeBossStep as recordBossStep, loadBossDashboard, synchronizeBosses } from "./services/boss-service.js";
+import { loadParentDashboard } from "./services/parent-dashboard.js";
+import { saveParentPreferences, switchPlayerAvatar } from "./services/parent-settings.js";
+import { setVocabularyPackEnabled } from "./repositories/vocabulary.js";
+import { importVocabularyPack as importPack } from "./services/vocabulary-import.js";
 
 const root = document.querySelector("#app");
 let state = createInitialState();
@@ -46,7 +50,12 @@ const actions = {
   },
   navigate(route) {
     if (route !== "quests") stopQuestTimer();
-    state = { ...navigate(state, route), bossUi: { ...state.bossUi, selectedBossId: null } };
+    const leavingParent = state.route === "parent" && route !== "parent";
+    state = {
+      ...navigate(state, route),
+      bossUi: { ...state.bossUi, selectedBossId: null },
+      questUi: { ...state.questUi, parentUnlocked: leavingParent ? false : state.questUi?.parentUnlocked },
+    };
     render();
   },
   openLearnSurface(surface) {
@@ -229,7 +238,7 @@ const actions = {
   },
   completeQuest(taskId) {
     stopQuestTimer();
-    return performQuest(async (task) => requestQuestCompletion(database, task), taskId, { syncRewards: true });
+    return performQuest(async (task) => requestQuestCompletion(database, task, { parentApprovalRequired: state.onboarding.settings.parentApprovalRequired }), taskId, { syncRewards: true });
   },
   adjustQuest(taskId, delta) {
     const task = getTaskById(taskCatalog, taskId);
@@ -252,12 +261,59 @@ const actions = {
     const unlocked = await verifyParentPin(database, pin);
     if (unlocked) {
       state = { ...state, questUi: { ...state.questUi, parentUnlocked: true } };
+      await refreshParentState();
       render();
     }
     return unlocked;
   },
   approveCompletion(completionId) {
     return performQuest(() => approveQuestCompletion(database, completionId), undefined, { syncRewards: true });
+  },
+  returnCompletion(completionId) {
+    return performQuest(() => returnQuestCompletion(database, completionId));
+  },
+  selectParentTab(activeTab) {
+    if (!["approvals", "report", "settings"].includes(activeTab)) return;
+    state = { ...state, parentUi: { ...state.parentUi, activeTab } };
+    render();
+  },
+  saveParentSettings(preferences) {
+    return performEnglish(async () => {
+      const saved = await saveParentPreferences(database, preferences);
+      state = { ...state, onboarding: { ...state.onboarding, settings: saved } };
+      const english = await loadEnglishDashboard(database);
+      state = { ...state, learnUi: { ...state.learnUi, ...english } };
+      await refreshRewardState();
+      await refreshParentState();
+      render();
+    });
+  },
+  switchParentAvatar(avatarVariant) {
+    return performEnglish(async () => {
+      const playerRecord = await switchPlayerAvatar(database, avatarVariant);
+      state = { ...state, onboarding: { ...state.onboarding, avatarVariant }, player: playerRecord.progress ?? state.player };
+      await refreshParentState();
+      render();
+    });
+  },
+  toggleVocabularyPack(packId, enabled) {
+    return performEnglish(async () => {
+      await setVocabularyPackEnabled(database, packId, enabled);
+      const english = await loadEnglishDashboard(database);
+      state = { ...state, learnUi: { ...state.learnUi, ...english } };
+      await refreshParentState();
+      render();
+    });
+  },
+  importVocabularyPack(input, options) {
+    return performEnglish(async () => {
+      const pack = typeof input === "string" ? JSON.parse(input) : input;
+      await importPack(database, pack, options);
+      const english = await loadEnglishDashboard(database);
+      state = { ...state, learnUi: { ...state.learnUi, ...english } };
+      await refreshParentState();
+      render();
+    });
   },
 };
 
@@ -318,6 +374,7 @@ async function performQuest(operation, taskId, { syncRewards = false } = {}) {
     await operation(task);
     await refreshQuestState();
     if (syncRewards) await refreshRewardState();
+    if (state.questUi.parentUnlocked) await refreshParentState();
     render();
   } catch (error) {
     console.error(error);
@@ -349,7 +406,7 @@ async function performBoss(operation) {
 async function refreshQuestState() {
   const [history, approvals, playerRecord] = await Promise.all([
     listQuestHistory(database),
-    listPendingApprovals(database),
+    listApprovals(database),
     getPlayer(database),
   ]);
   state = {
@@ -365,6 +422,11 @@ async function refreshQuestState() {
       parentUnlocked: state.questUi?.parentUnlocked ?? false,
     },
   };
+}
+
+async function refreshParentState() {
+  const dashboard = await loadParentDashboard(database, taskCatalog);
+  state = { ...state, parentUi: { ...state.parentUi, ...dashboard, loading: false } };
 }
 
 async function refreshRewardState() {

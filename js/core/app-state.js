@@ -23,6 +23,11 @@ export function createInitialState() {
         choresEnabled: true,
         parentApprovalRequired: true,
         speechRate: 0.75,
+        maxTaskDifficulty: 5,
+        restDays: [],
+        speechMinRate: 0.6,
+        speechMaxRate: 1.1,
+        materialRewardsEnabled: false,
       },
     },
     player: {
@@ -35,6 +40,7 @@ export function createInitialState() {
     storyUi: { loading: true },
     rewardUi: { loading: true },
     bossUi: { loading: true, selectedBossId: null },
+    parentUi: { activeTab: "approvals", loading: true },
   };
 }
 

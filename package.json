@@ -15,6 +15,8 @@
     "test:stage6": "node --test tests/stage6.test.mjs && node tests/stage1-browser-check.mjs",
     "test:persistence": "node tests/stage1-browser-check.mjs",
     "test:stage7": "node --test tests/stage7.test.mjs && node tests/stage1-browser-check.mjs",
+    "test:stage8": "npm run check:stage8 && node --test tests/stage8.test.mjs && node tests/stage1-browser-check.mjs",
+    "check:stage8": "node --check js/pages/parent-approvals.js && node --check js/pages/parent-sections.js && node --check js/services/parent-dashboard.js && node --check js/services/parent-settings.js && node --check js/services/weekly-report.js && node --check js/ui/parent-bindings.js && node --check tests/stage8-persistence-browser.js",
     "validate:assets": "python tools/asset-validation/validate_assets.py --project-root .",
     "validate:content": "python tools/content-validation/validate_content.py --project-root .",
     "check:stage3": "node --check js/repositories/tasks.js && node --check js/repositories/quest-history.js && node --check js/repositories/approvals.js && node --check js/repositories/transactions.js && node --check js/services/quest-service.js && node --check js/services/parent-auth.js && node --check js/pages/quests.js && node --check js/pages/parent-approvals.js && node --check tests/stage3-persistence-browser.js && node --check tests/a7-stage3-persistence-browser.js && node --check tests/a7-stage3-qa.test.mjs && node --check tests/stage1-browser-check.mjs",

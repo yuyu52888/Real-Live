@@ -9,19 +9,43 @@ export const SPEECH_DEFAULTS = Object.freeze({
   quickRates: Object.freeze([0.6, 0.75, 0.9, 1, 1.1]),
 });
 
-export async function getSpeechRate(db) {
+export async function getSpeechPreferences(db) {
   const settings = await getSettings(db);
-  return normalizeSpeechRate(settings?.preferences?.speechRate ?? SPEECH_DEFAULTS.rate);
+  const min = normalizeSpeechRate(settings?.preferences?.speechMinRate ?? SPEECH_DEFAULTS.min);
+  const max = normalizeSpeechRate(settings?.preferences?.speechMaxRate ?? SPEECH_DEFAULTS.max);
+  const storedRate = normalizeSpeechRate(settings?.preferences?.speechRate ?? SPEECH_DEFAULTS.rate);
+  const rate = Math.min(max, Math.max(min, storedRate));
+  return { min, max, rate, rates: speechRatesInRange(min, max) };
+}
+
+export async function getSpeechRate(db) {
+  return (await getSpeechPreferences(db)).rate;
 }
 
 export async function setSpeechRate(db, rate) {
   const normalized = normalizeSpeechRate(rate);
   const settings = await getSettings(db);
+  const min = normalizeSpeechRate(settings?.preferences?.speechMinRate ?? SPEECH_DEFAULTS.min);
+  const max = normalizeSpeechRate(settings?.preferences?.speechMaxRate ?? SPEECH_DEFAULTS.max);
+  if (normalized < min || normalized > max) {
+    throw new RangeError(`語速必須介於家長設定的 ${min.toFixed(2)} 與 ${max.toFixed(2)}。`);
+  }
   await saveSettings(db, {
     ...settings,
     preferences: { ...settings?.preferences, speechRate: normalized },
   });
   return normalized;
+}
+
+export function speechRatesInRange(min = SPEECH_DEFAULTS.min, max = SPEECH_DEFAULTS.max) {
+  const lower = normalizeSpeechRate(min);
+  const upper = normalizeSpeechRate(max);
+  if (lower > upper) throw new RangeError("最低語速不得高於最高語速。");
+  const rates = [];
+  for (let rate = lower; rate <= upper + 0.000001; rate += SPEECH_DEFAULTS.step) {
+    rates.push(Number(rate.toFixed(2)));
+  }
+  return rates;
 }
 
 export async function speakVocabulary({ text, audioFile = null, locale = SPEECH_DEFAULTS.locale, rate = SPEECH_DEFAULTS.rate } = {}) {

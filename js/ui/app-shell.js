@@ -8,6 +8,7 @@ import { renderHero } from "../pages/hero.js";
 import { renderBossPage } from "../pages/boss.js";
 import { uiText } from "../services/ui-copy.js";
 import { icon } from "./components.js";
+import { bindParentControls } from "./parent-bindings.js";
 
 export function mountAppShell(root, state, actions) {
   const page = state.route === "home"
@@ -80,6 +81,7 @@ export function mountAppShell(root, state, actions) {
       error.textContent = uiText("parent.wrongPin");
     }
   });
+  bindParentControls(root, actions);
 }
 
 function bindButtons(root, selector, action) {

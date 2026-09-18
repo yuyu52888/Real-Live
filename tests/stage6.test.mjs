@@ -99,7 +99,7 @@ test("Stage 6 preserves cumulative Lv10 EXP text while clamping progressbar ARIA
 
 test("Stage 6 synchronizes rewards only for quest completion and approval", async () => {
   const source = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
-  assert.match(source, /requestQuestCompletion\(database, task\), taskId, \{ syncRewards: true \}/);
+  assert.match(source, /requestQuestCompletion\(database, task(?:, \{ parentApprovalRequired: [^}]+ \})?\), taskId, \{ syncRewards: true \}/);
   assert.match(source, /approveQuestCompletion\(database, completionId\), undefined, \{ syncRewards: true \}/);
   assert.match(source, /async function performQuest\(operation, taskId, \{ syncRewards = false \} = \{\}\)/);
   assert.match(source, /if \(syncRewards\) await refreshRewardState\(\)/);

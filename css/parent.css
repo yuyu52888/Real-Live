@@ -1,0 +1,54 @@
+.parent-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin: var(--space-4) 0;
+}
+
+.parent-tabs button,
+.parent-avatar-choice button {
+  min-height: 48px;
+  border: 2px solid var(--color-border, #d9c9a7);
+  border-radius: var(--radius-md);
+  background: #fff;
+  font: inherit;
+  font-weight: 700;
+}
+
+.parent-tabs button.is-active,
+.parent-avatar-choice button.is-active {
+  border-color: var(--color-primary, #2785b8);
+  background: #e8f7ff;
+}
+
+.approval-card__actions,
+.parent-avatar-choice,
+.speech-bound-fields,
+.weekday-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.parent-settings-stack { display: grid; gap: var(--space-4); }
+.parent-settings { display: grid; gap: var(--space-3); }
+.parent-settings > label { display: grid; gap: var(--space-1); font-weight: 700; }
+.parent-settings select,
+.parent-settings input[type="number"] { min-height: 48px; padding: 0 var(--space-2); font: inherit; }
+.parent-settings fieldset { border: 1px solid #d9c9a7; border-radius: var(--radius-md); padding: var(--space-3); }
+.toggle-field { display: flex; align-items: center; gap: var(--space-2); min-height: 44px; }
+.toggle-field input { width: 22px; height: 22px; }
+.parent-avatar-choice button { flex: 1; }
+.report-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.report-grid > div { display: grid; padding: var(--space-3); border-radius: var(--radius-md); background: #fff8df; }
+.report-grid strong { font-size: 1.35rem; }
+.pack-list { display: grid; gap: var(--space-2); }
+.pack-list > div { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; border-bottom: 1px solid #eadfc8; }
+.pack-list span { display: grid; }
+.pack-import { display: grid; gap: var(--space-2); margin-top: var(--space-3); }
+.parent-note { color: var(--color-text-muted, #665f55); }
+
+@media (min-width: 720px) {
+  .report-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .parent-settings-stack { grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr); align-items: start; }
+}

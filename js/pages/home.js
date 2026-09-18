@@ -2,6 +2,7 @@ import { avatarImage, escapeHtml, expBar, foxImage, icon, logo } from "../ui/com
 import { uiList, uiText } from "../services/ui-copy.js";
 import { completionDateKey, completionInstanceId } from "../services/quest-service.js";
 import { renderHomeBossCard } from "./boss.js";
+import { isRestDay, taskAllowedBySettings } from "../services/parent-settings.js";
 
 export function renderHome(state) {
   const { onboarding, player } = state;
@@ -64,7 +65,7 @@ export function renderHome(state) {
         <article class="feature-card progress-card">
           <div class="feature-card__heading">
             <span class="check-mark">✓</span>
-            <div><small>${uiText("home.todayQuestProgress")}</small><h2>${today.completed} / ${onboarding.settings.dailyTaskGoal}</h2></div>
+            <div><small>${today.restDay ? "今天是休息日" : uiText("home.todayQuestProgress")}</small><h2>${today.restDay ? "自由探索" : `${today.completed} / ${onboarding.settings.dailyTaskGoal}`}</h2></div>
           </div>
           <div class="home-quest-list">${today.tasks.map((task) => homeQuest(task, state)).join("")}</div>
           <button class="button button--primary" type="button" data-route="quests">看看任務頁 ${icon("arrow")}</button>
@@ -80,21 +81,18 @@ export function renderHome(state) {
 }
 
 function todayQuestSummary(state) {
-  const enabled = (state.questUi?.tasks ?? []).filter((task) => (
-    (task.taskFamily !== "exercise" || state.onboarding.settings.exerciseEnabled) &&
-    (task.taskFamily !== "chore" || state.onboarding.settings.choresEnabled)
-  ));
+  const enabled = (state.questUi?.tasks ?? []).filter((task) => taskAllowedBySettings(task, state.onboarding.settings));
   const tasks = enabled.slice(0, state.onboarding.settings.dailyTaskGoal);
   const completed = Math.min(
     state.onboarding.settings.dailyTaskGoal,
     state.questUi.history.filter((record) => record.dateKey === completionDateKey() && record.status === "completed").length,
   );
-  return { tasks, completed };
+  return { tasks, completed, restDay: isRestDay(state.onboarding.settings) };
 }
 
 function homeQuest(task, state) {
   const history = state.questUi.history.find((record) => record.id === completionInstanceId(task));
-  const status = history?.status === "completed" ? "✓" : history?.status === "pending_approval" ? "⌛" : "→";
+  const status = history?.status === "completed" ? "✓" : history?.status === "pending_approval" ? "⌛" : history?.status === "returned" ? "↺" : "→";
   return `<button type="button" data-open-quest="${task.id}"><span>${status}</span><strong>${escapeHtml(task.name)}</strong><small>${task.exp} EXP</small></button>`;
 }
 

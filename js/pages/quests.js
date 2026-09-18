@@ -3,15 +3,13 @@ import { resolveAsset } from "../services/asset-registry.js";
 import { uiText } from "../services/ui-copy.js";
 import { filterTasks, getTaskActivityControl, getTaskById, TASK_FILTER_ALIASES } from "../repositories/tasks.js";
 import { escapeHtml, icon } from "../ui/components.js";
+import { taskAllowedBySettings } from "../services/parent-settings.js";
 
 const FILTER_ORDER = Object.freeze(Object.keys(TASK_FILTER_ALIASES));
 
 export function renderQuests(state) {
   const questUi = state.questUi;
-  const enabledTasks = questUi.tasks.filter((task) => (
-    (task.taskFamily !== "exercise" || state.onboarding.settings.exerciseEnabled) &&
-    (task.taskFamily !== "chore" || state.onboarding.settings.choresEnabled)
-  ));
+  const enabledTasks = questUi.tasks.filter((task) => taskAllowedBySettings(task, state.onboarding.settings));
   const filtered = filterTasks(enabledTasks, questUi.filter);
   const selected = getTaskById(filtered, questUi.selectedTaskId) ?? filtered[0] ?? null;
 
@@ -50,7 +48,7 @@ function questCard(task, state, selected) {
         <span class="quest-card__body">
           <strong>${escapeHtml(task.name)}</strong>
           <small>${escapeHtml(task.description)}</small>
-          <span class="quest-card__meta">${escapeHtml(task.difficulty)} · ${task.exp} EXP ${task.requiresParentConfirmation ? `· ${uiText("quests.card.requiresApproval")}` : ""}</span>
+          <span class="quest-card__meta">${escapeHtml(task.difficulty)} · ${task.exp} EXP ${(task.requiresParentConfirmation || state.onboarding.settings.parentApprovalRequired) ? `· ${uiText("quests.card.requiresApproval")}` : ""}</span>
         </span>
       </button>
       ${history ? `<span class="quest-state">${stateLabel(history.status)}</span>` : `<button class="button button--small button--primary" type="button" data-start-quest="${task.id}">${uiText("quests.card.start")}</button>`}
@@ -78,7 +76,7 @@ function questDetail(task, state) {
       </dl>
       ${tips.length ? tipsPanel(task, tips) : ""}
       ${task.safetyNote ? safetyPanel(task.safetyNote) : ""}
-      ${status === "in_progress" && activity ? activityPanel(task, activity, history.progress?.value ?? 0, state.questUi.activeTimerTaskId === task.id) : ""}
+      ${["in_progress", "returned"].includes(status) && activity ? activityPanel(task, activity, history.progress?.value ?? 0, state.questUi.activeTimerTaskId === task.id) : ""}
       ${task.taskFamily === "chore" ? photoPlaceholder() : ""}
       <div class="quest-detail__actions">${detailActions(task, status)}</div>
     </article>
@@ -125,6 +123,7 @@ function detailActions(task, status) {
   if (status === "available") return `<button class="button button--primary button--wide" type="button" data-start-quest="${task.id}">${uiText("quests.detail.start")} ${icon("arrow")}</button>`;
   if (status === "in_progress") return `<button class="button button--gold button--wide" type="button" data-complete-quest="${task.id}">${task.taskFamily === "chore" ? uiText("chores.complete") : task.taskFamily === "exercise" ? uiText("exercise.complete") : uiText("quests.state.completed")}</button>`;
   if (status === "pending_approval") return `<p class="pending-message" role="status">${uiText("quests.state.pendingApproval")}</p>`;
+  if (status === "returned") return `<div><p class="pending-message" role="status">家長退回了這次紀錄，可以調整後重新送出。</p><button class="button button--gold button--wide" type="button" data-resubmit-quest="${task.id}">重新送出審核</button></div>`;
   return `<p class="completed-message" role="status">✓ ${uiText("quests.state.completed")}</p>`;
 }
 
@@ -136,6 +135,7 @@ function currentHistory(task, state) {
 function stateLabel(status) {
   if (status === "in_progress") return uiText("quests.state.inProgress");
   if (status === "pending_approval") return uiText("quests.state.pendingApproval");
+  if (status === "returned") return "待調整";
   return uiText("quests.state.completed");
 }
 

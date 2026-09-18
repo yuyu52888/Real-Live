@@ -333,8 +333,19 @@ try {
   await waitFor(() => client.evaluate(`Boolean(document.querySelector('#parent-unlock-pin'))`));
   await client.evaluate(`document.querySelector('#parent-unlock-pin').value='0123'; document.querySelector('[data-parent-unlock]').requestSubmit()`);
   await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-approve-completion]'))`));
+  const parentTabs = await client.evaluate(`document.querySelectorAll('[data-parent-tab]').length`);
+  if (parentTabs !== 3) throw new Error(`Stage 8 Parent tabs: expected 3, received ${parentTabs}`);
+  await client.evaluate(`document.querySelector('[data-parent-tab="report"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#weekly-report-title'))`));
+  await client.evaluate(`document.querySelector('[data-parent-tab="settings"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-parent-settings]'))`));
+  await client.evaluate(`document.querySelector('[data-parent-tab="approvals"]').click()`);
   await client.evaluate(`document.querySelector('[data-approve-completion]').click()`);
   await waitFor(() => client.evaluate(`Boolean(document.querySelector('.parent-empty')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.evaluate(`document.querySelector('.bottom-nav__item[data-route="home"]').click(); document.querySelector('.bottom-nav__item[data-route="parent"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('#parent-unlock-pin'))`));
+  const parentRelocked = await client.evaluate(`!document.querySelector('[data-parent-tab]')`);
+  if (!parentRelocked) throw new Error("Stage 8 Parent page did not relock after leaving");
   await client.evaluate(`(async () => {
     const { openDatabase, putRecord } = await import('/js/core/database.js');
     const db = await openDatabase();
@@ -441,11 +452,16 @@ try {
     return testStage7Persistence();
   })()`);
   console.log(stage3Persistence);
+  const stage8Persistence = await client.evaluate(`(async () => {
+    const { testStage8Persistence } = await import('/tests/stage8-persistence-browser.js');
+    return testStage8Persistence();
+  })()`);
   console.log(a7Stage3Persistence);
   console.log(stage4Persistence);
   console.log(stage5Persistence);
   console.log(stage6Persistence);
   console.log(stage7Persistence);
+  console.log(stage8Persistence);
   if (pageErrors.length) throw new Error(pageErrors.join("\n"));
   client.close();
 } finally {

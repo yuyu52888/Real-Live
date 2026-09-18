@@ -56,7 +56,7 @@ function overview(ui) {
       </div>
       <section class="speech-panel" aria-labelledby="speech-rate-title">
         <div><strong id="speech-rate-title">${uiText("learn.speechRate")}</strong><small>單字、例句與聽力共用設定</small></div>
-        <div class="speech-rates">${SPEECH_DEFAULTS.quickRates.map((rate) => rateButton(rate, ui.speechRate)).join("")}</div>
+        <div class="speech-rates">${(ui.speechRates ?? SPEECH_DEFAULTS.quickRates).map((rate) => rateButton(rate, ui.speechRate)).join("")}</div>
       </section>
     </section>
   `;

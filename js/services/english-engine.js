@@ -6,7 +6,7 @@ import {
   saveWordSession,
 } from "../repositories/vocabulary.js";
 import { buildDailyWordPlan } from "./review-scheduler.js";
-import { getSpeechRate } from "./speech.js";
+import { getSpeechPreferences } from "./speech.js";
 import { loadCoreVocabulary } from "./vocabulary-pack.js";
 
 export async function ensureCoreVocabulary(db, options = {}) {
@@ -16,12 +16,12 @@ export async function ensureCoreVocabulary(db, options = {}) {
 }
 
 export async function loadEnglishDashboard(db, options = {}) {
-  const [totalWords, enabledWords, progress, plan, speechRate] = await Promise.all([
+  const [totalWords, enabledWords, progress, plan, speech] = await Promise.all([
     countEnabledWords(db),
     listEnabledVocabularyWords(db),
     listWordProgress(db),
     buildDailyWordPlan(db, options),
-    getSpeechRate(db),
+    getSpeechPreferences(db),
   ]);
   const enabled = new Set(enabledWords.map(({ wordId }) => wordId));
   const masteredWords = progress.filter((item) => enabled.has(item.wordId) && item.state === "mastered").length;
@@ -31,7 +31,10 @@ export async function loadEnglishDashboard(db, options = {}) {
     dueCount: plan.reviews.length,
     newCount: plan.newWords.length,
     plan,
-    speechRate,
+    speechRate: speech.rate,
+    speechMinRate: speech.min,
+    speechMaxRate: speech.max,
+    speechRates: speech.rates,
   };
 }
 

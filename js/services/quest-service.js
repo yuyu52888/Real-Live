@@ -51,7 +51,7 @@ export async function updateQuestProgress(db, task, value, { now = new Date() } 
     const request = store.get(id);
     let result;
     request.onsuccess = () => {
-      if (!request.result || request.result.status !== "in_progress") {
+      if (!request.result || !["in_progress", "returned"].includes(request.result.status)) {
         result = request.result;
         return;
       }
@@ -62,9 +62,10 @@ export async function updateQuestProgress(db, task, value, { now = new Date() } 
   });
 }
 
-export async function requestQuestCompletion(db, task, { now = new Date() } = {}) {
+export async function requestQuestCompletion(db, task, { now = new Date(), parentApprovalRequired } = {}) {
   const completionId = completionInstanceId(task, now);
-  return task.requiresParentConfirmation
+  const requiresApproval = task.requiresParentConfirmation === true || parentApprovalRequired === true;
+  return requiresApproval
     ? requestApproval(db, completionId, now)
     : finalizeWithoutApproval(db, completionId, now);
 }
@@ -112,6 +113,35 @@ export async function approveQuestCompletion(db, completionId, { now = new Date(
   });
 }
 
+export async function returnQuestCompletion(db, completionId, { now = new Date() } = {}) {
+  return runTransaction(db, ["questHistory", "approvals"], "readwrite", (tx) => {
+    const historyStore = tx.objectStore("questHistory");
+    const approvalStore = tx.objectStore("approvals");
+    const historyRequest = historyStore.get(completionId);
+    let result;
+    historyRequest.onsuccess = () => {
+      const history = historyRequest.result;
+      if (!history || history.status !== "pending_approval") return;
+      const approvalId = `approval:${completionId}`;
+      const approvalRequest = approvalStore.get(approvalId);
+      approvalRequest.onsuccess = () => {
+        const approval = approvalRequest.result;
+        if (!approval || approval.status !== "pending") return;
+        const returnedAt = now.toISOString();
+        result = { ...history, status: "returned", returnedAt, updatedAt: returnedAt };
+        historyStore.put(result);
+        approvalStore.put({
+          ...approval,
+          status: "returned",
+          returnedAt,
+          returnEvents: [...(approval.returnEvents ?? []), returnedAt],
+        });
+      };
+    };
+    return () => result;
+  });
+}
+
 function requestApproval(db, completionId, now) {
   return runTransaction(db, ["questHistory", "approvals"], "readwrite", (tx) => {
     const historyStore = tx.objectStore("questHistory");
@@ -127,20 +157,37 @@ function requestApproval(db, completionId, now) {
       const approvalId = `approval:${completionId}`;
       const approvalRequest = approvalStore.get(approvalId);
       approvalRequest.onsuccess = () => {
+        const existingApproval = approvalRequest.result;
+        if (existingApproval?.status === "approved") {
+          result = history;
+          return;
+        }
+        const requestedAt = now.toISOString();
         const pending = {
           ...history,
           status: "pending_approval",
-          completionRequestedAt: history.completionRequestedAt ?? now.toISOString(),
+          completionRequestedAt: history.completionRequestedAt ?? requestedAt,
+          lastCompletionRequestedAt: requestedAt,
+          returnedAt: undefined,
         };
         result = pending;
         historyStore.put(pending);
-        if (!approvalRequest.result) {
+        if (!existingApproval) {
           approvalStore.add({
             id: approvalId,
             questHistoryId: completionId,
             questId: history.questId,
             status: "pending",
-            requestedAt: now.toISOString(),
+            requestedAt,
+          });
+          return;
+        }
+        if (existingApproval.status === "returned") {
+          approvalStore.put({
+            ...existingApproval,
+            status: "pending",
+            returnedAt: undefined,
+            resubmittedAt: requestedAt,
           });
         }
       };
