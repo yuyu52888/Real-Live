@@ -54,6 +54,8 @@ test("Stage 5 overview and reader expose canonical content without scoring", () 
   assert.match(reader, new RegExp(escapeRegExp(stories[0].takeaway)));
   assert.doesNotMatch(reader, /data-(?:answer|score|correct)/i);
   assert.doesNotMatch(reader, /答對|答錯|分數|計分/);
+  assert.equal((reader.match(/data-story-back/g) ?? []).length, 2);
+  assert.match(reader, /回到思維故事/);
 });
 
 test("Stage 5 progress is derived at 1/5 and 5/5", () => {
