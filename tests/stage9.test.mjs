@@ -3,6 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import { test } from "node:test";
 import { STORE_KEYS } from "../js/core/db-schema.js";
 import { backupFilename, previewBackup } from "../js/services/backup.js";
+import { renderParentApprovals } from "../js/pages/parent-approvals.js";
 
 const readText = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
@@ -16,7 +17,15 @@ test("Stage 9 manifest is installable and declares local app icons", async () =>
   assert.ok(manifest.icons.some(({ sizes, purpose }) => sizes === "192x192" && purpose === "any"));
   assert.ok(manifest.icons.some(({ sizes, purpose }) => sizes === "512x512" && purpose === "any"));
   assert.ok(manifest.icons.some(({ sizes, purpose }) => sizes === "512x512" && purpose === "maskable"));
-  for (const icon of manifest.icons) await access(new URL(`../${icon.src.replace(/^\.\//, "")}`, import.meta.url));
+  for (const icon of manifest.icons) {
+    const url = new URL(`../${icon.src.replace(/^\.\//, "")}`, import.meta.url);
+    await access(url);
+    const bytes = await readFile(url);
+    assert.equal(bytes.toString("ascii", 1, 4), "PNG");
+    const [expectedWidth, expectedHeight] = icon.sizes.split("x").map(Number);
+    assert.equal(bytes.readUInt32BE(16), expectedWidth);
+    assert.equal(bytes.readUInt32BE(20), expectedHeight);
+  }
 });
 
 test("Stage 9 service worker precaches the core shell and has offline fallbacks", async () => {
@@ -50,16 +59,43 @@ test("Stage 9 backup preview supports the safe v1 to v2 conversion and rejects m
   assert.throws(() => previewBackup(invalid, 2), /all stores/);
 });
 
-test("Stage 9 keeps DB schema stable and exposes parent backup controls", async () => {
-  const [schema, parentPage, bindings, app] = await Promise.all([
-    readText("js/core/db-schema.js"), readText("js/pages/parent-sections.js"),
-    readText("js/ui/parent-bindings.js"), readText("js/app.js"),
+test("Stage 9 keeps DB schema stable and renders parent backup preview controls", async () => {
+  const [schema, bindings, app] = await Promise.all([
+    readText("js/core/db-schema.js"), readText("js/ui/parent-bindings.js"), readText("js/app.js"),
   ]);
   assert.match(schema, /DB_VERSION = 2/);
-  assert.match(parentPage, /data-backup-export/);
-  assert.match(parentPage, /data-backup-preview-form/);
-  assert.match(parentPage, /data-backup-restore/);
   assert.match(bindings, /previewBackup/);
   assert.match(app, /restoreBackupSnapshot/);
   assert.match(app, /installConnectivityIndicator/);
+
+  const html = renderParentApprovals({
+    onboarding: {
+      avatarVariant: "boy",
+      settings: {
+        dailyTaskGoal: 2, maxTaskDifficulty: 5, exerciseEnabled: true, choresEnabled: true,
+        parentApprovalRequired: true, materialRewardsEnabled: false, restDays: [],
+        speechMinRate: 0.6, speechMaxRate: 1.1,
+      },
+    },
+    questUi: { parentUnlocked: true, approvals: [], tasks: [] },
+    parentUi: {
+      activeTab: "settings", packs: [], settings: {
+        dailyTaskGoal: 2, maxTaskDifficulty: 5, exerciseEnabled: true, choresEnabled: true,
+        parentApprovalRequired: true, materialRewardsEnabled: false, restDays: [],
+        speechMinRate: 0.6, speechMaxRate: 1.1,
+      },
+      backupPreview: {
+        sourceDbVersion: 2, migrated: false,
+        summary: {
+          nickname: "<測試>", exportedAt: "2026-09-18T00:00:00.000Z", questHistory: 1,
+          wordProgress: 2, wordSessions: 3, storyProgress: 4, rewards: 5, bossProgress: 6,
+        },
+      },
+    },
+  });
+  assert.match(html, /data-backup-export/);
+  assert.match(html, /data-backup-preview-form/);
+  assert.match(html, /data-backup-restore/);
+  assert.match(html, /&lt;測試&gt;/);
+  assert.doesNotMatch(html, /<測試>/);
 });

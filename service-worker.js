@@ -134,7 +134,10 @@ async function navigationResponse(request) {
   const cache = await caches.open(STATIC_CACHE);
   try {
     const network = await fetch(request);
-    if (network.ok) await putSafely(cache, scopedUrl("./index.html"), network.clone());
+    if (network.ok) {
+      await putSafely(cache, request, network.clone());
+      await putSafely(cache, scopedUrl("./index.html"), network.clone());
+    }
     return network;
   } catch {
     return (await cache.match(request, { ignoreSearch: true }))
@@ -145,17 +148,17 @@ async function navigationResponse(request) {
 
 async function staticResponse(request) {
   const cached = await caches.match(request, { ignoreSearch: true });
-  if (cached) return cached;
   try {
     const network = await fetch(request);
     if (network.ok) {
-      const cache = await caches.open(RUNTIME_CACHE);
+      const core = isCoreRequest(request.url);
+      const cache = await caches.open(core ? STATIC_CACHE : RUNTIME_CACHE);
       await putSafely(cache, request, network.clone());
-      await trimRuntimeCache();
+      if (!core) await trimRuntimeCache();
     }
     return network;
   } catch {
-    return Response.error();
+    return cached ?? Response.error();
   }
 }
 
@@ -195,6 +198,13 @@ async function trimRuntimeCache(maxEntries = 48) {
   } catch (error) {
     console.warn("Runtime cache trim skipped.", error);
   }
+}
+
+let coreUrls;
+
+function isCoreRequest(url) {
+  coreUrls ??= new Set(CORE_PATHS.map(scopedUrl));
+  return coreUrls.has(url);
 }
 
 function scopedUrl(path) {
