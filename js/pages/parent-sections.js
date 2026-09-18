@@ -49,7 +49,7 @@ function settingsView(state) {
           ${avatarButton("boy", "男主角", state.onboarding.avatarVariant)}
           ${avatarButton("girl", "女主角", state.onboarding.avatarVariant)}
         </div>
-        <label>每日任務目標
+        <label>每日可完成任務上限
           <select name="dailyTaskGoal">${options([1, 2, 3], settings.dailyTaskGoal)}</select>
         </label>
         <label>最高任務難度
