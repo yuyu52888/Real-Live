@@ -11,7 +11,7 @@ import { loadTasks, getTaskById } from "./repositories/tasks.js";
 import { listQuestHistory } from "./repositories/quest-history.js";
 import { listApprovals } from "./repositories/approvals.js";
 import { getPlayer } from "./repositories/player.js";
-import { approveQuestCompletion, completionInstanceId, requestQuestCompletion, returnQuestCompletion, startQuest, updateQuestProgress } from "./services/quest-service.js";
+import { approveQuestCompletion, completionInstanceId, dailyQuestLimitReached, requestQuestCompletion, returnQuestCompletion, startQuest, updateQuestProgress } from "./services/quest-service.js";
 import { verifyParentPin } from "./services/parent-auth.js";
 import { ensureCoreVocabulary, loadEnglishDashboard, saveLearningSession } from "./services/english-engine.js";
 import { createMatchingGame, selectMatchingCard as advanceMatchingGame } from "./services/matching-game.js";
@@ -246,11 +246,19 @@ const actions = {
     render();
   },
   startQuest(taskId) {
-    return performQuest(async (task) => startQuest(database, task), taskId);
+    return performQuest(async (task) => {
+      if (dailyQuestLimitReached(state.questUi.history, state.onboarding.settings.dailyTaskGoal)) {
+        throw new Error(`今天最多可完成 ${state.onboarding.settings.dailyTaskGoal} 個任務，明天 00:00 會重置可完成額度。`);
+      }
+      return startQuest(database, task);
+    }, taskId);
   },
   completeQuest(taskId) {
     stopQuestTimer();
-    return performQuest(async (task) => requestQuestCompletion(database, task, { parentApprovalRequired: state.onboarding.settings.parentApprovalRequired }), taskId, { syncRewards: true });
+    return performQuest(async (task) => requestQuestCompletion(database, task, {
+      parentApprovalRequired: state.onboarding.settings.parentApprovalRequired,
+      dailyTaskLimit: state.onboarding.settings.dailyTaskGoal,
+    }), taskId, { syncRewards: true });
   },
   adjustQuest(taskId, delta) {
     const task = getTaskById(taskCatalog, taskId);
