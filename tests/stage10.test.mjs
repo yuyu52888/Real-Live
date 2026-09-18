@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
+import { renderHero } from "../js/pages/hero.js";
 
 const readText = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
@@ -45,4 +46,33 @@ test("Stage 10 uses production art rather than flattened reference screenshots",
   const css = await readText("css/stage10.css");
   assert.match(css, /\.\.\/assets\/backgrounds\/bg_home_adventure_camp\.png/);
   assert.doesNotMatch(css, /04_UI_REFERENCES/);
+});
+
+
+test("Stage 10 Hero shows all five canonical abilities without inventing new stats", () => {
+  const html = renderHero({
+    onboarding: { avatarVariant: "girl", nickname: "小冒險家" },
+    player: { level: 2, title: "新手冒險家", exp: { current: 35, target: 65 } },
+    questUi: {
+      tasks: [
+        { id: "A", ability: "learning", abilityExp: 2 },
+        { id: "B", ability: "persistence", abilityExp: 1 },
+      ],
+      history: [
+        { questId: "A", status: "completed" },
+        { questId: "B", status: "completed" },
+        { questId: "A", status: "in_progress" },
+      ],
+    },
+    rewardUi: {
+      loading: false,
+      player: { level: 2, title: "新手冒險家", exp: { current: 35, target: 65 } },
+      fragments: { current: 1, needed: 5 },
+      pendingClaims: [], titles: [], badges: [], cosmetics: [], tickets: [], privileges: [], chests: [],
+    },
+  });
+  for (const label of ["專注力", "學習力", "耐心力", "生活力", "合作力"]) assert.match(html, new RegExp(label));
+  assert.match(html, /學習力[\s\S]*累積 \+2/);
+  assert.match(html, /耐心力[\s\S]*累積 \+1/);
+  assert.doesNotMatch(html, /勇氣力|思考力|戰鬥力/);
 });
