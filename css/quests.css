@@ -514,3 +514,23 @@
     flex-direction: column;
   }
 }
+
+.quest-daily-limit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding: 0.75rem 1rem;
+  border: 2px solid #e8c56a;
+  border-radius: var(--radius-medium);
+  background: #fff7d9;
+  color: var(--color-wood-dark);
+}
+.quest-daily-limit span,
+.quest-daily-limit small { display: block; }
+.quest-daily-limit strong { margin-right: 0.35rem; font-size: 1.2rem; }
+.quest-daily-limit small { color: var(--color-muted); font-weight: 800; }
+@media (max-width: 42rem) {
+  .quest-daily-limit { align-items: flex-start; flex-direction: column; }
+}
