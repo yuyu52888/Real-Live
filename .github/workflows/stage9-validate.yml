@@ -1,4 +1,5 @@
 name: Stage 9 validation
+# validates the current stage9 branch head
 
 on:
   push:
