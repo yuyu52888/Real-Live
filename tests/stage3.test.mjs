@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 import { filterTasks, getTaskActivityControl, loadTasks } from "../js/repositories/tasks.js";
 import { renderQuests } from "../js/pages/quests.js";
+import { completionInstanceId, countDailyQuestSlots, dailyQuestLimitReached } from "../js/services/quest-service.js";
 
 const loadJson = async (url) => JSON.parse(await readFile(new URL(`../${url.replace(/^\.\//, "")}`, import.meta.url), "utf8"));
 const tasks = await loadTasks({ loadJson });
@@ -52,3 +53,22 @@ test("Txxx Boss-named records remain ordinary general quests", () => {
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
+
+
+test("daily quest quota resets by local date and blocks repeats before reset", () => {
+  const task = tasks.find(({ repeatable }) => repeatable);
+  const today = new Date(2026, 8, 18, 10, 0, 0);
+  const tomorrow = new Date(2026, 8, 19, 10, 0, 0);
+  assert.notEqual(completionInstanceId(task, today), completionInstanceId(task, tomorrow));
+
+  const history = [
+    { id: "a", dateKey: "2026-09-18", status: "completed" },
+    { id: "b", dateKey: "2026-09-18", status: "pending_approval" },
+    { id: "c", dateKey: "2026-09-18", status: "returned" },
+    { id: "d", dateKey: "2026-09-18", status: "in_progress" },
+    { id: "e", dateKey: "2026-09-17", status: "completed" },
+  ];
+  assert.equal(countDailyQuestSlots(history, today), 3);
+  assert.equal(dailyQuestLimitReached(history, 3, today), true);
+  assert.equal(dailyQuestLimitReached(history, 3, tomorrow), false);
+});
