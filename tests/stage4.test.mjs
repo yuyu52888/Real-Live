@@ -131,3 +131,45 @@ test("Stage 4 source does not hardcode a 300-word runtime ceiling or load legacy
   assert.doesNotMatch(source, /TOTAL_WORDS\s*=\s*300/);
   assert.doesNotMatch(source, /core300_words\.json/);
 });
+
+
+test("Stage 4 speech synthesis selects an English voice and actively resumes playback", async () => {
+  const oldSynthesis = globalThis.speechSynthesis;
+  const oldUtterance = globalThis.SpeechSynthesisUtterance;
+  let spoken;
+  class MockUtterance {
+    constructor(text) { this.text = text; }
+  }
+  const mock = {
+    speaking: false,
+    pending: false,
+    paused: true,
+    getVoices: () => [
+      { name: "中文", lang: "zh-TW" },
+      { name: "English US", lang: "en-US" },
+    ],
+    cancel() {},
+    resume() { this.paused = false; },
+    speak(utterance) {
+      spoken = utterance;
+      queueMicrotask(() => utterance.onend?.());
+    },
+  };
+  globalThis.speechSynthesis = mock;
+  globalThis.SpeechSynthesisUtterance = MockUtterance;
+  try {
+    const result = await speakVocabulary({ text: "apple", locale: "en-US", rate: 0.75 });
+    assert.equal(result.method, "speechSynthesis");
+    assert.equal(result.voice, "English US");
+    assert.equal(spoken.text, "apple");
+    assert.equal(spoken.lang, "en-US");
+    assert.equal(spoken.rate, 0.75);
+    assert.equal(spoken.volume, 1);
+    assert.equal(mock.paused, false);
+  } finally {
+    if (oldSynthesis === undefined) delete globalThis.speechSynthesis;
+    else globalThis.speechSynthesis = oldSynthesis;
+    if (oldUtterance === undefined) delete globalThis.SpeechSynthesisUtterance;
+    else globalThis.SpeechSynthesisUtterance = oldUtterance;
+  }
+});
