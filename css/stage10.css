@@ -831,3 +831,130 @@ select {
     min-height: 52px;
   }
 }
+
+
+/* Hero ability growth */
+.hero-profile__party {
+  position: relative;
+  min-height: 13rem;
+}
+
+.hero-profile__avatar {
+  position: relative;
+  z-index: 1;
+  height: 15rem;
+}
+
+.hero-profile__fox {
+  position: absolute;
+  z-index: 2;
+  right: -0.5rem;
+  bottom: -0.25rem;
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
+.hero-profile__fox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 8px rgb(54 66 52 / 16%));
+}
+
+.ability-section {
+  margin-top: 1rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 3px solid rgb(255 255 255 / 76%);
+  border-radius: var(--radius-large);
+  background: rgb(255 253 247 / 91%);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+.ability-section__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ability-section__heading h2,
+.ability-section__heading p {
+  margin-bottom: 0;
+}
+
+.ability-section__heading > p {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.ability-card {
+  display: flex;
+  min-height: 6.2rem;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border: 2px solid rgb(118 99 64 / 12%);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 5px 14px rgb(58 72 61 / 6%);
+}
+
+.ability-card > span {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #e7f6df;
+  font-size: 1.35rem;
+}
+
+.ability-card strong,
+.ability-card small {
+  display: block;
+}
+
+.ability-card strong {
+  color: var(--color-wood-dark);
+}
+
+.ability-card small {
+  margin-top: 0.2rem;
+  color: var(--color-muted);
+  font-weight: 800;
+}
+
+.ability-card--learning > span { background: #dff4ff; }
+.ability-card--persistence > span { background: #fff0c4; }
+.ability-card--life > span { background: #ffe5ce; }
+.ability-card--cooperation > span { background: #eee6ff; }
+
+@media (max-width: 56rem) {
+  .ability-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .ability-section__heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ability-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ability-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
