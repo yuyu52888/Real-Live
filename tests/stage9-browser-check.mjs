@@ -48,6 +48,7 @@ try {
   });
   await client.send("Page.reload");
   await waitFor(() => client.evaluate(`Boolean(document.querySelector("[data-start]"))`));
+  await client.evaluate(`window.dispatchEvent(new Event("offline"))`);
   const offline = await client.evaluate(`(async () => {
     const core = await fetch("/02_DATA/thinking_stories_30.json");
     const critical = await fetch("/assets/characters/girl/girl_idle.png");
