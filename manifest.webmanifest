@@ -1,12 +1,36 @@
 {
   "name": "Real Life Quest",
   "short_name": "RL Quest",
-  "description": "Real Life Quest tablet-first offline PWA",
-  "lang": "zh-Hant",
+  "description": "把真實生活變成大冒險的兒童現實 RPG 學習系統",
+  "lang": "zh-Hant-TW",
+  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#d7f2df",
   "theme_color": "#4ab7e8",
-  "icons": []
+  "categories": [
+    "education",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "./assets/icons/pwa-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/pwa-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }
