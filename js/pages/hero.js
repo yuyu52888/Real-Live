@@ -18,7 +18,7 @@ export function renderHero(state) {
     ${ui.pendingClaims.length ? `<section class="reward-section" aria-labelledby="milestone-title"><h2 id="milestone-title">升級里程碑</h2><p>每個等級挑一個最喜歡的獎勵，選定後會永久保存。</p><div class="milestone-list">${ui.pendingClaims.map(milestoneCard).join("")}</div></section>` : ""}
 
     <section class="reward-section" aria-labelledby="chest-title"><h2 id="chest-title">我的寶箱</h2>
-      <div class="collection-grid">${ui.chests.length ? ui.chests.map(chestCard).join("") : emptyCard("目前沒有未開啟的寶箱")}</div>
+      <div class="collection-grid">${normalChests(ui).length ? normalChests(ui).map(chestCard).join("") : emptyCard("目前沒有未開啟的寶箱")}</div>
     </section>
 
     <section class="reward-section title-section" aria-labelledby="title-title"><h2 id="title-title">稱號收藏</h2>
@@ -45,6 +45,10 @@ function milestoneCard(reward) {
 function chestCard(chest) {
   return `<article class="collection-card chest-card"><span aria-hidden="true">▣</span><strong>普通寶箱</strong><small>獎勵已經保存，重新載入也不會改變。</small><button class="button button--gold" type="button" data-open-chest="${escapeHtml(chest.id)}">開啟寶箱</button></article>`;
 }
+function normalChests(ui) {
+  return ui.chests.filter(({ chestType }) => chestType !== "chapter");
+}
+
 
 function titleCard(title, activeTitleId) {
   const active = title.itemId === activeTitleId;

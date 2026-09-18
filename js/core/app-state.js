@@ -34,6 +34,7 @@ export function createInitialState() {
     learnSurface: "english",
     storyUi: { loading: true },
     rewardUi: { loading: true },
+    bossUi: { loading: true, selectedBossId: null },
   };
 }
 

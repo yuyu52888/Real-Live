@@ -1,0 +1,50 @@
+.boss-card__preview { display: grid; min-height: 9rem; grid-template-columns: minmax(7rem, 42%) 1fr; align-items: center; gap: var(--space-3); margin: var(--space-2) 0; overflow: hidden; border-radius: var(--radius-medium); background: linear-gradient(135deg, #e6f4d9, #fff0bb); }
+.boss-card__preview img { width: 100%; height: 10rem; object-fit: contain; align-self: end; }
+.boss-card__preview > span { display: grid; height: 8rem; place-items: center; color: var(--color-wood); font-size: 4rem; }
+.boss-card__preview strong, .boss-card__preview span { display: block; }
+.boss-card__preview strong { color: var(--color-wood-dark); font-size: 1.1rem; }
+.boss-card__preview div span { margin-top: .4rem; color: var(--color-muted); font-weight: 900; }
+.boss-card > p { color: var(--color-muted); line-height: 1.5; }
+.boss-page { min-height: calc(100vh - var(--nav-height)); padding: clamp(1rem, 4vw, 2.5rem); background: linear-gradient(180deg, #9fdcf2, #e8f5d8 40%, #cfdfa9); }
+.boss-back { min-height: 48px; padding: .65rem 1rem; border: 2px solid rgb(89 61 34 / 20%); border-radius: 99px; background: white; color: var(--color-wood-dark); cursor: pointer; font-weight: 900; }
+.boss-stage { display: grid; grid-template-columns: minmax(17rem, .8fr) minmax(22rem, 1.2fr); gap: var(--space-4); margin-top: var(--space-3); }
+.boss-art, .boss-sheet { border: 4px solid white; border-radius: var(--radius-large); box-shadow: var(--shadow-card); }
+.boss-art { position: relative; display: grid; min-height: 34rem; place-items: end center; overflow: hidden; background: radial-gradient(circle at 50% 35%, #fff6bd, #6bae70 58%, #376847); }
+.boss-art img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 16px 10px rgb(30 41 27 / 32%)); }
+.boss-art > span { position: absolute; top: var(--space-3); left: var(--space-3); padding: .45rem .8rem; border-radius: 99px; background: rgb(255 255 255 / 88%); color: var(--color-wood-dark); font-weight: 900; }
+.boss-art__fallback { display: grid; width: 100%; height: 100%; place-items: center; color: #ffe37d; font-size: 8rem; }
+.boss-sheet { padding: clamp(1.25rem, 4vw, 2.5rem); background: rgb(255 253 247 / 94%); }
+.boss-sheet h1 { margin: .15rem 0 var(--space-2); color: var(--color-wood-dark); font-size: clamp(2rem, 5vw, 3rem); }
+.boss-sheet > p { color: var(--color-muted); line-height: 1.65; }
+.boss-challenge { margin: var(--space-3) 0; padding: var(--space-3); border-left: 6px solid var(--color-orange); border-radius: var(--radius-small); background: #fff0cf; }
+.boss-challenge p { margin: .4rem 0 0; line-height: 1.55; }
+.boss-hp { display: flex; min-height: 3.5rem; align-items: center; gap: var(--space-2); }
+.boss-hp > div { display: flex; flex: 1; gap: .2rem; color: #c7c7c7; font-size: 1.45rem; }
+.boss-hp > div .is-full { color: #e84b4b; }
+.boss-hp > span { font-weight: 900; }
+.boss-steps { display: grid; gap: .65rem; padding: 0; list-style: none; }
+.boss-steps li { display: grid; min-height: 3.75rem; grid-template-columns: 2.4rem 1fr auto; align-items: center; gap: var(--space-2); padding: .65rem; border: 2px solid #dfd4bd; border-radius: var(--radius-small); background: #f5f1e7; }
+.boss-steps li > span { display: grid; width: 2.2rem; height: 2.2rem; place-items: center; border-radius: 50%; background: #ded4c1; font-weight: 900; }
+.boss-steps li.is-done { border-color: #8dc79a; background: #e6f3df; }
+.boss-cosmetic-preview { display: inline-flex; align-items: center; gap: .35rem; }
+.boss-cosmetic-preview img { width: 2rem; height: 2rem; object-fit: contain; }
+.boss-steps li.is-done > span { background: var(--color-grass-dark); color: white; }
+.boss-steps li.is-current { border-color: var(--color-orange); background: #fff6d9; }
+.boss-steps button { min-height: 44px; padding: .45rem .8rem; border: 0; border-radius: 99px; background: var(--color-orange); color: white; cursor: pointer; font-weight: 900; }
+.boss-reward-preview { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: var(--space-3); }
+.boss-reward-preview strong { width: 100%; color: var(--color-wood-dark); }
+.boss-reward-preview span { padding: .35rem .6rem; border-radius: 99px; background: #fff0ad; font-size: .78rem; font-weight: 900; }
+.boss-victory, .boss-locked { margin-top: var(--space-3); padding: var(--space-3); border: 3px solid #e8c65d; border-radius: var(--radius-medium); background: #fff8cf; text-align: center; }
+.boss-victory > strong, .boss-locked > strong { color: var(--color-wood-dark); font-size: 1.5rem; }
+.boss-victory span { display: block; color: var(--color-muted); font-weight: 900; }
+.boss-story-dots { display: flex; justify-content: center; gap: .5rem; }
+.boss-story-dots span { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: #d2cab9; }
+.boss-story-dots span.is-done { background: var(--color-grass); }
+.boss-roster { margin-top: var(--space-4); padding: var(--space-3); border: 3px solid white; border-radius: var(--radius-medium); background: rgb(255 255 255 / 82%); }
+.boss-roster h2 { margin-top: 0; color: var(--color-wood-dark); }
+.boss-roster > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.boss-roster button { display: grid; min-height: 5.5rem; gap: .15rem; padding: .7rem; border: 2px solid #d7caaa; border-radius: var(--radius-small); background: white; cursor: pointer; text-align: left; }
+.boss-roster button.is-active { border-color: var(--color-orange); box-shadow: inset 0 0 0 2px #ffd278; }
+.boss-roster button span, .boss-roster button small { color: var(--color-muted); }
+@media (max-width: 50rem) { .boss-stage { grid-template-columns: 1fr; } .boss-art { min-height: 23rem; } .boss-roster > div { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 34rem) { .boss-steps li { grid-template-columns: 2.4rem 1fr; } .boss-steps button { grid-column: 1 / -1; } .boss-roster > div { grid-template-columns: 1fr; } }

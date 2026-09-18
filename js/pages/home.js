@@ -1,6 +1,7 @@
 import { avatarImage, escapeHtml, expBar, foxImage, icon, logo } from "../ui/components.js";
 import { uiList, uiText } from "../services/ui-copy.js";
 import { completionDateKey, completionInstanceId } from "../services/quest-service.js";
+import { renderHomeBossCard } from "./boss.js";
 
 export function renderHome(state) {
   const { onboarding, player } = state;
@@ -58,17 +59,7 @@ export function renderHome(state) {
       </div>
 
       <div class="dashboard-grid">
-        <article class="feature-card boss-placeholder">
-          <div class="feature-card__heading">
-            <span class="crown-mark">♛</span>
-            <div><small>${uiText("home.todayBoss")}</small><h2>挑戰尚未開放</h2></div>
-          </div>
-          <div class="placeholder-art" role="img" aria-label="Boss 圖片預留位置">
-            <span>Boss<br>圖片預留</span>
-          </div>
-          <p>Boss 資料與挑戰規則會在 Stage 7 接入。</p>
-          <button class="button button--gold" type="button" disabled>尚未開放</button>
-        </article>
+        ${renderHomeBossCard(state.bossUi?.homeBoss)}
 
         <article class="feature-card progress-card">
           <div class="feature-card__heading">

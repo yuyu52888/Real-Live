@@ -5,12 +5,13 @@ import { renderQuests } from "../pages/quests.js";
 import { renderParentApprovals } from "../pages/parent-approvals.js";
 import { renderLearn } from "../pages/learn.js";
 import { renderHero } from "../pages/hero.js";
+import { renderBossPage } from "../pages/boss.js";
 import { uiText } from "../services/ui-copy.js";
 import { icon } from "./components.js";
 
 export function mountAppShell(root, state, actions) {
   const page = state.route === "home"
-    ? renderHome(state)
+    ? state.bossUi?.selectedBossId ? renderBossPage(state) : renderHome(state)
     : state.route === "quests" ? renderQuests(state)
       : state.route === "learn" ? renderLearn(state)
       : state.route === "hero" ? renderHero(state)
@@ -58,6 +59,10 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-claim-level]", (target) => actions.claimLevelReward(Number(target.dataset.claimLevel), target.dataset.rewardOption));
   bindButtons(root, "[data-select-title]", (target) => actions.selectActiveTitle(target.dataset.selectTitle));
   bindButtons(root, "[data-open-chest]", (target) => actions.openChest(target.dataset.openChest));
+  bindButtons(root, "[data-open-boss]", (target) => actions.openBoss(target.dataset.openBoss));
+  bindButtons(root, "[data-boss-back]", () => actions.closeBoss());
+  bindButtons(root, "[data-complete-boss-step]", (target) => actions.completeBossStep(target.dataset.bossId, Number(target.dataset.completeBossStep)));
+  bindButtons(root, "[data-open-boss-chest]", (target) => actions.openBossChest(target.dataset.openBossChest));
 
   const spellingForm = root.querySelector("[data-spelling-form]");
   spellingForm?.addEventListener("submit", (event) => {

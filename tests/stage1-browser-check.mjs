@@ -179,7 +179,7 @@ try {
     };
   })()`);
   await client.evaluate(`document.querySelector('[data-complete-story="S01"]').click()`);
-  await waitFor(() => client.evaluate(`document.querySelector('.story-reader-progress')?.textContent?.includes('本章進度 1 / 5') && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await waitFor(() => client.evaluate(`(() => { const failure = document.querySelector('#page-error')?.textContent; if (failure) throw new Error(failure); return document.querySelector('.story-reader-progress')?.textContent?.includes('本章進度 1 / 5') && !document.querySelector('#app').hasAttribute('aria-busy'); })()`));
   await client.evaluate(`document.querySelector('[data-story-back]').click()`);
   await waitFor(() => client.evaluate(`document.querySelector('.story-chapter-progress strong')?.textContent?.trim() === '1 / 5'`));
   await client.send("Page.reload");
@@ -335,6 +335,37 @@ try {
   await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-approve-completion]'))`));
   await client.evaluate(`document.querySelector('[data-approve-completion]').click()`);
   await waitFor(() => client.evaluate(`Boolean(document.querySelector('.parent-empty')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.evaluate(`(async () => {
+    const { openDatabase, putRecord } = await import('/js/core/database.js');
+    const db = await openDatabase();
+    for (let index = 1; index <= 5; index += 1) await putRecord(db, 'storyProgress', { storyId: 'S0' + index, completedAt: new Date().toISOString() });
+    db.close();
+  })()`);
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-open-boss="B01"]'))`));
+  const bossHomeArt = await client.evaluate(`document.querySelector('.boss-card__preview img')?.getAttribute('src')`);
+  await client.evaluate(`document.querySelector('[data-open-boss="B01"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.boss-page [data-complete-boss-step="1"]'))`));
+  const bossDetailArt = await client.evaluate(`document.querySelector('.boss-art img')?.getAttribute('src')`);
+  await client.evaluate(`document.querySelector('[data-complete-boss-step="1"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-complete-boss-step="2"]')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.send("Page.reload");
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-open-boss="B01"]'))`));
+  await client.evaluate(`document.querySelector('[data-open-boss="B01"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-complete-boss-step="2"]'))`));
+  await client.evaluate(`document.querySelector('[data-complete-boss-step="2"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('[data-complete-boss-step="3"]')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  await client.evaluate(`document.querySelector('[data-complete-boss-step="3"]').click()`);
+  await waitFor(() => client.evaluate(`Boolean(document.querySelector('.boss-victory [data-open-boss-chest]')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  const bossVictory = await client.evaluate(`({
+    text: document.querySelector('.boss-victory')?.textContent,
+    hearts: document.querySelector('.boss-hp > span')?.textContent,
+    navCount: document.querySelectorAll('.bottom-nav__item').length,
+  })`);
+  await client.evaluate(`document.querySelector('[data-open-boss-chest]').click()`);
+  await waitFor(() => client.evaluate(`document.querySelector('.boss-victory')?.textContent?.includes('章節寶箱已開啟') && !document.querySelector('#app').hasAttribute('aria-busy')`));
+  const stage7Browser = { bossHomeArt, bossDetailArt, ...bossVictory };
+
 
   if (process.env.STAGE1_SCREENSHOT) {
     const screenshot = await client.send("Page.captureScreenshot", { format: "png" });
@@ -348,7 +379,7 @@ try {
       activeRoute: document.querySelector('.bottom-nav__item.is-active')?.dataset.route,
     };
   })()`);
-  const result = { ...homeResult, ...heroResult, ...questResult, ...exerciseResult };
+  const result = { ...homeResult, ...heroResult, ...questResult, ...exerciseResult, ...stage7Browser };
 
   const failures = [
     result.selectedGirl !== "true" && "女主角未被標記為選取",
@@ -364,6 +395,10 @@ try {
     !result.hasSafety && "Exercise detail safety is missing",
     !result.artSource?.includes("exercise_ex001_jump_rope_01.png") && "A6 exercise production art was not used",
     ...pageErrors,
+    !result.bossHomeArt?.includes("boss_b01_") && "Stage 7 Home did not use A6 Boss production art",
+    !result.bossDetailArt?.includes("boss_b01_") && "Stage 7 detail did not use A6 Boss production art",
+    !result.text?.includes("挑戰成功") && "Stage 7 Boss victory did not render",
+    result.hearts !== "0 / 3" && "Stage 7 Boss HP did not persist across reload",
   ].filter(Boolean);
 
   if (failures.length) {
@@ -401,11 +436,16 @@ try {
   })()`);
   console.log("Browser PASS: tablet portrait onboarding, quest list/detail, reload, pending approval, PIN approval, A6 production art, navigation.");
   console.log(persistence);
+  const stage7Persistence = await client.evaluate(`(async () => {
+    const { testStage7Persistence } = await import('/tests/stage7-persistence-browser.js');
+    return testStage7Persistence();
+  })()`);
   console.log(stage3Persistence);
   console.log(a7Stage3Persistence);
   console.log(stage4Persistence);
   console.log(stage5Persistence);
   console.log(stage6Persistence);
+  console.log(stage7Persistence);
   if (pageErrors.length) throw new Error(pageErrors.join("\n"));
   client.close();
 } finally {
@@ -471,7 +511,7 @@ async function createClient(url) {
     },
     async evaluate(expression) {
       const response = await this.send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true });
-      if (response.exceptionDetails) throw new Error(response.exceptionDetails.text);
+      if (response.exceptionDetails) throw new Error(response.exceptionDetails.exception?.description ?? response.exceptionDetails.text);
       return response.result.value;
     },
     onEvent(listener) { listeners.add(listener); },

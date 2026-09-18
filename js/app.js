@@ -21,12 +21,15 @@ import { getStoryById } from "./repositories/stories.js";
 import { completeStory as recordStoryCompletion, loadStoryDashboard } from "./services/story-service.js";
 import { loadRewardSystem } from "./services/reward-system.js";
 import { claimLevelReward as claimMilestone, openChest as openRewardChest, selectActiveTitle as saveActiveTitle, synchronizeRewards } from "./services/reward-service.js";
+import { getBossById, loadBosses } from "./repositories/bosses.js";
+import { completeBossStep as recordBossStep, loadBossDashboard, synchronizeBosses } from "./services/boss-service.js";
 
 const root = document.querySelector("#app");
 let state = createInitialState();
 let database;
 let saving = false;
 let taskCatalog = [];
+let bossCatalog = [];
 let questTimer = null;
 let rewardSystem;
 
@@ -43,7 +46,7 @@ const actions = {
   },
   navigate(route) {
     if (route !== "quests") stopQuestTimer();
-    state = navigate(state, route);
+    state = { ...navigate(state, route), bossUi: { ...state.bossUi, selectedBossId: null } };
     render();
   },
   openLearnSurface(surface) {
@@ -72,6 +75,7 @@ const actions = {
       const result = await recordStoryCompletion(database, storyId);
       state = { ...state, storyUi: { ...state.storyUi, progress: result.progress } };
       await refreshRewardState();
+      await refreshBossState();
       render();
     });
   },
@@ -83,6 +87,27 @@ const actions = {
   },
   openChest(chestId) {
     return performReward(() => openRewardChest(database, rewardSystem, chestId));
+  },
+  openBoss(bossId) {
+    if (!getBossById(bossCatalog, bossId)) return;
+    state = { ...state, route: "home", bossUi: { ...state.bossUi, selectedBossId: bossId } };
+    render();
+  },
+  closeBoss() {
+    state = { ...state, route: "home", bossUi: { ...state.bossUi, selectedBossId: null } };
+    render();
+  },
+  completeBossStep(bossId, step) {
+    if (!getBossById(bossCatalog, bossId)) return Promise.resolve();
+    return performBoss(async () => {
+      const result = await recordBossStep(database, bossCatalog, rewardSystem, bossId, step);
+      state = { ...state, bossUi: { ...result.dashboard, selectedBossId: bossId } };
+    });
+  },
+  openBossChest(chestId) {
+    return performBoss(async () => {
+      await openRewardChest(database, rewardSystem, chestId);
+    });
   },
   selectLearnMode(mode) {
     const availableItems = state.learnUi?.plan?.items ?? [];
@@ -303,6 +328,24 @@ async function performQuest(operation, taskId, { syncRewards = false } = {}) {
   }
 }
 
+async function performBoss(operation) {
+  if (saving || !database) return;
+  saving = true;
+  root.setAttribute("aria-busy", "true");
+  try {
+    await operation();
+    await refreshRewardState();
+    await refreshBossState();
+    render();
+  } catch (error) {
+    console.error(error);
+    showPageError(error.message);
+  } finally {
+    saving = false;
+    root.removeAttribute("aria-busy");
+  }
+}
+
 async function refreshQuestState() {
   const [history, approvals, playerRecord] = await Promise.all([
     listQuestHistory(database),
@@ -327,6 +370,14 @@ async function refreshQuestState() {
 async function refreshRewardState() {
   const rewardUi = await synchronizeRewards(database, rewardSystem);
   state = { ...state, player: rewardUi.player ?? state.player, rewardUi };
+}
+
+async function refreshBossState(recoverRewards = false) {
+  const selectedBossId = state.bossUi?.selectedBossId ?? null;
+  const bossUi = recoverRewards
+    ? await synchronizeBosses(database, bossCatalog, rewardSystem)
+    : await loadBossDashboard(database, bossCatalog);
+  state = { ...state, bossUi: { ...bossUi, selectedBossId } };
 }
 
 function stopQuestTimer() {
@@ -380,7 +431,7 @@ function render() {
   mountOnboarding(root, state, actions);
 }
 
-[, , taskCatalog, rewardSystem] = await Promise.all([loadUiCopy(), loadAssetManifest(), loadTasks(), loadRewardSystem()]);
+[, , taskCatalog, rewardSystem, bossCatalog] = await Promise.all([loadUiCopy(), loadAssetManifest(), loadTasks(), loadRewardSystem(), loadBosses()]);
 try {
   database = await openDatabase();
   state = await loadOnboarding(database);
@@ -391,6 +442,7 @@ try {
     refreshQuestState(),
   ]);
   state = { ...state, learnUi: { ...english, active: false, sessionDone: false }, storyUi: { ...storyDashboard, selectedChapter: 1, selectedStoryId: null } };
+  await refreshBossState(true);
   await refreshRewardState();
   render();
 } catch (error) {
