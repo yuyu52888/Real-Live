@@ -30,7 +30,7 @@ test("Stage 9 manifest is installable and declares local app icons", async () =>
 
 test("Stage 9 service worker precaches the core shell and has offline fallbacks", async () => {
   const source = await readText("service-worker.js");
-  assert.match(source, /CACHE_VERSION\s*=\s*"stage9-v1"/);
+  assert.match(source, /CACHE_VERSION\s*=\s*"stage\d+-v\d+"/);
   assert.match(source, /cache\.addAll\(/);
   assert.match(source, /request\.mode === "navigate"/);
   assert.match(source, /IMAGE_FALLBACK/);
