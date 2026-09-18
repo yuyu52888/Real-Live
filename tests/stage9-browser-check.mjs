@@ -33,8 +33,7 @@ try {
   await client.send("Emulation.setDeviceMetricsOverride", { width: 768, height: 1024, deviceScaleFactor: 1, mobile: true });
   await client.send("Page.navigate", { url: `http://127.0.0.1:${appPort}` });
   await waitFor(() => client.evaluate(`document.readyState === "complete" && Boolean(document.querySelector("[data-start]"))`));
-  const swState = await client.evaluate(`navigator.serviceWorker.ready.then((registration) => registration.active?.state)`);
-  if (swState !== "activated") throw new Error(`Service worker not activated: ${swState}`);
+  await waitFor(() => client.evaluate(`navigator.serviceWorker.ready.then((registration) => registration.active?.state === "activated")`));
   await client.send("Page.reload");
   await waitFor(() => client.evaluate(`Boolean(document.querySelector("[data-start]")) && Boolean(navigator.serviceWorker.controller)`));
 
