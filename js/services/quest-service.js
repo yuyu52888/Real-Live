@@ -163,12 +163,12 @@ function requestApproval(db, completionId, now) {
           return;
         }
         const requestedAt = now.toISOString();
+        const { returnedAt: _historyReturnedAt, ...historyWithoutReturnedAt } = history;
         const pending = {
-          ...history,
+          ...historyWithoutReturnedAt,
           status: "pending_approval",
           completionRequestedAt: history.completionRequestedAt ?? requestedAt,
           lastCompletionRequestedAt: requestedAt,
-          returnedAt: undefined,
         };
         result = pending;
         historyStore.put(pending);
@@ -183,10 +183,10 @@ function requestApproval(db, completionId, now) {
           return;
         }
         if (existingApproval.status === "returned") {
+          const { returnedAt: _approvalReturnedAt, ...approvalWithoutReturnedAt } = existingApproval;
           approvalStore.put({
-            ...existingApproval,
+            ...approvalWithoutReturnedAt,
             status: "pending",
-            returnedAt: undefined,
             resubmittedAt: requestedAt,
           });
         }

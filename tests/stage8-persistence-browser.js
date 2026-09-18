@@ -5,6 +5,7 @@ import { getSettings, saveSettings } from "../js/repositories/settings.js";
 import { loadTasks } from "../js/repositories/tasks.js";
 import { getVocabularyPack, getWordProgress, setVocabularyPackEnabled } from "../js/repositories/vocabulary.js";
 import { loadOnboarding } from "../js/services/onboarding-storage.js";
+import { exportBackup } from "../js/services/backup.js";
 import { saveParentPreferences, switchPlayerAvatar } from "../js/services/parent-settings.js";
 import { approveQuestCompletion, completionInstanceId, requestQuestCompletion, returnQuestCompletion, startQuest, updateQuestProgress } from "../js/services/quest-service.js";
 import { getSpeechPreferences, setSpeechRate } from "../js/services/speech.js";
@@ -17,7 +18,10 @@ export async function testStage8Persistence() {
   const check = (condition, message) => { if (!condition) throw new Error(message); };
   try {
     await savePlayer(db, { nickname: "家長測試", avatarVariant: "boy", onboardingStep: "complete", progress: { level: 1, title: "新手冒險家", exp: { current: 0, target: 100 } } });
-    await saveSettings(db, { preferences: { dailyTaskGoal: 2, exerciseEnabled: true, choresEnabled: true, parentApprovalRequired: true, speechRate: 1 } });
+    await saveSettings(db, {
+      preferences: { dailyTaskGoal: 2, exerciseEnabled: true, choresEnabled: true, parentApprovalRequired: true, speechRate: 1 },
+      pinCredential: { algorithm: "PBKDF2-SHA-256", iterations: 100000, salt: "0".repeat(32), hash: "0".repeat(64) },
+    });
     const tasks = await loadTasks();
     const ordinary = tasks.find((task) => !task.requiresParentConfirmation);
     await startQuest(db, ordinary, { now });
@@ -36,6 +40,14 @@ export async function testStage8Persistence() {
     await requestQuestCompletion(db, ordinary, { now, parentApprovalRequired: true });
     approval = await getApproval(db, `approval:${completionId}`);
     check(approval.status === "pending" && approval.id === `approval:${completionId}`, "resubmit reuses approval identity");
+    const backup = await exportBackup(db);
+    const serializedBackup = JSON.stringify(backup);
+    const backedUpHistory = backup.stores.questHistory.find(({ id }) => id === completionId);
+    const backedUpApproval = backup.stores.approvals.find(({ questHistoryId }) => questHistoryId === completionId);
+    check(typeof serializedBackup === "string", "backup remains JSON serializable after resubmit");
+    check(!containsUndefined(backup), "backup contains no undefined values");
+    check(!Object.hasOwn(backedUpHistory, "returnedAt"), "resubmitted history omits returnedAt");
+    check(!Object.hasOwn(backedUpApproval, "returnedAt"), "resubmitted approval omits returnedAt");
     await approveQuestCompletion(db, completionId, { now });
     await approveQuestCompletion(db, completionId, { now });
     check((await getPlayer(db)).progress.exp.current === ordinary.exp, "approval pays once");
@@ -81,4 +93,11 @@ export async function testStage8Persistence() {
       request.onerror = () => reject(request.error);
     });
   }
+}
+
+function containsUndefined(value) {
+  if (value === undefined) return true;
+  if (value === null || typeof value !== "object") return false;
+  if (Array.isArray(value)) return value.some(containsUndefined);
+  return Object.values(value).some(containsUndefined);
 }
