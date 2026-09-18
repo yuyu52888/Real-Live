@@ -72,3 +72,30 @@ test("daily quest quota resets by local date and blocks repeats before reset", (
   assert.equal(dailyQuestLimitReached(history, 3, today), true);
   assert.equal(dailyQuestLimitReached(history, 3, tomorrow), false);
 });
+
+
+test("quest page disables new starts when today's hard limit is full", () => {
+  const today = new Date();
+  const dateKey = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, "0"),
+    String(today.getDate()).padStart(2, "0"),
+  ].join("-");
+  const html = renderQuests({
+    onboarding: {
+      avatarVariant: "boy",
+      settings: { dailyTaskGoal: 1, maxTaskDifficulty: 5, exerciseEnabled: true, choresEnabled: true, parentApprovalRequired: false },
+    },
+    questUi: {
+      tasks,
+      history: [{ id: "quota-used", questId: "fixture", dateKey, status: "completed" }],
+      approvals: [],
+      filter: "all",
+      selectedTaskId: null,
+      activeTimerTaskId: null,
+    },
+  });
+  assert.match(html, /1 \/ 1/);
+  assert.match(html, /今日已達上限|今日任務額度已用完/);
+  assert.doesNotMatch(html, /data-start-quest=/);
+});
