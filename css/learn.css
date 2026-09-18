@@ -92,3 +92,29 @@
   .word-choices { grid-template-columns: 1fr; }
 }
   .matching-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.learn-switcher {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.65rem clamp(1rem, 4vw, 2.5rem);
+  background: rgb(239 248 239 / 94%);
+  backdrop-filter: blur(8px);
+}
+.learn-switcher button {
+  min-height: 52px;
+  border: 2px solid #bdd8c2;
+  border-radius: 999px;
+  background: white;
+  color: var(--color-wood-dark);
+  cursor: pointer;
+  font-weight: 900;
+}
+.learn-switcher button.is-active {
+  border-color: #238ac4;
+  background: #dff4ff;
+  color: #126e9d;
+}
