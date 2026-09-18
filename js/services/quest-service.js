@@ -24,7 +24,7 @@ export function countDailyQuestSlots(history = [], date = new Date()) {
   return history.filter((record) => record.dateKey === dateKey && DAILY_QUEST_SLOT_STATUSES.includes(record.status)).length;
 }
 
-export function dailyQuestLimitReached(history = [], limit = 0, date = new Date()) {
+export function dailyQuestLimitReached(history = [], limit = null, date = new Date()) {
   const normalized = normalizeDailyTaskLimit(limit);
   return normalized != null && countDailyQuestSlots(history, date) >= normalized;
 }
