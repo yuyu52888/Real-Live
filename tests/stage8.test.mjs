@@ -30,11 +30,13 @@ test("Stage 8 weekly report uses Monday-local boundaries and structured records 
   const report = buildWeeklyReport({
     now,
     tasks: [
-      { id: "T001", ability: "thinking", abilityExp: 2 },
-      { id: "EX001", ability: "persistence", abilityExp: 1 },
+      { id: "T001", ability: "focus", abilityZh: "專注力", abilityExp: 2 },
+      { id: "T002", ability: "learning", abilityZh: "學習力", abilityExp: 2 },
+      { id: "EX001", ability: "persistence", abilityZh: "耐心力", abilityExp: 1 },
     ],
     histories: [
       { questId: "T001", status: "completed", completedAt: "2026-09-15T02:00:00.000Z", taskFamily: "general", durationMinutes: 8 },
+      { questId: "T002", status: "completed", completedAt: "2026-09-17T02:00:00.000Z", taskFamily: "general" },
       { questId: "EX001", status: "completed", completedAt: "2026-09-16T02:00:00.000Z", taskFamily: "exercise" },
       { questId: "T001", status: "completed", completedAt: "2026-09-13T02:00:00.000Z", taskFamily: "general" },
     ],
@@ -42,14 +44,24 @@ test("Stage 8 weekly report uses Monday-local boundaries and structured records 
     sessions: [{ completedAt: "2026-09-17T02:00:00.000Z", results: [{}, {}], durationMinutes: 4 }],
     stories: [{ completedAt: "2026-09-18T02:00:00.000Z" }],
   });
-  assert.equal(report.completedQuests, 2);
+  assert.equal(report.completedQuests, 3);
   assert.equal(report.exercise, 1);
   assert.equal(report.englishSessions, 1);
   assert.equal(report.answeredCards, 2);
   assert.equal(report.stories, 1);
   assert.equal(report.retries, 1);
   assert.equal(report.focusMinutes, 12);
-  assert.equal(report.strongestAbility.id, "thinking");
+  assert.deepEqual(report.strongestAbility.ids, ["focus", "learning"]);
+  assert.equal(report.strongestAbility.label, "專注力、學習力");
+
+  const persistenceReport = buildWeeklyReport({
+    now,
+    tasks: [{ id: "T003", ability: "persistence", abilityZh: "耐心力", abilityExp: 2 }],
+    histories: [{
+      questId: "T003", status: "completed", completedAt: "2026-09-18T02:00:00.000Z", taskFamily: "general",
+    }],
+  });
+  assert.equal(persistenceReport.strongestAbility.label, "耐心力");
 });
 
 test("Stage 8 Parent page exposes three tabs while bottom navigation remains five items", () => {

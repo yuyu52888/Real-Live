@@ -1,6 +1,5 @@
 import { runTransaction } from "../core/database.js";
 
-const ABILITY_LABELS = Object.freeze({ learning: "學習力", life: "生活力", courage: "勇氣", cooperation: "合作力", thinking: "思考力", persistence: "持續力", focus: "專注力" });
 
 export function localWeekRange(now = new Date()) {
   const start = new Date(now);
@@ -36,9 +35,17 @@ export function buildWeeklyReport({ histories = [], approvals = [], sessions = [
   const abilities = new Map();
   for (const history of completed) {
     const task = byTask.get(history.questId);
-    if (task?.ability) abilities.set(task.ability, (abilities.get(task.ability) ?? 0) + (Number(task.abilityExp) || 0));
+    if (!task?.ability) continue;
+    const previous = abilities.get(task.ability);
+    abilities.set(task.ability, {
+      id: task.ability,
+      label: task.abilityZh ?? previous?.label ?? task.ability,
+      exp: (previous?.exp ?? 0) + (Number(task.abilityExp) || 0),
+    });
   }
-  const strongest = [...abilities.entries()].sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))[0] ?? null;
+  const rankedAbilities = [...abilities.values()].sort((left, right) => right.exp - left.exp || left.id.localeCompare(right.id));
+  const highestAbilityExp = rankedAbilities[0]?.exp;
+  const strongest = rankedAbilities.filter(({ exp }) => exp === highestAbilityExp);
   const structuredMinutes = completed.reduce((sum, item) => sum + (Number.isFinite(item.durationMinutes) ? item.durationMinutes : 0), 0)
     + learningSessions.reduce((sum, item) => sum + (Number.isFinite(item.durationMinutes) ? item.durationMinutes : 0), 0);
   return {
@@ -51,7 +58,13 @@ export function buildWeeklyReport({ histories = [], approvals = [], sessions = [
     exercise: completed.filter(({ taskFamily }) => taskFamily === "exercise").length,
     chores: completed.filter(({ taskFamily }) => taskFamily === "chore").length,
     retries: approvals.flatMap(({ returnEvents }) => Array.isArray(returnEvents) ? returnEvents : []).filter(inside).length,
-    strongestAbility: strongest ? { id: strongest[0], label: ABILITY_LABELS[strongest[0]] ?? strongest[0], exp: strongest[1] } : null,
+    strongestAbility: strongest.length ? {
+      id: strongest[0].id,
+      ids: strongest.map(({ id }) => id),
+      label: strongest.map(({ label }) => label).join("、"),
+      labels: strongest.map(({ label }) => label),
+      exp: strongest[0].exp,
+    } : null,
     focusMinutes: structuredMinutes > 0 ? structuredMinutes : null,
   };
 }
