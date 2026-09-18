@@ -32,6 +32,8 @@ export function mountAppShell(root, state, actions) {
       event.preventDefault();
       if (target.dataset.learnSurfaceLink) {
         actions.openLearnSurface(target.dataset.learnSurfaceLink);
+      } else if (target.dataset.route === "learn") {
+        actions.openLearnSurface("english");
       } else {
         actions.navigate(target.dataset.route);
       }
@@ -43,6 +45,7 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-quest-filter]", (target) => actions.filterQuests(target.dataset.questFilter));
   bindButtons(root, "[data-start-quest]", (target) => actions.startQuest(target.dataset.startQuest));
   bindButtons(root, "[data-complete-quest]", (target) => actions.completeQuest(target.dataset.completeQuest));
+  bindButtons(root, "[data-resubmit-quest]", (target) => actions.completeQuest(target.dataset.resubmitQuest));
   bindButtons(root, "[data-adjust-quest]", (target) => actions.adjustQuest(target.dataset.adjustQuest, Number(target.dataset.delta)));
   bindButtons(root, "[data-toggle-quest-timer]", (target) => actions.toggleQuestTimer(target.dataset.toggleQuestTimer));
   bindButtons(root, "[data-approve-completion]", (target) => actions.approveCompletion(target.dataset.approveCompletion));
