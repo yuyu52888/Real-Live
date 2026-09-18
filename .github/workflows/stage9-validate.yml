@@ -1,9 +1,9 @@
-name: Stage 9 validation
-# validates the current stage9 branch head
+name: Stage 9-10 validation
+# validates the current delivery branches
 
 on:
   push:
-    branches: [main, stage9-pwa-backup]
+    branches: [main, stage9-pwa-backup, stage10-ui]
   workflow_dispatch:
 
 permissions:
@@ -32,11 +32,14 @@ jobs:
           npm run check
           npm run check:stage8
           npm run check:stage9
+          npm run check:stage10
       - name: Unit tests
         run: npm test
       - name: Whitespace check
         run: git diff --check HEAD^ HEAD
       - name: Stage 9 PWA and restore tests
         run: npm run test:stage9
-      - name: Stage 1-8 browser regression
+      - name: Stage 10 visual contract
+        run: node --test tests/stage10.test.mjs
+      - name: Stage 1-9 browser regression
         run: node tests/stage1-browser-check.mjs
