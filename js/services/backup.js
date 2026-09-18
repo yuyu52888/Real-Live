@@ -31,7 +31,7 @@ export function backupFilename(date = new Date()) {
   const year = value.getFullYear();
   const month = String(value.getMonth() + 1).padStart(2, "0");
   const day = String(value.getDate()).padStart(2, "0");
-  return \`real-life-quest-backup-\${year}-\${month}-\${day}.json\`;
+  return `real-life-quest-backup-${year}-${month}-${day}.json`;
 }
 
 export function previewBackup(input, dbVersion) {
@@ -76,7 +76,7 @@ export function validateBackup(input, dbVersion) {
   const backup = parseBackup(input);
   validateBackupShape(backup);
   if (backup.dbVersion !== dbVersion) {
-    throw new Error(\`Unsupported backup database version: \${backup.dbVersion}\`);
+    throw new Error(`Unsupported backup database version: ${backup.dbVersion}`);
   }
   validateProfile(backup);
   return backup;
@@ -99,7 +99,7 @@ function migrateBackup(source, currentDbVersion) {
   if (source.dbVersion === 1 && currentDbVersion === 2) {
     return { ...source, dbVersion: 2 };
   }
-  throw new Error(\`Unsupported backup database version: \${source.dbVersion}\`);
+  throw new Error(`Unsupported backup database version: ${source.dbVersion}`);
 }
 
 function parseBackup(input) {
@@ -124,11 +124,11 @@ function validateBackupShape(backup) {
   }
   for (const [name, key] of Object.entries(STORE_KEYS)) {
     const records = backup.stores[name];
-    if (!Array.isArray(records)) throw new Error(\`Missing store \${name}\`);
+    if (!Array.isArray(records)) throw new Error(`Missing store ${name}`);
     const ids = new Set();
     for (const record of records) {
       if (!record || typeof record[key] !== "string" || !record[key].trim() || ids.has(record[key])) {
-        throw new Error(\`Invalid or duplicate stable ID in \${name}\`);
+        throw new Error(`Invalid or duplicate stable ID in ${name}`);
       }
       ids.add(record[key]);
     }

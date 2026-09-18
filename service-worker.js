@@ -1,7 +1,7 @@
 const CACHE_PREFIX = "real-life-quest";
 const CACHE_VERSION = "stage9-v1";
-const STATIC_CACHE = \`\${CACHE_PREFIX}-static-\${CACHE_VERSION}\`;
-const RUNTIME_CACHE = \`\${CACHE_PREFIX}-runtime-\${CACHE_VERSION}\`;
+const STATIC_CACHE = `${CACHE_PREFIX}-static-${CACHE_VERSION}`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}-runtime-${CACHE_VERSION}`;
 const IMAGE_FALLBACK = "./assets/icons/pwa-icon-192.png";
 
 const CORE_PATHS = Object.freeze([
@@ -105,7 +105,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil((async () => {
     const names = await caches.keys();
     await Promise.all(names
-      .filter((name) => name.startsWith(\`\${CACHE_PREFIX}-\`) && ![STATIC_CACHE, RUNTIME_CACHE].includes(name))
+      .filter((name) => name.startsWith(`${CACHE_PREFIX}-`) && ![STATIC_CACHE, RUNTIME_CACHE].includes(name))
       .map((name) => caches.delete(name)));
     await self.clients.claim();
   })());
@@ -134,7 +134,7 @@ async function navigationResponse(request) {
   const cache = await caches.open(STATIC_CACHE);
   try {
     const network = await fetch(request);
-    if (network.ok) await cache.put(scopedUrl("./index.html"), network.clone());
+    if (network.ok) await putSafely(cache, scopedUrl("./index.html"), network.clone());
     return network;
   } catch {
     return (await cache.match(request, { ignoreSearch: true }))
@@ -145,19 +145,18 @@ async function navigationResponse(request) {
 
 async function staticResponse(request) {
   const cached = await caches.match(request, { ignoreSearch: true });
-  const update = fetch(request).then(async (network) => {
+  if (cached) return cached;
+  try {
+    const network = await fetch(request);
     if (network.ok) {
       const cache = await caches.open(RUNTIME_CACHE);
-      await cache.put(request, network.clone());
+      await putSafely(cache, request, network.clone());
+      await trimRuntimeCache();
     }
     return network;
-  }).catch(() => null);
-
-  if (cached) {
-    update.catch(() => null);
-    return cached;
+  } catch {
+    return Response.error();
   }
-  return (await update) ?? Response.error();
 }
 
 async function imageResponse(request) {
@@ -167,12 +166,34 @@ async function imageResponse(request) {
     const network = await fetch(request);
     if (network.ok) {
       const cache = await caches.open(RUNTIME_CACHE);
-      await cache.put(request, network.clone());
+      await putSafely(cache, request, network.clone());
+      await trimRuntimeCache();
     }
     return network;
   } catch {
     const fallback = await caches.match(scopedUrl(IMAGE_FALLBACK));
     return fallback ?? Response.error();
+  }
+}
+
+async function putSafely(cache, request, response) {
+  try {
+    await cache.put(request, response);
+  } catch (error) {
+    console.warn("Runtime cache write skipped.", error);
+  }
+}
+
+async function trimRuntimeCache(maxEntries = 48) {
+  try {
+    const cache = await caches.open(RUNTIME_CACHE);
+    const keys = await cache.keys();
+    while (keys.length > maxEntries) {
+      const oldest = keys.shift();
+      if (oldest) await cache.delete(oldest);
+    }
+  } catch (error) {
+    console.warn("Runtime cache trim skipped.", error);
   }
 }
 
