@@ -80,7 +80,11 @@ test("Stage 5 story covers resolve through their production logical slots", asyn
   }
 });
 
-test("Stage 5 keeps one Learn route with working Home shortcuts and Stage 4 modes", () => {
+test("Stage 5 keeps one Learn route with working Home shortcuts and Stage 4 modes", async () => {
+  const shellSource = await readFile(new URL("../js/ui/app-shell.js", import.meta.url), "utf8");
+  assert.match(shellSource, /target\.dataset\.route === "learn"/);
+  assert.match(shellSource, /openLearnSurface\("english"\)/);
+
   const home = renderHome({
     onboarding: { nickname: "測試者", avatarVariant: "girl", settings: { dailyTaskGoal: 2, exerciseEnabled: true, choresEnabled: true } },
     player: { level: 1, title: "新手冒險家", exp: { current: 0, target: 100 } },
