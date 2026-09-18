@@ -61,6 +61,20 @@ export async function testStage3Persistence() {
     check((await getRecord(db, "player", "local-player")).progress.exp.current === expected, "Reload does not duplicate EXP");
     check((await getRecord(db, "questHistory", ordinaryStart.id)).status === "completed", "Completed state survives reload");
 
+    const capDay = new Date(2026, 8, 16, 10, 0, 0);
+    const capTasks = tasks.filter((task) => !task.requiresParentConfirmation && task.id !== ordinary.id).slice(0, 2);
+    await startQuest(db, capTasks[0], { now: capDay });
+    await requestQuestCompletion(db, capTasks[0], { now: capDay, dailyTaskLimit: 1 });
+    await startQuest(db, capTasks[1], { now: capDay });
+    let capRejected = false;
+    try {
+      await requestQuestCompletion(db, capTasks[1], { now: capDay, dailyTaskLimit: 1 });
+    } catch (error) {
+      capRejected = /明天 00:00/.test(error.message);
+    }
+    check(capRejected, "Daily hard cap rejects the next completion");
+    check((await getRecord(db, "questHistory", completionInstanceId(capTasks[1], capDay))).status === "in_progress", "Rejected completion keeps progress intact");
+
     const bossBefore = JSON.stringify(await getRecord(db, "bossProgress", "B01"));
     const bossStart = await startQuest(db, bossNamed, { now });
     await requestQuestCompletion(db, bossNamed, { now });
