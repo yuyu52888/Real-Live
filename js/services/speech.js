@@ -48,23 +48,60 @@ export function speechRatesInRange(min = SPEECH_DEFAULTS.min, max = SPEECH_DEFAU
   return rates;
 }
 
+const ACTIVE_UTTERANCES = new Set();
+
 export async function speakVocabulary({ text, audioFile = null, locale = SPEECH_DEFAULTS.locale, rate = SPEECH_DEFAULTS.rate } = {}) {
   const normalizedRate = normalizeSpeechRate(rate);
-  if (audioFile) {
-    const audio = new Audio(audioFile);
-    audio.playbackRate = normalizedRate;
-    await audio.play();
-    return { method: "audio", expAwarded: 0 };
+  const phrase = String(text ?? "").trim();
+  if (!phrase) return { method: "unavailable", expAwarded: 0 };
+
+  if (audioFile && "Audio" in globalThis) {
+    try {
+      const audio = new Audio(audioFile);
+      audio.playbackRate = normalizedRate;
+      await audio.play();
+      return { method: "audio", expAwarded: 0 };
+    } catch (error) {
+      console.warn("Vocabulary audio file failed; falling back to speech synthesis.", error);
+    }
   }
-  if (!("speechSynthesis" in globalThis) || !("SpeechSynthesisUtterance" in globalThis)) {
-    return { method: "unavailable", expAwarded: 0 };
-  }
-  globalThis.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(String(text ?? ""));
+
+  const synthesis = globalThis.speechSynthesis;
+  const Utterance = globalThis.SpeechSynthesisUtterance;
+  if (!synthesis || !Utterance) return { method: "unavailable", expAwarded: 0 };
+
+  if (synthesis.speaking || synthesis.pending) synthesis.cancel();
+  if (synthesis.paused) synthesis.resume();
+
+  const utterance = new Utterance(phrase);
   utterance.lang = locale || SPEECH_DEFAULTS.locale;
   utterance.rate = normalizedRate;
-  globalThis.speechSynthesis.speak(utterance);
-  return { method: "speechSynthesis", expAwarded: 0 };
+  utterance.pitch = 1;
+  utterance.volume = 1;
+  const voice = chooseSpeechVoice(typeof synthesis.getVoices === "function" ? synthesis.getVoices() : [], utterance.lang);
+  if (voice) utterance.voice = voice;
+
+  ACTIVE_UTTERANCES.clear();
+  ACTIVE_UTTERANCES.add(utterance);
+  const release = () => ACTIVE_UTTERANCES.delete(utterance);
+  utterance.onend = release;
+  utterance.onerror = release;
+
+  synthesis.speak(utterance);
+  if (synthesis.paused) synthesis.resume();
+  queueMicrotask(() => {
+    if (synthesis.paused) synthesis.resume();
+  });
+  return { method: "speechSynthesis", expAwarded: 0, voice: voice?.name ?? null };
+}
+
+export function chooseSpeechVoice(voices = [], locale = SPEECH_DEFAULTS.locale) {
+  const wanted = String(locale || SPEECH_DEFAULTS.locale).toLowerCase();
+  const language = wanted.split("-")[0];
+  return voices.find((voice) => String(voice.lang ?? "").toLowerCase() === wanted)
+    ?? voices.find((voice) => String(voice.lang ?? "").toLowerCase().startsWith(`${language}-`))
+    ?? voices.find((voice) => String(voice.lang ?? "").toLowerCase() === language)
+    ?? null;
 }
 
 export function normalizeSpeechRate(rate) {
