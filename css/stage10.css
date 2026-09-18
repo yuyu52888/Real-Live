@@ -1,0 +1,833 @@
+/* Stage 10 visual refinement layer.
+   Functional CSS remains in the stage-specific files; this file is loaded last
+   and normalizes the finished tablet-first visual system. */
+
+:root {
+  --stage10-page-gutter: clamp(1rem, 3vw, 2rem);
+  --stage10-panel-border: rgb(117 82 45 / 16%);
+  --stage10-soft-shadow: 0 10px 28px rgb(56 74 61 / 12%);
+  --stage10-raised-shadow: 0 16px 36px rgb(46 66 53 / 18%);
+  --stage10-glow: 0 0 0 5px rgb(255 208 71 / 20%);
+}
+
+html {
+  background: #cfe9c3;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 2%, rgb(255 255 255 / 78%), transparent 24rem),
+    linear-gradient(180deg, #d9f4ff 0 22rem, #edf7e7 42rem, #c9e6ba 100%);
+}
+
+button,
+a,
+input,
+select {
+  touch-action: manipulation;
+}
+
+.button {
+  min-height: 56px;
+  border: 2px solid rgb(255 255 255 / 42%);
+  box-shadow: 0 5px 0 rgb(74 93 82 / 16%), 0 10px 22px rgb(43 73 63 / 10%);
+}
+
+.button:hover:not(:disabled) {
+  filter: brightness(1.025) saturate(1.04);
+}
+
+.button--secondary {
+  background: linear-gradient(180deg, #fffefb, #f0eee4);
+  box-shadow: 0 4px 0 rgb(111 88 57 / 18%);
+  color: var(--color-wood-dark);
+}
+
+.paper-card,
+.feature-card,
+.parent-panel,
+.reward-section,
+.word-card,
+.story-card,
+.reflection-card,
+.reality-card,
+.thought-card,
+.quest-detail {
+  border-color: var(--stage10-panel-border);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+.app-shell {
+  overflow: clip;
+  background: rgb(250 253 247 / 86%);
+}
+
+.page-content {
+  position: relative;
+}
+
+.bottom-nav {
+  min-height: calc(5.3rem + env(safe-area-inset-bottom));
+  padding-top: 0.38rem;
+  border-top: 1px solid rgb(106 81 54 / 14%);
+  background: rgb(255 254 249 / 97%);
+  box-shadow: 0 -12px 34px rgb(55 72 61 / 15%);
+}
+
+.bottom-nav__item {
+  min-height: 68px;
+  gap: 0.28rem;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.bottom-nav__item:active {
+  transform: translateY(2px);
+}
+
+.bottom-nav__item.is-active {
+  color: #126f9d;
+}
+
+.bottom-nav__item.is-active::before {
+  top: 0.1rem;
+  width: 3.1rem;
+  height: 3.1rem;
+  border: 2px solid rgb(255 255 255 / 80%);
+  background: linear-gradient(180deg, #e5f8ff, #caedfb);
+  box-shadow: 0 3px 10px rgb(38 121 163 / 12%);
+}
+
+.bottom-nav__icon {
+  font-size: 1.42rem;
+}
+
+.offline-status {
+  border-bottom: 1px solid #e6c75f;
+  background: rgb(255 245 191 / 97%);
+}
+
+/* Onboarding */
+.onboarding-shell {
+  width: min(calc(100% - 1.5rem), 72rem);
+  padding-block: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.welcome-header,
+.onboarding-card {
+  border: 3px solid rgb(255 255 255 / 82%);
+  box-shadow: 0 22px 54px rgb(52 84 68 / 18%);
+}
+
+.welcome-header {
+  min-height: min(78vh, 36rem);
+  background:
+    linear-gradient(90deg, rgb(240 252 255 / 93%) 0 43%, rgb(240 252 255 / 40%) 65%, transparent),
+    url("../assets/backgrounds/bg_home_adventure_camp.png") center / cover no-repeat;
+}
+
+.welcome-header::after {
+  opacity: 0.18;
+}
+
+.welcome-copy {
+  max-width: 31rem;
+  padding: 5rem 0 2rem;
+}
+
+.welcome-copy h1 {
+  text-wrap: balance;
+  text-shadow: 0 2px 0 rgb(255 255 255 / 65%);
+}
+
+.welcome-copy > p:last-child {
+  color: #536762;
+  font-weight: 700;
+}
+
+.welcome-avatar,
+.welcome-fox {
+  filter: drop-shadow(0 16px 12px rgb(42 58 45 / 24%));
+}
+
+.onboarding-card {
+  background:
+    radial-gradient(circle at 100% 0, rgb(255 232 147 / 24%), transparent 18rem),
+    rgb(255 253 247 / 96%);
+}
+
+.avatar-choice {
+  border-width: 3px;
+  background:
+    linear-gradient(180deg, rgb(221 246 255 / 92%), rgb(255 249 230 / 94%));
+}
+
+.avatar-choice.is-selected {
+  border-color: #f1b932;
+  box-shadow: var(--stage10-glow), var(--stage10-raised-shadow);
+}
+
+/* Home */
+.home-page {
+  min-height: calc(100vh - var(--nav-height));
+  padding: var(--stage10-page-gutter);
+  background:
+    linear-gradient(180deg, rgb(207 242 255 / 18%) 0 18rem, rgb(238 249 230 / 94%) 31rem, #d1e9c5 100%),
+    url("../assets/backgrounds/bg_home_adventure_camp.png") top center / 100% auto no-repeat;
+}
+
+.home-sky {
+  opacity: 0.18;
+}
+
+.home-header {
+  min-height: 4.5rem;
+}
+
+.encouragement {
+  border: 2px solid rgb(255 255 255 / 75%);
+  background: rgb(255 253 247 / 91%);
+  backdrop-filter: blur(9px);
+}
+
+.identity-grid {
+  min-height: 16rem;
+  margin-top: 0.25rem;
+}
+
+.player-card {
+  border: 3px solid rgb(255 255 255 / 74%);
+  background: rgb(255 253 247 / 93%);
+}
+
+.player-card__avatar {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px #f1c552, 0 8px 16px rgb(68 78 60 / 14%);
+}
+
+.adventure-party__hero {
+  height: 18rem;
+}
+
+.adventure-party__fox {
+  height: 10rem;
+}
+
+.status-chip {
+  border: 2px solid rgb(255 255 255 / 72%);
+  background: rgb(255 253 247 / 92%);
+}
+
+.wood-sign {
+  border-color: #9f5b2d;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 12%), transparent 45%),
+    #a86432;
+  box-shadow: 0 6px 0 #74401e, 0 12px 24px rgb(70 46 31 / 18%);
+  color: #fff8e6;
+}
+
+.quick-grid {
+  gap: 0.9rem;
+}
+
+.quick-card {
+  min-height: 8.4rem;
+  border: 3px solid rgb(255 255 255 / 82%);
+  box-shadow: var(--stage10-raised-shadow);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.quick-card:active {
+  transform: translateY(3px);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+.quick-card__symbol {
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 60%);
+}
+
+.dashboard-grid {
+  align-items: stretch;
+}
+
+.dashboard-grid > * {
+  border: 3px solid rgb(255 255 255 / 72%);
+  background: rgb(255 253 247 / 93%);
+}
+
+.home-quest-list button {
+  border: 1px solid rgb(125 102 65 / 12%);
+  background: rgb(255 255 255 / 78%);
+}
+
+.growth-banner {
+  border: 3px solid rgb(255 255 255 / 64%);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+/* Quest browser */
+.quests-page,
+.parent-page,
+.hero-page,
+.boss-page {
+  padding: var(--stage10-page-gutter);
+}
+
+.quests-page {
+  background:
+    radial-gradient(circle at 92% 5%, rgb(255 235 161 / 34%), transparent 18rem),
+    linear-gradient(180deg, #e8f8ff, #eff8e7 24rem, #dcefd0);
+}
+
+.quests-header,
+.parent-page > header {
+  max-width: 58rem;
+}
+
+.quests-header h1,
+.parent-page > header h1,
+.hero-page h1 {
+  color: var(--color-wood-dark);
+}
+
+.quest-filters {
+  gap: 0.5rem;
+  padding-block: 0.6rem 0.9rem;
+  scrollbar-width: thin;
+}
+
+.quest-filter,
+.chapter-tab,
+.parent-tabs button,
+.learn-switcher button {
+  min-height: 48px;
+  border-width: 2px;
+  box-shadow: 0 3px 0 rgb(78 94 79 / 10%);
+}
+
+.quest-daily-limit {
+  border: 2px solid #e7c256;
+  background: linear-gradient(180deg, #fff9dc, #fff2b9);
+  box-shadow: 0 6px 16px rgb(145 111 35 / 10%);
+}
+
+.quest-browser {
+  gap: 1rem;
+}
+
+.quest-list,
+.quest-preview {
+  min-width: 0;
+}
+
+.quest-card {
+  border: 2px solid rgb(122 96 59 / 14%);
+  box-shadow: 0 6px 18px rgb(53 72 60 / 8%);
+}
+
+.quest-card.is-selected {
+  border-color: #5dafcf;
+  box-shadow: 0 0 0 4px rgb(70 174 218 / 13%), 0 10px 24px rgb(53 72 60 / 12%);
+}
+
+.quest-detail {
+  border: 3px solid rgb(255 255 255 / 86%);
+  background: rgb(255 253 247 / 97%);
+}
+
+.quest-detail__art {
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 18%, white, transparent 9rem),
+    linear-gradient(180deg, #e2f6ff, #edf6dc);
+}
+
+.quest-detail__art img {
+  filter: drop-shadow(0 12px 10px rgb(60 68 55 / 15%));
+}
+
+.quest-facts > div,
+.activity-control,
+.quest-tips,
+.safety-notice {
+  border-radius: 16px;
+}
+
+.safety-notice {
+  border: 2px solid #eec75d;
+  background: #fff7d6;
+}
+
+/* Learn */
+.learn-hub {
+  min-height: calc(100vh - var(--nav-height));
+  background: linear-gradient(180deg, #dff5ff 0 10rem, #eef8df 32rem, #d8edc8 100%);
+}
+
+.learn-switcher {
+  top: 0;
+  width: min(100%, 78rem);
+  margin-inline: auto;
+  border-bottom: 1px solid rgb(70 118 84 / 12%);
+  background: rgb(246 252 245 / 95%);
+}
+
+.learn-switcher button {
+  background: rgb(255 255 255 / 88%);
+}
+
+.learn-switcher button.is-active {
+  border-color: #2c99cc;
+  background: linear-gradient(180deg, #e8f9ff, #d4f1fc);
+  box-shadow: 0 4px 0 rgb(31 130 174 / 14%);
+}
+
+.learn-page {
+  padding: var(--stage10-page-gutter);
+  background:
+    radial-gradient(circle at 88% 2%, rgb(255 233 153 / 26%), transparent 17rem),
+    linear-gradient(180deg, #e4f6ff 0 13rem, #f1f9e8 31rem, #dbeed0 100%);
+}
+
+.learn-hero {
+  border: 3px solid rgb(255 255 255 / 88%);
+  background:
+    linear-gradient(115deg, rgb(255 255 255 / 97%), rgb(231 248 255 / 92%));
+  box-shadow: var(--stage10-raised-shadow);
+}
+
+.learn-today article,
+.learn-mode,
+.speech-panel {
+  border: 2px solid rgb(255 255 255 / 84%);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+.learn-mode {
+  min-height: 9.4rem;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.learn-mode:active:not(:disabled) {
+  transform: translateY(3px);
+}
+
+.speech-rates button,
+.word-card__speech button,
+.learn-back {
+  border-color: #abd4e5;
+  box-shadow: 0 3px 0 rgb(55 117 145 / 10%);
+}
+
+.word-card {
+  border: 4px solid white;
+  background:
+    radial-gradient(circle at 100% 0, rgb(255 232 148 / 18%), transparent 12rem),
+    var(--color-paper);
+  box-shadow: var(--stage10-raised-shadow);
+}
+
+.word-choices button,
+.knowledge-actions button,
+.matching-tile {
+  box-shadow: 0 4px 0 rgb(81 102 91 / 10%);
+}
+
+/* Stories */
+.story-page {
+  background:
+    radial-gradient(circle at 8% 2%, rgb(255 242 185 / 30%), transparent 18rem),
+    linear-gradient(180deg, #eef9e5, #f7f2df 44rem, #e2efd5);
+}
+
+.story-hero {
+  border: 3px solid rgb(255 255 255 / 80%);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+.chapter-tabs {
+  scrollbar-width: thin;
+}
+
+.chapter-tab.is-active {
+  border-color: #b97935;
+  background: linear-gradient(180deg, #fff4cf, #f6df9d);
+}
+
+.chapter-heading {
+  border: 2px solid rgb(112 71 37 / 14%);
+  box-shadow: 0 5px 0 rgb(108 67 35 / 8%);
+}
+
+.story-card {
+  overflow: hidden;
+  border: 3px solid rgb(255 255 255 / 84%);
+  background: rgb(255 253 247 / 96%);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.story-card:has(.button:active) {
+  transform: translateY(2px);
+}
+
+.story-card > img {
+  background: #dcebd5;
+}
+
+.story-reader {
+  width: min(100%, 62rem);
+  margin-inline: auto;
+}
+
+.story-reader__header,
+.story-body,
+.reflection-card,
+.reality-card,
+.thought-card {
+  border: 3px solid rgb(255 255 255 / 82%);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+.story-body {
+  color: #38443f;
+}
+
+.story-body p {
+  font-size: clamp(1.16rem, 2.5vw, 1.4rem);
+  line-height: 1.78;
+}
+
+.reflection-card {
+  background: #f5f0ff;
+}
+
+.reality-card {
+  background: #fff4d4;
+}
+
+.thought-card {
+  background: #e8f6df;
+}
+
+/* Boss */
+.boss-page {
+  min-height: calc(100vh - var(--nav-height));
+  background:
+    radial-gradient(circle at 86% 4%, rgb(255 220 112 / 28%), transparent 18rem),
+    linear-gradient(180deg, #dff3ff, #edf5df 26rem, #d3e7c4);
+}
+
+.boss-back,
+.story-back {
+  min-width: 44px;
+  min-height: 44px;
+  border: 2px solid rgb(115 91 57 / 14%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 88%);
+  box-shadow: 0 4px 12px rgb(54 71 59 / 10%);
+}
+
+.boss-stage {
+  overflow: hidden;
+  border: 3px solid rgb(255 255 255 / 82%);
+  border-radius: 30px;
+  background: rgb(255 253 247 / 95%);
+  box-shadow: var(--stage10-raised-shadow);
+}
+
+.boss-art {
+  background:
+    radial-gradient(circle at 50% 25%, rgb(255 255 255 / 90%), transparent 12rem),
+    linear-gradient(180deg, #d8f1ff, #d7eabe);
+}
+
+.boss-art img {
+  filter: drop-shadow(0 18px 13px rgb(47 60 48 / 20%));
+}
+
+.boss-sheet {
+  background: rgb(255 253 247 / 96%);
+}
+
+.boss-challenge,
+.boss-reward-preview,
+.boss-victory,
+.boss-locked {
+  border-radius: 18px;
+  box-shadow: 0 5px 14px rgb(65 70 53 / 8%);
+}
+
+.boss-steps li {
+  min-height: 64px;
+  border: 2px solid rgb(130 105 68 / 12%);
+  box-shadow: 0 3px 8px rgb(60 70 55 / 6%);
+}
+
+.boss-steps li.is-current {
+  border-color: #e0ad38;
+  box-shadow: 0 0 0 4px rgb(241 193 68 / 15%);
+}
+
+.boss-roster button {
+  border-width: 2px;
+  box-shadow: 0 4px 12px rgb(64 74 58 / 8%);
+}
+
+/* Hero / rewards */
+.hero-page {
+  min-height: calc(100vh - var(--nav-height));
+  background:
+    radial-gradient(circle at 88% 3%, rgb(255 232 131 / 30%), transparent 18rem),
+    linear-gradient(180deg, #e3f5ff, #eff6e6 25rem, #d8ebca);
+}
+
+.hero-profile {
+  border: 3px solid rgb(255 255 255 / 82%);
+  background:
+    linear-gradient(120deg, rgb(255 255 255 / 96%), rgb(243 248 224 / 94%));
+  box-shadow: var(--stage10-raised-shadow);
+}
+
+.hero-profile__avatar {
+  filter: drop-shadow(0 14px 12px rgb(50 66 52 / 16%));
+}
+
+.fragment-orb {
+  border: 4px solid #fff3c0;
+  box-shadow: 0 0 0 4px rgb(239 184 43 / 18%), 0 10px 22px rgb(98 75 33 / 15%);
+}
+
+.reward-section {
+  border: 2px solid rgb(255 255 255 / 74%);
+  background: rgb(255 253 247 / 90%);
+}
+
+.collection-card,
+.milestone-card {
+  border: 2px solid rgb(127 100 61 / 13%);
+  background: rgb(255 255 255 / 88%);
+  box-shadow: 0 6px 16px rgb(58 72 61 / 8%);
+}
+
+.milestone-options button {
+  min-height: 86px;
+  border: 2px solid rgb(129 102 58 / 14%);
+  box-shadow: 0 4px 0 rgb(100 77 48 / 8%);
+}
+
+/* Parent */
+.parent-page {
+  min-height: calc(100vh - var(--nav-height));
+  background:
+    radial-gradient(circle at 90% 2%, rgb(255 233 153 / 20%), transparent 18rem),
+    linear-gradient(180deg, #edf7f9, #f4f4e8 28rem, #e2edd9);
+}
+
+.parent-page--locked {
+  display: grid;
+  min-height: calc(100vh - var(--nav-height));
+  place-content: center;
+}
+
+.parent-page--locked form {
+  width: min(100%, 24rem);
+  margin-inline: auto;
+}
+
+.parent-lock {
+  display: grid;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0 auto 1rem;
+  place-items: center;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: #fff1b9;
+  box-shadow: var(--stage10-soft-shadow);
+  font-size: 2.3rem;
+}
+
+.parent-tabs {
+  padding: 0.45rem;
+  border: 2px solid rgb(112 91 61 / 12%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 72%);
+}
+
+.parent-tabs button.is-active {
+  background: linear-gradient(180deg, #e6f7ff, #cfeefb);
+  box-shadow: 0 3px 0 rgb(54 117 147 / 12%);
+}
+
+.parent-panel {
+  border: 3px solid rgb(255 255 255 / 78%);
+  background: rgb(255 253 247 / 94%);
+}
+
+.approval-card {
+  border: 2px solid rgb(128 100 60 / 13%);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 5px 14px rgb(63 75 62 / 7%);
+}
+
+.report-grid > div,
+.pack-list > div,
+.backup-summary > div {
+  border: 1px solid rgb(125 100 69 / 11%);
+  box-shadow: 0 4px 10px rgb(58 72 61 / 5%);
+}
+
+.parent-settings select,
+.parent-settings input[type="number"],
+.backup-import input[type="file"] {
+  border: 2px solid #d8cfbc;
+  background: white;
+}
+
+/* Tablet and narrow layouts */
+@media (max-width: 56rem) {
+  .identity-grid {
+    grid-template-columns: minmax(12rem, 0.95fr) minmax(15rem, 1.25fr);
+  }
+
+  .status-stack {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quest-browser,
+  .boss-stage,
+  .hero-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .quest-preview {
+    position: static;
+  }
+
+  .boss-art {
+    min-height: 22rem;
+  }
+
+  .hero-profile__avatar {
+    max-height: 22rem;
+  }
+}
+
+@media (max-width: 42rem) {
+  :root {
+    --stage10-page-gutter: 0.75rem;
+  }
+
+  html {
+    font-size: 17px;
+  }
+
+  .app-shell {
+    box-shadow: none;
+  }
+
+  .welcome-header {
+    min-height: 40rem;
+    background:
+      linear-gradient(180deg, rgb(229 248 255 / 56%), rgb(247 251 235 / 86%)),
+      url("../assets/backgrounds/bg_home_adventure_camp.png") center / cover no-repeat;
+  }
+
+  .welcome-copy {
+    padding-top: 23rem;
+  }
+
+  .identity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adventure-party {
+    min-height: 15rem;
+    order: -1;
+  }
+
+  .adventure-party__hero {
+    left: 4%;
+    height: 16rem;
+  }
+
+  .adventure-party__fox {
+    right: 5%;
+  }
+
+  .status-stack,
+  .learn-today,
+  .quick-grid,
+  .dashboard-grid,
+  .story-grid,
+  .collection-grid,
+  .milestone-options,
+  .report-grid,
+  .backup-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-card {
+    min-height: 6.7rem;
+  }
+
+  .quests-header,
+  .home-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .quest-browser {
+    display: block;
+  }
+
+  .quest-list {
+    margin-bottom: 0.9rem;
+  }
+
+  .learn-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-mode-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-reader__header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .story-reader__header img {
+    grid-column: 1 / -1;
+  }
+
+  .boss-art {
+    min-height: 18rem;
+  }
+
+  .boss-sheet {
+    padding: 1rem;
+  }
+
+  .parent-tabs {
+    border-radius: 20px;
+  }
+
+  .approval-card,
+  .approval-card__actions,
+  .backup-actions,
+  .backup-confirm-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .button,
+  .quest-filter,
+  .chapter-tab,
+  .parent-tabs button {
+    min-height: 52px;
+  }
+}
