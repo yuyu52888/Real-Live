@@ -69,6 +69,7 @@ function readerView(story, ui) {
     <blockquote class="thought-card"><small>今日思維卡</small><p>${escapeHtml(story.takeaway)}</p></blockquote>
     <button class="button button--primary story-complete-button" type="button" data-complete-story="${story.id}">${completed ? "已完成閱讀，可再次確認" : "完成閱讀"}</button>
     ${completed ? `<p class="story-completed-note story-reader-progress" role="status">✓ 這篇故事已完成，本章進度 ${progress.completed} / ${progress.total}${progress.complete ? "，本章完成！" : ""}。重讀不會重複計算。</p>` : ""}
+    <button class="button button--secondary story-reader__back-bottom" type="button" data-story-back>← 回到思維故事</button>
   </section>`;
 }
 
