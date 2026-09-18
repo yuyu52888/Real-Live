@@ -47,3 +47,9 @@
 .story-loading { display: grid; place-items: center; }
 @media (max-width: 54rem) { .story-grid { grid-template-columns: 1fr; } }
 @media (max-width: 42rem) { .story-hero { grid-template-columns: 1fr; } .story-chapter-progress { text-align: left; } .story-card { grid-template-columns: 7rem 1fr; } .story-reader__header { grid-template-columns: auto 1fr; } .story-reader__header img { display: none; } }
+
+.story-reader__back-bottom {
+  display: block;
+  min-width: 12rem;
+  margin: var(--space-3) auto 0;
+}
