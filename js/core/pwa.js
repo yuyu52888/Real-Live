@@ -20,8 +20,8 @@ export function registerServiceWorker() {
 
 export function installConnectivityIndicator() {
   if (typeof window === "undefined" || typeof document === "undefined") return () => {};
-  const update = () => {
-    const offline = navigator.onLine === false;
+
+  const setOffline = (offline) => {
     document.documentElement.dataset.connectivity = offline ? "offline" : "online";
     let node = document.querySelector("#offline-status");
     if (!offline) {
@@ -37,12 +37,15 @@ export function installConnectivityIndicator() {
       document.body.prepend(node);
     }
   };
-  window.addEventListener("online", update);
-  window.addEventListener("offline", update);
-  update();
+
+  const onOnline = () => setOffline(false);
+  const onOffline = () => setOffline(true);
+  window.addEventListener("online", onOnline);
+  window.addEventListener("offline", onOffline);
+  setOffline(navigator.onLine === false);
   return () => {
-    window.removeEventListener("online", update);
-    window.removeEventListener("offline", update);
+    window.removeEventListener("online", onOnline);
+    window.removeEventListener("offline", onOffline);
     document.querySelector("#offline-status")?.remove();
   };
 }
