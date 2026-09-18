@@ -17,6 +17,18 @@ export function questRewardTransactionId(completionId) {
   return `quest-exp:${completionId}`;
 }
 
+export const DAILY_QUEST_SLOT_STATUSES = Object.freeze(["pending_approval", "returned", "completed"]);
+
+export function countDailyQuestSlots(history = [], date = new Date()) {
+  const dateKey = completionDateKey(date);
+  return history.filter((record) => record.dateKey === dateKey && DAILY_QUEST_SLOT_STATUSES.includes(record.status)).length;
+}
+
+export function dailyQuestLimitReached(history = [], limit = 0, date = new Date()) {
+  const normalized = normalizeDailyTaskLimit(limit);
+  return normalized != null && countDailyQuestSlots(history, date) >= normalized;
+}
+
 export async function startQuest(db, task, { now = new Date() } = {}) {
   const id = completionInstanceId(task, now);
   const dateKey = completionDateKey(now);
@@ -62,8 +74,9 @@ export async function updateQuestProgress(db, task, value, { now = new Date() } 
   });
 }
 
-export async function requestQuestCompletion(db, task, { now = new Date(), parentApprovalRequired } = {}) {
+export async function requestQuestCompletion(db, task, { now = new Date(), parentApprovalRequired, dailyTaskLimit } = {}) {
   const completionId = completionInstanceId(task, now);
+  await assertDailyCompletionSlotAvailable(db, completionId, completionDateKey(now), dailyTaskLimit);
   const requiresApproval = task.requiresParentConfirmation === true || parentApprovalRequired === true;
   return requiresApproval
     ? requestApproval(db, completionId, now)
@@ -249,4 +262,28 @@ function addPlayerExp(player, amount) {
       exp: { ...player.progress.exp, current: player.progress.exp.current + amount },
     },
   };
+}
+
+async function assertDailyCompletionSlotAvailable(db, completionId, dateKey, limit) {
+  const normalized = normalizeDailyTaskLimit(limit);
+  if (normalized == null) return;
+  const records = await runTransaction(db, ["questHistory"], "readonly", (tx) => {
+    const request = tx.objectStore("questHistory").getAll();
+    return () => request.result ?? [];
+  });
+  const current = records.find((record) => record.id === completionId);
+  if (current && DAILY_QUEST_SLOT_STATUSES.includes(current.status)) return;
+  const used = records.filter((record) => record.dateKey === dateKey && DAILY_QUEST_SLOT_STATUSES.includes(record.status)).length;
+  if (used >= normalized) {
+    throw new Error(`今天最多可完成 ${normalized} 個任務，明天 00:00 會重置可完成額度。`);
+  }
+}
+
+function normalizeDailyTaskLimit(limit) {
+  if (limit == null || limit === "") return null;
+  const value = Number(limit);
+  if (!Number.isInteger(value) || value < 1 || value > 3) {
+    throw new RangeError("每日任務上限必須介於 1～3。");
+  }
+  return value;
 }
