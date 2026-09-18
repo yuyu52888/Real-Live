@@ -1,19 +1,28 @@
-import { avatarImage, escapeHtml } from "../ui/components.js";
+import { avatarImage, escapeHtml, foxImage } from "../ui/components.js";
 
 export function renderHero(state) {
   const ui = state.rewardUi;
   if (!ui || ui.loading) return `<section class="hero-page hero-loading" aria-live="polite"><p>獎勵資料準備中…</p></section>`;
   const player = ui.player ?? state.player;
+  const abilities = abilitySummary(state);
   const ariaExp = Math.min(Math.max(Number(player.exp.current) || 0, 0), Math.max(Number(player.exp.target) || 1, 1));
   return `<section class="hero-page" aria-labelledby="hero-title">
     <header class="hero-profile">
-      <div class="hero-profile__avatar">${avatarImage(state.onboarding.avatarVariant, "happy")}</div>
+      <div class="hero-profile__party">
+        <div class="hero-profile__avatar">${avatarImage(state.onboarding.avatarVariant, "happy")}</div>
+        <div class="hero-profile__fox">${foxImage("happy")}</div>
+      </div>
       <div><p class="eyebrow">MY HERO</p><h1 id="hero-title">${escapeHtml(state.onboarding.nickname)}</h1><strong>Lv.${player.level} · ${escapeHtml(player.title)}</strong>
         <div class="hero-exp" role="progressbar" aria-valuemin="0" aria-valuemax="${player.exp.target}" aria-valuenow="${ariaExp}"><i style="width:${Math.round(ariaExp / Math.max(1, player.exp.target) * 100)}%"></i></div>
         <small>累積 EXP ${player.exp.current} / ${player.exp.target}</small>
       </div>
       <div class="fragment-orb"><strong>${ui.fragments.current} / ${ui.fragments.needed}</strong><span>寶箱碎片</span></div>
     </header>
+
+    <section class="ability-section" aria-labelledby="ability-title">
+      <div class="ability-section__heading"><div><p class="eyebrow">GROWTH</p><h2 id="ability-title">五大能力</h2></div><p>完成真實任務，能力值會慢慢累積。</p></div>
+      <div class="ability-grid">${abilities.map((ability) => `<article class="ability-card ability-card--${ability.id}"><span aria-hidden="true">${ability.icon}</span><div><strong>${ability.label}</strong><small>累積 +${ability.exp}</small></div></article>`).join("")}</div>
+    </section>
 
     ${ui.pendingClaims.length ? `<section class="reward-section" aria-labelledby="milestone-title"><h2 id="milestone-title">升級里程碑</h2><p>每個等級挑一個最喜歡的獎勵，選定後會永久保存。</p><div class="milestone-list">${ui.pendingClaims.map(milestoneCard).join("")}</div></section>` : ""}
 
@@ -62,4 +71,25 @@ function collection(title, items, kind) {
 
 function emptyCard(text) {
   return `<p class="collection-empty">${text}</p>`;
+}
+
+
+const ABILITY_META = Object.freeze([
+  { id: "focus", label: "專注力", icon: "🎯" },
+  { id: "learning", label: "學習力", icon: "📘" },
+  { id: "persistence", label: "耐心力", icon: "⏳" },
+  { id: "life", label: "生活力", icon: "🧰" },
+  { id: "cooperation", label: "合作力", icon: "🤝" },
+]);
+
+function abilitySummary(state) {
+  const tasks = new Map((state.questUi?.tasks ?? []).map((task) => [task.id, task]));
+  const totals = new Map(ABILITY_META.map(({ id }) => [id, 0]));
+  for (const history of state.questUi?.history ?? []) {
+    if (history.status !== "completed") continue;
+    const task = tasks.get(history.questId);
+    if (!task?.ability || !totals.has(task.ability)) continue;
+    totals.set(task.ability, totals.get(task.ability) + (Number(task.abilityExp) || 0));
+  }
+  return ABILITY_META.map((item) => ({ ...item, exp: totals.get(item.id) ?? 0 }));
 }
