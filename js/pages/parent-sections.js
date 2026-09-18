@@ -67,6 +67,7 @@ function settingsView(state) {
         <button class="button button--primary" type="submit">儲存設定</button>
       </form>
       ${packManager(state.parentUi?.packs ?? [])}
+      ${backupManager(state.parentUi?.backupPreview, state.parentUi?.backupStatus)}
     </div>`;
 }
 
@@ -88,4 +89,50 @@ function checkbox(name, label, checked, value = "true") {
 
 function options(values, selected, label = String) {
   return values.map((value) => `<option value="${value}" ${Number(selected) === value ? "selected" : ""}>${label(value)}</option>`).join("");
+}
+
+
+function backupManager(preview, status) {
+  const summary = preview?.summary;
+  return `<article class="parent-panel backup-manager" aria-labelledby="backup-manager-title">
+    <h2 id="backup-manager-title">備份與還原</h2>
+    <p class="parent-note">備份檔只儲存在你選擇的位置，包含孩子進度與本機家長設定，請妥善保管。</p>
+    <div class="backup-actions">
+      <button class="button button--secondary" type="button" data-backup-export>匯出 JSON 備份</button>
+      <form class="backup-import" data-backup-preview-form>
+        <label>選擇備份 JSON
+          <input name="backupFile" type="file" accept="application/json,.json" required>
+        </label>
+        <button class="button button--secondary" type="submit">檢查備份</button>
+      </form>
+    </div>
+    ${status ? `<p class="backup-status" role="status">${escapeHtml(status)}</p>` : ""}
+    ${summary ? backupPreview(preview, summary) : ""}
+  </article>`;
+}
+
+function backupPreview(preview, summary) {
+  return `<section class="backup-preview" aria-labelledby="backup-preview-title">
+    <h3 id="backup-preview-title">準備還原這份備份</h3>
+    <p><strong>${escapeHtml(summary.nickname || "未命名角色")}</strong> · ${escapeHtml(formatDateTime(summary.exportedAt))}</p>
+    <dl class="backup-summary">
+      <div><dt>任務紀錄</dt><dd>${summary.questHistory}</dd></div>
+      <div><dt>英文進度</dt><dd>${summary.wordProgress}</dd></div>
+      <div><dt>英文場次</dt><dd>${summary.wordSessions}</dd></div>
+      <div><dt>故事進度</dt><dd>${summary.storyProgress}</dd></div>
+      <div><dt>獎勵</dt><dd>${summary.rewards}</dd></div>
+      <div><dt>Boss 進度</dt><dd>${summary.bossProgress}</dd></div>
+    </dl>
+    ${preview.migrated ? `<p class="parent-note">將從資料庫版本 ${preview.sourceDbVersion} 安全轉換到目前版本。</p>` : ""}
+    <p class="backup-warning">確認還原後，這台裝置目前的本機資料會由備份內容完整取代。</p>
+    <div class="backup-confirm-actions">
+      <button class="button button--secondary" type="button" data-backup-cancel>取消</button>
+      <button class="button button--gold" type="button" data-backup-restore>確認還原</button>
+    </div>
+  </section>`;
+}
+
+function formatDateTime(value) {
+  const date = new Date(value);
+  return Number.isNaN(date.valueOf()) ? "日期不明" : date.toLocaleString("zh-TW", { dateStyle: "medium", timeStyle: "short" });
 }

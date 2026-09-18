@@ -1,6 +1,6 @@
 import { advanceOnboarding, createInitialState, selectAvatar } from "./core/app-state.js";
 import { navigate } from "./core/router.js";
-import { registerServiceWorker } from "./core/pwa.js";
+import { installConnectivityIndicator, registerServiceWorker } from "./core/pwa.js";
 import { mountOnboarding } from "./pages/onboarding.js";
 import { loadAssetManifest } from "./services/asset-registry.js";
 import { loadUiCopy } from "./services/ui-copy.js";
@@ -27,6 +27,13 @@ import { loadParentDashboard } from "./services/parent-dashboard.js";
 import { saveParentPreferences, switchPlayerAvatar } from "./services/parent-settings.js";
 import { setVocabularyPackEnabled } from "./repositories/vocabulary.js";
 import { importVocabularyPack as importPack } from "./services/vocabulary-import.js";
+import {
+  backupFilename,
+  exportBackup as createBackupSnapshot,
+  previewBackup as inspectBackup,
+  restoreBackup as restoreBackupSnapshot,
+  serializeBackup,
+} from "./services/backup.js";
 
 const root = document.querySelector("#app");
 let state = createInitialState();
@@ -36,6 +43,7 @@ let taskCatalog = [];
 let bossCatalog = [];
 let questTimer = null;
 let rewardSystem;
+let pendingBackup = null;
 
 if (!root) {
   throw new Error("App root is missing.");
@@ -51,10 +59,14 @@ const actions = {
   navigate(route) {
     if (route !== "quests") stopQuestTimer();
     const leavingParent = state.route === "parent" && route !== "parent";
+    if (leavingParent) pendingBackup = null;
     state = {
       ...navigate(state, route),
       bossUi: { ...state.bossUi, selectedBossId: null },
       questUi: { ...state.questUi, parentUnlocked: leavingParent ? false : state.questUi?.parentUnlocked },
+      parentUi: leavingParent
+        ? { ...state.parentUi, backupPreview: null, backupStatus: null }
+        : state.parentUi,
     };
     render();
   },
@@ -315,7 +327,62 @@ const actions = {
       render();
     });
   },
+  exportBackup() {
+    return performParent(async () => {
+      const backup = await createBackupSnapshot(database);
+      downloadJsonFile(backupFilename(), serializeBackup(backup));
+      state = { ...state, parentUi: { ...state.parentUi, backupStatus: "備份檔已建立。", backupPreview: null } };
+      pendingBackup = null;
+    });
+  },
+  previewBackup(input) {
+    pendingBackup = null;
+    state = { ...state, parentUi: { ...state.parentUi, backupPreview: null, backupStatus: null } };
+    return performParent(async () => {
+      const preview = inspectBackup(input, database.version);
+      pendingBackup = preview.backup;
+      state = {
+        ...state,
+        parentUi: {
+          ...state.parentUi,
+          backupPreview: { summary: preview.summary, sourceDbVersion: preview.sourceDbVersion, migrated: preview.migrated },
+          backupStatus: null,
+        },
+      };
+    });
+  },
+  cancelBackupPreview() {
+    pendingBackup = null;
+    state = { ...state, parentUi: { ...state.parentUi, backupPreview: null, backupStatus: null } };
+    render();
+  },
+  confirmBackupRestore() {
+    if (!pendingBackup) return Promise.resolve();
+    return performParent(async () => {
+      await restoreBackupSnapshot(database, pendingBackup);
+      pendingBackup = null;
+      database.close();
+      location.reload();
+    }, { rerender: false });
+  },
 };
+
+async function performParent(operation, { rerender = true } = {}) {
+  if (saving || !database) return;
+  saving = true;
+  root.setAttribute("aria-busy", "true");
+  try {
+    await operation();
+    if (rerender) render();
+  } catch (error) {
+    console.error(error);
+    if (rerender) render();
+    showPageError(error.message);
+  } finally {
+    saving = false;
+    root.removeAttribute("aria-busy");
+  }
+}
 
 async function performReward(operation) {
   if (saving || !database) return;
@@ -450,6 +517,18 @@ function stopQuestTimer() {
   }
 }
 
+function downloadJsonFile(filename, content) {
+  const blob = new Blob([content], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
 function showPageError(message) {
   const node = document.querySelector("#page-error") ?? document.createElement("p");
   node.id = "page-error";
@@ -516,3 +595,4 @@ try {
   root.append(retry);
 }
 registerServiceWorker();
+installConnectivityIndicator();

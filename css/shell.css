@@ -155,3 +155,19 @@
     height: 3rem;
   }
 }
+
+
+.offline-status {
+  position: sticky;
+  z-index: 60;
+  top: 0;
+  width: min(100%, 78rem);
+  margin: 0 auto;
+  padding: 0.55rem 1rem;
+  background: #fff0b6;
+  box-shadow: 0 3px 12px rgb(71 59 32 / 18%);
+  color: #684b12;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: center;
+}

@@ -4,6 +4,9 @@ export function bindParentControls(root, actions) {
   bind(root, "[data-resubmit-quest]", (target) => actions.completeQuest(target.dataset.resubmitQuest));
   bind(root, "[data-parent-avatar]", (target) => actions.switchParentAvatar(target.dataset.parentAvatar));
   bind(root, "[data-toggle-pack]", (target) => actions.toggleVocabularyPack(target.dataset.togglePack, target.dataset.packEnabled === "true"));
+  bind(root, "[data-backup-export]", () => actions.exportBackup());
+  bind(root, "[data-backup-cancel]", () => actions.cancelBackupPreview());
+  bind(root, "[data-backup-restore]", () => actions.confirmBackupRestore());
 
   const settingsForm = root.querySelector("[data-parent-settings]");
   settingsForm?.addEventListener("submit", (event) => {
@@ -20,6 +23,14 @@ export function bindParentControls(root, actions) {
       speechMinRate: Number(data.get("speechMinRate")),
       speechMaxRate: Number(data.get("speechMaxRate")),
     });
+  });
+
+  const backupForm = root.querySelector("[data-backup-preview-form]");
+  backupForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const file = new FormData(backupForm).get("backupFile");
+    if (!(file instanceof File)) return;
+    await actions.previewBackup(await file.text());
   });
 
   const importForm = root.querySelector("[data-pack-import]");
