@@ -15,6 +15,7 @@ import { approveQuestCompletion, completionInstanceId, dailyQuestLimitReached, r
 import { verifyParentPin } from "./services/parent-auth.js";
 import { ensureCoreVocabulary, loadEnglishDashboard, saveLearningSession } from "./services/english-engine.js";
 import { createMatchingGame, selectMatchingCard as advanceMatchingGame } from "./services/matching-game.js";
+import { answerMiniGameQuestion, createMiniGameSession, getMiniGame, reactionRating } from "./services/mini-games.js";
 import { recordWordAnswer } from "./services/review-scheduler.js";
 import { setSpeechRate, speakVocabulary } from "./services/speech.js";
 import { getStoryById } from "./repositories/stories.js";
@@ -45,6 +46,7 @@ let bossCatalog = [];
 let questTimer = null;
 let rewardSystem;
 let pendingBackup = null;
+let reactionTimer = null;
 
 if (!root) {
   throw new Error("App root is missing.");
@@ -59,6 +61,7 @@ const actions = {
   },
   navigate(route) {
     if (route !== "quests") stopQuestTimer();
+    if (route !== "learn") stopReactionTimer();
     if (route !== "learn") {
       stopStoryNarration();
       state = { ...state, storyNarration: { status: "idle", storyId: null } };
@@ -76,8 +79,60 @@ const actions = {
     render();
   },
   openLearnSurface(surface) {
-    if (!["english", "stories"].includes(surface)) return;
+    if (!["english", "stories", "games"].includes(surface)) return;
+    if (surface !== "games") stopReactionTimer();
     state = { ...state, route: "learn", learnSurface: surface };
+    render();
+  },
+  openMiniGame(gameId) {
+    if (!getMiniGame(gameId)) return;
+    stopReactionTimer();
+    state = { ...state, route: "learn", learnSurface: "games", gameUi: { selectedGameId: gameId, session: createMiniGameSession(gameId) } };
+    render();
+  },
+  closeMiniGame() {
+    stopReactionTimer();
+    state = { ...state, gameUi: { selectedGameId: null, session: null } };
+    render();
+  },
+  resetMiniGame() {
+    const gameId = state.gameUi?.selectedGameId;
+    if (!getMiniGame(gameId)) return;
+    stopReactionTimer();
+    state = { ...state, gameUi: { selectedGameId: gameId, session: createMiniGameSession(gameId) } };
+    render();
+  },
+  answerMiniGame(answer) {
+    const session = state.gameUi?.session;
+    if (!session || session.gameId === "reaction-lantern") return;
+    state = { ...state, gameUi: { ...state.gameUi, session: answerMiniGameQuestion(session, answer) } };
+    render();
+  },
+  startReactionGame() {
+    if (state.gameUi?.selectedGameId !== "reaction-lantern") return;
+    stopReactionTimer();
+    state = { ...state, gameUi: { ...state.gameUi, session: { ...state.gameUi.session, phase: "waiting", feedback: "看到綠燈再點，不要搶跑！", goAt: null } } };
+    render();
+    const delay = 1200 + Math.floor(Math.random() * 1800);
+    reactionTimer = setTimeout(() => {
+      reactionTimer = null;
+      if (state.gameUi?.selectedGameId !== "reaction-lantern" || state.gameUi?.session?.phase !== "waiting") return;
+      state = { ...state, gameUi: { ...state.gameUi, session: { ...state.gameUi.session, phase: "go", goAt: performance.now(), feedback: "現在！快點擊！" } } };
+      render();
+    }, delay);
+  },
+  tapReactionGame() {
+    const session = state.gameUi?.session;
+    if (!session || session.gameId !== "reaction-lantern") return;
+    if (session.phase === "waiting") {
+      stopReactionTimer();
+      state = { ...state, gameUi: { ...state.gameUi, session: { ...session, phase: "early", feedback: "太早按了！先等訊號出現，再試一次。" } } };
+      render();
+      return;
+    }
+    if (session.phase !== "go" || session.goAt == null) return;
+    const elapsed = Math.max(0, Math.round(performance.now() - session.goAt));
+    state = { ...state, gameUi: { ...state.gameUi, session: { ...session, phase: "ready", goAt: null, attempts: [...(session.attempts ?? []), elapsed], feedback: `${elapsed} ms：${reactionRating(elapsed)}` } } };
     render();
   },
   selectStoryChapter(chapter) {
@@ -563,6 +618,11 @@ async function refreshBossState(recoverRewards = false) {
     ? await synchronizeBosses(database, bossCatalog, rewardSystem)
     : await loadBossDashboard(database, bossCatalog);
   state = { ...state, bossUi: { ...bossUi, selectedBossId } };
+}
+
+function stopReactionTimer() {
+  if (reactionTimer) clearTimeout(reactionTimer);
+  reactionTimer = null;
 }
 
 function stopQuestTimer() {

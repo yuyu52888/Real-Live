@@ -56,6 +56,12 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-speech-rate]", (target) => actions.changeSpeechRate(Number(target.dataset.speechRate)));
   bindButtons(root, "[data-speak]", (target) => actions.speakLearn(target.dataset.speak));
   bindButtons(root, "[data-learn-surface]", (target) => actions.openLearnSurface(target.dataset.learnSurface));
+  bindButtons(root, "[data-open-mini-game]", (target) => actions.openMiniGame(target.dataset.openMiniGame));
+  bindButtons(root, "[data-close-mini-game]", () => actions.closeMiniGame());
+  bindButtons(root, "[data-reset-mini-game]", () => actions.resetMiniGame());
+  bindButtons(root, "[data-mini-game-answer]", (target) => actions.answerMiniGame(target.dataset.miniGameAnswer));
+  bindButtons(root, "[data-reaction-start]", () => actions.startReactionGame());
+  bindButtons(root, "[data-reaction-tap]", () => actions.tapReactionGame());
   bindButtons(root, "[data-story-chapter]", (target) => actions.selectStoryChapter(Number(target.dataset.storyChapter)));
   bindButtons(root, "[data-open-story]", (target) => actions.openStory(target.dataset.openStory));
   bindButtons(root, "[data-story-back]", () => actions.closeStory());

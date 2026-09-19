@@ -39,6 +39,7 @@ export function createInitialState() {
     learnSurface: "english",
     storyUi: { loading: true },
     storyNarration: { status: "idle", storyId: null },
+    gameUi: { selectedGameId: null, session: null },
     rewardUi: { loading: true },
     bossUi: { loading: true, selectedBossId: null },
     parentUi: { activeTab: "approvals", loading: true },
