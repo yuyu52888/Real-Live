@@ -1,8 +1,8 @@
 const CACHE_PREFIX = "real-life-quest";
-const CACHE_VERSION = "stage10-v1";
+const CACHE_VERSION = "stage10-v2";
 const STATIC_CACHE = `${CACHE_PREFIX}-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `${CACHE_PREFIX}-runtime-${CACHE_VERSION}`;
-const IMAGE_FALLBACK = "./assets/icons/pwa-icon-192.png";
+const IMAGE_FALLBACK = "./assets/icons/pwa-icon-v2-192.png";
 
 const CORE_PATHS = Object.freeze([
   "./",
@@ -83,9 +83,9 @@ const CORE_PATHS = Object.freeze([
   "./03_REWARDS_BOSSES/BOSSES_6.json",
   "./assets/ASSET_MANIFEST.json",
   "./assets/backgrounds/bg_home_adventure_camp.png",
-  "./assets/icons/pwa-icon-192.png",
-  "./assets/icons/pwa-icon-512.png",
-  "./assets/icons/pwa-icon-maskable-512.png",
+  "./assets/icons/pwa-icon-v2-192.png",
+  "./assets/icons/pwa-icon-v2-512.png",
+  "./assets/icons/pwa-icon-v2-maskable-512.png",
   "./assets/characters/boy/boy_idle.png",
   "./assets/characters/boy/boy_happy.png",
   "./assets/characters/boy/boy_portrait.png",
