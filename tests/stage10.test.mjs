@@ -10,7 +10,7 @@ test("Stage 10 visual layer is loaded last and preserved for offline use", async
   const parentIndex = index.indexOf("./css/parent.css");
   const stage10Index = index.indexOf("./css/stage10.css");
   assert.ok(parentIndex >= 0 && stage10Index > parentIndex, "Stage 10 CSS must load after functional page CSS");
-  assert.match(sw, /CACHE_VERSION = "stage10-v\\d+"/);
+  assert.match(sw, /CACHE_VERSION = "stage10-v\d+"/);
   assert.match(sw, /"\.\/css\/stage10\.css"/);
   assert.match(sw, /bg_home_adventure_camp\.png/);
 });
