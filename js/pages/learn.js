@@ -1,6 +1,6 @@
 import { uiText } from "../services/ui-copy.js";
 import { SPEECH_DEFAULTS } from "../services/speech.js";
-import { escapeHtml, icon } from "../ui/components.js";
+import { avatarImage, escapeHtml, foxImage, icon } from "../ui/components.js";
 import { renderStories } from "./stories.js";
 
 export const LEARN_MODES = Object.freeze([
@@ -28,18 +28,22 @@ function renderEnglish(state) {
   if (!ui || ui.loading) return loadingView();
   if (ui.sessionDone) return doneView(ui);
   if (ui.active) return sessionView(ui);
-  return overview(ui);
+  return overview(ui, state);
 }
 
-function overview(ui) {
+function overview(ui, state) {
   const percentage = ui.totalWords ? Math.round((ui.masteredWords / ui.totalWords) * 100) : 0;
   return `
     <section class="learn-page" aria-labelledby="learn-title">
       <header class="learn-hero">
-        <div>
+        <div class="learn-hero__copy">
           <p class="eyebrow">ENGLISH ADVENTURE</p>
           <h1 id="learn-title">${uiText("learn.englishTitle")}</h1>
           <p>${uiText("learn.dueFirst")}</p>
+        </div>
+        <div class="learn-hero__art" aria-hidden="true">
+          ${avatarImage(state.onboarding.avatarVariant, "studying")}
+          ${foxImage("reading")}
         </div>
         <div class="learn-progress" aria-label="已掌握 ${ui.masteredWords} / ${ui.totalWords}">
           <strong>${ui.masteredWords} / ${ui.totalWords}</strong><span>已掌握</span>
