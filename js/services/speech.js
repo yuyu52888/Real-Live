@@ -53,12 +53,13 @@ const ACTIVE_UTTERANCES = new Set();
 export async function speakVocabulary({ text, audioFile = null, locale = SPEECH_DEFAULTS.locale, rate = SPEECH_DEFAULTS.rate } = {}) {
   const normalizedRate = normalizeSpeechRate(rate);
   const phrase = String(text ?? "").trim();
-  if (!phrase) return { method: "unavailable", expAwarded: 0 };
+  if (!phrase) return { method: "unavailable", expAwarded: 0, reason: "empty" };
 
   if (audioFile && "Audio" in globalThis) {
     try {
       const audio = new Audio(audioFile);
       audio.playbackRate = normalizedRate;
+      audio.volume = 1;
       await audio.play();
       return { method: "audio", expAwarded: 0 };
     } catch (error) {
@@ -68,40 +69,105 @@ export async function speakVocabulary({ text, audioFile = null, locale = SPEECH_
 
   const synthesis = globalThis.speechSynthesis;
   const Utterance = globalThis.SpeechSynthesisUtterance;
-  if (!synthesis || !Utterance) return { method: "unavailable", expAwarded: 0 };
+  if (!synthesis || !Utterance) return { method: "unavailable", expAwarded: 0, reason: "unsupported" };
 
-  if (synthesis.speaking || synthesis.pending) synthesis.cancel();
   if (synthesis.paused) synthesis.resume();
+  const voices = await waitForSpeechVoices(synthesis);
+  const candidates = speechVoiceCandidates(voices, locale);
 
-  const utterance = new Utterance(phrase);
-  utterance.lang = locale || SPEECH_DEFAULTS.locale;
-  utterance.rate = normalizedRate;
-  utterance.pitch = 1;
-  utterance.volume = 1;
-  const voice = chooseSpeechVoice(typeof synthesis.getVoices === "function" ? synthesis.getVoices() : [], utterance.lang);
-  if (voice) utterance.voice = voice;
+  for (const voice of candidates) {
+    try {
+      const result = await speakAttempt({ synthesis, Utterance, phrase, locale, rate: normalizedRate, voice });
+      return { method: "speechSynthesis", expAwarded: 0, voice: result.voice };
+    } catch (error) {
+      console.warn("Speech synthesis attempt failed.", error);
+    }
+  }
 
-  ACTIVE_UTTERANCES.clear();
-  ACTIVE_UTTERANCES.add(utterance);
-  const release = () => ACTIVE_UTTERANCES.delete(utterance);
-  utterance.onend = release;
-  utterance.onerror = release;
-
-  synthesis.speak(utterance);
-  if (synthesis.paused) synthesis.resume();
-  queueMicrotask(() => {
-    if (synthesis.paused) synthesis.resume();
-  });
-  return { method: "speechSynthesis", expAwarded: 0, voice: voice?.name ?? null };
+  return { method: "unavailable", expAwarded: 0, reason: "not-started" };
 }
 
 export function chooseSpeechVoice(voices = [], locale = SPEECH_DEFAULTS.locale) {
+  return speechVoiceCandidates(voices, locale)[0] ?? null;
+}
+
+export function speechVoiceCandidates(voices = [], locale = SPEECH_DEFAULTS.locale) {
   const wanted = String(locale || SPEECH_DEFAULTS.locale).toLowerCase();
   const language = wanted.split("-")[0];
-  return voices.find((voice) => String(voice.lang ?? "").toLowerCase() === wanted)
-    ?? voices.find((voice) => String(voice.lang ?? "").toLowerCase().startsWith(`${language}-`))
-    ?? voices.find((voice) => String(voice.lang ?? "").toLowerCase() === language)
-    ?? null;
+  const english = voices.filter((voice) => {
+    const lang = String(voice.lang ?? "").toLowerCase();
+    return lang === wanted || lang.startsWith(`${language}-`) || lang === language;
+  });
+  english.sort((left, right) => {
+    const leftLang = String(left.lang ?? "").toLowerCase();
+    const rightLang = String(right.lang ?? "").toLowerCase();
+    const score = (voice, lang) =>
+      (lang === wanted ? 8 : 0)
+      + (voice.localService ? 4 : 0)
+      + (voice.default ? 2 : 0);
+    return score(right, rightLang) - score(left, leftLang);
+  });
+  return english.length ? [...english, null] : [null];
+}
+
+async function waitForSpeechVoices(synthesis, timeoutMs = 700) {
+  if (typeof synthesis.getVoices !== "function") return [];
+  const initial = synthesis.getVoices();
+  if (initial.length) return initial;
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      synthesis.removeEventListener?.("voiceschanged", finish);
+      resolve(synthesis.getVoices());
+    };
+    synthesis.addEventListener?.("voiceschanged", finish, { once: true });
+    setTimeout(finish, timeoutMs);
+  });
+}
+
+function speakAttempt({ synthesis, Utterance, phrase, locale, rate, voice }) {
+  return new Promise((resolve, reject) => {
+    const utterance = new Utterance(phrase);
+    utterance.lang = locale || SPEECH_DEFAULTS.locale;
+    utterance.rate = rate;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    if (voice) utterance.voice = voice;
+
+    ACTIVE_UTTERANCES.add(utterance);
+    let started = false;
+    const timeout = setTimeout(() => {
+      if (started) return;
+      ACTIVE_UTTERANCES.delete(utterance);
+      try { synthesis.cancel(); } catch {}
+      reject(new Error("speech-start-timeout"));
+    }, 1800);
+
+    utterance.onstart = () => {
+      started = true;
+      clearTimeout(timeout);
+      resolve({ voice: voice?.name ?? null });
+    };
+    utterance.onend = () => {
+      clearTimeout(timeout);
+      ACTIVE_UTTERANCES.delete(utterance);
+      if (!started) reject(new Error("speech-ended-before-start"));
+    };
+    utterance.onerror = (event) => {
+      clearTimeout(timeout);
+      ACTIVE_UTTERANCES.delete(utterance);
+      reject(new Error(event?.error || "speech-error"));
+    };
+
+    if (synthesis.paused) synthesis.resume();
+    synthesis.speak(utterance);
+    setTimeout(() => {
+      if (synthesis.paused) synthesis.resume();
+    }, 0);
+  });
 }
 
 export function normalizeSpeechRate(rate) {
