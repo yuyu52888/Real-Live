@@ -370,7 +370,7 @@ try {
   await waitFor(() => client.evaluate(`Boolean(document.querySelector('.boss-victory [data-open-boss-chest]')) && !document.querySelector('#app').hasAttribute('aria-busy')`));
   const bossVictory = await client.evaluate(`({
     text: document.querySelector('.boss-victory')?.textContent,
-    hearts: document.querySelector('.boss-hp > span')?.textContent,
+    hearts: document.querySelector('.boss-hp__label span')?.textContent,
     navCount: document.querySelectorAll('.bottom-nav__item').length,
   })`);
   await client.evaluate(`document.querySelector('[data-open-boss-chest]').click()`);
@@ -409,7 +409,7 @@ try {
     !result.bossHomeArt?.includes("boss_b01_") && "Stage 7 Home did not use A6 Boss production art",
     !result.bossDetailArt?.includes("boss_b01_") && "Stage 7 detail did not use A6 Boss production art",
     !result.text?.includes("挑戰成功") && "Stage 7 Boss victory did not render",
-    result.hearts !== "0 / 3" && "Stage 7 Boss HP did not persist across reload",
+    result.hearts !== "0 / 100" && "Stage 7 Boss HP did not persist across reload",
   ].filter(Boolean);
 
   if (failures.length) {
