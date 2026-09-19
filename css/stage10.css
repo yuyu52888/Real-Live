@@ -2290,3 +2290,215 @@ select {
 .boss-steps li.is-done > div small {
   color: #4f8651;
 }
+
+
+.hero-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 1rem;
+  padding: 0.45rem;
+  border: 2px solid rgb(115 91 57 / 12%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 70%);
+}
+
+.hero-tabs button {
+  min-height: 52px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #5d554d;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.hero-tabs button.is-active {
+  background: linear-gradient(180deg, #ffe994, #f6c84b);
+  box-shadow: 0 4px 0 #c89122;
+  color: #6c4315;
+}
+
+.reward-exchange {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.reward-exchange__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 3px solid rgb(255 255 255 / 82%);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 88% 20%, rgb(255 235 145 / 35%), transparent 13rem),
+    linear-gradient(135deg, #fffdf4, #edf7df);
+  box-shadow: var(--stage10-raised-shadow);
+}
+
+.reward-exchange__hero h2 {
+  margin-bottom: 0.3rem;
+  color: var(--color-wood-dark);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+.reward-exchange__hero p:last-child {
+  max-width: 40rem;
+  margin-bottom: 0;
+  color: var(--color-muted);
+}
+
+.reward-exchange__level {
+  display: grid;
+  min-width: 7rem;
+  min-height: 7rem;
+  place-items: center;
+  padding: 0.8rem;
+  border: 4px solid #fff1a5;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffe57f, #f3b72d);
+  box-shadow: 0 5px 0 #b67d1c, 0 10px 20px rgb(101 73 28 / 15%);
+  text-align: center;
+}
+
+.reward-exchange__level small,
+.reward-exchange__level strong {
+  display: block;
+}
+
+.reward-exchange__level strong {
+  color: #704416;
+  font-size: 1.45rem;
+}
+
+.reward-exchange__levels,
+.reward-exchange__conditions {
+  padding: clamp(1rem, 3vw, 1.4rem);
+  border: 3px solid rgb(255 255 255 / 78%);
+  border-radius: 24px;
+  background: rgb(255 253 247 / 92%);
+  box-shadow: var(--stage10-soft-shadow);
+}
+
+.exchange-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.exchange-card {
+  padding: 0.9rem;
+  border: 2px solid #d8c7a1;
+  border-radius: 18px;
+  background: white;
+}
+
+.exchange-card > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.exchange-card > header span {
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: #ffe88a;
+  color: #714614;
+  font-weight: 900;
+}
+
+.exchange-card.is-locked {
+  opacity: 0.68;
+}
+
+.exchange-card.is-claimed {
+  border-color: #a9d99c;
+  background: #f1faed;
+}
+
+.exchange-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.exchange-options button {
+  min-height: 7.5rem;
+  padding: 0.8rem;
+  border: 2px solid #d7cfbd;
+  border-radius: 16px;
+  background: #fffdf8;
+  cursor: pointer;
+}
+
+.exchange-options button:not(:disabled):active {
+  transform: translateY(2px);
+}
+
+.exchange-options button > span,
+.exchange-options button > strong,
+.exchange-options button > small {
+  display: block;
+}
+
+.exchange-options button > span {
+  margin-bottom: 0.35rem;
+  font-size: 1.5rem;
+}
+
+.exchange-options button > small {
+  margin-top: 0.3rem;
+  color: var(--color-muted);
+}
+
+.condition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.condition-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.8rem;
+  border: 1px solid #ddd3c0;
+  border-radius: 14px;
+  background: white;
+}
+
+.condition-card small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--color-muted);
+}
+
+.condition-card b {
+  color: #8b7755;
+  font-size: 0.75rem;
+}
+
+.condition-card.is-owned {
+  background: #eef8e9;
+}
+
+.condition-card.is-owned b {
+  color: #4b844d;
+}
+
+@media (max-width: 42rem) {
+  .reward-exchange__hero {
+    align-items: flex-start;
+  }
+  .reward-exchange__level {
+    min-width: 5.5rem;
+    min-height: 5.5rem;
+  }
+  .exchange-options,
+  .condition-grid {
+    grid-template-columns: 1fr;
+  }
+}

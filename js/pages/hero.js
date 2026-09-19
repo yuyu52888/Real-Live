@@ -6,6 +6,7 @@ export function renderHero(state) {
   const player = ui.player ?? state.player;
   const abilities = abilitySummary(state);
   const ariaExp = Math.min(Math.max(Number(player.exp.current) || 0, 0), Math.max(Number(player.exp.target) || 1, 1));
+  const surface = ui.surface === "exchange" ? "exchange" : "overview";
   return `<section class="hero-page" aria-labelledby="hero-title">
     <header class="hero-profile">
       <div class="hero-profile__party">
@@ -19,6 +20,17 @@ export function renderHero(state) {
       <div class="fragment-orb"><strong>${ui.fragments.current} / ${ui.fragments.needed}</strong><span>寶箱碎片</span></div>
     </header>
 
+    <div class="hero-tabs" role="tablist" aria-label="角色與獎勵">
+      <button type="button" role="tab" data-reward-surface="overview" class="${surface === "overview" ? "is-active" : ""}" aria-selected="${surface === "overview"}">角色成長</button>
+      <button type="button" role="tab" data-reward-surface="exchange" class="${surface === "exchange" ? "is-active" : ""}" aria-selected="${surface === "exchange"}">🎁 獎勵兌換所</button>
+    </div>
+
+    ${surface === "exchange" ? rewardExchange(ui, player) : heroOverview(ui, player, abilities)}
+  </section>`;
+}
+
+function heroOverview(ui, player, abilities) {
+  return `
     <section class="ability-section" aria-labelledby="ability-title">
       <div class="ability-section__heading"><div><p class="eyebrow">GROWTH</p><h2 id="ability-title">五大能力</h2></div><p>完成真實任務，能力值會慢慢累積。</p></div>
       <div class="ability-grid">${abilities.map((ability) => `<article class="ability-card ability-card--${ability.id}"><span aria-hidden="true">${ability.icon}</span><div><strong>${ability.label}</strong><small>累積 +${ability.exp}</small></div></article>`).join("")}</div>
@@ -41,7 +53,42 @@ export function renderHero(state) {
       ${collection("特別獎勵", ui.privileges, "privilege")}
     </div>
     <aside class="cosmetic-note">外觀只讓角色更有自己的風格，不會改變能力值或可使用的內容。</aside>
-  </section>`;
+  `;
+}
+
+function rewardExchange(ui, player) {
+  const catalog = ui.exchangeCatalog ?? [];
+  const conditions = ui.exchangeConditions ?? { titles: [], badges: [] };
+  return `<div class="reward-exchange">
+    <header class="reward-exchange__hero">
+      <div><p class="eyebrow">REWARD SHOP</p><h2>冒險獎勵兌換所</h2><p>不是每做一件事就換獎品；達成长期里程碑後，再選一個真正想要的獎勵。</p></div>
+      <div class="reward-exchange__level"><small>目前等級</small><strong>Lv.${player.level}</strong></div>
+    </header>
+    <section class="reward-exchange__levels" aria-labelledby="exchange-level-title">
+      <h3 id="exchange-level-title">等級里程碑獎勵</h3>
+      <div class="exchange-grid">${catalog.map(exchangeLevelCard).join("")}</div>
+    </section>
+    <section class="reward-exchange__conditions" aria-labelledby="exchange-condition-title">
+      <h3 id="exchange-condition-title">其他可解鎖收藏</h3>
+      <p>達成條件後會自動加入收藏，不需要花掉 EXP。</p>
+      <div class="condition-grid">
+        ${[...conditions.titles, ...conditions.badges].map((item) => `<article class="condition-card ${item.owned ? "is-owned" : ""}"><span aria-hidden="true">${item.owned ? "✓" : "🔒"}</span><div><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(item.condition)}</small></div><b>${item.owned ? "已解鎖" : "未達成"}</b></article>`).join("")}
+      </div>
+    </section>
+  </div>`;
+}
+
+function exchangeLevelCard(reward) {
+  const stateLabel = reward.claimed ? "已兌換" : reward.unlocked ? "可兌換" : `Lv.${reward.level} 解鎖`;
+  return `<article class="exchange-card ${reward.unlocked ? "is-unlocked" : "is-locked"} ${reward.claimed ? "is-claimed" : ""}">
+    <header><span>Lv.${reward.level}</span><strong>${stateLabel}</strong></header>
+    <p>條件：累積達到 Lv.${reward.level}，三選一。</p>
+    <div class="exchange-options">${reward.options.map((option) => {
+      const disabled = reward.claimed || !reward.unlocked || !option.available;
+      const reason = reward.claimed ? "本級已完成兌換" : !reward.unlocked ? `升到 Lv.${reward.level} 後可選` : option.available ? "兌換這個獎勵" : option.deferredReason ?? "目前未開放";
+      return `<button type="button" data-claim-level="${reward.level}" data-reward-option="${escapeHtml(option.id)}" ${disabled ? "disabled" : ""}><span>${option.type === "cosmetic" ? "◇" : option.type === "ticket" ? "券" : "★"}</span><strong>${escapeHtml(option.name)}</strong><small>${escapeHtml(reason)}</small></button>`;
+    }).join("")}</div>
+  </article>`;
 }
 
 function milestoneCard(reward) {

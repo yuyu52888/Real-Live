@@ -151,6 +151,11 @@ const actions = {
   openChest(chestId) {
     return performReward(() => openRewardChest(database, rewardSystem, chestId));
   },
+  setRewardSurface(surface) {
+    if (!["overview", "exchange"].includes(surface)) return;
+    state = { ...state, rewardUi: { ...state.rewardUi, surface } };
+    render();
+  },
   openBoss(bossId) {
     if (!getBossById(bossCatalog, bossId)) return;
     state = { ...state, route: "home", bossUi: { ...state.bossUi, selectedBossId: bossId } };
@@ -547,8 +552,9 @@ async function refreshParentState() {
 }
 
 async function refreshRewardState() {
+  const surface = state.rewardUi?.surface ?? "overview";
   const rewardUi = await synchronizeRewards(database, rewardSystem);
-  state = { ...state, player: rewardUi.player ?? state.player, rewardUi };
+  state = { ...state, player: rewardUi.player ?? state.player, rewardUi: { ...rewardUi, surface } };
 }
 
 async function refreshBossState(recoverRewards = false) {

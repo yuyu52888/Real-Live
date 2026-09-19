@@ -64,6 +64,7 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-claim-level]", (target) => actions.claimLevelReward(Number(target.dataset.claimLevel), target.dataset.rewardOption));
   bindButtons(root, "[data-select-title]", (target) => actions.selectActiveTitle(target.dataset.selectTitle));
   bindButtons(root, "[data-open-chest]", (target) => actions.openChest(target.dataset.openChest));
+  bindButtons(root, "[data-reward-surface]", (target) => actions.setRewardSurface(target.dataset.rewardSurface));
   bindButtons(root, "[data-open-boss]", (target) => actions.openBoss(target.dataset.openBoss));
   bindButtons(root, "[data-boss-back]", () => actions.closeBoss());
   bindButtons(root, "[data-complete-boss-step]", (target) => actions.completeBossStep(target.dataset.bossId, Number(target.dataset.completeBossStep)));
