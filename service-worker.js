@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "real-life-quest";
-const CACHE_VERSION = "stage10-v2";
+const CACHE_VERSION = "stage10-v3";
 const STATIC_CACHE = `${CACHE_PREFIX}-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `${CACHE_PREFIX}-runtime-${CACHE_VERSION}`;
 const IMAGE_FALLBACK = "./assets/icons/pwa-icon-v2-192.png";
