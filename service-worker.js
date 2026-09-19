@@ -89,10 +89,15 @@ const CORE_PATHS = Object.freeze([
   "./assets/characters/boy/boy_idle.png",
   "./assets/characters/boy/boy_happy.png",
   "./assets/characters/boy/boy_portrait.png",
+  "./assets/characters/boy/boy_walking.png",
+  "./assets/characters/boy/boy_studying.png",
   "./assets/characters/girl/girl_idle.png",
   "./assets/characters/girl/girl_happy.png",
   "./assets/characters/girl/girl_portrait.png",
-  "./assets/pets/fox/fox_happy.png"
+  "./assets/characters/girl/girl_walking.png",
+  "./assets/characters/girl/girl_studying.png",
+  "./assets/pets/fox/fox_happy.png",
+  "./assets/pets/fox/fox_reading.png"
 ]);
 
 self.addEventListener("install", (event) => {

@@ -152,7 +152,10 @@ test("Stage 4 speech synthesis selects an English voice and actively resumes pla
     resume() { this.paused = false; },
     speak(utterance) {
       spoken = utterance;
-      queueMicrotask(() => utterance.onend?.());
+      queueMicrotask(() => {
+        utterance.onstart?.();
+        utterance.onend?.();
+      });
     },
   };
   globalThis.speechSynthesis = mock;
