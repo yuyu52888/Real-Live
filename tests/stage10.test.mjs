@@ -76,3 +76,18 @@ test("Stage 10 Hero shows all five canonical abilities without inventing new sta
   assert.match(html, /耐心力[\s\S]*累積 \+1/);
   assert.doesNotMatch(html, /勇氣力|思考力|戰鬥力/);
 });
+
+
+test("Stage 10 Quest board uses illustrated tablet layout without cropping task art", async () => {
+  const [page, css] = await Promise.all([
+    readText("js/pages/quests.js"),
+    readText("css/stage10.css"),
+  ]);
+  assert.match(page, /quest-hero-banner/);
+  assert.match(page, /quest-card__thumb/);
+  assert.match(page, /quest-summary-strip/);
+  assert.match(css, /\.quest-detail__art > img[\s\S]*object-fit:\s*contain\s*!important/);
+  assert.match(css, /\.quest-card__thumb img[\s\S]*object-fit:\s*contain/);
+  assert.match(css, /\.quest-browser[\s\S]*grid-template-columns/);
+  assert.match(css, /\.quest-hero-title[\s\S]*repeating-linear-gradient/);
+});
