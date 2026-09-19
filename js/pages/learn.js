@@ -42,7 +42,7 @@ function overview(ui, state) {
           <p>${uiText("learn.dueFirst")}</p>
         </div>
         <div class="learn-hero__art" aria-hidden="true">
-          ${avatarImage(state.onboarding.avatarVariant, "studying")}
+          ${avatarImage(state?.onboarding?.avatarVariant ?? "boy", "studying")}
           ${foxImage("reading")}
         </div>
         <div class="learn-progress" aria-label="已掌握 ${ui.masteredWords} / ${ui.totalWords}">
