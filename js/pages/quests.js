@@ -111,14 +111,13 @@ function questDetail(task, state, atDailyLimit) {
 }
 
 function taskArtwork(task, avatarVariant) {
-  if (!task.assetLogicalId) {
-    return `<div class="quest-art-fallback" role="img" aria-label="${escapeHtml(task.name)}"><span>${escapeHtml(task.imageDisplay?.iconEmoji ?? "✦")}</span></div>`;
+  if (task.assetLogicalId) {
+    const resolved = resolveAsset(task.assetLogicalId, { avatarVariant });
+    if (resolved.type === "path") {
+      return `<img src="${escapeHtml(resolved.value)}" alt="${escapeHtml(task.imageDisplay?.visualLabelZh ?? task.name)}" draggable="false">`;
+    }
   }
-  const resolved = resolveAsset(task.assetLogicalId, { avatarVariant });
-  if (resolved.type === "path") {
-    return `<img src="${escapeHtml(resolved.value)}" alt="${escapeHtml(task.imageDisplay?.visualLabelZh ?? task.name)}" draggable="false">`;
-  }
-  return `<div class="quest-art-fallback" role="img" aria-label="${escapeHtml(task.imageDisplay?.visualLabelZh ?? task.name)}"><span>${escapeHtml(task.imageDisplay?.iconEmoji ?? "✦")}</span></div>`;
+  return categoryArtwork(task, avatarVariant, "detail");
 }
 
 function taskThumbnail(task, avatarVariant) {
@@ -128,7 +127,28 @@ function taskThumbnail(task, avatarVariant) {
       return `<img src="${escapeHtml(resolved.value)}" alt="" draggable="false">`;
     }
   }
-  return `<span class="quest-card__emoji">${escapeHtml(task.imageDisplay?.iconEmoji ?? categoryEmoji(task.category))}</span>`;
+  return categoryArtwork(task, avatarVariant, "thumb");
+}
+
+function categoryArtwork(task, avatarVariant, mode) {
+  const category = task.category;
+  const wrapper = mode === "thumb" ? "quest-card__category-art" : "quest-art-fallback quest-art-fallback--character";
+  if (category === "exercise" || category === "exercise_home") {
+    return `<span class="${wrapper}" aria-hidden="true">${avatarImage(avatarVariant, "exercise")}</span>`;
+  }
+  if (category === "life" || category === "chores_home") {
+    return `<span class="${wrapper}" aria-hidden="true">${avatarImage(avatarVariant, "chore")}</span>`;
+  }
+  if (category === "reading_story") {
+    return `<span class="${wrapper}" aria-hidden="true">${foxImage("reading")}</span>`;
+  }
+  if (category === "english") {
+    return `<span class="${wrapper}" aria-hidden="true">${avatarImage(avatarVariant, "studying")}</span>`;
+  }
+  if (category === "cooperation") {
+    return `<span class="${wrapper}" aria-hidden="true">${foxImage("follow")}</span>`;
+  }
+  return `<span class="${wrapper}" aria-hidden="true">${avatarImage(avatarVariant, "thinking")}</span>`;
 }
 
 function filterIcon(filter) {
@@ -184,7 +204,10 @@ function detailActions(task, status, atDailyLimit) {
   }
   if (status === "in_progress") {
     if (atDailyLimit) return `<p class="completed-message" role="status">今日任務額度已用完；這個進行中的任務可在明天重置後完成。</p>`;
-    return `<button class="button button--gold button--wide" type="button" data-complete-quest="${task.id}">${task.taskFamily === "chore" ? uiText("chores.complete") : task.taskFamily === "exercise" ? uiText("exercise.complete") : uiText("quests.state.completed")}</button>`;
+    const storyLink = ["reading_story", "life"].includes(task.category)
+      ? `<button class="button button--secondary quest-story-link" type="button" data-learn-surface="stories">${task.category === "reading_story" ? "前往思維故事" : "到思維故事找靈感"}</button>`
+      : "";
+    return `<div class="quest-action-stack">${storyLink}<button class="button button--gold button--wide" type="button" data-complete-quest="${task.id}">${task.taskFamily === "chore" ? uiText("chores.complete") : task.taskFamily === "exercise" ? uiText("exercise.complete") : uiText("quests.state.completed")}</button></div>`;
   }
   if (status === "pending_approval") return `<p class="pending-message" role="status">${uiText("quests.state.pendingApproval")}</p>`;
   if (status === "returned") return `<div><p class="pending-message" role="status">家長退回了這次紀錄，可以調整後重新送出。</p><button class="button button--gold button--wide" type="button" data-resubmit-quest="${task.id}">重新送出審核</button></div>`;
