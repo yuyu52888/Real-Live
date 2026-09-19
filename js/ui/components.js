@@ -32,7 +32,7 @@ export function logo() {
 
 export function avatarImage(variant, pose = "idle", className = "") {
   const safeVariant = variant === "girl" ? "girl" : "boy";
-  const safePose = ["idle", "portrait", "happy"].includes(pose) ? pose : "idle";
+  const safePose = ["idle", "portrait", "happy", "celebrate", "thinking", "reading", "studying", "exercise", "chore", "surprise", "tired", "walking"].includes(pose) ? pose : "idle";
   const label = uiText(`onboarding.avatar.${safeVariant}`);
   const fallbackPath = `./assets/characters/${safeVariant}/${safeVariant}_${safePose}.png`;
   const source = assetSource(`character.${safeVariant}.${safePose}`, { avatarVariant: safeVariant }, fallbackPath);
@@ -40,7 +40,7 @@ export function avatarImage(variant, pose = "idle", className = "") {
 }
 
 export function foxImage(pose = "idle", className = "") {
-  const safePose = ["idle", "portrait", "happy"].includes(pose) ? pose : "idle";
+  const safePose = ["idle", "portrait", "happy", "sit", "reading", "follow", "sleep", "surprise", "celebrate", "running"].includes(pose) ? pose : "idle";
   const fallbackPath = `./assets/pets/fox/fox_${safePose}.png`;
   const source = assetSource(`pet.fox.${safePose}`, {}, fallbackPath);
   return `<img class="${className}" src="${source}" alt="狐狸冒險夥伴" draggable="false">`;
