@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "real-life-quest";
-const CACHE_VERSION = "stage10-v3";
+const CACHE_VERSION = "stage10-v4";
 const STATIC_CACHE = `${CACHE_PREFIX}-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `${CACHE_PREFIX}-runtime-${CACHE_VERSION}`;
 const IMAGE_FALLBACK = "./assets/icons/pwa-icon-v2-192.png";
@@ -65,6 +65,9 @@ const CORE_PATHS = Object.freeze([
   "./js/services/speech.js",
   "./js/services/story-chapters.js",
   "./js/services/story-service.js",
+  "./js/pages/games.js",
+  "./js/services/mini-games.js",
+  "./js/services/story-narration.js",
   "./js/services/ui-copy.js",
   "./js/services/vocabulary-import.js",
   "./js/services/vocabulary-pack.js",

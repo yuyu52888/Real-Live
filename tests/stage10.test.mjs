@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 import { renderHero } from "../js/pages/hero.js";
+import { buildNarrationSegments } from "../js/services/story-narration.js";
+import { answerMiniGameQuestion, createMiniGameSession, currentMiniGameQuestion, MINI_GAMES } from "../js/services/mini-games.js";
 
 const readText = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
@@ -90,4 +92,60 @@ test("Stage 10 Quest board uses illustrated tablet layout without cropping task 
   assert.match(css, /\.quest-card__thumb img[\s\S]*object-fit:\s*contain/);
   assert.match(css, /\.quest-browser[\s\S]*grid-template-columns/);
   assert.match(css, /\.quest-hero-title[\s\S]*repeating-linear-gradient/);
+});
+
+
+test("Stage 10 general exercise/life quests receive non-cropped category art and story links", async () => {
+  const [page, css] = await Promise.all([readText("js/pages/quests.js"), readText("css/stage10.css")]);
+  assert.match(page, /category === "exercise"/);
+  assert.match(page, /avatarImage\(avatarVariant, "exercise"\)/);
+  assert.match(page, /category === "life"/);
+  assert.match(page, /avatarImage\(avatarVariant, "chore"\)/);
+  assert.match(page, /data-learn-surface="stories"/);
+  assert.match(css, /\.quest-detail__art > img[\s\S]*width:\s*86%\s*!important/);
+});
+
+test("Stage 10 story narration splits dialogue and assigns multiple roles", () => {
+  const segments = buildNarrationSegments("媽媽說：「你好。」\n\n小安問：「真的嗎？」\n\n旁白繼續。");
+  assert.ok(segments.length >= 5);
+  assert.ok(segments.some(({ role }) => role === "adultFemale"));
+  assert.ok(segments.some(({ role }) => role === "childA" || role === "childB"));
+  assert.ok(segments.some(({ role }) => role === "narrator"));
+});
+
+test("Stage 10 mini games provide four educational designs and deterministic learning feedback", () => {
+  assert.equal(MINI_GAMES.length, 4);
+  for (const game of MINI_GAMES) {
+    assert.ok(game.reason.length > 10);
+    assert.ok(game.learn.length > 5);
+    assert.ok(game.abilities.length >= 1);
+  }
+  let session = createMiniGameSession("pattern-scout");
+  const question = currentMiniGameQuestion(session);
+  session = answerMiniGameQuestion(session, question.answer);
+  assert.equal(session.score, 1);
+  assert.match(session.feedback, /答對了/);
+});
+
+test("Stage 10 Hero exposes a condition-based reward exchange surface", () => {
+  const html = renderHero({
+    onboarding: { avatarVariant: "boy", nickname: "冒險家" },
+    player: { level: 3, title: "新手冒險家", exp: { current: 65, target: 105 } },
+    questUi: { tasks: [], history: [] },
+    rewardUi: {
+      loading: false,
+      surface: "exchange",
+      player: { level: 3, title: "新手冒險家", exp: { current: 65, target: 105 } },
+      fragments: { current: 2, needed: 5 },
+      pendingClaims: [], titles: [], badges: [], cosmetics: [], tickets: [], privileges: [], chests: [],
+      exchangeCatalog: [{
+        level: 3, unlocked: true, claimed: false,
+        options: [{ id: "hat", name: "探索帽", type: "cosmetic", available: true }],
+      }],
+      exchangeConditions: { titles: [{ id: "t", name: "任務新手", condition: "完成10個任務", owned: false }], badges: [] },
+    },
+  });
+  assert.match(html, /冒險獎勵兌換所/);
+  assert.match(html, /data-claim-level="3"/);
+  assert.match(html, /完成10個任務/);
 });

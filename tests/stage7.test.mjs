@@ -67,7 +67,7 @@ test("Stage 7 Home and detail UI expose lock, HP, ordered steps, rewards, and fi
   const state = { bossUi: { ...dashboard, selectedBossId: "B01" } };
   const home = renderHomeBossCard(dashboard.homeBoss);
   const detail = renderBossPage(state);
-  assert.match(home, /HP 2 \/ 3/);
+  assert.match(home, /HP 67 \/ 100/);
   assert.match(detail, /boss\.B01|boss_b01|貪吃錢袋怪/);
   assert.match(detail, /data-complete-boss-step="2"/);
   assert.equal((detail.match(/data-open-boss=/g) ?? []).length, 6);
