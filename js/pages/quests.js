@@ -2,7 +2,7 @@ import { completionInstanceId, countDailyQuestSlots } from "../services/quest-se
 import { resolveAsset } from "../services/asset-registry.js";
 import { uiText } from "../services/ui-copy.js";
 import { filterTasks, getTaskActivityControl, getTaskById, TASK_FILTER_ALIASES } from "../repositories/tasks.js";
-import { escapeHtml, icon } from "../ui/components.js";
+import { avatarImage, escapeHtml, foxImage, icon } from "../ui/components.js";
 import { taskAllowedBySettings } from "../services/parent-settings.js";
 
 const FILTER_ORDER = Object.freeze(Object.keys(TASK_FILTER_ALIASES));
@@ -18,14 +18,25 @@ export function renderQuests(state) {
 
   return `
     <section class="quests-page" aria-labelledby="quests-title">
-      <header class="quests-header">
-        <div><p class="eyebrow">REAL LIFE QUEST</p><h1 id="quests-title">${uiText("quests.title")}</h1></div>
-        <p>從真實生活選一項挑戰，開始後再到現實世界完成它。</p>
+      <header class="quest-hero-banner">
+        <div class="quest-hero-brand" aria-label="Real Life Quest">
+          <span class="quest-hero-brand__compass" aria-hidden="true">🧭</span>
+          <div><strong>Real Life<br>Quest</strong><small>把真實生活・變成大冒險</small></div>
+        </div>
+        <div class="quest-hero-title">
+          <p class="eyebrow">ADVENTURE BOARD</p>
+          <h1 id="quests-title">${uiText("quests.title")}</h1>
+          <p>完成任務，讓自己變得更棒！</p>
+        </div>
+        <div class="quest-hero-party" aria-hidden="true">
+          ${avatarImage(state.onboarding.avatarVariant, "happy")}
+          ${foxImage("happy")}
+        </div>
+        <aside class="quest-daily-limit" role="status">
+          <span><strong>${dailyUsed} / ${dailyLimit}</strong> 今日任務額度</span>
+          <small>每天 00:00 重置</small>
+        </aside>
       </header>
-      <aside class="quest-daily-limit" role="status">
-        <span><strong>${dailyUsed} / ${dailyLimit}</strong> 今日任務額度</span>
-        <small>每日 00:00 重置；同一個任務在重置前只能完成一次。</small>
-      </aside>
       <div class="quest-filters" role="tablist" aria-label="任務分類">
         ${FILTER_ORDER.map((filter) => filterButton(filter, questUi.filter)).join("")}
       </div>
@@ -43,7 +54,7 @@ export function renderQuests(state) {
 
 function filterButton(filter, activeFilter) {
   const active = filter === activeFilter;
-  return `<button class="quest-filter ${active ? "is-active" : ""}" type="button" role="tab" aria-selected="${active}" data-quest-filter="${filter}">${uiText(`quests.tabs.${filter}`)}</button>`;
+  return `<button class="quest-filter ${active ? "is-active" : ""}" type="button" role="tab" aria-selected="${active}" data-quest-filter="${filter}"><span aria-hidden="true">${filterIcon(filter)}</span><strong>${uiText(`quests.tabs.${filter}`)}</strong></button>`;
 }
 
 function questCard(task, state, selected, atDailyLimit) {
@@ -51,18 +62,21 @@ function questCard(task, state, selected, atDailyLimit) {
   return `
     <article class="quest-card ${selected ? "is-selected" : ""}" data-status="${history?.status ?? "available"}">
       <button class="quest-card__select" type="button" data-select-quest="${task.id}" aria-label="查看 ${escapeHtml(task.name)}">
-        <span class="quest-card__icon" aria-hidden="true">${escapeHtml(task.imageDisplay?.iconEmoji ?? "✦")}</span>
+        <span class="quest-card__thumb" aria-hidden="true">${taskThumbnail(task, state.onboarding.avatarVariant)}</span>
         <span class="quest-card__body">
           <strong>${escapeHtml(task.name)}</strong>
           <small>${escapeHtml(task.description)}</small>
-          <span class="quest-card__meta">${escapeHtml(task.difficulty)} · ${task.exp} EXP ${(task.requiresParentConfirmation || state.onboarding.settings.parentApprovalRequired) ? `· ${uiText("quests.card.requiresApproval")}` : ""}</span>
+          <span class="quest-card__meta"><span>難度 ${escapeHtml(task.difficulty)}</span><b>EXP +${task.exp}</b></span>
         </span>
+        <span class="quest-card__chevron" aria-hidden="true">›</span>
       </button>
-      ${history
-        ? `<span class="quest-state">${stateLabel(history.status)}</span>`
-        : atDailyLimit
-          ? `<span class="quest-state">今日已達上限</span>`
-          : `<button class="button button--small button--primary" type="button" data-start-quest="${task.id}">${uiText("quests.card.start")}</button>`}
+      <div class="quest-card__action">
+        ${history
+          ? `<span class="quest-state">${stateLabel(history.status)}</span>`
+          : atDailyLimit
+            ? `<span class="quest-state">今日已達上限</span>`
+            : `<button class="button button--small button--primary" type="button" data-start-quest="${task.id}">${uiText("quests.card.start")} <span aria-hidden="true">›</span></button>`}
+      </div>
     </article>
   `;
 }
@@ -74,17 +88,19 @@ function questDetail(task, state, atDailyLimit) {
   const activity = getTaskActivityControl(task);
   return `
     <article class="quest-detail" aria-labelledby="quest-detail-title">
-      <div class="quest-detail__art">${taskArtwork(task, state.onboarding.avatarVariant)}</div>
-      <div class="quest-detail__heading">
-        <div><p class="eyebrow">${detailType(task)}</p><h2 id="quest-detail-title">${escapeHtml(task.name)}</h2></div>
-        <span class="reward-chip">${task.exp} EXP</span>
+      <div class="quest-detail__art">
+        ${taskArtwork(task, state.onboarding.avatarVariant)}
+        <div class="quest-detail__art-label"><span>${escapeHtml(detailType(task))}</span><strong>${escapeHtml(task.name)}</strong></div>
       </div>
-      <p class="quest-description">${escapeHtml(task.description)}</p>
-      <dl class="quest-facts">
-        <div><dt>${uiText("quests.detail.goal")}</dt><dd>${escapeHtml(task.completionCriteria)}</dd></div>
-        <div><dt>${uiText("common.labels.difficulty")}</dt><dd aria-label="任務難度">${escapeHtml(task.difficulty)}</dd></div>
-        <div><dt>畫面模式</dt><dd>${task.screenMode === "offscreen" ? "離開螢幕完成" : "短時間使用畫面"}</dd></div>
-      </dl>
+      <div class="quest-detail__heading">
+        <div><p class="eyebrow">MISSION DETAIL</p><h2 id="quest-detail-title">${escapeHtml(task.name)}</h2><p class="quest-description">${escapeHtml(task.description)}</p></div>
+        <span class="reward-chip">EXP +${task.exp}</span>
+      </div>
+      <div class="quest-summary-strip">
+        <span><small>難度</small><strong>${escapeHtml(task.difficulty)}</strong></span>
+        <span><small>完成目標</small><strong>${escapeHtml(task.completionCriteria)}</strong></span>
+        <span><small>任務方式</small><strong>${task.screenMode === "offscreen" ? "離開螢幕完成" : "短時間使用畫面"}</strong></span>
+      </div>
       ${tips.length ? tipsPanel(task, tips) : ""}
       ${task.safetyNote ? safetyPanel(task.safetyNote) : ""}
       ${["in_progress", "returned"].includes(status) && activity ? activityPanel(task, activity, history.progress?.value ?? 0, state.questUi.activeTimerTaskId === task.id) : ""}
@@ -103,6 +119,37 @@ function taskArtwork(task, avatarVariant) {
     return `<img src="${escapeHtml(resolved.value)}" alt="${escapeHtml(task.imageDisplay?.visualLabelZh ?? task.name)}" draggable="false">`;
   }
   return `<div class="quest-art-fallback" role="img" aria-label="${escapeHtml(task.imageDisplay?.visualLabelZh ?? task.name)}"><span>${escapeHtml(task.imageDisplay?.iconEmoji ?? "✦")}</span></div>`;
+}
+
+function taskThumbnail(task, avatarVariant) {
+  if (task.assetLogicalId) {
+    const resolved = resolveAsset(task.assetLogicalId, { avatarVariant });
+    if (resolved.type === "path") {
+      return `<img src="${escapeHtml(resolved.value)}" alt="" draggable="false">`;
+    }
+  }
+  return `<span class="quest-card__emoji">${escapeHtml(task.imageDisplay?.iconEmoji ?? categoryEmoji(task.category))}</span>`;
+}
+
+function filterIcon(filter) {
+  return ({
+    all: "▦",
+    reading: "📖",
+    english: "🔤",
+    exercise: "👟",
+    chores: "🏠",
+    life: "🌱",
+    hidden: "✨",
+  })[filter] ?? "✦";
+}
+
+function categoryEmoji(category) {
+  if (category === "reading_story") return "📚";
+  if (category === "english") return "🔤";
+  if (category === "exercise" || category === "exercise_home") return "👟";
+  if (category === "chores_home") return "🏠";
+  if (category === "life") return "🌱";
+  return "✦";
 }
 
 function tipsPanel(task, tips) {
