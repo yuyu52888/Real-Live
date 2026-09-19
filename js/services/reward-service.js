@@ -35,7 +35,7 @@ export async function synchronizeRewards(db, system) {
   const pendingClaims = system.levelRewards
     .filter(({ level }) => level <= (player?.level ?? 1) && !claimedLevels.has(level))
     .map((reward) => ({ ...reward, options: availableLevelOptions(reward, system, materialEnabled) }));
-  return buildDashboard(system, player, records, pendingClaims);
+  return buildDashboard(system, player, records, pendingClaims, materialEnabled);
 }
 
 export async function claimLevelReward(db, system, level, optionId, now = new Date()) {
@@ -345,9 +345,16 @@ function applyChestOutcome(stores, system, chest, now, done) {
   };
 }
 
-function buildDashboard(system, player, records, pendingClaims) {
+function buildDashboard(system, player, records, pendingClaims, materialRewardsEnabled = false) {
   const inventory = records.filter(({ type }) => type === "inventory");
   const balance = records.find(({ id }) => id === FRAGMENT_BALANCE_ID)?.quantity ?? 0;
+  const claimedLevels = new Set(records.filter(({ type }) => type === "level-claim").map(({ level }) => Number(level)));
+  const exchangeCatalog = system.levelRewards.map((reward) => ({
+    ...reward,
+    unlocked: Number(reward.level) <= Number(player?.level ?? 1),
+    claimed: claimedLevels.has(Number(reward.level)),
+    options: availableLevelOptions(reward, system, materialRewardsEnabled),
+  }));
   return {
     player,
     pendingClaims,
@@ -358,6 +365,11 @@ function buildDashboard(system, player, records, pendingClaims) {
     privileges: inventory.filter(({ category }) => ["privilege", "material", "reward-token"].includes(category)),
     fragments: { current: balance, needed: system.chestSystem.fragmentsNeeded },
     chests: records.filter(({ type, status }) => type === "chest" && status === "unopened"),
+    exchangeCatalog,
+    exchangeConditions: {
+      titles: system.titles.map(({ id, name, condition }) => ({ id, name, condition, owned: inventory.some(({ category, itemId }) => category === "title" && itemId === id) })),
+      badges: system.badges.map(({ id, name, condition }) => ({ id, name, condition, owned: inventory.some(({ category, itemId }) => category === "badge" && itemId === id) })),
+    },
   };
 }
 
