@@ -7,7 +7,8 @@ export function renderStories(state) {
   const ui = state.storyUi;
   if (!ui || ui.loading) return `<section class="story-page story-loading" aria-live="polite"><p>故事正在準備中…</p></section>`;
   const selected = getStoryById(ui.stories, ui.selectedStoryId);
-  return selected ? readerView(selected, ui) : overviewView(ui);
+  const withNarration = { ...ui, narration: state.storyNarration };
+  return selected ? readerView(selected, withNarration) : overviewView(ui);
 }
 
 function overviewView(ui) {
@@ -57,12 +58,23 @@ function readerView(story, ui) {
   const progress = chapterProgress(chapter, ui.progress);
   const completed = ui.progress.some((record) => record.storyId === story.id && record.completedAt);
   const paragraphs = story.body.split(/\n+/).map((paragraph) => paragraph.trim()).filter(Boolean);
+  const narration = ui.narration ?? { status: "idle" };
   return `<section class="story-page story-reader" aria-labelledby="story-reader-title">
     <header class="story-reader__header">
       <button class="story-back" type="button" data-story-back aria-label="返回故事總覽">←</button>
       <div><p>第 ${chapter.number} 章 · ${escapeHtml(chapter.chapterName)} · 約 ${story.estimatedMinutes} 分鐘</p><h1 id="story-reader-title">${escapeHtml(story.title)}</h1><span>${escapeHtml(story.theme)}</span></div>
       <img src="${coverSource(story.id)}" alt="狐狸陪伴閱讀">
     </header>
+    <div class="story-narration" aria-label="故事自動朗讀">
+      <div><strong>🔊 自動念故事</strong><small>旁白與對話會使用不同聲音／語調；實際可用聲音依瀏覽器與系統而定。</small></div>
+      <div class="story-narration__actions">
+        ${narration.status === "playing"
+          ? `<button class="button button--secondary" type="button" data-story-narration="pause">暫停</button><button class="button button--secondary" type="button" data-story-narration="stop">停止</button>`
+          : narration.status === "paused"
+            ? `<button class="button button--primary" type="button" data-story-narration="resume">繼續</button><button class="button button--secondary" type="button" data-story-narration="stop">停止</button>`
+            : `<button class="button button--primary" type="button" data-story-narration="play">▶ 開始朗讀</button>`}
+      </div>
+    </div>
     <article class="story-body">${paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}</article>
     <section class="reflection-card" aria-labelledby="reflection-title"><h2 id="reflection-title">想一想</h2><p>沒有標準答案，說說你真正想到的事。</p><ol>${story.questions.map((question) => `<li>${escapeHtml(question)}</li>`).join("")}</ol></section>
     <section class="reality-card"><div><small>今日現實任務</small><h2>${escapeHtml(story.realityTask)}</h2></div></section>

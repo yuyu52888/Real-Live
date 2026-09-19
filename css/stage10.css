@@ -2167,3 +2167,51 @@ select {
 .quest-story-link {
   width: 100%;
 }
+
+
+.story-narration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  border: 2px solid #9fd6eb;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f1fbff, #e2f4fb);
+  box-shadow: 0 5px 14px rgb(64 101 116 / 8%);
+}
+
+.story-narration strong,
+.story-narration small {
+  display: block;
+}
+
+.story-narration small {
+  margin-top: 0.2rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+.story-narration__actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.55rem;
+}
+
+.story-narration__actions .button {
+  min-width: 6.5rem;
+}
+
+@media (max-width: 42rem) {
+  .story-narration {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .story-narration__actions {
+    width: 100%;
+  }
+  .story-narration__actions .button {
+    flex: 1;
+  }
+}

@@ -60,6 +60,7 @@ export function mountAppShell(root, state, actions) {
   bindButtons(root, "[data-open-story]", (target) => actions.openStory(target.dataset.openStory));
   bindButtons(root, "[data-story-back]", () => actions.closeStory());
   bindButtons(root, "[data-complete-story]", (target) => actions.completeStory(target.dataset.completeStory));
+  bindButtons(root, "[data-story-narration]", (target) => actions.controlStoryNarration(target.dataset.storyNarration));
   bindButtons(root, "[data-claim-level]", (target) => actions.claimLevelReward(Number(target.dataset.claimLevel), target.dataset.rewardOption));
   bindButtons(root, "[data-select-title]", (target) => actions.selectActiveTitle(target.dataset.selectTitle));
   bindButtons(root, "[data-open-chest]", (target) => actions.openChest(target.dataset.openChest));

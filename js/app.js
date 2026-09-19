@@ -19,6 +19,7 @@ import { recordWordAnswer } from "./services/review-scheduler.js";
 import { setSpeechRate, speakVocabulary } from "./services/speech.js";
 import { getStoryById } from "./repositories/stories.js";
 import { completeStory as recordStoryCompletion, loadStoryDashboard } from "./services/story-service.js";
+import { pauseStoryNarration, resumeStoryNarration, startStoryNarration, stopStoryNarration } from "./services/story-narration.js";
 import { loadRewardSystem } from "./services/reward-system.js";
 import { claimLevelReward as claimMilestone, openChest as openRewardChest, selectActiveTitle as saveActiveTitle, synchronizeRewards } from "./services/reward-service.js";
 import { getBossById, loadBosses } from "./repositories/bosses.js";
@@ -58,6 +59,10 @@ const actions = {
   },
   navigate(route) {
     if (route !== "quests") stopQuestTimer();
+    if (route !== "learn") {
+      stopStoryNarration();
+      state = { ...state, storyNarration: { status: "idle", storyId: null } };
+    }
     const leavingParent = state.route === "parent" && route !== "parent";
     if (leavingParent) pendingBackup = null;
     state = {
@@ -83,11 +88,48 @@ const actions = {
   openStory(storyId) {
     const story = getStoryById(state.storyUi?.stories ?? [], storyId);
     if (!story) return;
-    state = { ...state, route: "learn", learnSurface: "stories", storyUi: { ...state.storyUi, selectedStoryId: storyId } };
+    stopStoryNarration();
+    state = { ...state, route: "learn", learnSurface: "stories", storyUi: { ...state.storyUi, selectedStoryId: storyId }, storyNarration: { status: "idle", storyId: null } };
     render();
   },
   closeStory() {
-    state = { ...state, storyUi: { ...state.storyUi, selectedStoryId: null } };
+    stopStoryNarration();
+    state = { ...state, storyUi: { ...state.storyUi, selectedStoryId: null }, storyNarration: { status: "idle", storyId: null } };
+    render();
+  },
+  async controlStoryNarration(command) {
+    const story = getStoryById(state.storyUi?.stories ?? [], state.storyUi?.selectedStoryId);
+    if (!story) return;
+    if (command === "stop") {
+      stopStoryNarration();
+      state = { ...state, storyNarration: { status: "idle", storyId: null } };
+      render();
+      return;
+    }
+    if (command === "pause") {
+      pauseStoryNarration();
+      state = { ...state, storyNarration: { status: "paused", storyId: story.id } };
+      render();
+      return;
+    }
+    if (command === "resume") {
+      resumeStoryNarration();
+      state = { ...state, storyNarration: { status: "playing", storyId: story.id } };
+      render();
+      return;
+    }
+    const result = await startStoryNarration(story, {
+      rate: 0.92,
+      onDone: () => {
+        state = { ...state, storyNarration: { status: "done", storyId: story.id } };
+        render();
+      },
+    });
+    if (result.unavailable) {
+      showPageError("這個瀏覽器目前無法使用故事朗讀。");
+      return;
+    }
+    state = { ...state, storyNarration: { status: "playing", storyId: story.id } };
     render();
   },
   completeStory(storyId) {

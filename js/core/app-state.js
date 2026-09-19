@@ -38,6 +38,7 @@ export function createInitialState() {
     learnUi: { loading: true },
     learnSurface: "english",
     storyUi: { loading: true },
+    storyNarration: { status: "idle", storyId: null },
     rewardUi: { loading: true },
     bossUi: { loading: true, selectedBossId: null },
     parentUi: { activeTab: "approvals", loading: true },
